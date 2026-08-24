@@ -1,0 +1,33 @@
+{
+  "schema_version": "bernini-generic-action-manifest-readiness-v1",
+  "status": "BLOCKED_FAIL_CLOSED",
+  "audit_date": "2026-08-14",
+  "expected_seed_cells": {"fit": 8, "confirmation": 8},
+  "expected_representation_rows": {"fit": 32, "confirmation": 32},
+  "observed_generated_media_for_selected_four_branches": {
+    "fit": 16,
+    "confirmation": 16,
+    "note": "core4 seed1+seed2 only; this is authoring media, never optimizer input or target"
+  },
+  "missing_generated_media_for_selected_four_branches": {
+    "fit": 16,
+    "confirmation": 16,
+    "fit_iids": ["00435ad621c44fac", "71ba57892bd043df"],
+    "confirmation_iids": ["0c6915018a5f4d9b", "33322eb8ec1e4703"],
+    "seeds": [2026080821, 2026080822, 2026080823, 2026080824, 2026080921, 2026080922, 2026080923, 2026080924]
+  },
+  "observed_phi_v1_block22_sidecars": {"fit": 0, "confirmation": 0},
+  "observed_admissible_full81_visual_reviews": {"fit": 0, "confirmation": 0},
+  "legacy_evidence": {
+    "core4_seed1_manual_label_count": 40,
+    "legacy_labels_admissible": false,
+    "reason": "does not close the new blinded/full81/sealed-before-feature-extraction/phase-label receipt",
+    "old_hidden_quotient_coordinate": "block.15.output / exact40 index 33",
+    "old_hidden_quotient_admissible_as_phi_v1": false
+  },
+  "q0_real_source_paths_hash_verified": 8,
+  "q1_real_source_paths_hash_verified": 0,
+  "representation_train_manifest_v1_materialized": false,
+  "action_source_pair_manifest_v1_materialized": false,
+  "optimizer_authorized": false
+}

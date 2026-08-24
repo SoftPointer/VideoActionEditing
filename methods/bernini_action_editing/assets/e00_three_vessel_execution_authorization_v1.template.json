@@ -1,0 +1,14 @@
+{
+  "schema_version": "bernini-e00-three-vessel-execution-authorization-v1",
+  "execution_authorized": false,
+  "package_manifest_sha256": "REPLACE_AFTER_IMMUTABLE_PACKAGE_REVIEW",
+  "parent_job_id": "143808",
+  "compute_node": "auh7-1b-gpu-292",
+  "serial_three_arm_order": [
+    "pure_noobserver_output_routeoff",
+    "observer_matched_output_routeoff",
+    "old_pureqk_temporal_routeon"
+  ],
+  "sp4_observer_released_node292": false,
+  "authorized_by": ""
+}

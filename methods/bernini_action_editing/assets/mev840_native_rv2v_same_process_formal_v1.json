@@ -1,0 +1,159 @@
+{
+  "schema": "mev840-native-rv2v-same-process-formal-v1",
+  "experiment_role": "zero-update-native-rv2v-same-process-formal-prompt-candidates",
+  "prompt_matrix": {
+    "basename": "mev840_native_rv2v_incremental_prompt_matrix_v1.json",
+    "sha256": "5c28e672bcdd86da3c7d3a94ba9e07b644421cea6c5945fb163fa7b871c2af0a",
+    "labels": ["P0", "P1", "P2"],
+    "only_registered_design_variable": "positive_prompt_utf8"
+  },
+  "common": {
+    "source_context_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, ",
+    "source_context_utf8_sha256": "29881967d4c579e5bf8de2b1bd7a6e2df1bc9712164b0fd4b3f09954c583bf64",
+    "base_action_utf8": "The woman turns her head to the left and places her water bottle onto the treadmill.",
+    "base_action_utf8_sha256": "9c5604e518ca19113c4edf861973051e88f6974f867936c248d1612ce84020b5",
+    "preservation_suffix_utf8": " The same subject identity, scene, lighting, framing, and camera remain stable.",
+    "preservation_suffix_utf8_sha256": "28671aaa5859fc313600a2a67447289cbd397231eebc3400178788f4a0ce184e"
+  },
+  "prompts": {
+    "P0": {
+      "supplement_kind": "none",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 370,
+      "full_prompt_utf8_sha256": "effdf094385a4f2486391efc008150b7436a8137c1d5766864a678ed6e0c749f",
+      "final_task_prompt_utf8_bytes": 623,
+      "final_task_prompt_utf8_sha256": "604bff69e9f43990de2efd7c26e64d15b4f1e92d9c165d182c7e2707f9299251",
+      "untruncated_token_count": 162,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "supplement_kind": "event_order",
+      "payload_file_sha256_with_terminal_lf": "2a334405d892434b8855d1a652c577c6caedf9bf63e1e0698ee4cd1973dd994b",
+      "payload_utf8_sha256_without_terminal_lf": "6b68dadabdc35b3e47cb9df2c016b1afddbf1ecad0603f69d9003a9cdabad5f7",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. Follow this event order: The woman first turns toward the treadmill while continuing to hold the bottle. She then extends the held bottle toward the treadmill. The bottle reaches and is supported by the treadmill before she releases it. After release, the bottle remains supported while her hand withdraws. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 677,
+      "full_prompt_utf8_sha256": "248410295a0dd4226b478bedaa46cd23f0dd4d406d4d262c692c4006f4481aef",
+      "final_task_prompt_utf8_bytes": 930,
+      "final_task_prompt_utf8_sha256": "ccd07d417c3a11ee698b11a07922a55a9f8c32d5bb40d69fa3d2541b4c7e0e0b",
+      "untruncated_token_count": 231,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "supplement_kind": "relation_contact",
+      "payload_file_sha256_with_terminal_lf": "e22733bd003e77b0a914ce8a3a15f3b850285f7d721a04a8a51d81c1920e3f34",
+      "payload_utf8_sha256_without_terminal_lf": "23405c6bfbf29e8e77e99261c6f0296dd37e3cc4f006ca991ec1cced1ed6aa71",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. Follow these contact relations: Maintain hand-to-bottle contact during the approach. Smoothly decrease the bottle-to-treadmill distance while increasing the bottle-to-body distance. Establish bottle-to-treadmill contact before ending hand-to-bottle contact. After release, maintain bottle-to-treadmill contact while the hand-to-bottle distance increases. Use exactly one bottle, and keep it as the same bottle throughout the action; do not duplicate or replace it. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 835,
+      "full_prompt_utf8_sha256": "63d4cda9cedca68487cdd9c5c951c2fe63226483d8975487114c221e38d1b4e5",
+      "final_task_prompt_utf8_bytes": 1088,
+      "final_task_prompt_utf8_sha256": "79293cc4c429e4b49734221d86800cc906726535901da2c0e5cc4dce648fbc11",
+      "untruncated_token_count": 276,
+      "terminal_token_id": 1
+    }
+  },
+  "same_process_pairing": {
+    "execution_order": ["p0a", "p1", "p2", "p0b"],
+    "prompt_label_by_execution_cell": {
+      "p0a": "P0",
+      "p1": "P1",
+      "p2": "P2",
+      "p0b": "P0"
+    },
+    "source_decode_count": 1,
+    "full_source_vae_encode_count": 1,
+    "reference_frame_indices": [0, 27, 53, 80],
+    "each_reference_vae_encode_count": 1,
+    "rank_zero_condition_broadcast_before_first_sample": true,
+    "same_condition_tensor_objects_for_all_four_calls": true,
+    "same_seed_for_all_four_calls": true,
+    "official_fresh_gaussian_per_call": true,
+    "external_gaussian_injection": false,
+    "custom_sampler_or_scheduler": false,
+    "same_scheduler_object_all_calls": true,
+    "no_manual_model_or_scheduler_state_reset_between_calls": true,
+    "rope_unregistered_state_observed_not_mutated": true,
+    "p0a_p0b_generated_latent_bit_exact_required": true
+  },
+  "runtime_authority": {
+    "unipc_source": {
+      "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/diffusers/schedulers/scheduling_unipc_multistep.py",
+      "sha256": "5bfe1dcf55ebea6dbbf624d3af676b2529b81fbcaf493150d562ec9e1aba3872"
+    },
+    "formal_slurm_by_seed": {
+      "2027": {
+        "job_id": "143808",
+        "node": "auh7-1b-gpu-292",
+        "world_size": 4
+      },
+      "2028": {
+        "job_id": "147873",
+        "node": "auh7-1b-gpu-284",
+        "world_size": 4
+      }
+    },
+    "nearest_finite_cgroup_limit_bytes": 68719476736,
+    "minimum_cgroup_headroom_bytes": 67108864
+  },
+  "dynamic_observer_gates": {
+    "condition_pre_post_each_call_raw_bytes_data_ptr_version_exact": true,
+    "official_gaussian_all_rank_exact_and_four_call_bit_exact": true,
+    "scheduler_set_timesteps_once_per_call": true,
+    "scheduler_effective_reset_fields_exact_across_calls": true,
+    "scheduler_stale_timestep_list_recorded": true,
+    "scheduler_stale_timestep_list_inactive_before_order2_overwrite_proved": true,
+    "model_eval_and_freeze_certificate_unchanged": true,
+    "torch_rng_state_unchanged_outside_native_sample_contract": true,
+    "encode_prompt_calls_per_cell": 2,
+    "positive_tokens_and_embedding_world4_exact_per_cell": true,
+    "negative_tokens_and_embedding_world4_exact_across_cells": true,
+    "negative_tokens_and_embedding_bit_exact_across_cells": true,
+    "positive_tokens_and_embedding_are_observed_only": true,
+    "positive_prompt_token_sequence_untruncated": true,
+    "observer_return_values_unchanged": true,
+    "memory_evidence_after_each_call": true,
+    "host_allocator_trim_after_each_call": true,
+    "torch_cuda_empty_cache_after_each_call": true,
+    "unipc_source_plain_file_sha256_exact": true,
+    "rope_exact_module_set_single_expert": true,
+    "rope_initial_values_unchanged_allowing_cpu_to_p0a_device_transition": true,
+    "rope_p1_p2_p0b_full_state_exact_to_p0a": true,
+    "slurm_job_node_step_world4_bound_in_receipt": true,
+    "cgroup_ancestor_chain_and_nearest_finite_limit_recorded": true,
+    "cgroup_oom_oom_kill_oom_group_kill_delta_zero": true,
+    "terminal_sacct_completed_exit0_maxrss_required": true,
+    "post_decode_cgroup_oom_delta_and_headroom_recorded": true
+  },
+  "execution_mode": {
+    "seeds": [2027, 2028],
+    "num_inference_steps": 40,
+    "decode_cells": ["p0a", "p1", "p2"],
+    "latent_only_replay_cells": ["p0b"],
+    "exact_regular_file_count_per_seed": 13,
+    "scientific_candidate": true,
+    "requires_separate_independent_launch_go": true,
+    "mechanical_gate_step": "147873.10",
+    "mechanical_gate_receipt_sha256": "40d5124281472eb89c7cb9bc8ee9b6436892ee4ec40c3f3af22698ddf5f43172",
+    "mechanical_gate_receipt_digest": "98e053ad26144498e66e661088d4aaddf5f67cd969997c37240abda3d0eee2d8"
+  },
+  "generator_contract": {
+    "guidance_mode": "rv2v",
+    "frame_count": 81,
+    "fps": 25,
+    "zero_update": true,
+    "accepted_external_conditions": ["source_video", "positive_prompt_matrix"],
+    "target_video_read": false,
+    "target_action_json_read": false,
+    "target_rgb_mask_box_xy_flow_feature_embedding_latent_qkv_gaussian_read": false,
+    "anchor_rgb_kv_latent_gaussian_read": false,
+    "legacy_activity25_qk_read": false,
+    "upstream_release_entrypoint_authorized": false,
+    "immutable_release_dependency_bytes_reused_under_current_user_authorized_launcher": true
+  },
+  "claim_limits": {
+    "formal_generation_proves_video_quality_before_visual_review": false,
+    "formal_generation_proves_action_gain_before_observer_scoring": false,
+    "formal_run_is_training": false,
+    "candidate_selection_is_separate_from_generation": true,
+    "production_or_scientific_success_not_predeclared": true
+  }
+}

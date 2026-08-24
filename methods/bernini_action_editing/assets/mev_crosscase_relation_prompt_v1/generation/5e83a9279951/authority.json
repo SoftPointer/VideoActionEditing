@@ -1,0 +1,109 @@
+{
+  "schema": "native-rv2v-crosscase-same-process-formal-v1",
+  "launch_authorized": true,
+  "authorization_basis": "user_explicit_crosscase_experiment_go_in_thread",
+  "case": {
+    "case_id": "5e83a9279951",
+    "source_video": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/5e83a9279951/source-exact81.mp4",
+      "sha256": "3cfe3ba4603ae7432f3fe0d9fd1876edda54e18f3c12ab7e8e82977adc60a8bd"
+    }
+  },
+  "prompt_matrix": {
+    "basename": "prompt_matrix.json",
+    "sha256": "01fdd3639026ddac4358046b40af3968d4d3104f40fba07463f083bb92354277",
+    "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+    "labels": ["P0", "P1", "P2"],
+    "only_registered_design_variable": "positive_prompt_utf8"
+  },
+  "prompts": {
+    "P0": {
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 319,
+      "full_prompt_utf8_sha256": "04ac6d6201f7ed997bcbb748bd3278bfd455978c0bc1d9d321b64aeb284aba72",
+      "final_task_prompt_utf8_bytes": 572,
+      "final_task_prompt_utf8_sha256": "4a2e083326432a19dd64e04af2700ba3953dcbd49f814db9aa17f2866589b298",
+      "untruncated_token_count": 152,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. Follow this event order: The elderly man first keeps the tablet stable while one hand reaches his glasses and adjusts them. That hand then leaves the glasses and moves to a separate smartphone. It establishes a grasp on the smartphone and lifts the phone away from its initial support. The tablet and smartphone remain distinct throughout. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 659,
+      "full_prompt_utf8_sha256": "63f1688e96ff6bc877dc7ef1e7c1590a47641ebf79c739272bcc47804d871202",
+      "final_task_prompt_utf8_bytes": 912,
+      "final_task_prompt_utf8_sha256": "199432aaa6560408bbacd303149ffdff6c46ea2377f0649a4d0ed1970c680991",
+      "untruncated_token_count": 223,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. Follow these contact relations: Treat the glasses, tablet, and smartphone as three distinct persistent entities. Establish and then end hand-to-glasses contact before establishing hand-to-smartphone contact. Keep the tablet separate and stable while smoothly decreasing the hand-to-phone distance. Establish a hand-to-phone grasp, then increase the phone-to-initial-support distance while maintaining that grasp. Use exactly one smartphone; do not transform the tablet into the phone, duplicate either device, or exchange their identities. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 859,
+      "full_prompt_utf8_sha256": "d40195348931a539a6c56c6864efc821c49ead6ae583c1f15ff6d5ad8e0cb642",
+      "final_task_prompt_utf8_bytes": 1112,
+      "final_task_prompt_utf8_sha256": "f955367dccb8e70ec4c82b10d72e7dc3822494af399f3d5af475d38eb7acdd94",
+      "untruncated_token_count": 274,
+      "terminal_token_id": 1
+    }
+  },
+  "same_process_pairing": {
+    "execution_order": ["p0a", "p1", "p2", "p0b"],
+    "prompt_label_by_execution_cell": {"p0a": "P0", "p1": "P1", "p2": "P2", "p0b": "P0"},
+    "source_decode_count": 1,
+    "full_source_vae_encode_count": 1,
+    "reference_frame_indices": [0, 27, 53, 80],
+    "each_reference_vae_encode_count": 1,
+    "rank_zero_condition_broadcast_before_first_sample": true,
+    "same_condition_tensor_objects_for_all_four_calls": true,
+    "same_seed_for_all_four_calls": true,
+    "official_fresh_gaussian_per_call": true,
+    "external_gaussian_injection": false,
+    "custom_sampler_or_scheduler": false,
+    "same_scheduler_object_all_calls": true,
+    "no_manual_model_or_scheduler_state_reset_between_calls": true,
+    "rope_unregistered_state_observed_not_mutated": true,
+    "p0a_p0b_generated_latent_bit_exact_required": true
+  },
+  "runtime_authority": {
+    "unipc_source": {
+      "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/diffusers/schedulers/scheduling_unipc_multistep.py",
+      "sha256": "5bfe1dcf55ebea6dbbf624d3af676b2529b81fbcaf493150d562ec9e1aba3872"
+    },
+    "formal_slurm_by_seed": {
+      "2027": {"job_id": "147871", "node": "auh7-1b-gpu-232", "world_size": 4},
+      "2028": {"job_id": "147871", "node": "auh7-1b-gpu-232", "world_size": 4}
+    },
+    "nearest_finite_cgroup_limit_bytes": 68719476736,
+    "minimum_cgroup_headroom_bytes": 67108864
+  },
+  "execution_mode": {
+    "run_class": "target_oracle_diagnostic",
+    "seeds": [2027, 2028],
+    "num_inference_steps": 40,
+    "decode_cells": ["p0a", "p1", "p2"],
+    "latent_only_replay_cells": ["p0b"],
+    "scientific_candidate": false
+  },
+  "generator_contract": {
+    "guidance_mode": "rv2v",
+    "frame_count": 81,
+    "fps": 25,
+    "zero_update": true,
+    "optimizer_updates": 0,
+    "accepted_external_conditions": ["source_video", "positive_prompt_matrix"],
+    "target_video_read": false,
+    "target_action_json_read": false,
+    "target_rgb_mask_box_xy_flow_feature_embedding_latent_qkv_gaussian_read": false,
+    "anchor_rgb_kv_latent_gaussian_read": false,
+    "legacy_activity25_qk_read": false
+  },
+  "receipt_schemas": {
+    "formal_receipt": "native-rv2v-crosscase-paired-prompt-matrix-formal-v1",
+    "paired_contract": "native-rv2v-crosscase-paired-same-process-contract-v1"
+  },
+  "receipt_pins": {"mechanical_gate": null},
+  "claim_limits": {
+    "scientific_claim_authorized": false,
+    "cross_case_action_success_not_predeclared": true,
+    "runtime_p0_replay_and_dynamic_input_gates_required": true
+  }
+}

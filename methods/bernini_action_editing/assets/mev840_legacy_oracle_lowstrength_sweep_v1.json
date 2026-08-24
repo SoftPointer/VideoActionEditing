@@ -1,0 +1,74 @@
+{
+  "schema_version": "mev840-legacy-oracle-lowstrength-sweep-manifest-v1",
+  "created_utc": "2026-08-21T00:00:00Z",
+  "claim_boundary": "Zero-update calibration of the legacy target-owned activity25 Q/K route with a normalized-real-target oracle. This is not v15 action-graph validation, training evidence, or a real-target-free method.",
+  "fresh_execution": {
+    "output_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_legacy_oracle_activity25_lowstrength_sweep_v1_20260821",
+    "control_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_legacy_oracle_activity25_lowstrength_sweep_v1_20260821_control",
+    "overwrite_allowed": false,
+    "parent_job_cancel_allowed": false,
+    "compute_postflight_allowed": false,
+    "login_postflight_required": true
+  },
+  "authority": {
+    "source": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/840b214afead/source-exact81.mp4",
+      "sha256": "a6e42a447d7fef26b073878c551a631afd6371987910a332e51e4a9e4dfb4646"
+    },
+    "oracle_anchor": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/840b214afead/real_target.mp4",
+      "sha256": "355535f4f5ff83581c2286dfb70a64c7f5131f5ae81d76fbb6351b2aa972baf0",
+      "real_target_read": true,
+      "role": "oracle_only"
+    },
+    "legacy_k40_oracle_reference": {
+      "output_sha256": "a56afd644dbdf211ea08c124b27e61d3e298bc25e37f583c8c82ab5ee157b06b",
+      "outer_schedule_digest": "43cd53329945280dccea5c1a1aa3b5da05337a7f10cfec0ab5a727592ea77d25"
+    }
+  },
+  "invariants": {
+    "zero_update": true,
+    "training_performed": false,
+    "optimization_steps": 0,
+    "checkpoint_or_adapter_loaded": false,
+    "transport": "self_target_owned_activity_kernel25_attn_output_v14r2",
+    "activity_keep_fraction": 0.25,
+    "initial_noise_proposal_mode": "keyed_only",
+    "anchor_gaussian_supplied": false,
+    "anchor_state_mode": "clean_noised",
+    "anchor_cfg_scope": "shared",
+    "anchor_contrast_mode": "dynamic_static_same_caption",
+    "field_guidance": "raw_cfg",
+    "field_model": "first_phase_caption_i2v",
+    "source_cfg_scale": 4.5,
+    "target_cfg_scale": 4.5,
+    "anchor_sigma_cap": 1.0,
+    "preservation_mode": "none",
+    "sga_temperature": 0.01,
+    "early_candidate_count": 5,
+    "sga_score_mode": "global_source_cosine",
+    "anchor_candidate_mode": "single_shared",
+    "anchor_spatial_alignment": "none",
+    "selected_blocks": [1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 21, 22, 23, 25, 26, 27, 29]
+  },
+  "arms": [
+    {"arm": "s005_k05", "strength": 0.05, "transport_steps": 5, "job_id": "147881", "node": "auh7-1b-gpu-213", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S005_K05"},
+    {"arm": "s010_k05", "strength": 0.10, "transport_steps": 5, "job_id": "147873", "node": "auh7-1b-gpu-284", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S010_K05"},
+    {"arm": "s025_k05", "strength": 0.25, "transport_steps": 5, "job_id": "147871", "node": "auh7-1b-gpu-232", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S025_K05"},
+    {"arm": "s005_k10", "strength": 0.05, "transport_steps": 10, "job_id": "143808", "node": "auh7-1b-gpu-268", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S005_K10"},
+    {"arm": "s010_k10", "strength": 0.10, "transport_steps": 10, "job_id": "143808", "node": "auh7-1b-gpu-315", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S010_K10"},
+    {"arm": "s025_k10", "strength": 0.25, "transport_steps": 10, "job_id": "143808", "node": "auh7-1b-gpu-233", "label": "MEV840_LEGACY_QK_ORACLE_ACTIVITY25_S025_K10"}
+  ],
+  "pins": {
+    "python": "8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a",
+    "decode_runner": "4ed2f22df876613ecfc720a662a48f8e028eb89fe9778e491bc962a4f8f68ab1",
+    "inference": "dd3558a4c38c5541ba6b7ad455ac599f43eb48b1b56f207a07776c9e1819145f",
+    "controller": "1427a4908e0a4239e95a353d3406c41cb77fdb7f0be81727126a2cfd23f1f3ad",
+    "qk_transport": "37941e30853b16fa242a7c91940620069f87a1a975d2ecf610f3cde800557a99",
+    "cross_attention_transport": "cbbbc490711f4f1131a701d042309b024fd5b3922f2d88e39e35bff7d39396f6",
+    "guided_controller": "3e7f8e449447c8cc0f2678da82b9e298d84d0b5b9f729281a5b19369cba7ddc6",
+    "infer_lora": "0c79faa8417a40a5735571db3a5ba828d6aa977d7d0507a5bfcb63368c07728d",
+    "launcher": "20a132a82c502d1b4f557ce37f2e435da579594aa970290e00726de8cf4252e3",
+    "login_finalizer": "0760171b93e0df4be752cb3dab4ccb85e3922bb1244547840cec0b5a04d51fb9"
+  }
+}

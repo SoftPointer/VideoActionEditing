@@ -1,0 +1,249 @@
+{
+  "schema_version": "bernini-caper-native-kseed-population-sit-v1",
+  "method": "frozen-bernini-caper-native-full-source-v2v-kseed-population-v1",
+  "action_taxonomy": {
+    "action_family_id": "animal-sit-and-hold",
+    "event_phase_order": [
+      "lower_hips_and_sit",
+      "turn_head_to_registered_target",
+      "stable_seated_hold"
+    ],
+    "event_frame_intervals_inclusive": {
+      "lower_hips_and_sit": [0, 20],
+      "turn_head_to_registered_target": [20, 40],
+      "stable_seated_hold": [40, 80]
+    },
+    "phase_boundary_overlap_is_intentional": true,
+    "action_taxonomy_sha256": "cd25fe7e95b2d43a2b33a5b02bad44833405155c28ef2402a2b2dab11da04396"
+  },
+  "native_v2v_contract": {
+    "arm": "native-source-video-only-v2v-endpoint",
+    "guidance_mode": "v2v_apg",
+    "positive_task": "mv2v",
+    "external_inference_inputs": [
+      "source_video",
+      "target_action_caption"
+    ],
+    "full_source_video_count": 1,
+    "source_reference_count": 0,
+    "first_frame_anchor_count": 0,
+    "target_video_count": 0,
+    "mask_count": 0,
+    "track_count": 0,
+    "pose_count": 0,
+    "flow_count": 0,
+    "trajectory_count": 0,
+    "custom_initial_noise": false,
+    "official_gaussian_is_sampler_initial_noise": true,
+    "official_gaussian_captured_by_read_only_observer": true,
+    "observer_injects_or_replaces_noise": false,
+    "frame_count": 81,
+    "fps": 25,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "flow_shift_from_renderer_config": 5.0,
+    "omega_text": 4.0,
+    "eta": 0.5,
+    "norm_threshold": 50.0,
+    "momentum": 0.0,
+    "exact40_shift5_schedule_sha256": "46f3dcb6e2d65cb7921e5217e2a20dfe008b366cfacafe455fee4d3c45f63ae2",
+    "frozen_model": true,
+    "training": false,
+    "optimizer": false,
+    "parameter_update": false
+  },
+  "population_design": {
+    "phase_order": [
+      "fit",
+      "lockbox"
+    ],
+    "default_launcher_phase": "fit",
+    "fit": {
+      "source_ids": [
+        "7b88a1ca1f804f41",
+        "841b5e0080a1441d",
+        "402059390cdb4f50",
+        "3be4072a63144b8f"
+      ],
+      "seeds": [
+        2026081801,
+        2026081802,
+        2026081803,
+        2026081804
+      ],
+      "cell_order": [
+        "fit-7b88a1ca1f804f41-s2026081801",
+        "fit-7b88a1ca1f804f41-s2026081802",
+        "fit-7b88a1ca1f804f41-s2026081803",
+        "fit-7b88a1ca1f804f41-s2026081804",
+        "fit-841b5e0080a1441d-s2026081801",
+        "fit-841b5e0080a1441d-s2026081802",
+        "fit-841b5e0080a1441d-s2026081803",
+        "fit-841b5e0080a1441d-s2026081804",
+        "fit-402059390cdb4f50-s2026081801",
+        "fit-402059390cdb4f50-s2026081802",
+        "fit-402059390cdb4f50-s2026081803",
+        "fit-402059390cdb4f50-s2026081804",
+        "fit-3be4072a63144b8f-s2026081801",
+        "fit-3be4072a63144b8f-s2026081802",
+        "fit-3be4072a63144b8f-s2026081803",
+        "fit-3be4072a63144b8f-s2026081804"
+      ],
+      "cartesian_population_required": true,
+      "expected_cell_count": 16,
+      "seed_filtering_or_best_of_k_authorized": false
+    },
+    "lockbox": {
+      "source_ids": [
+        "6a7ebea80ba64f18",
+        "ac87fea937864bd5"
+      ],
+      "seeds": [
+        2026081901,
+        2026081902
+      ],
+      "cell_order": [
+        "lockbox-6a7ebea80ba64f18-s2026081901",
+        "lockbox-6a7ebea80ba64f18-s2026081902",
+        "lockbox-ac87fea937864bd5-s2026081901",
+        "lockbox-ac87fea937864bd5-s2026081902"
+      ],
+      "cartesian_population_required": true,
+      "expected_cell_count": 4,
+      "seed_filtering_or_best_of_k_authorized": false,
+      "explicit_second_stage_switch_required": true,
+      "threshold_freeze_receipt_required": true,
+      "lockbox_media_must_remain_unopened_before_freeze": true
+    },
+    "fit_and_lockbox_never_aggregated_as_independent_training_targets": true,
+    "all_registered_cells_must_materialize_before_phase_receipt": true,
+    "partial_population_scientific_claim_authorized": false,
+    "posthoc_seed_selection_authorized": false
+  },
+  "lockbox_release_contract": {
+    "schema_version": "bernini-caper-native-kseed-threshold-freeze-v1",
+    "required_true_fields": [
+      "fit_population_complete",
+      "method_and_thresholds_frozen_before_lockbox",
+      "lockbox_media_opened_before_freeze_is_false",
+      "lockbox_generation_authorized"
+    ],
+    "required_sha256_fields": [
+      "registry_sha256",
+      "action_taxonomy_sha256",
+      "fit_population_receipt_sha256",
+      "fit_population_cell_ids_sha256",
+      "reward_thresholds_sha256",
+      "evaluation_protocol_sha256"
+    ],
+    "required_revision_field": "runtime_source_revision",
+    "receipt_digest_required": true,
+    "fit_population_cell_ids_sha256": "d543d17c97c9a0090912508072c7d0c4981c7b5878fcade2d5586d4fef37e179"
+  },
+  "sources": [
+    {
+      "split": "fit",
+      "source_id": "7b88a1ca1f804f41",
+      "actor_kind": "dog",
+      "identity_id": "grey-french-bulldog-black-harness",
+      "scene_id": "yellow-autumn-leaves-sunlit-park",
+      "registered_turn_target": "frame_right_toward_background",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "source_hw": [704, 736],
+      "bucket_hw": [480, 496],
+      "latent_shape": [1, 16, 21, 60, 62],
+      "target_action_caption": "A locked-off camera shows the same single grey French bulldog in a black harness among vibrant yellow autumn leaves in a sunlit park. From frames 0 through 20, the dog bends its hind legs, lowers its hips onto the leaves, and completes a seated pose while keeping its front legs planted. From frames 20 through 40, the seated dog turns its head toward frame-right and the background. From frames 40 through 80, it holds the same seated pose and rightward head orientation stably. Preserve the source dog's identity, harness, leaves, lighting, background, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "0094122dd7591aee7f8b4c5c644c7591ff691cd423f1353088eb5893c735f3e5"
+    },
+    {
+      "split": "fit",
+      "source_id": "841b5e0080a1441d",
+      "actor_kind": "dog",
+      "identity_id": "black-tan-german-shepherd-on-leash",
+      "scene_id": "grassy-field-shed-fur",
+      "registered_turn_target": "frame_right",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+      "source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+      "source_hw": [704, 736],
+      "bucket_hw": [480, 496],
+      "latent_shape": [1, 16, 21, 60, 62],
+      "target_action_caption": "A locked-off camera shows the same single black-and-tan German shepherd on a leash in a grassy field, with clumps of shed fur on the ground. From frames 0 through 20, the dog bends its hind legs, lowers its hips onto the grass, and completes a seated pose while keeping its front legs planted. From frames 20 through 40, the seated dog turns its head toward the right side of the frame. From frames 40 through 80, it stably holds the seated pose and rightward head orientation. Preserve the source dog's identity, leash, fur pattern, field, shed fur, lighting, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "d94f4a54d860bc5988dcfff7ec333f2cfdae7b0c319a40b6498436b2fd4f33be"
+    },
+    {
+      "split": "fit",
+      "source_id": "402059390cdb4f50",
+      "actor_kind": "cat",
+      "identity_id": "striped-tabby-light-underbelly",
+      "scene_id": "grey-tiled-pavement",
+      "registered_turn_target": "frame_right",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/402059390cdb4f50/samples/402059390cdb4f50/source_video.mp4",
+      "source_video_sha256": "210732166ae851bae57135d55798d79ac24b83503b81fadf47e3285b182abdce",
+      "source_hw": [960, 704],
+      "bucket_hw": [576, 416],
+      "latent_shape": [1, 16, 21, 72, 52],
+      "target_action_caption": "A locked-off camera shows the same tabby cat with distinct dark stripes and a light underbelly moving across grey tiled pavement. From frames 0 through 20, the cat slows, plants its front paws, lowers its hips onto the pavement, and completes a seated pose. From frames 20 through 40, the seated cat turns its head toward the right side of the frame. From frames 40 through 80, it stably holds the seated pose and rightward head orientation with its tail resting naturally. Preserve the source cat's identity, stripe pattern, pavement, lighting, background, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "ec56fd239bac39427c1acf51f07c3319cf3a592670f49ff9d809d16be8c83bd0"
+    },
+    {
+      "split": "fit",
+      "source_id": "3be4072a63144b8f",
+      "actor_kind": "dog",
+      "identity_id": "black-white-dog",
+      "scene_id": "dirt-path-grassy-field",
+      "registered_turn_target": "camera",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/3be4072a63144b8f/samples/3be4072a63144b8f/source_video.mp4",
+      "source_video_sha256": "792c506404fba2cc2e88239f52bbb2e88c16af9be9842ec6194234806147b28f",
+      "source_hw": [704, 736],
+      "bucket_hw": [480, 496],
+      "latent_shape": [1, 16, 21, 60, 62],
+      "target_action_caption": "A locked-off camera shows the same single black-and-white dog on a dirt path in a grassy field. From frames 0 through 20, the dog stops its forward motion, bends its hind legs, lowers its hips onto the path, and completes a seated pose. From frames 20 through 40, the seated dog turns its head to look directly toward the camera. From frames 40 through 80, it stably holds the seated pose and camera-facing gaze. Preserve the source dog's identity, markings, path, grass, lighting, background, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "9d750be4a9b0fb63b1cc27ed1cc6ac5cfb8e7be09cc725224bd275f1384f9ecc"
+    },
+    {
+      "split": "lockbox",
+      "source_id": "6a7ebea80ba64f18",
+      "actor_kind": "dog",
+      "identity_id": "black-dog",
+      "scene_id": "stone-pavement",
+      "registered_turn_target": "camera",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/6a7ebea80ba64f18/samples/6a7ebea80ba64f18/source_video.mp4",
+      "source_video_sha256": "2bcf9bc195167c5450ac36026bac0477104814a602bf0caf2a241d302deebcf7",
+      "source_hw": [704, 1056],
+      "bucket_hw": [400, 592],
+      "latent_shape": [1, 16, 21, 50, 74],
+      "target_action_caption": "A locked-off camera shows the same single black dog standing on stone pavement with its head initially oriented toward frame-right. From frames 0 through 20, the dog bends its hind legs, lowers its hips onto the pavement, and completes a seated pose while keeping its front legs planted. From frames 20 through 40, the seated dog turns its head to face directly toward the camera. From frames 40 through 80, it stably holds the seated pose and camera-facing gaze. Preserve the source dog's identity, coat, pavement, lighting, background, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "83aa69569d37983bffc876d3385fe2b83be7a04da4d611e62433cad248cbe140"
+    },
+    {
+      "split": "lockbox",
+      "source_id": "ac87fea937864bd5",
+      "actor_kind": "cat",
+      "identity_id": "long-haired-black-brown-white-cat",
+      "scene_id": "snowy-ground",
+      "registered_turn_target": "frame_right",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/ac87fea937864bd5/samples/ac87fea937864bd5/source_video.mp4",
+      "source_video_sha256": "12f766286bfe1409c7ee3a7bff5a88e6c135c44f20a551919a7801a31dd10ebe",
+      "source_hw": [704, 736],
+      "bucket_hw": [480, 496],
+      "latent_shape": [1, 16, 21, 60, 62],
+      "target_action_caption": "A locked-off camera shows the same long-haired cat with black, brown, and white fur moving through snow with its head oriented rightward. From frames 0 through 20, the cat plants its front paws, lowers its hips into the snow, and completes a seated pose. From frames 20 through 40, the seated cat turns its head farther toward the right side of the frame. From frames 40 through 80, it stably holds the seated pose and rightward head orientation. Preserve the source cat's identity, long-haired coat pattern, snow, lighting, background, and camera unless the requested motion physically requires a change.",
+      "target_action_caption_sha256": "18271ccd79617fe797c6d63bca274f1245d420fced90a7679bf717b1900cc538"
+    }
+  ],
+  "posthoc_negative_control": {
+    "source_id": "a66e6818e4144928",
+    "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a66e6818e4144928/samples/a66e6818e4144928/source_video.mp4",
+    "source_video_sha256": "0fdc54d89250f355d2170a4d6f6aac0867abf592afb849668a8e2879a6617147",
+    "source_hw": [896, 704],
+    "bucket_hw": [544, 432],
+    "latent_shape": [1, 16, 21, 68, 54],
+    "negative_action_family_id": "human-stand-up-and-hold",
+    "instruction_sha256": "a8f45d2a4aaa8cbe5017e94108f0f07718b598deb37b8e0a3717c94bba47b761",
+    "role": "posthoc_wrong_family_audit_only",
+    "generation_by_this_launcher_authorized": false,
+    "optimizer_materialization_authorized": false,
+    "threshold_selection_authorized": false
+  }
+}

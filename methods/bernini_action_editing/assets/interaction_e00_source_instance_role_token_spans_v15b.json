@@ -1,0 +1,144 @@
+{
+  "asset_sha256": "883d2bf7d6ce4caa0222904d5de892963b7d1641f91197ecef6832a8d0ba2709",
+  "competition_groups": {
+    "vessel_instances": [
+      "old_actor",
+      "new_actor",
+      "recipient"
+    ]
+  },
+  "decode_authorized": false,
+  "event": {
+    "event_id": "pour-liquid-into-cup",
+    "event_sha256": "61e33c1be7b59ce16b344424cbebafd7ca073303e2d56e3059bddbd4695f65fd",
+    "model_text": "You are a helpful assistant specialized in text-to-video generation.An East Asian woman in a black floral blouse pours amber tea from a white bowl into a clear glass pitcher on a wooden tea table while a small white cup sits nearby.",
+    "model_text_sha256": "c424fda6ec36b5c78a856f8abcba1db217c407f2920317832cc0e26095274451",
+    "roles": [
+      {
+        "char_end": 87,
+        "char_start": 68,
+        "kind": "agent_instance",
+        "protected": true,
+        "role": "agent",
+        "span_sha256": "4fed163e03a8a9efa0df8c986d36150c38fe37647693b57f08f3ad91c6bd7793",
+        "substring": "An East Asian woman",
+        "substring_sha256": "118d8fb9c1f631f30d89b8e8b7cf2bb813569aa94a6672980b0c01f152f3c374",
+        "token_end": 19,
+        "token_ids": [
+          8330,
+          9751,
+          29606,
+          27502
+        ],
+        "token_ids_sha256": "2db39edbbec757adcd76bf19c7ddabe8543d5ecdfa56990b582cc920594da645",
+        "token_start": 15
+      },
+      {
+        "char_end": 146,
+        "char_start": 134,
+        "kind": "vessel_instance",
+        "protected": true,
+        "role": "old_actor",
+        "span_sha256": "754743e10a33a4ef7a44eab8b931c7310dcedcdb31640f3772fb69b98856d5d9",
+        "substring": "a white bowl",
+        "substring_sha256": "b701c8021ac46a7585db8d43aa91e23e244fb2a422560cc99d79dd8309531c14",
+        "token_end": 34,
+        "token_ids": [
+          289,
+          10021,
+          73255
+        ],
+        "token_ids_sha256": "1cfd5cb0ebb0892621669fbf01056156cac7dfe11d939596a33b0d45a856d06f",
+        "token_start": 31
+      },
+      {
+        "char_end": 173,
+        "char_start": 152,
+        "kind": "vessel_instance",
+        "protected": true,
+        "role": "new_actor",
+        "span_sha256": "edd15a0bd1432b068b15d1a9a717c97cca1485591c57c7fdf573d87e0e15ed60",
+        "substring": "a clear glass pitcher",
+        "substring_sha256": "7074761c41b4c14e1e2bf63c99f47c4f131d5d4534e59e45864e51bc9313dfa1",
+        "token_end": 40,
+        "token_ids": [
+          289,
+          15314,
+          19959,
+          57160,
+          326
+        ],
+        "token_ids_sha256": "a12a1449ce98bf0513eb42b2c163bcd10f5259862f119ffee03c821e67ad78f5",
+        "token_start": 35
+      },
+      {
+        "char_end": 219,
+        "char_start": 202,
+        "kind": "vessel_instance",
+        "protected": true,
+        "role": "recipient",
+        "span_sha256": "d8b79b8f3e519799909f0cee7338c9d65eab2bf855c19fc5b213044f36f88ee5",
+        "substring": "a small white cup",
+        "substring_sha256": "c007446f4bc11451e8d94113de1192791834a7d019ca3060ad31ebd1d2f0f40f",
+        "token_end": 50,
+        "token_ids": [
+          289,
+          6735,
+          10021,
+          19396
+        ],
+        "token_ids_sha256": "4b9f5a138c6d51bf5a156efb374bda2fd5747deed2017f421410a58041e180ef",
+        "token_start": 46
+      },
+      {
+        "char_end": 195,
+        "char_start": 177,
+        "kind": "support",
+        "protected": true,
+        "role": "support",
+        "span_sha256": "b2066f3e758d1e4942573a1ff881d72c0f398d71aa457ecc2e575c74280d5f9e",
+        "substring": "a wooden tea table",
+        "substring_sha256": "27673871ea79455e5e77604524cc253dd8d313403e2c5cb5a5082454da74c43b",
+        "token_end": 45,
+        "token_ids": [
+          289,
+          129805,
+          26845,
+          8338
+        ],
+        "token_ids_sha256": "656e94e5e5c8f08d371e2a8ddb4b1a2f4766940162a410b098fcd70de93d6da3",
+        "token_start": 41
+      }
+    ],
+    "source_caption": "An East Asian woman in a black floral blouse pours amber tea from a white bowl into a clear glass pitcher on a wooden tea table while a small white cup sits nearby.",
+    "source_caption_char_start": 68,
+    "source_caption_sha256": "fdf83bde40f1a3b7cf70ba81edd6807d2deee8f6755110ba992f16c9e72baf99",
+    "source_iid": "2f183dbf9e7a4d2e",
+    "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616"
+  },
+  "independent_roles": [
+    "agent",
+    "support"
+  ],
+  "mutual_exclusion_scope": "only_members_within_each_competition_group",
+  "required_localization_roles": [
+    "old_actor",
+    "new_actor",
+    "recipient"
+  ],
+  "route_authorized": false,
+  "schema_version": "bernini-e00-instance-role-token-spans-v15b",
+  "semantic_contract": {
+    "agent": "woman/hands",
+    "labels_are_source_instance_descriptors_not_action_ground_truth": true,
+    "new_actor": "#2 center-right transparent handled glass vessel; preserve transparency/material/shape; candidate mover after transition",
+    "old_actor": "#1 upper-left opaque white ceramic vessel; source frame shows it pouring toward #2; must remain still/protected for the requested role switch",
+    "prompt_action_success_authorized": false,
+    "recipient": "#3 partly cropped small white teacup near frame edge; preserve white material/shape",
+    "requested_graph": "stop(#1 -> #2), then execute(#2 -> #3), with exact source frame 0",
+    "support": "wooden table/background"
+  },
+  "source_video_sha256": "888789206a3120c0780be8961dee7fdda520502cb95f573fe211b269aaea53de",
+  "status": "observer_only_diagnostic_not_route",
+  "training_authorized": false
+}

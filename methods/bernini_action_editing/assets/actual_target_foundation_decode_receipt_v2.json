@@ -1,0 +1,21 @@
+{
+  "schema_version": "actual-target-foundation-decode-receipt-v2",
+  "experiment_id": "actual_target_foundation_canary_v1",
+  "scope": "eight seen development-only R1b source/target media files",
+  "decode_algorithm": "R1b array_sha256: stack all OpenCV display-order BGR-to-RGB frames as one C-contiguous uint8 [T,720,1280,3] array; SHA256(canonical ASCII JSON {dtype,shape} || array.tobytes(order=C)); no frame sampling in digest",
+  "all_frames_dtype": "uint8",
+  "all_frames_shape_hwc": [720, 1280, 3],
+  "rows": [
+    {"r1b_ordinal": 2, "role": "source", "compressed_sha256": "b754a44156ec03d74205eaa7282c88ba35a826710a017d469117ccd05c2e5c5b", "frame_count": 169, "decoded_rgb_sha256": "03ca6ddc05d35687e3547da7374ab31e83a6d94303db8f92f732a9f3902b0243"},
+    {"r1b_ordinal": 2, "role": "target", "compressed_sha256": "cfef77924004ca14ef30fe2000b79a4b976d736b55933e0060869eedd93fa405", "frame_count": 80, "decoded_rgb_sha256": "e772e48f39a1bc71c89144924c643ba78d3af29ca03d2e458ecfcc3af9984b39"},
+    {"r1b_ordinal": 6, "role": "source", "compressed_sha256": "ffe82347c3bf00977c2f1249e954164c9667905d2ab2e17d77d2565d275978e0", "frame_count": 76, "decoded_rgb_sha256": "9260e79c1e93c57175b2810c52c89beee43b1956079d3fba283cad8d1b996790"},
+    {"r1b_ordinal": 6, "role": "target", "compressed_sha256": "74c736b016e9efd80ba6f7a0940b3262a37ea25e20f415564a1d466604476be4", "frame_count": 91, "decoded_rgb_sha256": "af1a1a713fa7159cd77605a8683777b5b5071578f6ed5f34df3ac42c720568f8"},
+    {"r1b_ordinal": 7, "role": "source", "compressed_sha256": "3d968c7a8bf83587b93c0c65f8ef91ae4e67c3518f446df9aacb5f32eaf878a8", "frame_count": 138, "decoded_rgb_sha256": "a8ceb78f8365fa25c1259eacde9e2aeaa3feb97864552a889d35f99026a280e9"},
+    {"r1b_ordinal": 7, "role": "target", "compressed_sha256": "df16f7eac64bdfa0ed0e9809a02f97b717a302649fd06a1265aec21af409e428", "frame_count": 204, "decoded_rgb_sha256": "babad065cbf2b10d7ab168a1c147ab70191fb2fcd538c1339dce24185bc1b2e1"},
+    {"r1b_ordinal": 11, "role": "source", "compressed_sha256": "693805f14ec90559a48ef97523190819af72e83f842aa708b70c3a41cee5a4df", "frame_count": 141, "decoded_rgb_sha256": "fa3fda4cdf2fda8645e450c2a9f959fb911b2f8a576fd6b8f5ee0a963c0c6828"},
+    {"r1b_ordinal": 11, "role": "target", "compressed_sha256": "3a847c7b837d550fa60058df54686986a924e9dd0e92834818277acc56c2d607", "frame_count": 126, "decoded_rgb_sha256": "dfcec2ed77b260c25d5667f706c115623014981c53dde1d2a28d8d4948933fa4"}
+  ],
+  "gpu_used": false,
+  "generator_loaded": false,
+  "decode_receipt_self_sha256": "210ac14e5d9ebf9043f931bad0630f394c7108118ea7dc93f0008b05e841cea1"
+}

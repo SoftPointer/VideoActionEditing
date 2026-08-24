@@ -1,0 +1,136 @@
+{
+  "schema_version": "mev-action-source-residue-contracts-v3",
+  "created_at": "2026-08-19T00:00:00Z",
+  "source_text_authority": "original_mev_annotation_propagated_into_frozen_manifest",
+  "policy": "Penalize only trace-grounded persistence or replay of the source-event behavior that substitutes for the requested target action. Identity, subject, scene, layout, clothing, camera, object presence, and the initial checkpoint alone never count as source-action residue.",
+  "samples": [
+    {
+      "pair_prefix": "0be6494dfac3",
+      "source_action_caption": "The cockatoo stares intently at the camera, holding its head still.",
+      "source_residue": {
+        "id": "source_static_stare_without_turn",
+        "description": "Across multiple checkpoints the cockatoo only preserves the source event's still forward stare, without a temporal head turn and crest change. The initial forward pose alone is not residue."
+      }
+    },
+    {
+      "pair_prefix": "0faecd13ef67",
+      "source_action_caption": "The woman with dark hair sleeps peacefully on her side in bed.",
+      "source_residue": {
+        "id": "source_peaceful_sleep_persists",
+        "description": "Across the clip the woman preserves the source event's peaceful single sleeping pose instead of visibly tossing, turning, and moving her arms around her head."
+      }
+    },
+    {
+      "pair_prefix": "10af6c651dbc",
+      "source_action_caption": "The small, translucent jellyfish with white spots drifts gently in the deep blue water.",
+      "source_residue": {
+        "id": "source_drift_without_pulsation",
+        "description": "The jellyfish only continues the source event's gentle drifting across multiple checkpoints and does not establish the target bell contraction into a ring."
+      }
+    },
+    {
+      "pair_prefix": "3fadbe0c2961",
+      "source_action_caption": "The Pembroke Welsh Corgi sits attentively in the grass, panting with its tongue out while looking toward the right.",
+      "source_residue": {
+        "id": "source_attentive_gaze_without_new_turn",
+        "description": "This residue is yes only if no new temporal head-orientation change occurs anywhere in the trace. Any clear new head turn makes residue no, regardless of viewer/animal left-right mirror ambiguity; holding the newly reached orientation afterward does not restore residue. Sitting, grass, panting, appearance, or the initial gaze direction alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "40712e1341dc",
+      "source_action_caption": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone.",
+      "source_residue": {
+        "id": "source_phone_use_persists",
+        "description": "The person continues the source event's phone-holding or scrolling behavior across the clip, with the phone remaining in hand instead of being released onto a bedside surface before turning over."
+      }
+    },
+    {
+      "pair_prefix": "5e83a9279951",
+      "source_action_caption": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet.",
+      "source_residue": {
+        "id": "source_tablet_only_use_persists",
+        "description": "After any glasses motion, the man continues only the source event's tablet use across the clip and never visibly picks up a distinct smartphone. Sitting, couch layout, beard, or tablet presence alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "7077cfb160cf",
+      "source_action_caption": "The pensive young woman sits on a park bench with a notebook and pen, looking off to the side.",
+      "source_residue": {
+        "id": "source_looking_aside_without_writing",
+        "description": "Across multiple checkpoints the woman preserves the source pensive looking-aside/holding pose without repeated pen-on-page writing strokes. Bench, notebook, pen, or seated layout alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "7e488525099e",
+      "source_action_caption": "The woman in a leather outfit stands with her hands on her hips, posing in front of the black car.",
+      "source_residue": {
+        "id": "source_front_of_car_pose_persists",
+        "description": "Across multiple checkpoints she continues the source hands-on-hips or front-of-car posing behavior without a visible body turn followed by supported back contact on the hood. Car, clothing, or camera layout alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "7fa338474c75",
+      "source_action_caption": "The woman in a red bikini top and straw hat uses her smartphone against a green screen.",
+      "source_residue": {
+        "id": "source_generic_phone_use_without_playful_selfie",
+        "description": "The woman only continues generic source-event smartphone use across multiple checkpoints without the target tongue-out and wink expression. Holding the phone for a completed playful selfie is compatible and is not residue."
+      }
+    },
+    {
+      "pair_prefix": "81533c9e56ec",
+      "source_action_caption": "The woman in a green skirt and black shirt dances in place while holding a red and white scarf.",
+      "source_residue": {
+        "id": "source_in_place_dance_without_full_spin",
+        "description": "The woman continues source-event in-place dancing, waving, stepping, swaying, or discontinuous front/back pose changes without an ordered front-side-back-opposite-side-front full spin. Clothing, scarf presence, or initial pose alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "840b214afead",
+      "source_action_caption": "The woman with reddish-blonde hair stands on a treadmill, holding a water bottle while looking forward.",
+      "source_residue": {
+        "id": "source_forward_bottle_hold_persists",
+        "description": "Across multiple checkpoints she preserves the source forward-looking bottle-holding behavior, with no visible head turn and no bottle release onto the treadmill. Treadmill layout or bottle presence alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "8b05aaf463db",
+      "source_action_caption": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue.",
+      "source_residue": {
+        "id": "source_static_basket_over_coals_persists",
+        "description": "Across the clip the basket preserves the source event's essentially fixed position over the coals without a visible lift-away and return cycle. Grill appearance, coals, smoke, or sizzling alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "d5221a1b69d5",
+      "source_action_caption": "The woman in an apron blows on a ladle of hot soup to cool it down before tasting it.",
+      "source_residue": {
+        "id": "source_blowing_or_pre_taste_pose_persists",
+        "description": "The trace only establishes the source event's blowing/pre-taste behavior or a static ladle-near-mouth pose, without a visible mouth/utensil tasting transition and response."
+      }
+    },
+    {
+      "pair_prefix": "d908552fb691",
+      "source_action_caption": "The woman in a martial arts uniform bows respectfully from the waist against a black background.",
+      "source_residue": {
+        "id": "source_bow_replayed_or_retained",
+        "description": "A clear forward waist bow from the source event is visibly performed or retained at any checkpoint. It remains harmful residue even if the hands also move together. Uniform, profile, or black background alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "d977ce147d80",
+      "source_action_caption": "The man, lying on the couch with his eyes closed, brings his arm up to cover his face.",
+      "source_residue": {
+        "id": "source_single_arm_face_cover_only",
+        "description": "The person only repeats or preserves the source single-arm face-cover behavior without a visible two-hand eye-rubbing sequence. Lying on the couch, closed eyes, or face occlusion alone are not residue."
+      }
+    },
+    {
+      "pair_prefix": "fb7725c351ba",
+      "source_action_caption": "The woman in black activewear performs a deadlift with a barbell in a home gym.",
+      "source_residue": {
+        "id": "source_deadlift_without_target_extent",
+        "description": "General deadlift motion is compatible with the target and is not residue when a floor-to-waist lift is established. Count residue only if the trace repeats an incomplete source-like lift without visibly starting near the floor and reaching the waist."
+      }
+    }
+  ]
+}

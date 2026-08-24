@@ -1,0 +1,614 @@
+{
+  "schema_version": "bernini-saic-reversible-source-set-v1",
+  "dataset_id": "saic-reversible-source-set-exact81-v1",
+  "created_at": "2026-08-09T15:00:00+04:00",
+  "scientific_status": {
+    "source_manifest_ready": true,
+    "terminal_events_verified": false,
+    "optimizer_updates_authorized": false,
+    "reason": "The eight real source clips and their q0 state labels are bound, but no row has an event-qualified Bernini pure-T2V forward/reverse/noop exact81 receipt."
+  },
+  "contracts": {
+    "media": {
+      "num_frames": 81,
+      "fps_num": 25,
+      "fps_den": 1,
+      "duration_seconds": "3.240000",
+      "source_role": "real_source_and_inverse_endpoint_only",
+      "target_video_required": false
+    },
+    "timeline_review": {
+      "frame_indices": [
+        0,
+        20,
+        40,
+        60,
+        80
+      ],
+      "review_method": "manual_visual_contact_sheet_from_sha_bound_source_mp4",
+      "review_date": "2026-08-09",
+      "full81_independent_human_audit_required_before_optimizer": true
+    },
+    "split": {
+      "fit_sources_per_actor_family": 2,
+      "confirmation_sources_per_actor_family": 2,
+      "fit_rollout_seeds_per_source": 2,
+      "confirmation_rollout_seeds_per_source": 3,
+      "confirmation_never_enters_optimizer": true,
+      "confirmation_iids_have_zero_bernini_receipt_matches_at_selection": true
+    },
+    "arrow": {
+      "forward": "q0_to_q1",
+      "inverse": "q1_to_q0",
+      "noop": "q0_to_q0",
+      "forward_inverse_share_typed_operator": true,
+      "inference_inputs": [
+        "source_video",
+        "natural_language_instruction"
+      ]
+    },
+    "forbidden_inputs": [
+      "target_video",
+      "mask",
+      "sam_track",
+      "pose",
+      "flow",
+      "motion_donor",
+      "pure_t2v_rgb_as_student_target",
+      "pure_t2v_latent_as_student_target",
+      "pure_t2v_noise_as_student_input"
+    ]
+  },
+  "known_exclusions": [
+    {
+      "iid": "a66e6818e4144928",
+      "reason": "PAIR-v5 described this source as crouch/low-lunge and its full81 source rotates the head and upper torso. It is not silently aliased to the strict human_one_knee_kneel state type; reserve it for a later human_low_support ablation."
+    },
+    {
+      "iid": "6a7ebea80ba64f18",
+      "reason": "This source was already opened as a CAPER lockbox. It cannot serve as prospective SAIC confirmation even though its body remains standing."
+    }
+  ],
+  "rows": [
+    {
+      "row_id": "fit-dog-00-7b88a1ca1f804f41",
+      "iid": "7b88a1ca1f804f41",
+      "analysis_split": "fit",
+      "actor_family": "dog",
+      "actor_group_id": "gray-french-bulldog-leaves-fit",
+      "scene_group_id": "autumn-leaves-park-fit",
+      "action_family_id": "dog-stand-sit-reversible-v1",
+      "initial_state_type": "dog_four_leg_stand",
+      "terminal_state_type": "dog_stable_sit",
+      "selection_origin": "pair_v5_opened_source_reassigned_to_fit",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "media_probe": {
+        "width": 736,
+        "height": 704,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/7b88a1ca1f804f41/result.json",
+        "file_sha256": "2e96890344b712c0cc3623a0fb9b2ef66248e3062c4f2d2cc171021f08e2179d",
+        "record_digest": "5e0be922b324793ad23ee3c3cf4f54c68b8e5f52f3e72694c37755c201e27857",
+        "visual_input_digest": "399cea52a7030e1570b3a72225c97a5c19028e580dd954cebce13e804ee44326",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "gray French Bulldog standing in yellow autumn leaves, wearing a black harness attached to a leash, tongue visible and ears perked",
+        "source_action_signature": "standing_still",
+        "source_motion": "the dog remains in the same four-legged standing pose with no observed locomotion"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 shot shows a single gray French Bulldog in a black harness and leash standing on all four legs in yellow autumn leaves, facing slightly left of the camera with its tongue visible and ears up; the dog remains essentially still.",
+      "forward_instruction": "Have the same French Bulldog bend both hind legs, lower its pelvis, settle into a stable sit at the same location and facing direction, and hold the seated state. Preserve its identity, coat, harness, leash, leaves, lighting, framing, and locked camera.",
+      "inverse_instruction": "Starting from the seated state, have the same French Bulldog push upward through its legs, return to the original stable four-legged stand at the same location and facing direction with its tongue visible and ears up, and hold. Preserve its identity, harness, leash, scene, framing, and locked camera.",
+      "noop_instruction": "Keep the same French Bulldog in its original four-legged stand for the entire clip, allowing only breathing and tiny natural motion; it must never enter a sit. Preserve its identity, harness, leash, scene, framing, and locked camera.",
+      "rollout_seeds": [2026082101, 2026082102],
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "fit-dog-01-841b5e0080a1441d",
+      "iid": "841b5e0080a1441d",
+      "analysis_split": "fit",
+      "actor_family": "dog",
+      "actor_group_id": "black-tan-shepherd-grass-fit",
+      "scene_group_id": "grassy-field-leash-fit",
+      "action_family_id": "dog-stand-sit-reversible-v1",
+      "initial_state_type": "dog_four_leg_stand",
+      "terminal_state_type": "dog_stable_sit",
+      "selection_origin": "pair_v5_opened_source_reassigned_to_fit",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+      "source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+      "media_probe": {
+        "width": 736,
+        "height": 704,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/841b5e0080a1441d/result.json",
+        "file_sha256": "81ae28203b34076e169e4d347b39d3bfbad1cb51a66c67faae3d6d9d145c552b",
+        "record_digest": "df23666944413657ce50d8ec2ff5840da87bb073e03810508c8f6d15f9624e98",
+        "visual_input_digest": "ac837b2a39948724fdb3d631a2aac313e5f256423bc8d2e1a208c0ddd7840dff",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "black-and-tan shepherd standing on grass with a leash attached, ears perked and looking toward the camera",
+        "source_action_signature": "standing_still_with_minor_head_movements",
+        "source_motion": "the dog remains standing while making subtle head and ear adjustments"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 shot shows a single black-and-tan shepherd standing on all four legs on grass with a leash attached, ears perked and looking toward the camera; only subtle head and ear adjustments occur.",
+      "forward_instruction": "Have the same shepherd bend its hind legs, lower its hips to the grass, settle into a stable sit facing the camera, and hold the seated state. Preserve its identity, coat pattern, collar, leash, field, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the seated state, have the same shepherd push upward through its legs, return to the original stable four-legged stand facing the camera, make only the original subtle head and ear adjustments, and hold. Preserve its identity, leash, field, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same shepherd standing on all four legs for the entire clip with only subtle head, ear, and breathing motion; it must never enter a sit. Preserve its identity, leash, field, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082111, 2026082112],
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "fit-human-00-a35b590961d24694",
+      "iid": "a35b590961d24694",
+      "analysis_split": "fit",
+      "actor_family": "human",
+      "actor_group_id": "brown-haired-studio-kneel-fit",
+      "scene_group_id": "warm-yellow-studio-fit",
+      "action_family_id": "human-one-knee-stand-reversible-v1",
+      "initial_state_type": "human_one_knee_kneel",
+      "terminal_state_type": "human_upright_stand",
+      "selection_origin": "pair_v5_opened_source_reassigned_to_fit",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "media_probe": {
+        "width": 704,
+        "height": 768,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/a35b590961d24694/result.json",
+        "file_sha256": "27e75ef15df10604a4938c58cf652f5b11f0c9707ed524c52e50b5d5e7a0f46a",
+        "record_digest": "2380444c438608a183951360b98375c8000d648fe5bb3368f94b8f0348fc7c79",
+        "visual_input_digest": "acfb1ca6aa8f4995dc3cdda12efd868feeba1d20c46441e9e408f8fbe1085064",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "woman in a one-knee kneeling pose against a warm yellow studio background, wearing a black jacket, pink top, cream trousers, and black boots",
+        "source_action_signature": "static_pose",
+        "source_motion": "the subject remains in the same kneeling pose throughout"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 studio shot shows the same woman holding a one-knee kneeling pose against a warm yellow background, wearing a black jacket, pink top, cream trousers, and black platform boots; her body remains still.",
+      "forward_instruction": "Have the same woman transfer weight onto both feet, rise smoothly from the one-knee kneel at the same location, straighten both legs and torso into a stable upright stand, and hold. Preserve her identity, hair, clothing, studio background, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the upright stand, have the same woman bend both knees, lower carefully at the same location, return her right knee to the floor with the left leg forward and her supporting hand near the floor, recover the original one-knee kneeling pose, and hold. Preserve her identity, hair, clothing, studio background, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same woman in the original one-knee kneeling pose for the entire clip with only natural breathing; she must never rise into a stand. Preserve her identity, hair, clothing, studio background, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082121, 2026082122],
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "fit-human-01-31c34509415745ca",
+      "iid": "31c34509415745ca",
+      "analysis_split": "fit",
+      "actor_family": "human",
+      "actor_group_id": "red-braided-mall-kneel-fit",
+      "scene_group_id": "shopping-mall-floor-fit",
+      "action_family_id": "human-one-knee-stand-reversible-v1",
+      "initial_state_type": "human_one_knee_kneel",
+      "terminal_state_type": "human_upright_stand",
+      "selection_origin": "v17_source_census_scout_fit",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/31c34509415745ca/samples/31c34509415745ca/source_video.mp4",
+      "source_video_sha256": "2c34ec7f74faa624909f966d3d98f485f4b92250905843e2a7dd67a44d24fda6",
+      "media_probe": {
+        "width": 704,
+        "height": 1280,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/31c34509415745ca/result.json",
+        "file_sha256": "8729204eb73c75060c574208e78806bdf5028aad1c445b66f1243934953275a1",
+        "record_digest": "29a36125d9081907fc5404c4939d1e6415b671ef12350cde358aada28631bb52",
+        "visual_input_digest": "f62dbba13db89917ef5fef337c585df17340f5bdcb6d43094c437ccde1057679",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "red-braided subject kneeling on the right knee on a shopping-mall floor, left foot planted, wearing a black outfit and bright socks",
+        "source_action_signature": "kneeling_pose_to_arm_extend",
+        "source_motion": "the subject remains kneeling while extending the arms outward and smiling"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 shot shows a red-braided subject kneeling on the right knee on a shopping-mall floor with the left foot planted, smiling while extending the arms outward; the lower-body kneeling state remains unchanged.",
+      "forward_instruction": "Have the same subject transfer weight onto both feet, rise from the right-knee kneel at the same location, straighten into a stable upright stand while keeping the smile and natural outward arm gesture, and hold. Preserve identity, red braids, clothing, shoes, mall background, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the upright stand, have the same subject lower carefully at the same location, return the right knee to the floor with the left foot planted, recover the original one-knee kneeling state while reproducing the natural outward arm gesture and smile, and hold. Preserve identity, red braids, clothing, shoes, mall background, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same subject in the original right-knee kneeling state while allowing the original outward arm gesture and smile; the lower body must never rise into a stand. Preserve identity, red braids, clothing, shoes, mall background, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082131, 2026082132],
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "confirmation-dog-00-99cde432839f4240",
+      "iid": "99cde432839f4240",
+      "analysis_split": "confirmation",
+      "actor_family": "dog",
+      "actor_group_id": "pointed-ear-forest-dog-confirm",
+      "scene_group_id": "monochrome-forest-confirm",
+      "action_family_id": "dog-stand-sit-reversible-v1",
+      "initial_state_type": "dog_four_leg_stand",
+      "terminal_state_type": "dog_stable_sit",
+      "selection_origin": "v17_source_census_prospective_confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/99cde432839f4240/samples/99cde432839f4240/source_video.mp4",
+      "source_video_sha256": "4fcd6d75b09e3b294d3dfff15fc7b523a536551e592484eed91de66e2e733a2c",
+      "media_probe": {
+        "width": 736,
+        "height": 704,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/99cde432839f4240/result.json",
+        "file_sha256": "83ed89200c98e745dc6b0015dcf6c1202bde6cc7e77d3787e89eb949c402fe9b",
+        "record_digest": "b98448433b36a66d83f13090181d5bef7f88cdcd8d8fb330b61d9b2482a94934",
+        "visual_input_digest": "2f08580d3777da6317a5e47497ab3579826067b2ea936c245ba9ec973784ceec",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "pointed-ear dog standing in a forest, facing forward with its tongue out and tail curved upward",
+        "source_action_signature": "standing_with_subtle_tongue_and_tail_movement",
+        "source_motion": "the dog remains standing with only minor facial and tail motion"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off monochrome exact81 forest shot shows a single pointed-ear dog standing on all four legs facing forward, tongue out and tail curved upward; only minor facial and tail motion occurs.",
+      "forward_instruction": "Have the same dog bend its hind legs, lower its hips, settle into a stable sit at the same forest location, let the tail relax toward the ground, and hold the seated state. Preserve identity, facial features, forest background, monochrome appearance, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the seated state, have the same dog push upward through its legs, return to the original stable four-legged stand at the same location with the tail curved upward and tongue visible, and hold with only minor facial and tail motion. Preserve identity, forest background, monochrome appearance, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same dog in its original four-legged stand for the entire clip with only minor facial and tail motion; it must never enter a sit. Preserve identity, forest background, monochrome appearance, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082201, 2026082202, 2026082203],
+      "confirmation_exposure_scan": {
+        "scan_date": "2026-08-09",
+        "local_bernini_code_doc_matches": 0,
+        "auh_bernini_code_doc_matches": 0,
+        "auh_bernini_experiment_receipt_matches": 0,
+        "formal_seal_still_required": true
+      },
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "confirmation-dog-01-6ea45d35943742bb",
+      "iid": "6ea45d35943742bb",
+      "analysis_split": "confirmation",
+      "actor_family": "dog",
+      "actor_group_id": "white-grass-dog-confirm",
+      "scene_group_id": "sunlit-grass-tree-confirm",
+      "action_family_id": "dog-stand-sit-reversible-v1",
+      "initial_state_type": "dog_four_leg_stand",
+      "terminal_state_type": "dog_stable_sit",
+      "selection_origin": "v17_source_census_prospective_confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/6ea45d35943742bb/samples/6ea45d35943742bb/source_video.mp4",
+      "source_video_sha256": "a4f0567c8c7a63421a34099bd16c13f4ca77dd4bbe9b0ce3725a363e96b6d193",
+      "media_probe": {
+        "width": 704,
+        "height": 896,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/6ea45d35943742bb/result.json",
+        "file_sha256": "0ea1c3bfb590abe76260e3e500f1cc6183efef49efa84d32fd9ab2fbc804e4ee",
+        "record_digest": "75e75f5691dfa29ec966ba65ac1cbd6408c1f37b5b71bd9e82071436cbc93efa",
+        "visual_input_digest": "4073cf39cbafe1591d83852a4621287e4463448b97a78d3e8b3c2798ec383101",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "white dog standing on grass facing forward, mouth open with tongue visible, tail upright, and ears perked",
+        "source_action_signature": "head_turn_right",
+        "source_motion": "the body remains standing while the head turns slowly to the right"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand",
+          "dog_four_leg_stand"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 shot shows a single white dog standing on all four legs on grass facing forward, mouth open with tongue visible, tail upright and ears perked; its body stays standing while its head slowly turns right.",
+      "forward_instruction": "Have the same white dog bend its hind legs, lower its hips, settle into a stable sit at the same location while completing the original slow rightward head turn, and hold the seated state. Preserve identity, coat, collar, grass, tree shadows, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the seated state, have the same white dog push upward through its legs, return to the original stable four-legged stand at the same location while reproducing the slow rightward head turn, and hold. Preserve identity, coat, collar, grass, tree shadows, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same white dog standing on all four legs for the entire clip while allowing the original slow rightward head turn; it must never enter a sit. Preserve identity, coat, collar, grass, tree shadows, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082211, 2026082212, 2026082213],
+      "confirmation_exposure_scan": {
+        "scan_date": "2026-08-09",
+        "local_bernini_code_doc_matches": 0,
+        "auh_bernini_code_doc_matches": 0,
+        "auh_bernini_experiment_receipt_matches": 0,
+        "formal_seal_still_required": true
+      },
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "confirmation-human-00-311c82f83eca4a7f",
+      "iid": "311c82f83eca4a7f",
+      "analysis_split": "confirmation",
+      "actor_family": "human",
+      "actor_group_id": "blond-gym-mirror-kneel-confirm",
+      "scene_group_id": "gym-mirror-confirm",
+      "action_family_id": "human-one-knee-stand-reversible-v1",
+      "initial_state_type": "human_one_knee_kneel",
+      "terminal_state_type": "human_upright_stand",
+      "selection_origin": "v17_source_census_prospective_confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/311c82f83eca4a7f/samples/311c82f83eca4a7f/source_video.mp4",
+      "source_video_sha256": "cc329d61942f02e9e58c43e455e95bf892dcf8b8cd5c2785c3fff1e2e6fbd798",
+      "media_probe": {
+        "width": 736,
+        "height": 704,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/311c82f83eca4a7f/result.json",
+        "file_sha256": "38209b2045f6aabfaee7f8f1cea31dcf328ae8949d43a6dfe85d432946090108",
+        "record_digest": "ac7b3b0cf75d14fbd7b3a331f77f3dfe59337e923e24820deac35d60b66cde3f",
+        "visual_input_digest": "6b312fb1630fddc355ad4c0e7b6e5c33e806c641c03a3f70580c7647378abedf",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "blond subject kneeling on the right knee for a gym mirror selfie, left foot planted, smartphone held in the left hand",
+        "source_action_signature": "bicep_flexing_while_kneeling",
+        "source_motion": "the body remains kneeling while the right arm rises into a bicep flex"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 gym-mirror shot shows a blond subject kneeling on the right knee with the left foot planted, holding a smartphone in the left hand while the right arm rises into a bicep flex; the lower-body kneeling state remains unchanged.",
+      "forward_instruction": "Have the same subject transfer weight onto both feet, rise from the right-knee kneel at the same location, straighten into a stable upright stand while keeping the smartphone and completing the same right-arm bicep flex, and hold. Preserve identity, tattoos, hair, clothing, mirror scene, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the upright stand, have the same subject lower at the same location, return the right knee to the floor with the left foot planted, recover the original kneeling selfie state while holding the smartphone and reproducing the right-arm bicep flex, and hold. Preserve identity, tattoos, hair, clothing, mirror scene, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same subject in the original right-knee kneeling state while holding the smartphone and completing the original right-arm bicep flex; the lower body must never rise into a stand. Preserve identity, tattoos, hair, clothing, mirror scene, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082221, 2026082222, 2026082223],
+      "confirmation_exposure_scan": {
+        "scan_date": "2026-08-09",
+        "local_bernini_code_doc_matches": 0,
+        "auh_bernini_code_doc_matches": 0,
+        "auh_bernini_experiment_receipt_matches": 0,
+        "formal_seal_still_required": true
+      },
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    },
+    {
+      "row_id": "confirmation-human-01-6d346c38cf504493",
+      "iid": "6d346c38cf504493",
+      "analysis_split": "confirmation",
+      "actor_family": "human",
+      "actor_group_id": "blue-wig-cosplay-kneel-confirm",
+      "scene_group_id": "convention-photo-set-confirm",
+      "action_family_id": "human-one-knee-stand-reversible-v1",
+      "initial_state_type": "human_one_knee_kneel",
+      "terminal_state_type": "human_upright_stand",
+      "selection_origin": "v17_source_census_prospective_confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/6d346c38cf504493/samples/6d346c38cf504493/source_video.mp4",
+      "source_video_sha256": "99483c3d0dacb86658841df54452c0a3492563f197813c4a2526e4f096dba14f",
+      "media_probe": {
+        "width": 704,
+        "height": 1056,
+        "r_frame_rate": "25/1",
+        "avg_frame_rate": "25/1",
+        "duration": "3.240000",
+        "nb_frames": 81,
+        "nb_read_frames": 81
+      },
+      "source_census": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/rows/6d346c38cf504493/result.json",
+        "file_sha256": "378d1b439c5457293868d709ca619865742d3f867b9a272674e9ef76681c0154",
+        "record_digest": "2f7bbfcb938550100cc2b46bc09e1af2d720dca6cad20307fd5763233ea79c63",
+        "visual_input_digest": "8a8bdb7b43c9e23c9c3d3ae5186fc3316079521bfea06bc3fc57ab32923e355d",
+        "confidence": "high",
+        "all_dynamic_subjects_enumerated": true,
+        "crowd_or_unresolved_motion": false,
+        "camera_motion_class": "locked_off",
+        "i0_state": "blue-wig cosplay subject kneeling with the right knee on the ground and left foot planted, holding two white cosplay prop pistols",
+        "source_action_signature": "static_kneeling_pose",
+        "source_motion": "the subject remains in the same one-knee kneeling pose"
+      },
+      "five_point_timeline": {
+        "frame_indices": [0, 20, 40, 60, 80],
+        "state_labels": [
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel",
+          "human_one_knee_kneel"
+        ],
+        "initial_state_observed": true,
+        "body_state_held_at_all_reviewed_frames": true,
+        "camera_reframing_observed": false,
+        "full81_qwen_census_high_confidence": true,
+        "full81_independent_human_audit": false
+      },
+      "source_caption": "A locked-off exact81 convention photo-set shot shows a blue-wig cosplay subject holding two white prop pistols while kneeling with the right knee on the floor and the left foot planted; the body remains in the same kneeling pose.",
+      "forward_instruction": "Have the same subject transfer weight onto both feet, rise from the right-knee kneel at the same location, straighten into a stable upright stand while retaining the same safe grip on both white cosplay props, and hold. Preserve identity, blue wig, costume, props, background people and equipment, scale, framing, and locked camera.",
+      "inverse_instruction": "Starting from the upright stand, have the same subject lower carefully at the same location, return the right knee to the floor with the left foot planted, recover the original one-knee kneeling pose while retaining the same safe grip on both white cosplay props, and hold. Preserve identity, blue wig, costume, props, background people and equipment, scale, framing, and locked camera.",
+      "noop_instruction": "Keep the same subject in the original right-knee kneeling pose while retaining the same safe grip on both white cosplay props; the body must never rise into a stand. Preserve identity, blue wig, costume, props, background people and equipment, scale, framing, and locked camera.",
+      "rollout_seeds": [2026082231, 2026082232, 2026082233],
+      "confirmation_exposure_scan": {
+        "scan_date": "2026-08-09",
+        "local_bernini_code_doc_matches": 0,
+        "auh_bernini_code_doc_matches": 0,
+        "auh_bernini_experiment_receipt_matches": 0,
+        "formal_seal_still_required": true
+      },
+      "terminal_state_contract": {
+        "semantic_reachability_reviewed": true,
+        "decoded_terminal_media_path": null,
+        "decoded_terminal_media_sha256": null,
+        "terminal_event_verified": false,
+        "pure_t2v_event_receipt": null
+      },
+      "optimizer_eligible": false
+    }
+  ]
+}

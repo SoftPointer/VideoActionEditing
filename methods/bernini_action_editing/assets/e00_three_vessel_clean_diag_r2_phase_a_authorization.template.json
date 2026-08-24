@@ -1,0 +1,15 @@
+{
+  "schema_version": "bernini-e00-clean-diagnostic-r2-phase-a-execution-authorization-v2",
+  "execution_authorized": false,
+  "authorized_phase": "A_ONLY_THEN_STOP",
+  "package_manifest_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "protocol_file_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "protocol_canonical_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "parent_job_id": "143808",
+  "compute_node": "auh7-1b-gpu-292",
+  "only_authorized_arm": "pure_noobserver_output_routeoff",
+  "must_stop_after_a": true,
+  "bc_execution_authorized": false,
+  "sp4_observer_released_node292": false,
+  "authorized_by": ""
+}

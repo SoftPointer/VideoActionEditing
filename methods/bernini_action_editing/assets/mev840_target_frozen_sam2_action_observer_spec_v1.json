@@ -1,0 +1,66 @@
+{
+  "schema_version": "mev840-frozen-sam2-action-observer-spec-v1",
+  "case_id": "MEV840",
+  "video": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/840b214afead/real_target.mp4",
+    "sha256": "355535f4f5ff83581c2286dfb70a64c7f5131f5ae81d76fbb6351b2aa972baf0",
+    "role": "real_target_oracle",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "source_initial_reference": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/840b214afead/source.mp4",
+    "sha256": "ed8ced7ec6aa90a0ba0bee4db981d20a65fe6eb435771f818c81c6e5f3eebe55"
+  },
+  "sam2": {
+    "model_cfg": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config_authority_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "config_authority_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+    "frozen": true,
+    "separate_role_states": true
+  },
+  "phase_frames": [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
+  "roles": [
+    {
+      "object_id": 1,
+      "name": "human_agent",
+      "box_xyxy": [280.0, 34.0, 620.0, 540.0],
+      "reviewed_on_shared_frame0": true
+    },
+    {
+      "object_id": 2,
+      "name": "moving_object",
+      "box_xyxy": [500.0, 310.0, 578.0, 515.0],
+      "reviewed_on_shared_frame0": true
+    },
+    {
+      "object_id": 3,
+      "name": "recipient",
+      "box_xyxy": [510.0, 400.0, 960.0, 540.0],
+      "reviewed_on_shared_frame0": true
+    },
+    {
+      "object_id": 4,
+      "name": "head",
+      "box_xyxy": [365.0, 34.0, 525.0, 275.0],
+      "reviewed_on_shared_frame0": true
+    }
+  ],
+  "claim_limits": {
+    "observer_only": true,
+    "training_performed": false,
+    "optimizer_updates": 0,
+    "renderer_forward_calls": 0,
+    "generator_read_authorized": false,
+    "route_authorized": false,
+    "decode_authorized": false,
+    "selection_only": true,
+    "raw_masks_exported": false,
+    "absolute_coordinates_exported_to_representation": false,
+    "appearance_features_exported": false
+  }
+}

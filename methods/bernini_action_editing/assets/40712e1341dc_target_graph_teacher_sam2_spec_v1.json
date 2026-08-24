@@ -1,0 +1,100 @@
+{
+  "schema_version": "crosscase-frozen-sam2-graph-teacher-spec-v1",
+  "case_id": "40712e1341dc",
+  "source": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/40712e1341dc/source.mp4",
+    "sha256": "0de17ce507266fe53ab243a1e3aadf4e11a073c4ea3bd99c22f15b520f5db57e",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "real_target_teacher": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/40712e1341dc/real_target.mp4",
+    "sha256": "b3ee66f0baab504c4f88f64159055bb94b0281fd3907d9fbdd37bff054b199ab",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "sam2": {
+    "model_cfg": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config_authority_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "config_authority_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+    "frozen": true,
+    "separate_node_states": true
+  },
+  "phase_frames": [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
+  "nodes": [
+    {
+      "node_id": "actor_root",
+      "object_id": 1,
+      "semantic_type": "actor_root",
+      "identity_authority": "shared-frame0-human-reviewed person identity",
+      "source_prompt": {"box_xyxy": [275, 0, 865, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [275, 0, 865, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [40, 220, 40]
+    },
+    {
+      "node_id": "head",
+      "object_id": 2,
+      "semantic_type": "body_part",
+      "identity_authority": "shared-frame0-human-reviewed actor head used only for turn-shape observation",
+      "source_prompt": {"box_xyxy": [530, 10, 790, 290], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [530, 10, 790, 290], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [255, 30, 220]
+    },
+    {
+      "node_id": "phone_effector_hand",
+      "object_id": 3,
+      "semantic_type": "effector",
+      "identity_authority": "shared-frame0-human-reviewed phone-holding hand; handedness intentionally unspecified",
+      "source_prompt": {"box_xyxy": [275, 235, 435, 450], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [275, 235, 435, 450], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 52},
+      "color_bgr": [30, 80, 255]
+    },
+    {
+      "node_id": "phone",
+      "object_id": 4,
+      "semantic_type": "object",
+      "identity_authority": "shared-frame0-human-reviewed phone; target identity becomes unresolved after frame 48 when it leaves reliable view",
+      "source_prompt": {"box_xyxy": [275, 190, 365, 350], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [275, 190, 365, 350], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 48},
+      "color_bgr": [255, 190, 20]
+    },
+    {
+      "node_id": "nightstand_support",
+      "object_id": 5,
+      "semantic_type": "support",
+      "identity_authority": "shared-frame0-human-reviewed left bedside support region; geometry cannot certify placement",
+      "source_prompt": {"box_xyxy": [70, 260, 320, 415], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [70, 260, 320, 415], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [220, 180, 20]
+    }
+  ],
+  "edges": [
+    {"edge_id": "hand_part_of_actor", "source_node": "phone_effector_hand", "target_node": "actor_root", "relation_type": "part_of", "required_for_action": false},
+    {"edge_id": "head_part_of_actor", "source_node": "head", "target_node": "actor_root", "relation_type": "part_of", "required_for_action": true},
+    {"edge_id": "hand_manipulates_phone", "source_node": "phone_effector_hand", "target_node": "phone", "relation_type": "manipulates", "required_for_action": true},
+    {"edge_id": "nightstand_supports_phone", "source_node": "nightstand_support", "target_node": "phone", "relation_type": "supports", "required_for_action": true}
+  ],
+  "manual_event_program": [
+    {"event_id": "phone_moves_toward_nightstand", "status": "review_confirmed", "frame_window": [20, 48], "participant_nodes": ["phone_effector_hand", "phone", "nightstand_support"], "evidence_edge": "nightstand_supports_phone", "review_note": "phone visibly travels left toward the bedside region before leaving reliable view"},
+    {"event_id": "phone_support_and_release", "status": "review_unresolved", "frame_window": [44, 64], "participant_nodes": ["phone_effector_hand", "phone", "nightstand_support"], "evidence_edge": "nightstand_supports_phone", "review_note": "phone becomes occluded/out of frame; terminal support and release are not visually certified"},
+    {"event_id": "actor_turns_over", "status": "review_confirmed", "frame_window": [28, 64], "participant_nodes": ["actor_root", "head"], "evidence_edge": "head_part_of_actor", "review_note": "head and torso turn away after the phone motion"},
+    {"event_id": "terminal_phone_support", "status": "review_unresolved", "frame_window": [60, 80], "participant_nodes": ["phone", "nightstand_support"], "evidence_edge": "nightstand_supports_phone", "review_note": "absence of a reliable phone observation is not evidence of support"}
+  ],
+  "claim_limits": {
+    "observer_only": true,
+    "review_only_graph_teacher": true,
+    "teacher_observation_scaffold_not_oceg": true,
+    "generator_read_authorized": false,
+    "renderer_condition_authorized": false,
+    "training_authorized": false,
+    "selection_authorized": false,
+    "optimizer_updates": 0,
+    "renderer_forward_calls": 0
+  }
+}

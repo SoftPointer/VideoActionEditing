@@ -1,0 +1,81 @@
+# SOURCE-ANCHOR Stage-A formal32 retained-FD release pins (fail closed)
+#
+# This worksheet deliberately cannot materialize or submit until a terminal
+# successful formal full60 admission exists.  Substitute one admission's path,
+# file SHA, embedded digest, exact schema, and exact status as a single set.
+
+RELEASE_STEM=saic-source-anchor-formal32-retfd-20260813-r1
+OUTPUT_STEM=saic-source-anchor-formal32-retfd-20260813-r1
+CHECKPOINT_RELEASE_STEM=saic-source-anchor-formal32-retfd-20260813-r1-job-JOB_ID
+
+SOURCE_ARCHIVE_SHA256=3f6a713c762751b06723448b22e627ec6571eae502d7311811005db91812ee7b
+SOURCE_REVISION=20c2193954e780e9654347754b1485f3492fbea5
+SOURCE_ARCHIVE_MEMBER_MANIFEST_SHA256=1f3c8af23f5b4d416cea04476900c5d479ad3000338746e11f0e655b995b0fcc
+SOURCE_ARCHIVE_MEMBER_COUNT=864
+SOURCE_ARCHIVE_REGULAR_FILE_COUNT=853
+SOURCE_ARCHIVE_DIRECTORY_COUNT=11
+RUNTIME_ORIGIN_MANIFEST_SHA256=2e9360581b21b56e6998e1e5db8df98e4cc66acf95fbb7819baffd1161eb98ba
+RUNTIME_ORIGIN_PROJECT_MODULE_COUNT=14
+SOURCE_MANIFEST_SHA256=b56e9dca9085ba2f7b67acee04f29f7e45afd73a71b92172df5b19095fe33c4c
+SOURCE_MANIFEST_DIGEST=e3978e872c80c20b3bf8c974cd7324b62f54d58ca162e1760f548a02a2538d8d
+CHECKPOINT_MANIFEST_SHA256=a95ac2d74fc4379134a6276355d472810ef08e3d9de79761f1244375a6fad831
+CHECKPOINT_TREE_SHA256=6be0d0db0dd483daf1a843efa2b5aafc20090ad11dc0fc6ee8859bdf150635ca
+PYTHON_SHA256=8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a
+PYTHON_VERSION_STDOUT_SHA256=55ae85cf4bdb38743edbcd53ea68ff36511997ec6c21b1e83d8bebc939bf056b
+SACCT_SHA256=fadcd62c4a3b28e3a185c8eacf23691e0bd208839aee40c82076fa9364e84f9e
+BERNINI_COMMIT=2d2b4591ac053ec25c6371b01a5a6746679e5793
+VEOMNI_COMMIT=f90b3dc6fbb0ce693745223cc7a94064123dbf4d
+
+FORMAL_FULL60_ADMISSION_SOURCE_PATH=__SOURCE_ANCHOR_FORMAL_FULL60_ADMISSION_SOURCE_PATH__
+FORMAL_FULL60_ADMISSION_SHA256=__SOURCE_ANCHOR_FORMAL_FULL60_ADMISSION_SHA256__
+FORMAL_FULL60_ADMISSION_DIGEST=__SOURCE_ANCHOR_FORMAL_FULL60_ADMISSION_DIGEST__
+FORMAL_FULL60_ADMISSION_SCHEMA=__SOURCE_ANCHOR_FORMAL_FULL60_ADMISSION_SCHEMA__
+FORMAL_FULL60_ADMISSION_STATUS=__SOURCE_ANCHOR_FORMAL_FULL60_ADMISSION_STATUS__
+# The admission must be the closed
+# saic-t2v-topup-r6-formal-full60-terminal-admission-v1 object: exact60 master
+# and attempt closure, one exact Slurm COMPLETED/0:0 row with 8 allocated GPUs,
+# retained-WORLD8 + Bash-probe bindings, archive864 and runtime-origin14.
+
+# Instantiate in this acyclic order after the five full60 values above exist:
+#
+# 1. Hash final train_saic_source_anchor_v1.py.
+TRAINER_SHA256=28059c7a1ea5d641b35a04e929fa454531ee6df8444a01cceefb3f3a63622a1c
+# 2. Put TRAINER_SHA256 and full60 pins into the wrapper; hash wrapper.
+WRAPPER_SHA256=__SOURCE_ANCHOR_WRAPPER_SHA256__
+# 3. Put TRAINER/WRAPPER and full60 pins into submitter; hash submitter.
+SUBMITTER_SHA256=__SOURCE_ANCHOR_SUBMITTER_SHA256__
+# 4. Put TRAINER/WRAPPER/SUBMITTER and full60 pins into postflight; hash it.
+#    Postflight receives its own SHA as an external CLI pin (no self-reference).
+POSTFLIGHT_SHA256=__SOURCE_ANCHOR_POSTFLIGHT_SHA256__
+# 5. Put all four hashes and full60 pins into materializer; hash materializer.
+MATERIALIZER_SHA256=__SOURCE_ANCHOR_MATERIALIZER_SHA256__
+# 6. The materializer creates release-manifest.json.  Supply its printed SHA
+#    and digest to the sealed submitter with POSTFLIGHT_SHA256.
+
+FORMAL_CONTRACT=WORLD8_DP2xSP4_EXACT81_FORMAL32
+SOURCE_VIDEO_COUNT=80
+SOURCE_VIDEO_READ_INTERFACE=parent_supervisor_retained_proc_fd_only
+OPTIMIZER_UPDATES_PER_DP_ARM=32
+LEARNING_RATE=1e-5
+SEED=20260809
+MAX_GRAD_NORM=1
+GRADIENT_ACCUMULATION_STEPS=1
+WRONG_SOURCE_MARGIN=0.01
+RANKING_WEIGHT=1
+ACTIVE_EXACT40_INDICES=35,36,37,38,39
+ADAPTER_BLOCKS=23,24,25,26,27,28,29
+ADAPTER_RANK=8
+ADAPTER_PROJECTIONS=attn1.to_q,attn1.to_out.0
+
+# Terminal meanings are intentionally non-interchangeable:
+# - OPERATIONAL_COMPLETED_SCIENTIFIC_NO_GO: job C0:0, gate failed, no adapter.
+# - FORMAL_GATE_PASS_CHECKPOINT_RELEASED: job C0:0, gate passed, postflight
+#   published one 0555 formal-output namespace containing exactly six 0444,
+#   nlink1 files: adapter.safetensors, training-receipt.json,
+#   training-history.json, source-manifest.json,
+#   checkpoint-content-manifest.sha256, and checkpoint-release.json.
+TERMINAL_ADMISSION_SCHEMA=saic-source-anchor-formal32-terminal-admission-v1
+HISTORY_SCHEMA=bernini-saic-source-anchor-history-v2
+CHECKPOINT_RELEASE_SCHEMA=saic-source-anchor-formal32-checkpoint-release-v1
+# Neither outcome authorizes action training, semantic action success, decoded
+# RGB identity/appearance success, or publication beyond this Stage-A release.

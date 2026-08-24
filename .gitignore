@@ -1,0 +1,62 @@
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# IDEs
+.idea/
+.vscode/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Models, adapters, and training state
+checkpoints/
+models/
+wan_models/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.onnx
+
+# Data, media, and generated artifacts
+data/
+datasets/
+artifacts/
+outputs/
+runs/
+logs/
+tmp/
+.tmp/
+wandb/
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.jsonl
+*.parquet
+*.tar
+*.tar.gz
+*.zip
+
+# Cluster/runtime state
+slurm-*.out
+*.lock
+*.pid
+COMPLETE

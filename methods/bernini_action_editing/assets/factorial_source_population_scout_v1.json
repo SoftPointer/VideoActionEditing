@@ -1,0 +1,540 @@
+{
+  "schema_version": "bernini-prospective-factorial-source-spec-v1",
+  "population_id": "factorial-source-population-scout-20260813-v2",
+  "created_utc": "2026-08-13T13:30:00Z",
+  "minimum_sources_per_family_per_split": 3,
+  "required_seeds_per_source": 2,
+  "branch_order": [
+    "forward",
+    "noop",
+    "reverse",
+    "incomplete",
+    "camera_only",
+    "appearance_only",
+    "wrong_actor_or_object"
+  ],
+  "action_families": [
+    "dog-stand-to-sit",
+    "human-one-knee-to-stand"
+  ],
+  "evidence_bindings": [
+    {
+      "evidence_id": "round2-raw-rules-candidates",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_atomic1000_round2_20260813T060000Z/raw_rules_v1/candidates.jsonl",
+      "sha256": "166827fe591f5067a0fba174b32b3934d6184febb1cd667a5a148110c6c53f54",
+      "role": "complete 28,538-row source pool; used to recover static typed-state anchors omitted by the dynamic-motion census gate"
+    },
+    {
+      "evidence_id": "round2-source-census-selected",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_atomic1000_round2_20260813T060000Z/source_census_v1/final/selected.jsonl",
+      "sha256": "7a76d6b2dec10203f1af00016c60f6bb654e2ebea19d5b08b74a49d31300cac2",
+      "role": "new source epoch with 1,676 source-only candidates; inspected before any factorial target generation or optimizer use"
+    },
+    {
+      "evidence_id": "source12-scout-review",
+      "path": "/Users/siriuschu/ML/RuleDiscovery/ppts/8.13/action_editing_source12_scout_20260813/README.md",
+      "sha256": "c2b182c86c638f40fbf4212e933c9ac7585cf57f3b1ac58c6a549b355b05d503",
+      "role": "source-only visual review; no target generation and no training authority"
+    },
+    {
+      "evidence_id": "source8-opened-confirmation",
+      "path": "/Users/siriuschu/ML/RuleDiscovery/ppts/8.13/action_editing_saic_source8_hidden_quotient_20260813/primary-source8-hidden-confirmation-v1.json",
+      "sha256": "c16c906389efee1f26412eddcec3757b1b9a7409cfa8709abf1a9d11b840c7a9",
+      "role": "opened primary confirmation registry; all bound media are permanently excluded"
+    },
+    {
+      "evidence_id": "source8-source-registry",
+      "path": "/Users/siriuschu/ML/RuleDiscovery/ppts/8.13/action_editing_source8_anchor_semantics_20260813/saic_reversible_source_set_v1.json",
+      "sha256": "899b5a1dd66fc0bf6d4d0192fb6157f4afe691c50633246dddcaa1db2c2a98a9",
+      "role": "opened source8 fit and confirmation provenance; not recycled prospectively"
+    }
+  ],
+  "excluded_sources": [
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "311c82f83eca4a7f",
+      "source_media_sha256": "cc329d61942f02e9e58c43e455e95bf892dcf8b8cd5c2785c3fff1e2e6fbd798",
+      "reason": "opened_confirmation",
+      "note": "Source8 primary confirmation has been read and cannot be reused."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "31c34509415745ca",
+      "source_media_sha256": "2c34ec7f74faa624909f966d3d98f485f4b92250905843e2a7dd67a44d24fda6",
+      "reason": "opened_development",
+      "note": "Source8 fit scene has already participated in representation development."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "6d346c38cf504493",
+      "source_media_sha256": "99483c3d0dacb86658841df54452c0a3492563f197813c4a2526e4f096dba14f",
+      "reason": "opened_confirmation",
+      "note": "Source8 primary confirmation has been read and cannot be reused."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "6ea45d35943742bb",
+      "source_media_sha256": "a4f0567c8c7a63421a34099bd16c13f4ca77dd4bbe9b0ce3725a363e96b6d193",
+      "reason": "opened_confirmation",
+      "note": "Source8 primary confirmation has been read and cannot be reused."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "7b88a1ca1f804f41",
+      "source_media_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "reason": "opened_development",
+      "note": "Source8 fit scene and SEER target owner have already participated in development."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "841b5e0080a1441d",
+      "source_media_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+      "reason": "opened_development",
+      "note": "Source8 fit scene has already participated in representation development."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "99cde432839f4240",
+      "source_media_sha256": "4fcd6d75b09e3b294d3dfff15fc7b523a536551e592484eed91de66e2e733a2c",
+      "reason": "opened_confirmation",
+      "note": "Source8 and SEER primary confirmation has been read and cannot be reused."
+    },
+    {
+      "schema_version": "bernini-factorial-source-exclusion-v1",
+      "source_id": "a35b590961d24694",
+      "source_media_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "reason": "opened_development",
+      "note": "Source8 fit scene and SEER target owner have already participated in development."
+    }
+  ],
+  "sources": [
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "002ba315677d46de",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/002ba315677d46de/source.mp4",
+      "source_media_sha256": "ce43fc7f378d3fb2eb174567304c14d80f7927bc0bb0e2a29365bbb95090be31",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_source_quality",
+      "review_note": "Typed pose is valid, but the source census reports diffuse spatial motion entropy 0.9974 and residual-speed p90 0.0733; it is not a preservation anchor.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "059ab2ce4dec4b71",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/059ab2ce4dec4b71/source.mp4",
+      "source_media_sha256": "ea937465ed081f8782e363de5ac435a0a78627ee98d60ea9f2fb98249974f2a5",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body man maintains a strict half-kneel on a foam pad with the opposite foot planted across all five reviewed frames; camera is locked.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082611,
+        2026082612
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "07a4fa39808a4f02",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/07a4fa39808a4f02/source.mp4",
+      "source_media_sha256": "37dd41edad417edfe6ee7e24ab45d05f8fd1974e5b963a8436ef13a8bb5eacfe",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body French bulldog maintains a four-leg stand on a pebble beach across all five reviewed frames; camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082501,
+        2026082502
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "0b2fc177202e4d08",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/0b2fc177202e4d08/source.mp4",
+      "source_media_sha256": "9ac0d2e00975f698bfdd0b004e2854363009ff838357584df309047d50a69011",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single sweater-wearing dog maintains a clear four-leg stand in snow across all five reviewed frames; camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082511,
+        2026082512
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "1367d5595ed641ae",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/1367d5595ed641ae/source.mp4",
+      "source_media_sha256": "b150c155a113e87136e2d3023eef720f715cdbb5eb71f4f1193f8b83fd72f39f",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "The adult target maintains a strict one-knee pose beside a standing child and planted sapling across all five reviewed frames; actor ownership is explicit and the camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082601,
+        2026082602
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "173371bf8fa74785",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/173371bf8fa74785/source.mp4",
+      "source_media_sha256": "403315803e44b86d677f9471990baeac83e7e10e4b2d1242a9f1b6a8ea97d276",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body black-and-white dog maintains a four-leg stand on a tiled patio across all five reviewed frames; camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082521,
+        2026082522
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "1a6fdd7d9c19413b",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/1a6fdd7d9c19413b/source.mp4",
+      "source_media_sha256": "38b80bc21feb32a537a7966874db201d09f4a4e90112883b2ac9b67ae9f2c369",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body Pomeranian maintains a four-leg stand on a woodland path across all five reviewed frames; camera is locked.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082531,
+        2026082532
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "29928c12385646a1",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/29928c12385646a1/source.mp4",
+      "source_media_sha256": "aabca95c7e22c8c36305fa1d5c3504708b21210bbade69dbdbc3f9e4077067b7",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "reserve_unsealed",
+      "review_note": "Four-leg stand is valid, but head rotation and rocky background make it a reserve rather than a frozen prospective source.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "2af820dd10324328",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/2af820dd10324328/source.mp4",
+      "source_media_sha256": "232f38169abb44826f216ded573c6748b1de36e03071d51b5394e1836a25a5d4",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body dog in a clear four-leg stand, nearly static, with locked camera.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082401,
+        2026082402
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "2d98b7c91dbc4d98",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/2d98b7c91dbc4d98/source.mp4",
+      "source_media_sha256": "0ec759de83f26e4753025385df217096f5e91b9860653343672b4c0a482c5f82",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body basketball player maintains a strict one-knee pose with the opposite foot planted across all five reviewed frames; camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082621,
+        2026082622
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "304b86d6de074d85",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/304b86d6de074d85/source.mp4",
+      "source_media_sha256": "7755d7d04593660ec9951520a948c50c59108ffb9f12b002d2f45ee9bc28e10d",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Beach subject is down on both knees rather than one knee with the opposite foot planted.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "307e3a31c0064ca3",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/307e3a31c0064ca3/source.mp4",
+      "source_media_sha256": "bf5ea1a26e693aa208f1173e1a1bd448356738892f125daee8e4d0aef28a71ec",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Shoelace crouch is not a one-knee kneel with the opposite foot planted.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "3167491a957242eb",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/3167491a957242eb/source.mp4",
+      "source_media_sha256": "7c21aefdaa08fc6ba9b5cad43e29761c83b5636d5a7fc281aa52c980def62a3c",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Night street scene has multiple people and a tiny kneeling photographer, so actor ownership and leg state are not auditable.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "31fcd6205efb4b84",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/31fcd6205efb4b84/source.mp4",
+      "source_media_sha256": "a15f451670b4f10254ee9379ace3804540b46688f7a98b7c590e24f73c118e9e",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "The adult target maintains a strict one-knee pose beside a standing child across all five reviewed frames; actor ownership is explicit and the camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082631,
+        2026082632
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "387701c09f8a47ae",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/387701c09f8a47ae/source.mp4",
+      "source_media_sha256": "2840a360f13eaead72999dcc34a4aa1cf5d17245f26c4742241eec0121eb1db8",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Waterfall subject is seated on a rock, not in the registered one-knee initial state.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "3cd87ccdd8eb40a4",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/3cd87ccdd8eb40a4/source.mp4",
+      "source_media_sha256": "b4dc8331ada671dfb8812a67e314f91027f2122bd8c4e0539567f70eee65455c",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body hockey goalie maintains a strict one-knee pose beside a trophy across all five reviewed frames; camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082641,
+        2026082642
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "3d7f76d236894678",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/3d7f76d236894678/source.mp4",
+      "source_media_sha256": "cdfeb5132bd3f9b85e20a23953609350eebcdca7389223f88a23e6b286bb19c1",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "The human target maintains a strict one-knee pose beside a standing dog across all five reviewed frames; actor ownership is explicit and the camera is locked.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082651,
+        2026082652
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "436855fcba254e26",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/436855fcba254e26/source.mp4",
+      "source_media_sha256": "ca11c526ec46d7e1aa2fe2db7d90882825cbda90144dcffa1366ca05ed541b25",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single wet dog maintains a full-body four-leg stand on a lawn beside a pool across all five reviewed frames; camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082541,
+        2026082542
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "468009b52b9f463f",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/468009b52b9f463f/source.mp4",
+      "source_media_sha256": "3835a882257cca8243f8fa24f0ff1dd38ff78a4919bdab1a5de139ee12f365b6",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Farmer's legs and ground contacts are hidden by crops, and a second person is present; one-knee state is not auditable.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "512479d010894f3d",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/512479d010894f3d/source.mp4",
+      "source_media_sha256": "d739192f6863ce86cfae5d8a6183011f5b14d70f16fa519e0ff06a12449c6eb9",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Beach subject is seated back on both knees rather than holding a one-knee pose.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "5213bd7510b2472f",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/5213bd7510b2472f/source.mp4",
+      "source_media_sha256": "e62e21e54942ad60d093501e182651a237513226a125101e3f67b6fa9e8f9002",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body bully-type dog maintains a four-leg stand on dry grass across all five reviewed frames; camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082551,
+        2026082552
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "56fa54f2cc544028",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/56fa54f2cc544028/source.mp4",
+      "source_media_sha256": "c913675de049f96f04204c3ba95dff0422da6313a51888266ac8f3f3eed6debd",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Soccer player is down on both knees rather than one knee with the opposite foot planted.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "5ae60e8417244e6e",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/5ae60e8417244e6e/source.mp4",
+      "source_media_sha256": "88d7bd4601f6f8c16e8a9d0bbdb5cb75f0c77538061e17e30095ecf1a620ea99",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Seated or two-knee floor pose is not the registered one-knee initial state.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "5bd961306d274efe",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/5bd961306d274efe/source.mp4",
+      "source_media_sha256": "349612c3d0389153246dc60d2bd78902d47c0c55050f24f3b5e617139f9ec372",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Deep squat or crouch is not the registered one-knee initial state.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "5f4ba4fb4c6441e0",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/5f4ba4fb4c6441e0/source.mp4",
+      "source_media_sha256": "c42bd9ff15a9b751c3c9b0577ddbe7921f02ecf06f44520d5e62f52643732ff8",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body black dog maintains a four-leg stand in an open field across all five reviewed frames; camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082561,
+        2026082562
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "6148831e71f64bf9",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/6148831e71f64bf9/source.mp4",
+      "source_media_sha256": "908a9c5e21ea8b34fae1da1a45d201cfbf07d90711be41e22dcfa9797359daa0",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Temple scene contains three people kneeling bilaterally, so neither typed state nor actor ownership matches.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "62474c53946445b6",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/62474c53946445b6/source.mp4",
+      "source_media_sha256": "2d1a11f0f9dc400d0891855e0e46ff28457f28d4b3ea448e7dcf6fa01dad0523",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "The costumed adult target maintains a strict one-knee pose beside a standing child across all five reviewed frames; actor ownership is explicit and the camera is locked.",
+      "assigned_split": "confirmation",
+      "registered_seeds": [
+        2026082661,
+        2026082662
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "668b1de437da440f",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/668b1de437da440f/source.mp4",
+      "source_media_sha256": "35451f50917ed4c92b24aa4ed29d9051409125372a89ce221aabf5f9c1576225",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Second temple view again contains three bilateral-kneeling people with ambiguous actor ownership.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "7421728d949d40dd",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7421728d949d40dd/source.mp4",
+      "source_media_sha256": "54a831556d4237f7a0131c5da88341dfce260353b2ae12b4a33507ba28ae99d8",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body cosplayer maintains a strict one-knee pose against a plain wall across all five reviewed frames; camera is locked.",
+      "assigned_split": "fit",
+      "registered_seeds": [
+        2026082671,
+        2026082672
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "828d87cafec04fbe",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/828d87cafec04fbe/source.mp4",
+      "source_media_sha256": "c847a46a6b362e70a71978c48c3c09bdf645bdd46fdcc59334621644097e802b",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Fisher's lower-body contacts are occluded by the fish and tide pool; the opposite planted foot is not visible.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "8780e5b895774e8a",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/8780e5b895774e8a/source.mp4",
+      "source_media_sha256": "72fa17663b9ff0c7bc4b12981fafa023deb8d17d175dd0d21a4b39bae0725ff3",
+      "action_family": "dog-stand-to-sit",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single dog in a clear four-leg stand on snow with only a small head turn and locked camera.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082411,
+        2026082412
+      ]
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "96c53165693d4bbd",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/96c53165693d4bbd/source.mp4",
+      "source_media_sha256": "cc9e7204cfd2493620b1f929de244b659281a364ff2563764a152d38d025edd8",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Warrior portrait crops the lower legs and ground contacts, so a strict one-knee state cannot be verified.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "98ab66dbc0da42ec",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/98ab66dbc0da42ec/source.mp4",
+      "source_media_sha256": "22d0476a7ea26c68ffa9ec43b4f17105d7039a78f495cea49de9d15030f75d49",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "rejected_typed_state",
+      "review_note": "Dune subject is down on both knees rather than one knee with the opposite foot planted.",
+      "assigned_split": null,
+      "registered_seeds": []
+    },
+    {
+      "schema_version": "bernini-prospective-factorial-source-v1",
+      "source_id": "a67d0ee45df54638",
+      "source_media_path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/a67d0ee45df54638/source.mp4",
+      "source_media_sha256": "46dc61fb65c184afe7e9fd95d37f2348d2720f1a4ce61fa08fdaafe4e9eb08fc",
+      "action_family": "human-one-knee-to-stand",
+      "review_decision": "accepted_prospective",
+      "review_note": "Single full-body sword cosplayer maintains a strict one-knee pose on pavement across all five reviewed frames; camera is locked.",
+      "assigned_split": "calibration",
+      "registered_seeds": [
+        2026082681,
+        2026082682
+      ]
+    }
+  ]
+}

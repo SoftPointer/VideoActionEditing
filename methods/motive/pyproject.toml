@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "videoedit-motive"
+version = "0.1.0"
+description = "Motion-centric data audit, action descriptors, and gradient attribution primitives."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.23",
+  "opencv-python-headless>=4.8",
+]
+
+[project.optional-dependencies]
+attribution = ["torch>=2.1"]
+action-repr = ["torch>=2.1"]
+qwen = [
+  "torch>=2.1",
+  "transformers>=4.51",
+  "accelerate>=1.0",
+  "pillow>=10",
+  "qwen-vl-utils>=0.0.8",
+]
+
+[project.scripts]
+motive-audit = "motive.audit:main"
+motive-rank = "motive.rank:main"
+motive-goku-manifest = "motive.goku_manifest:main"
+motive-cascade = "motive.cascade:main"
+motive-qwen-filter = "motive.qwen_filter:main"
+motive-train-action-repr = "motive.train_action_repr:main"
+motive-human-review = "motive.human_review:main"
+motive-prepare-r5-pilot = "motive.prepare_r5_pilot:main"
+motive-r5-features = "motive.source_aware_features:main"
+motive-train-source-aware-r5 = "motive.train_source_aware_repr:main"
+motive-r5-gate = "motive.r5_gate:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["motive*"]

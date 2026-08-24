@@ -1,0 +1,18 @@
+{
+  "schema_version": "bernini-e00-clean-diagnostic-r5-bootstrap-root-v5",
+  "revision_tag": "E00_DFIX2_CLEAN_DIAG_R5_ACYCLIC_BOOTSTRAP_20260821",
+  "complete": true,
+  "immutable": true,
+  "root_does_not_pin_consumers": true,
+  "authority_does_not_pin_bootstrap_files_or_consumers": true,
+  "bootstrap_consumers": [
+    "methods/bernini_action_editing/scripts/auh_e00_three_vessel_clean_diag_r5_bridge.sh",
+    "methods/bernini_action_editing/scripts/auh_launch_e00_three_vessel_clean_diag_r5_phase_a_only_node292.sh",
+    "methods/bernini_action_editing/scripts/auh_launch_e00_three_vessel_clean_diag_r5_phase_bc_node292.sh"
+  ],
+  "pins": {
+    "methods/bernini_action_editing/tools/e00_three_vessel_clean_diag_r5_overlay_pins.py": "385ab12ea3154acd644529f56a4bc29056a2ab2fed7bcc3a407fc393f590dbf6",
+    "methods/bernini_action_editing/tools/build_e00_three_vessel_clean_diag_r5_package.py": "76b1da67986820cafe7843daac4c31e60cc4606746519d5703bd127bdb122d61",
+    "methods/bernini_action_editing/validate_e00_three_vessel_clean_diag_r5.py": "6367af44ee26327fc28941fa608ebbe2b4b2a9cbf98d0bc3ad5119a5b666f575"
+  }
+}

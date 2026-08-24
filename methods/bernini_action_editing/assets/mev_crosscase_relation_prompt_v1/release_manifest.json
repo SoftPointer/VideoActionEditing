@@ -1,0 +1,27 @@
+{
+  "schema": "mev-crosscase-relation-prompt-release-manifest-v1",
+  "file_count": 14,
+  "generation_tree_target_path_free": true,
+  "files": [
+    {"path": "generation/40712e1341dc/authority.json", "sha256": "5b9cf4b3b73c7ce2e41930378feddd0c79918198600737b0f4097ffd87775491"},
+    {"path": "generation/40712e1341dc/p1_event_order.txt", "sha256": "89550a45e9b57cf371675f32643e9b40044356e747317356694f2cbd55aced69"},
+    {"path": "generation/40712e1341dc/p2_relation_contact.txt", "sha256": "f5d77101c43217688a85cc5460b3897636c43dd823b7a622cb3c766301d24311"},
+    {"path": "generation/40712e1341dc/prompt_matrix.json", "sha256": "cd8a7be73b70aeb7b1a3333e338b8c622536d344b1def2fc7a06b0c424af495d"},
+    {"path": "generation/5e83a9279951/authority.json", "sha256": "edb508775a1777be0edfd5b74d8b370ffba7bea9999af272289bed3932c7ff42"},
+    {"path": "generation/5e83a9279951/p1_event_order.txt", "sha256": "5a8942bed22573a11aed453f74892d28aa8a71801f9b60eea729d7c800717dac"},
+    {"path": "generation/5e83a9279951/p2_relation_contact.txt", "sha256": "9de16a383e55fbdf8032322d7776aff5a918a1a362c6aad733a0d209fdb8569e"},
+    {"path": "generation/5e83a9279951/prompt_matrix.json", "sha256": "01fdd3639026ddac4358046b40af3968d4d3104f40fba07463f083bb92354277"},
+    {"path": "generation/8b05aaf463db/authority.json", "sha256": "24336b1301ba7e770c1bc22091c694f071dbb4f5d864f58bb45db09992fd536b"},
+    {"path": "generation/8b05aaf463db/p1_event_order.txt", "sha256": "e1e17f65912ba0671e1616ffedae6f0d7737dc0a10d9d30d9481d1340ab1d96a"},
+    {"path": "generation/8b05aaf463db/p2_relation_contact.txt", "sha256": "ea6b91c73f7a6b923e30e023d7e04dc08235c5f25b75b0c2099b0ca53ba25312"},
+    {"path": "generation/8b05aaf463db/prompt_matrix.json", "sha256": "5be6e95872d9dc1fdd4dee56a1542060d46888830faa0f119b7cafcd92e36039"},
+    {"path": "generation/bundle_config.json", "sha256": "a07a08da72cae61098cd9f0fe8b0d53b19a29b025455b4516397e0cdd5337b14"},
+    {"path": "offline_authoring/target_relation_authority.json", "sha256": "a1c51e4a6214a1dfeb3724a7fd7d9e27edbea784b571b7b70dcbc9c94e872fcd"}
+  ],
+  "boundaries": {
+    "offline_target_evidence_is_not_a_generator_input": true,
+    "generation_external_conditions_are_source_video_and_positive_prompt_matrix_only": true,
+    "all_runs_are_zero_update_target_oracle_diagnostics": true,
+    "scientific_claim_authorized": false
+  }
+}

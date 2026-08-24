@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MEV adjacent-event paired training candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "row_id", "pair_id", "uuid", "split", "mode",
+    "source_video_path", "target_video_path", "instruction", "target",
+    "automatic_audit", "training_use", "is_strict_counterfactual_ground_truth"
+  ],
+  "properties": {
+    "schema_version": {"const": "mev-action-edit-paired-training-candidate-v1"},
+    "row_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pair_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "uuid": {"type": "string"},
+    "split": {"enum": ["train", "validation", "test"]},
+    "source_video_path": {"type": "string"},
+    "target_video_path": {"type": "string"},
+    "instruction": {"type": "string", "minLength": 1},
+    "is_strict_counterfactual_ground_truth": {"const": false}
+  }
+}

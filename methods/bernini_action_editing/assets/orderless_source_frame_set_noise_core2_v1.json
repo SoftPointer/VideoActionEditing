@@ -1,0 +1,183 @@
+{
+  "schema_version": "bernini-orderless-source-frame-set-noise-core2-spec-v1",
+  "contract": {
+    "frame_count": 81,
+    "fps": 25,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "reference_indices": [
+      0,
+      27,
+      53,
+      80
+    ],
+    "arm_order": [
+      "official_gaussian",
+      "correct_source_rho005",
+      "wrong_source_rho005",
+      "correct_source_rho010",
+      "wrong_source_rho010"
+    ],
+    "rho_order": [
+      0.0,
+      0.05,
+      0.05,
+      0.1,
+      0.1
+    ],
+    "carrier_source_role_order": [
+      "correct",
+      "correct",
+      "wrong",
+      "correct",
+      "wrong"
+    ],
+    "topology": "two_isolated_world4_on_one_8gpu_node",
+    "wrong_source_policy": "authoring_sealed_confirmation_source_with_distinct_identity_same_broad_actor_class_count_and_action_family_used_as_action_family_matched_source_specificity_control_not_pure_identity_control_resized_directly_from_raw_rgb_to_target_bucket_then_four_independent_T1_VAE_calls",
+    "selection_provenance": {
+      "asset_path": "methods/bernini_action_editing/assets/pair_v5_t2v_calibration_first8_authoring_v1.json",
+      "schema_version": "pair-v5-pure-t2v-calibration-authoring-v1",
+      "bank_id": "pair5-t2v-first8-v1",
+      "file_sha256": "204f7de92fde95a89ab5750ec226dea58fb71edba6c071c76a7c8c56f91bb89c",
+      "row_digest_rule": "sha256_canonical_ascii_json_sort_keys_compact",
+      "source_analysis_split": "fit",
+      "wrong_source_analysis_split": "confirmation",
+      "same_action_family_id_required": true
+    },
+    "same_source_action_seed_scheduler_guidance_across_five_arms": true,
+    "full_source_video_latent_available_to_carrier": false,
+    "wrong_source_available_to_model_conditioning": false,
+    "target_video": false,
+    "mask_flow_pose_track_trajectory": false,
+    "trainer_or_critic_instantiated": false,
+    "training_harness_executed": false,
+    "validation_only_train_lora_module_imported": true,
+    "identity_orbit_or_identity_adapter_baseline_or_prior": false,
+    "required_posthoc_gate_names": [
+      "same_rho_correct_vs_wrong_carrier_source_specificity",
+      "old_motion_direction_and_order_leakage_nonincrease",
+      "target_action_nonregression_vs_official_gaussian",
+      "identity_blur_flicker_camera_quality_nonregression_vs_official_gaussian"
+    ],
+    "posthoc_gates_executed_by_canary": false,
+    "best_arm_selection": false
+  },
+  "cells": [
+    {
+      "cell_id": "dog",
+      "actor_kind": "dog",
+      "source_iid": "7b88a1ca1f804f41",
+      "source_authoring_row_index": 4,
+      "source_authoring_row_sha256": "6422e2e8b16b45eb8b58c51da6eee5f251cc1bc80a741bb1111d5fe394902bf1",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "wrong_source_iid": "841b5e0080a1441d",
+      "wrong_source_authoring_row_index": 5,
+      "wrong_source_authoring_row_sha256": "c5dcdafcc66149adafcb3b3e97cd7cab732fca2a5cc8f3c7ab9f79eb81438b7b",
+      "wrong_source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+      "wrong_source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+      "control_role": "action_family_matched_source_specificity_control_not_pure_identity_control",
+      "geometry_pre_registration": {
+        "source_input_hw": [
+          704,
+          736
+        ],
+        "source_native_bucket_hw": [
+          480,
+          496
+        ],
+        "wrong_source_input_hw": [
+          704,
+          736
+        ],
+        "wrong_source_native_bucket_hw": [
+          480,
+          496
+        ],
+        "wrong_source_direct_resize_target_bucket_hw": [
+          480,
+          496
+        ],
+        "wrong_source_direct_resize_anisotropic_aspect_distortion_fraction": 0.011730205278592365,
+        "differential_geometry_confound": false
+      },
+      "wrong_source_content_match": {
+        "distinct_source_identity": true,
+        "same_broad_actor_class": true,
+        "same_actor_count": true,
+        "same_authoring_action_family_id": true,
+        "same_initial_pose_family": true,
+        "initial_pose_match_grade": "same_four_legged_standing_family",
+        "fixed_camera_in_both": true,
+        "same_exact_scene": false,
+        "same_native_geometry": true,
+        "direct_resize_geometry_confound": false,
+        "pure_identity_control": false,
+        "selection_source": "preregistered_confirmation_cell_of_same_action_family",
+        "selected_before_canary_generation": true
+      },
+      "action_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+      "seed": 2026080907,
+      "selected_before_generation": true
+    },
+    {
+      "cell_id": "human",
+      "actor_kind": "human",
+      "source_iid": "a35b590961d24694",
+      "source_authoring_row_index": 6,
+      "source_authoring_row_sha256": "10c81d1530025f70ed24e498a7fcd4d265aae4ca50230f5316bd8b4a632181c4",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "wrong_source_iid": "a66e6818e4144928",
+      "wrong_source_authoring_row_index": 7,
+      "wrong_source_authoring_row_sha256": "05a5c301e7c9b066b76f03f642c3f659f3ff161e0a9f0ffdf4de31c1497a7442",
+      "wrong_source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a66e6818e4144928/samples/a66e6818e4144928/source_video.mp4",
+      "wrong_source_video_sha256": "0fdc54d89250f355d2170a4d6f6aac0867abf592afb849668a8e2879a6617147",
+      "control_role": "action_family_matched_source_specificity_control_not_pure_identity_control",
+      "geometry_pre_registration": {
+        "source_input_hw": [
+          768,
+          704
+        ],
+        "source_native_bucket_hw": [
+          512,
+          464
+        ],
+        "wrong_source_input_hw": [
+          896,
+          704
+        ],
+        "wrong_source_native_bucket_hw": [
+          544,
+          432
+        ],
+        "wrong_source_direct_resize_target_bucket_hw": [
+          512,
+          464
+        ],
+        "wrong_source_direct_resize_anisotropic_aspect_distortion_fraction": 0.15340909090909083,
+        "differential_geometry_confound": true
+      },
+      "wrong_source_content_match": {
+        "distinct_source_identity": true,
+        "same_broad_actor_class": true,
+        "same_actor_count": true,
+        "same_authoring_action_family_id": true,
+        "same_initial_pose_family": false,
+        "initial_pose_match_grade": "broad_ground_level_bent_leg_state_only_kneel_versus_crouch",
+        "fixed_camera_in_both": true,
+        "same_exact_scene": false,
+        "same_native_geometry": false,
+        "direct_resize_geometry_confound": true,
+        "pure_identity_control": false,
+        "selection_source": "preregistered_confirmation_cell_of_same_action_family",
+        "selected_before_canary_generation": true
+      },
+      "action_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+      "seed": 2026080907,
+      "selected_before_generation": true
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+# SAIC formal full60 r2 deterministic release pins (fail-closed template)
+#
+# Fill only from one terminal successful retained-FD WORLD8 postflight
+# admission.  Materialize in the order below because later files pin earlier
+# byte hashes.  Any remaining __R2_*__ token is a release blocker.
+
+FORMAL_RELEASE_STEM=saic-t2v-topup-r6-formal-v2-r2-retfd-20260812-r1
+FORMAL_OUTPUT_STEM=t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1
+
+# Frozen scientific closure: byte-identical to the audited r1 candidate.
+BASE_LAUNCHER_SHA256=12c1b2baaecfd479f65f9b5dbf0dbae17cd87196767e93c254fe2cffc895f29d
+MATERIALIZER_SHA256=5585abb927206d0813caca4cec8dc10b846fe0ace704538bb12e0ad5cffe8b97
+EFFECTIVE_LAUNCHER_SHA256=4227b4a00b7b2dea786457baad56b4fdcb4b476929e9619cb533a353b369f9f0
+GUARD_V2_SHA256=1a38b2ac18f46e818b1596db884b883dff8e0612fcd5b0cf1ed78aca377ac965
+SOURCE_ARCHIVE_SHA256=3f6a713c762751b06723448b22e627ec6571eae502d7311811005db91812ee7b
+SOURCE_REVISION=20c2193954e780e9654347754b1485f3492fbea5
+SOURCE_MANIFEST_SHA256=899b5a1dd66fc0bf6d4d0192fb6157f4afe691c50633246dddcaa1db2c2a98a9
+EVENT_SPEC_SHA256=d693d0784530f007888e2825d15db3db808fdf4f1d111b5d080d968c894ff145
+CHECKPOINT_MANIFEST_SHA256=a95ac2d74fc4379134a6276355d472810ef08e3d9de79761f1244375a6fad831
+PYTHON_SHA256=8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a
+STATIC_FFMPEG_SHA256=e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99
+STATIC_FFMPEG_VERSION_STDOUT_SHA256=389368da4bcd4e22d7bf9134f3a8c24dd36027de7d963015230969a87c9e3339
+
+# Independent compute-Bash retained-FD probe admission (Job134647 PASS).
+# These known pins may be substituted only together with the later WORLD8
+# admission that explicitly binds this exact admission; the probe alone does
+# not authorize formal submission.
+COMPUTE_BASH_PROBE_JOB_ID=134647
+COMPUTE_BASH_PROBE_ADMISSION_PATH=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/compute-bash-retained-fd-probe-8283e73d-r1/probe-admission.json
+COMPUTE_BASH_PROBE_ADMISSION_SHA256=d51ebf1f894d63483943042faaa2c6ccbf812c0f93769980084bae72f8ab84d8
+COMPUTE_BASH_PROBE_ADMISSION_DIGEST=a37e44c12f935a4f4e11ab08364b019799809fd13299af6459ca6797a8333fb7
+PROBE_VALIDATOR_SHA256=3b5e78a0815fbfdee0404293ad800c640133deacc6b1bfafec12a02ca40ef85b
+COMPUTE_BASH_SHA256=59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4
+COMPUTE_BASH_VERSION_STDOUT_SHA256=51bd40ffa4710175920033d329a0e9e1667e6b7f56178e302432ff4610d554a7
+COMPUTE_BASH_VERSION_FIRST_LINE=GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+
+# Replacement retained-FD WORLD8 transport admission.  It must carry an exact
+# external binding to the compute-Bash probe admission above.
+RETAINED_FD_CANARY_JOB_ID=__R2_RETAINED_FD_CANARY_JOB_ID__
+RETAINED_FD_CANARY_ADMISSION_PATH=__R2_RETAINED_FD_CANARY_ADMISSION_PATH__
+RETAINED_FD_CANARY_ADMISSION_SHA256=__R2_RETAINED_FD_CANARY_ADMISSION_SHA256__
+RETAINED_FD_CANARY_ADMISSION_DIGEST=__R2_RETAINED_FD_CANARY_ADMISSION_DIGEST__
+RETAINED_FD_CANARY_SACCT_STDOUT_SHA256=__R2_RETAINED_FD_CANARY_SACCT_STDOUT_SHA256__
+RETAINED_FD_CANARY_NODELIST=__R2_RETAINED_FD_CANARY_NODELIST__
+RETAINED_FD_CANARY_START=__R2_RETAINED_FD_CANARY_START__
+RETAINED_FD_CANARY_END=__R2_RETAINED_FD_CANARY_END__
+RETAINED_FD_CANARY_ELAPSED=__R2_RETAINED_FD_CANARY_ELAPSED__
+RETAINED_FD_CANARY_SUBMIT_LINE=__R2_RETAINED_FD_CANARY_SUBMIT_LINE__
+
+# SACCT_STDOUT_SHA256 and SUBMIT_LINE must come from the postflight's exact
+# `SubmitLine%8192` query; the older `%4096` observation is not admissible.
+
+# Transport note: COMPUTE_BASH_VERSION_FIRST_LINE is embedded in final gate,
+# wrapper, and submitter bytes.  It is intentionally absent from Slurm
+# --export because the AUH Bash first line contains a comma.  Runtime still
+# verifies the exact first line plus the full version-stdout SHA-256.
+
+# Deterministic cascade; compute only after all pins above are instantiated.
+# 1. Hash final saic_t2v_formal_v2_r2_gate.py.
+FORMAL_GATE_SHA256=__R2_FORMAL_GATE_SHA256__
+# 2. Put FORMAL_GATE_SHA256 into v5 wrapper, then hash final wrapper.
+FORMAL_WRAPPER_SHA256=__R2_FORMAL_WRAPPER_SHA256__
+# 3. Put both hashes into v3 submitter, then hash final submitter.
+FORMAL_SUBMITTER_SHA256=__R2_FORMAL_SUBMITTER_SHA256__
+
+# Required release verdicts before the one allowed non-hold/no-dependency sbatch:
+# - no __R2_*__ token in final gate/wrapper/submitter/pin manifest;
+# - exact hashes and modes for every release input;
+# - AUH hostile suite and compute-Bash retained-FD handoff PASS;
+# - old Job134393 exact60 lifecycle PASS, Job134647 Bash-probe admission PASS,
+#   and replacement retained-FD WORLD8 transport admission PASS with an exact
+#   binding to that probe; none can substitute for another;
+# - output root, submission receipt, and Slurm log namespace all fresh.

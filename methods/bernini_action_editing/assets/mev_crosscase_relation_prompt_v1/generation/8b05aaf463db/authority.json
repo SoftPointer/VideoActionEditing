@@ -1,0 +1,109 @@
+{
+  "schema": "native-rv2v-crosscase-same-process-formal-v1",
+  "launch_authorized": true,
+  "authorization_basis": "user_explicit_crosscase_experiment_go_in_thread",
+  "case": {
+    "case_id": "8b05aaf463db",
+    "source_video": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/8b05aaf463db/source-exact81.mp4",
+      "sha256": "f6bfc0704852d0887677dd55d7df7b731a09813bc2b3adae868c755aac06718c"
+    }
+  },
+  "prompt_matrix": {
+    "basename": "prompt_matrix.json",
+    "sha256": "5be6e95872d9dc1fdd4dee56a1542060d46888830faa0f119b7cafcd92e36039",
+    "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+    "labels": ["P0", "P1", "P2"],
+    "only_registered_design_variable": "positive_prompt_utf8"
+  },
+  "prompts": {
+    "P0": {
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 301,
+      "full_prompt_utf8_sha256": "ef60e8acadebc39971bb72c0c3e708659094dd51a613f45dc35243efe1db91bd",
+      "final_task_prompt_utf8_bytes": 554,
+      "final_task_prompt_utf8_sha256": "cb7dd45ae05d5eb7c69181c624ebb67436b1163254a848f42a8cb2145a4f6540",
+      "untruncated_token_count": 147,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. Follow this event order: The same metal grill basket first rests on the grill above the hot coals. It then rises clearly away from the grill and remains separated for a visible interval. The same basket then descends and settles back onto the same grill, where it remains supported at the end. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 595,
+      "full_prompt_utf8_sha256": "eba7650a7ef27434d5c308737c1e4c6185218f1bff3a9ead2c747a24bb195940",
+      "final_task_prompt_utf8_bytes": 848,
+      "final_task_prompt_utf8_sha256": "e17d1556a9ef9d717da9207ad1bb170d5ba74d9c3bdaff3902e5c80dbf92d690",
+      "untruncated_token_count": 213,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. Follow these contact relations: Keep the meat inside the same metal grill basket throughout. First end basket-to-grill support contact while smoothly increasing the basket-to-grill distance. Then smoothly decrease that distance and re-establish basket-to-grill support contact. After the return, maintain this support contact. Use exactly one basket containing the same meat; do not replace it with a pan, duplicate it, or change its identity. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 745,
+      "full_prompt_utf8_sha256": "3a4eb5e42e0f6fff44c30f76fd2dc22ce22d8afa83e03e226430c34701872bc4",
+      "final_task_prompt_utf8_bytes": 998,
+      "final_task_prompt_utf8_sha256": "2f81fabb052049fa6da638a14157bcf231545942f9608ac9b81e2f0a0aef555a",
+      "untruncated_token_count": 247,
+      "terminal_token_id": 1
+    }
+  },
+  "same_process_pairing": {
+    "execution_order": ["p0a", "p1", "p2", "p0b"],
+    "prompt_label_by_execution_cell": {"p0a": "P0", "p1": "P1", "p2": "P2", "p0b": "P0"},
+    "source_decode_count": 1,
+    "full_source_vae_encode_count": 1,
+    "reference_frame_indices": [0, 27, 53, 80],
+    "each_reference_vae_encode_count": 1,
+    "rank_zero_condition_broadcast_before_first_sample": true,
+    "same_condition_tensor_objects_for_all_four_calls": true,
+    "same_seed_for_all_four_calls": true,
+    "official_fresh_gaussian_per_call": true,
+    "external_gaussian_injection": false,
+    "custom_sampler_or_scheduler": false,
+    "same_scheduler_object_all_calls": true,
+    "no_manual_model_or_scheduler_state_reset_between_calls": true,
+    "rope_unregistered_state_observed_not_mutated": true,
+    "p0a_p0b_generated_latent_bit_exact_required": true
+  },
+  "runtime_authority": {
+    "unipc_source": {
+      "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/diffusers/schedulers/scheduling_unipc_multistep.py",
+      "sha256": "5bfe1dcf55ebea6dbbf624d3af676b2529b81fbcaf493150d562ec9e1aba3872"
+    },
+    "formal_slurm_by_seed": {
+      "2027": {"job_id": "147873", "node": "auh7-1b-gpu-284", "world_size": 4},
+      "2028": {"job_id": "147873", "node": "auh7-1b-gpu-284", "world_size": 4}
+    },
+    "nearest_finite_cgroup_limit_bytes": 68719476736,
+    "minimum_cgroup_headroom_bytes": 67108864
+  },
+  "execution_mode": {
+    "run_class": "target_oracle_diagnostic",
+    "seeds": [2027, 2028],
+    "num_inference_steps": 40,
+    "decode_cells": ["p0a", "p1", "p2"],
+    "latent_only_replay_cells": ["p0b"],
+    "scientific_candidate": false
+  },
+  "generator_contract": {
+    "guidance_mode": "rv2v",
+    "frame_count": 81,
+    "fps": 25,
+    "zero_update": true,
+    "optimizer_updates": 0,
+    "accepted_external_conditions": ["source_video", "positive_prompt_matrix"],
+    "target_video_read": false,
+    "target_action_json_read": false,
+    "target_rgb_mask_box_xy_flow_feature_embedding_latent_qkv_gaussian_read": false,
+    "anchor_rgb_kv_latent_gaussian_read": false,
+    "legacy_activity25_qk_read": false
+  },
+  "receipt_schemas": {
+    "formal_receipt": "native-rv2v-crosscase-paired-prompt-matrix-formal-v1",
+    "paired_contract": "native-rv2v-crosscase-paired-same-process-contract-v1"
+  },
+  "receipt_pins": {"mechanical_gate": null},
+  "claim_limits": {
+    "scientific_claim_authorized": false,
+    "cross_case_action_success_not_predeclared": true,
+    "runtime_p0_replay_and_dynamic_input_gates_required": true
+  }
+}

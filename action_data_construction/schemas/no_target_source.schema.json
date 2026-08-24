@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MEV event-1 no-target source",
+  "type": "object",
+  "required": ["schema_version", "row_id", "uuid", "split", "mode", "source", "target", "self_generated_anchor_contract"],
+  "properties": {
+    "schema_version": {"const": "mev-action-edit-no-target-source-v1"},
+    "row_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "split": {"enum": ["train", "validation", "test"]},
+    "mode": {"const": "no_target_self_generated_action_anchor"},
+    "target": {"type": "null"}
+  }
+}

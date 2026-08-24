@@ -1,0 +1,444 @@
+{
+  "schema_version": "bernini-complex4-source-role-token-spans-v15",
+  "purpose": "Exact source-caption role token spans for E00/E02/E04/E07 observer-only diagnostics; these spans identify source-owned action participants but are not an action trajectory or routing authority.",
+  "status": "observer_only_diagnostic_not_route",
+  "route_authorized": false,
+  "training_authorized": false,
+  "role_semantics": "Source-caption entities/parts/attributes referenced by the requested edit. Hierarchical labels may overlap semantically; this asset does not authorize masks for attention routing, decoding, or training.",
+  "source_authority_only": true,
+  "forbidden_inputs": [
+    "action_anchor",
+    "appearance_donor",
+    "anchor_text"
+  ],
+  "transformers_version": "5.5.4",
+  "fix_mistral_regex": true,
+  "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616",
+  "event_count": 4,
+  "events": [
+    {
+      "event_id": "pour-liquid-into-cup",
+      "source_iid": "2f183dbf9e7a4d2e",
+      "source_caption": "An East Asian woman in a black floral blouse pours amber tea from a white bowl into a clear glass pitcher on a wooden tea table while a small white cup sits nearby.",
+      "source_caption_sha256": "fdf83bde40f1a3b7cf70ba81edd6807d2deee8f6755110ba992f16c9e72baf99",
+      "model_text": "You are a helpful assistant specialized in text-to-video generation.An East Asian woman in a black floral blouse pours amber tea from a white bowl into a clear glass pitcher on a wooden tea table while a small white cup sits nearby.",
+      "model_text_sha256": "c424fda6ec36b5c78a856f8abcba1db217c407f2920317832cc0e26095274451",
+      "source_caption_char_start": 68,
+      "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616",
+      "roles": [
+        {
+          "role": "actor",
+          "kind": "actor",
+          "protected": true,
+          "substring": "An East Asian woman",
+          "char_start": 68,
+          "char_end": 87,
+          "substring_sha256": "118d8fb9c1f631f30d89b8e8b7cf2bb813569aa94a6672980b0c01f152f3c374",
+          "token_start": 15,
+          "token_end": 19,
+          "token_ids": [
+            8330,
+            9751,
+            29606,
+            27502
+          ],
+          "token_ids_sha256": "2db39edbbec757adcd76bf19c7ddabe8543d5ecdfa56990b582cc920594da645",
+          "span_sha256": "896eeeefeef3cfe8c63a14017b24444bb3ee942285ebf2e9aff8df2ed5384d5b"
+        },
+        {
+          "role": "appearance",
+          "kind": "appearance",
+          "protected": true,
+          "substring": "a black floral blouse",
+          "char_start": 91,
+          "char_end": 112,
+          "substring_sha256": "8f12d0e1a834d58aa218ee6710f1d1e604ef7b8dd99d04d90766af45559c8327",
+          "token_start": 20,
+          "token_end": 25,
+          "token_ids": [
+            289,
+            5719,
+            62567,
+            152234,
+            292
+          ],
+          "token_ids_sha256": "3f340e52a361b47cbd8153ea308c89b09d0588651eeaab4daa0e2db022cf7702",
+          "span_sha256": "31ee6327462838d679bb4fbaf0bfa50d160435ce33697cfc9f32a44a51b3347d"
+        },
+        {
+          "role": "source_vessel",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "a white bowl",
+          "char_start": 134,
+          "char_end": 146,
+          "substring_sha256": "b701c8021ac46a7585db8d43aa91e23e244fb2a422560cc99d79dd8309531c14",
+          "token_start": 31,
+          "token_end": 34,
+          "token_ids": [
+            289,
+            10021,
+            73255
+          ],
+          "token_ids_sha256": "1cfd5cb0ebb0892621669fbf01056156cac7dfe11d939596a33b0d45a856d06f",
+          "span_sha256": "0ddad2f1f6736d0b982c4dc88a665ef8ad9d5142ebc51efdf2c39ff925d3a0bf"
+        },
+        {
+          "role": "target_vessel",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "a clear glass pitcher",
+          "char_start": 152,
+          "char_end": 173,
+          "substring_sha256": "7074761c41b4c14e1e2bf63c99f47c4f131d5d4534e59e45864e51bc9313dfa1",
+          "token_start": 35,
+          "token_end": 40,
+          "token_ids": [
+            289,
+            15314,
+            19959,
+            57160,
+            326
+          ],
+          "token_ids_sha256": "a12a1449ce98bf0513eb42b2c163bcd10f5259862f119ffee03c821e67ad78f5",
+          "span_sha256": "670bb3a19ca355d5dbb3dc67464ba10c6296dad7fd9b552b26940f35aee830b1"
+        },
+        {
+          "role": "recipient",
+          "kind": "recipient",
+          "protected": true,
+          "substring": "a small white cup",
+          "char_start": 202,
+          "char_end": 219,
+          "substring_sha256": "c007446f4bc11451e8d94113de1192791834a7d019ca3060ad31ebd1d2f0f40f",
+          "token_start": 46,
+          "token_end": 50,
+          "token_ids": [
+            289,
+            6735,
+            10021,
+            19396
+          ],
+          "token_ids_sha256": "4b9f5a138c6d51bf5a156efb374bda2fd5747deed2017f421410a58041e180ef",
+          "span_sha256": "11dcd56728ff4c6634cf0bd7fe0ee17a6667ab755ca66a7de3ef6eb0059ad6dc"
+        },
+        {
+          "role": "scene",
+          "kind": "scene",
+          "protected": true,
+          "substring": "a wooden tea table",
+          "char_start": 177,
+          "char_end": 195,
+          "substring_sha256": "27673871ea79455e5e77604524cc253dd8d313403e2c5cb5a5082454da74c43b",
+          "token_start": 41,
+          "token_end": 45,
+          "token_ids": [
+            289,
+            129805,
+            26845,
+            8338
+          ],
+          "token_ids_sha256": "656e94e5e5c8f08d371e2a8ddb4b1a2f4766940162a410b098fcd70de93d6da3",
+          "span_sha256": "87a379ea66b08e131b8780c2550c817d4b9e7f78f185cb07accf1894c43f1481"
+        }
+      ],
+      "event_sha256": "3bee5a3f8de9588b8d75951f9fabf1e3a7557a1997132dd5dc8848db394ae5d5"
+    },
+    {
+      "event_id": "twist-pull-mushroom",
+      "source_iid": "10ed90644f81461d",
+      "source_caption": "Two light-skinned hands touch one red-capped mushroom that remains rooted in dark forest soil among pine needles and leaves.",
+      "source_caption_sha256": "651d9773999252d07a317f53618090a6a68e7fd23935910460356b6d63df295d",
+      "model_text": "You are a helpful assistant specialized in text-to-video generation.Two light-skinned hands touch one red-capped mushroom that remains rooted in dark forest soil among pine needles and leaves.",
+      "model_text_sha256": "5866d3552ae2fc49f1dc9cee4215b3ace1062245aea9da1d05d8eb3a53f71233",
+      "source_caption_char_start": 68,
+      "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616",
+      "roles": [
+        {
+          "role": "actor",
+          "kind": "actor",
+          "protected": true,
+          "substring": "Two light-skinned hands",
+          "char_start": 68,
+          "char_end": 91,
+          "substring_sha256": "ea699c1d7c1b4a3a7de97741796308dcaf3261bd098413be59a26b79cd462411",
+          "token_start": 15,
+          "token_end": 21,
+          "token_ids": [
+            120373,
+            8403,
+            297,
+            163228,
+            505,
+            23693
+          ],
+          "token_ids_sha256": "f09f3708f10053df2653db3d293f988101241b58b177d97b6a80fd6be75a6b86",
+          "span_sha256": "1ab46711eb3dbd34a75f0356d614d6ae88ed0190aa31d595a9bf19a12c551620"
+        },
+        {
+          "role": "manipulated_object",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "one red-capped mushroom",
+          "char_start": 98,
+          "char_end": 121,
+          "substring_sha256": "8a8ad80bf4bed37b82aaafe107d4b0b3341c9e987da50d617312978bc5aae55f",
+          "token_start": 22,
+          "token_end": 29,
+          "token_ids": [
+            1249,
+            4062,
+            297,
+            834,
+            72058,
+            524,
+            140980
+          ],
+          "token_ids_sha256": "8141f5e13ef59213e61172147420a60024eaa63dc11caa687f11e134d31b7a8a",
+          "span_sha256": "338e852175bc220de2647fe97b886d4a455a1e1647bda4ea2c45f06b712acdd5"
+        },
+        {
+          "role": "support",
+          "kind": "support",
+          "protected": true,
+          "substring": "dark forest soil",
+          "char_start": 145,
+          "char_end": 161,
+          "substring_sha256": "fd5de75087f932f057ee99c885d06375e06c8788dd000a0f9bbb0c94da74e803",
+          "token_start": 34,
+          "token_end": 37,
+          "token_ids": [
+            23894,
+            58545,
+            79373
+          ],
+          "token_ids_sha256": "48f854db6eb2763dfa67e07e62476ff6db7ba07664e95d03198bb7979a8fd86a",
+          "span_sha256": "f5715c3c63caad23984a4d640420e8b49dd88f8f3f0a77d33eef56bc612ad609"
+        },
+        {
+          "role": "scene",
+          "kind": "scene",
+          "protected": true,
+          "substring": "pine needles and leaves",
+          "char_start": 168,
+          "char_end": 191,
+          "substring_sha256": "da40940ebe5fedd62f5a87f3a02b3623ab0499da3d948591d061d6110367c4e7",
+          "token_start": 38,
+          "token_end": 43,
+          "token_ids": [
+            173651,
+            199587,
+            281,
+            333,
+            65764
+          ],
+          "token_ids_sha256": "2b03ed94acc96e7fe8a4e2ba9cb427838f9ff02679a5acdff9de9f5f562928fd",
+          "span_sha256": "39854290741eefa7f2b154935b5022b13fe768303e517ae6372674cd46a9aaca"
+        }
+      ],
+      "event_sha256": "80ce097647c74be0c655867c1f8195083e5727fa74438cf47f81c5eee9251f8d"
+    },
+    {
+      "event_id": "close-door-then-drawer",
+      "source_iid": "12eba2f9c15f4d3f",
+      "source_caption": "A honey-colored wooden cabinet inside a blue camper van has its lower hinged door open beneath a partly extended drawer while the fixed camera faces the cabinet.",
+      "source_caption_sha256": "c93eb0f0439bf44290f0bc2e9ddd3bf33ac85cf7020a662d1f727f3157ecdebb",
+      "model_text": "You are a helpful assistant specialized in text-to-video generation.A honey-colored wooden cabinet inside a blue camper van has its lower hinged door open beneath a partly extended drawer while the fixed camera faces the cabinet.",
+      "model_text_sha256": "be539b921f9893ee0f7e850f817b7d8116ac40651edb53a6a26c35e93ea42fb9",
+      "source_caption_char_start": 68,
+      "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616",
+      "roles": [
+        {
+          "role": "cabinet",
+          "kind": "subject",
+          "protected": true,
+          "substring": "A honey-colored wooden cabinet",
+          "char_start": 68,
+          "char_end": 98,
+          "substring_sha256": "265a7d25797cf871e55eaa90bb1cc0b4b6dd2402fa97ca4ad915ef79b94555de",
+          "token_start": 15,
+          "token_end": 21,
+          "token_ids": [
+            438,
+            99622,
+            297,
+            199154,
+            129805,
+            40821
+          ],
+          "token_ids_sha256": "c4b02a941eed9110b7eba3ec5f60d4d84327e47778a50e06dfee9c711054aaae",
+          "span_sha256": "42555260d237540d435de9dcd867d62da7e3e56c18393b26253093ea69a99db6"
+        },
+        {
+          "role": "scene",
+          "kind": "scene",
+          "protected": true,
+          "substring": "a blue camper van",
+          "char_start": 106,
+          "char_end": 123,
+          "substring_sha256": "5260684d00e62911b2dd88db64293e92524fd2df5f66e04e188e09c3ba884301",
+          "token_start": 22,
+          "token_end": 26,
+          "token_ids": [
+            289,
+            15258,
+            106412,
+            362
+          ],
+          "token_ids_sha256": "ff6730d49cde273ef8e5501270b33837f315e5567e4f3a4b7c41a5a4275d96f1",
+          "span_sha256": "e45b78d99df3a38d9a6b46e9759c184e9f57ec81405efef0c514ec68aaae48f3"
+        },
+        {
+          "role": "first_panel",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "its lower hinged door",
+          "char_start": 128,
+          "char_end": 149,
+          "substring_sha256": "7f73ceb4b763a6509a7a2efa4ae1b94f470a156c805c1ec95741b6d27a9f60f0",
+          "token_start": 27,
+          "token_end": 32,
+          "token_ids": [
+            2316,
+            22229,
+            159502,
+            355,
+            1095
+          ],
+          "token_ids_sha256": "1f3537c45aa8d24cc2bb57c9111a17aa58e79076c10c7c94e5b15eacbd398f4b",
+          "span_sha256": "4df0c7119409e836e4abd9417ee78d2533502f6a3900001c89247acbf0d29dc1"
+        },
+        {
+          "role": "second_panel",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "a partly extended drawer",
+          "char_start": 163,
+          "char_end": 187,
+          "substring_sha256": "182e5f03c7bf5a7fca2e0f619afb9f1e3f0528821fa23b389f818aaa0f62c143",
+          "token_start": 35,
+          "token_end": 41,
+          "token_ids": [
+            289,
+            2311,
+            751,
+            90437,
+            32308,
+            326
+          ],
+          "token_ids_sha256": "5b8da279f3255847ef39429542a77d50dd9c9f78f1e19c974ec99905889a3929",
+          "span_sha256": "d42d7ca9c0eedb634b96736268793667625d25af5aebb5376fd4dbecd1e3c8b3"
+        }
+      ],
+      "event_sha256": "fc413b335c1b1f1ee13d276b545ea98bd37e1182c2203a403c3d23973ae28c58"
+    },
+    {
+      "event_id": "players-contact-then-separate",
+      "source_iid": "a023388fb2374e44",
+      "source_caption": "Two male soccer players, one in blue-and-black and one in white, run shoulder to shoulder in direct contact toward one ball on a stadium field.",
+      "source_caption_sha256": "2558e0bbdebb640140b755e132cc2ed5de0fc87ea775723c853d4c64bff18a0c",
+      "model_text": "You are a helpful assistant specialized in text-to-video generation.Two male soccer players, one in blue-and-black and one in white, run shoulder to shoulder in direct contact toward one ball on a stadium field.",
+      "model_text_sha256": "384bd9320da7aab2df9562e78073406277967b8c4cd00e5c5d5556f72e862b5c",
+      "source_caption_char_start": 68,
+      "tokenizer_tree_sha256": "0e7e4b06b2c321420e2fb97c07d2329837539b09a39bdf4bcbaa6ec1977da616",
+      "roles": [
+        {
+          "role": "players",
+          "kind": "actor_group",
+          "protected": true,
+          "substring": "Two male soccer players",
+          "char_start": 68,
+          "char_end": 91,
+          "substring_sha256": "49a426b31952d592037631cf78d7509db5c40c180cbe1e0071c48234cc302e68",
+          "token_start": 15,
+          "token_end": 19,
+          "token_ids": [
+            120373,
+            12418,
+            117992,
+            18213
+          ],
+          "token_ids_sha256": "17f2f8b8f2e46aa9fa71b59a2427bbb24d2b7bbecd2864bea0dd911d50a51b52",
+          "span_sha256": "08c982925f0d5b01e5c46cb3f0f844241517922bff0953144fffb2f105abef8d"
+        },
+        {
+          "role": "player_blue",
+          "kind": "actor",
+          "protected": true,
+          "substring": "one in blue-and-black",
+          "char_start": 93,
+          "char_end": 114,
+          "substring_sha256": "6491af6ca35c7fee0fdd353f9c034450489411d07099bd3525a6479e70a6332f",
+          "token_start": 21,
+          "token_end": 28,
+          "token_ids": [
+            1249,
+            301,
+            15258,
+            297,
+            2161,
+            297,
+            30543
+          ],
+          "token_ids_sha256": "67190f9eb41b86cca01e503757ba28bda29ae64cf532bf1228b813dbdb0b7207",
+          "span_sha256": "ecf879d598223aa6e1f7d3a5ed7f891debcd1dbfb360a918a90a6878104b5c86"
+        },
+        {
+          "role": "player_white",
+          "kind": "actor",
+          "protected": true,
+          "substring": "one in white",
+          "char_start": 119,
+          "char_end": 131,
+          "substring_sha256": "8bcc2316a6f21d6b3c8786c7b21b6f99ce6d3fd00cd5ab47cd1953c04ab70f50",
+          "token_start": 29,
+          "token_end": 32,
+          "token_ids": [
+            1249,
+            301,
+            10021
+          ],
+          "token_ids_sha256": "48eb74c2cb8eabe5fbd9e8be0361bc9f2f44a72fbbe29abefaecc0585d256bcc",
+          "span_sha256": "4c56deb80375e3b4810c91a651ef8fecddcded2969957f7cc273c3c0b1271ca2"
+        },
+        {
+          "role": "object",
+          "kind": "manipulated_object",
+          "protected": true,
+          "substring": "one ball",
+          "char_start": 183,
+          "char_end": 191,
+          "substring_sha256": "0e245f20283987395db0d673d68c4bfcd828329ee98844bcb05d61bef45f4196",
+          "token_start": 42,
+          "token_end": 44,
+          "token_ids": [
+            1249,
+            11142
+          ],
+          "token_ids_sha256": "6c913af8ff94c8fc837f4d2069405b9061aa01beba8d0a5e224b93f3f5ae5767",
+          "span_sha256": "9a5b9d948dadb00186958eb863302f4aea9740f59651066ad95cc64a7df7d9a1"
+        },
+        {
+          "role": "scene",
+          "kind": "scene",
+          "protected": true,
+          "substring": "a stadium field",
+          "char_start": 195,
+          "char_end": 210,
+          "substring_sha256": "6151d0fbe147c4f6b7e52a723140dc695378eb493d11f5cf323348e9277c420f",
+          "token_start": 45,
+          "token_end": 48,
+          "token_ids": [
+            289,
+            81330,
+            18036
+          ],
+          "token_ids_sha256": "73327ef4b11a0d5f348cdc059f8b212a0f67ca77980b8cb5ec84550693f0af19",
+          "span_sha256": "ae501848a05a8e5c3e6d172c0033e6cb967ad8e3ded304db545aa0532b93a59d"
+        }
+      ],
+      "event_sha256": "8a1e8c5ac3269117becfa13301a5c719983bb2adfabb528eb7ef642a302b0723"
+    }
+  ],
+  "asset_sha256": "be26e1dd8cbbe35c5d5b1e5baf6522ed8693086acbd84b024e4504da3a6a73bf"
+}

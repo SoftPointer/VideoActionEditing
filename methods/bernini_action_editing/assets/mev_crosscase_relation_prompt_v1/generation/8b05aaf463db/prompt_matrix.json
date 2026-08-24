@@ -1,0 +1,60 @@
+{
+  "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+  "case_id": "8b05aaf463db",
+  "experiment_role": "zero-update-native-candidate-bank-with-case-specific-action-language",
+  "common": {
+    "source_context_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, ",
+    "source_context_utf8_bytes": 117,
+    "source_context_utf8_sha256": "62cb3b84295b2045a429f441bd30145ed35978136f2847c3dc0cadd9547836fc",
+    "base_action_utf8": "The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill.",
+    "base_action_utf8_bytes": 102,
+    "base_action_utf8_sha256": "e4184f7132ae78a750e5ae41bfd9df63b4c3d341f81657bdb54e9a7269b74698",
+    "preservation_suffix_utf8": " The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+    "preservation_suffix_utf8_bytes": 82,
+    "preservation_suffix_utf8_sha256": "e27e41023366f4d1824fb733dab370403fb8b86f347cda63f9a2e1c6b43ff62d"
+  },
+  "prompts": {
+    "P0": {
+      "supplement_kind": "none",
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 301,
+      "full_prompt_utf8_sha256": "ef60e8acadebc39971bb72c0c3e708659094dd51a613f45dc35243efe1db91bd",
+      "final_task_prompt_utf8_bytes": 554,
+      "final_task_prompt_utf8_sha256": "cb7dd45ae05d5eb7c69181c624ebb67436b1163254a848f42a8cb2145a4f6540",
+      "untruncated_token_count": 147,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "supplement_kind": "event_order",
+      "payload_basename": "p1_event_order.txt",
+      "payload_file_sha256_with_terminal_lf": "e1e17f65912ba0671e1616ffedae6f0d7737dc0a10d9d30d9481d1340ab1d96a",
+      "payload_utf8_sha256_without_terminal_lf": "f3aeed58d64855e6b79dbe8290b77087556322732b7a3d923c1d63cac7bd1a11",
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. Follow this event order: The same metal grill basket first rests on the grill above the hot coals. It then rises clearly away from the grill and remains separated for a visible interval. The same basket then descends and settles back onto the same grill, where it remains supported at the end. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 595,
+      "full_prompt_utf8_sha256": "eba7650a7ef27434d5c308737c1e4c6185218f1bff3a9ead2c747a24bb195940",
+      "final_task_prompt_utf8_bytes": 848,
+      "final_task_prompt_utf8_sha256": "e17d1556a9ef9d717da9207ad1bb170d5ba74d9c3bdaff3902e5c80dbf92d690",
+      "untruncated_token_count": 213,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "supplement_kind": "relation_contact",
+      "payload_basename": "p2_relation_contact.txt",
+      "payload_file_sha256_with_terminal_lf": "ea6b91c73f7a6b923e30e023d7e04dc08235c5f25b75b0c2099b0ca53ba25312",
+      "payload_utf8_sha256_without_terminal_lf": "ee0d8941814e4ccce734c1e485705bdd56fd2d6196aebbced81e6ce115ce1ef0",
+      "full_prompt_utf8": "The seasoned meat sizzles in a metal grill basket over glowing red hot coals on a barbecue. In this continuous shot, The metal grill basket with the meat is lifted from the hot coals and then placed back onto the grill. Follow these contact relations: Keep the meat inside the same metal grill basket throughout. First end basket-to-grill support contact while smoothly increasing the basket-to-grill distance. Then smoothly decrease that distance and re-establish basket-to-grill support contact. After the return, maintain this support contact. Use exactly one basket containing the same meat; do not replace it with a pan, duplicate it, or change its identity. The same grill, basket, meat, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 745,
+      "full_prompt_utf8_sha256": "3a4eb5e42e0f6fff44c30f76fd2dc22ce22d8afa83e03e226430c34701872bc4",
+      "final_task_prompt_utf8_bytes": 998,
+      "final_task_prompt_utf8_sha256": "2f81fabb052049fa6da638a14157bcf231545942f9608ac9b81e2f0a0aef555a",
+      "untruncated_token_count": 247,
+      "terminal_token_id": 1
+    }
+  },
+  "claim_limits": {
+    "P1_and_P2_are_incremental_language_supplements_not_hidden_controls": true,
+    "prompt_length_and_semantic_content_both_change": true,
+    "candidate_selection_is_separate_from_generation": true,
+    "cross_case_action_success_not_predeclared": true
+  }
+}

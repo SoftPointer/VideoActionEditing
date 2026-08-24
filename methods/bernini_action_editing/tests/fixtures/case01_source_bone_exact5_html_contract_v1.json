@@ -1,0 +1,40 @@
+{
+  "campaign": "case01-source-bone-exact5-r64-canary",
+  "claim_limits": {
+    "exploratory_only": true,
+    "formal_claim_authorized": false,
+    "manual_blind_review_required": true,
+    "scientific_claim_authorized": false
+  },
+  "instruction": "Make the dog pick up the bone and hold it in its mouth.",
+  "reference_exact_original_output_sha256": "e0d3c07d1d3e6ae4d45e59713d2af3f04786c305f8842c20d79172a9cae22403",
+  "schema_version": "case01-source-bone-exact5-html-contract-fixture-v1",
+  "source_sha256": {
+    "bone_removed": "8c525385832586fa7b7fd7ae6e5701c599694d26ee27b502dbf0bb582e55e1c9",
+    "bone_translated_up150": "5ba28a7efd6269872ba7924162eeba8df2fd29df06c6668557310984ef9ed5f6",
+    "codec_only_present": "7104ada43b9f8e0168f38dc9710e8dc76f47606c446e5b119155048929af403b",
+    "exact_original": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+    "sham_control_up150": "ea380344b1d5c644beee9c886a67b413170d26517bab3315daed32a388ebfac3"
+  },
+  "source_size": {
+    "bone_removed": 5424975,
+    "bone_translated_up150": 5441472,
+    "codec_only_present": 5432063,
+    "exact_original": 10887043,
+    "sham_control_up150": 5420413
+  },
+  "task_ids": [
+    "case01-exact_original-full644",
+    "case01-codec_only_present-full644",
+    "case01-bone_removed-full644",
+    "case01-bone_translated_up150-full644",
+    "case01-sham_control_up150-full644"
+  ],
+  "variant_order": [
+    "exact_original",
+    "codec_only_present",
+    "bone_removed",
+    "bone_translated_up150",
+    "sham_control_up150"
+  ]
+}

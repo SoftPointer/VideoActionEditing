@@ -1,0 +1,35 @@
+{
+  "schema_version": "action-editing-shared8-exposure-audit-v1",
+  "input_manifest_sha256": "c05c4e5b5bf85de882bde32c71a984d736247733e586ed91d40026b12aaaf701",
+  "origin": {
+    "legacy_manifest": "methods/motive/runs/goku_heldout8_step100_4arm_16gpu_20260727T005200Z/raw/heldout8.jsonl",
+    "legacy_manifest_sha256": "8e1ccf187c00301c5c2bd6b5f3b3f37edc76d0f587dead339fa7cc1657e22142",
+    "legacy_inference_contract_sha256": "21a10057120543b02436ab3064c2f7974e7920da5b682993141daa7b5f6f7a26",
+    "split_counts": {
+      "test": 5,
+      "validation": 3
+    },
+    "lucy_project_training_iid_and_prompt_overlap": 0
+  },
+  "bernini_full644": {
+    "membership_rows": 644,
+    "raw_receipt_sha256": "1a90b1ab7c999eaca320a59ec110d7782bf9807ba1653e2d8aade0ad4ed9cce6",
+    "iid_overlap_count": 0,
+    "rows": [
+      {"index": 0, "iid": "1852ada01d7c43a4", "train_seen": false},
+      {"index": 1, "iid": "288545b9c031491a", "train_seen": false},
+      {"index": 2, "iid": "5ae88e1170c544b8", "train_seen": false},
+      {"index": 3, "iid": "81473c034c1b4839", "train_seen": false},
+      {"index": 4, "iid": "2766a3662fbf43d1", "train_seen": false},
+      {"index": 5, "iid": "219c4c5f56e74b86", "train_seen": false},
+      {"index": 6, "iid": "2206cde2643e470a", "train_seen": false},
+      {"index": 7, "iid": "7a2f54be92024a19", "train_seen": false}
+    ]
+  },
+  "claim_limits": {
+    "iid_heldout_diagnostic": true,
+    "content_disjoint_split": false,
+    "human_reviewed_labels": false,
+    "scientific_generalization_claim_authorized": false
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "bernini-identity-orbit-heldout-role-composition-core2-spec-v1",
+  "contract": {
+    "frame_count": 81,
+    "fps": 25,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "reference_indices": [
+      0,
+      27,
+      53,
+      80
+    ],
+    "topology": "two_isolated_world4_on_one_8gpu_node",
+    "source_rich_noise_rho": 0.0,
+    "external_donor_media": false,
+    "target_video": false,
+    "mask_flow_pose_track_trajectory": false,
+    "cell_selection_uses_generated_quality": false
+  },
+  "cells": [
+    {
+      "cell_id": "dog-fit",
+      "actor_kind": "dog",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "action_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+      "donor_seed": 2026080831,
+      "target_seed": 2026080907,
+      "identity_orbit_training_iid_overlap": false,
+      "donor_policy": "fresh_frozen_t2v_in_same_invocation_condition_only"
+    },
+    {
+      "cell_id": "human-fit",
+      "actor_kind": "human",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "action_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+      "donor_seed": 2026080832,
+      "target_seed": 2026080907,
+      "identity_orbit_training_iid_overlap": false,
+      "donor_policy": "fresh_frozen_t2v_in_same_invocation_condition_only"
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "schema_version": "bernini-saic-ssft-preregistered-mechanism-screen-plan-v1",
+  "release_id": "ssft-t1-iavg-i1-i1a-exact81-v1",
+  "preregistration": {
+    "document": "md/action_editing/bernini_saic_source_state_flow_transport_v3.md",
+    "document_sha256": "8702517c3ba634757e4c13ad33e243de6c54138a36cdbd76aaab4760e9cd8c95",
+    "registered_before_job132387": true,
+    "scientific_treatment_extension": false,
+    "fixed_arm_order": [
+      "T1",
+      "IAVG",
+      "I1",
+      "I1A"
+    ]
+  },
+  "runtime": {
+    "frames": 81,
+    "fps": 25,
+    "latent_frames": 21,
+    "inference_steps": 40,
+    "flow_shift": 5.0,
+    "node_count": 1,
+    "allocated_mi210": 8,
+    "topology": "dog_WORLD4_SP4_on_gpu_0_1_2_3_plus_human_WORLD4_SP4_on_gpu_4_5_6_7",
+    "candidate_schedule": [
+      5,
+      5,
+      5,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "candidate_continuation": "candidate_zero",
+    "model_loads_per_group": 4,
+    "optimizer_steps": 0,
+    "training_updates": 0
+  },
+  "arms": [
+    {
+      "arm": "T1",
+      "field_regime": "t2v_apg",
+      "task_name": "t2v",
+      "guidance_mode": "t2v_apg",
+      "aggregation_mode": "source_similarity_softmax",
+      "temperature": 0.01,
+      "anc_enabled": true,
+      "anchor_latent_phase_zero": false,
+      "guided_queries_per_source": 104,
+      "raw_transformer_forwards_per_source": 208
+    },
+    {
+      "arm": "IAVG",
+      "field_regime": "r2v_apg_source_i0",
+      "task_name": "r2v",
+      "guidance_mode": "r2v_apg",
+      "aggregation_mode": "uniform",
+      "temperature": null,
+      "anc_enabled": true,
+      "anchor_latent_phase_zero": false,
+      "guided_queries_per_source": 104,
+      "raw_transformer_forwards_per_source": 312
+    },
+    {
+      "arm": "I1",
+      "field_regime": "r2v_apg_source_i0",
+      "task_name": "r2v",
+      "guidance_mode": "r2v_apg",
+      "aggregation_mode": "source_similarity_softmax",
+      "temperature": 0.01,
+      "anc_enabled": true,
+      "anchor_latent_phase_zero": false,
+      "guided_queries_per_source": 104,
+      "raw_transformer_forwards_per_source": 312
+    },
+    {
+      "arm": "I1A",
+      "field_regime": "r2v_apg_source_i0",
+      "task_name": "r2v",
+      "guidance_mode": "r2v_apg",
+      "aggregation_mode": "source_similarity_softmax",
+      "temperature": 0.01,
+      "anc_enabled": true,
+      "anchor_latent_phase_zero": true,
+      "guided_queries_per_source": 104,
+      "raw_transformer_forwards_per_source": 312
+    }
+  ],
+  "sealed_inputs": {
+    "upstream_job_id": "132387",
+    "upstream_method_revision": "ec4bfb6fe047d802d4bfa4ee8da5a295933fa48d",
+    "source_manifest": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/sealed-inputs/saic_reversible_source_set_v1.json",
+      "raw_sha256": "899b5a1dd66fc0bf6d4d0192fb6157f4afe691c50633246dddcaa1db2c2a98a9",
+      "content_sha256": "9c2a3d6841951ea0ed050dc230630a1176460e25a979ec199eab575ad22f3c6f"
+    },
+    "event_bank": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/sealed-inputs/saic_pure_t2v_event_bank_v1.json",
+      "raw_sha256": "623a7ed8a2ce2d327247c541b59aa2d39f1fbfe4a480f7351d042c7ef7a47927",
+      "content_sha256": "3920d5c121b75c6bbf984c24440c9773dfb49006778c61a671ae50963bb5456a"
+    },
+    "sources": [
+      {
+        "group": "dog",
+        "row_id": "fit-dog-00-7b88a1ca1f804f41",
+        "rollout_seed": 2026082101,
+        "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+        "source_clean_latent_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/groups/dog/source.clean-latent.safetensors",
+        "source_clean_latent_sha256": "e3560e77546d3936f7e7231d5aceb78b8f29ea379b98748c26e4b37a5f277d7a",
+        "source_clean_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/groups/dog/source.clean-latent.safetensors.receipt.json",
+        "source_clean_receipt_sha256": "bf1a817b6ab2f415311c19b0111f90c7a5537b3243df135d5fbcba06f63c37f1",
+        "source_clean_tensor_raw_sha256": "86c6b10800cfee13a1c3ca95b388a6ce8f310af6cbb84eea462728d8cd046343",
+        "job132387_ephemeral_frame0_tensor_raw_sha256": "995ac093c20fd07ef7018bdf942a1d7acb971c357effa53d4fddf5ac9e4e1f14",
+        "fresh_frame0_must_match_job132387_ephemeral": false
+      },
+      {
+        "group": "human",
+        "row_id": "fit-human-00-a35b590961d24694",
+        "rollout_seed": 2026082121,
+        "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+        "source_clean_latent_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/groups/human/source.clean-latent.safetensors",
+        "source_clean_latent_sha256": "9cab2ac419833a3d8451b24c578c3ca3b466341f7bc17ea40e4067c8ebf6b7e9",
+        "source_clean_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/ssft-t0-i0-ec4bfb6-j6/groups/human/source.clean-latent.safetensors.receipt.json",
+        "source_clean_receipt_sha256": "ffdc8e4bce3181e0328f0714289b9d03d3c25ff5ac4ae57357d984101ddae0ba",
+        "source_clean_tensor_raw_sha256": "2f7333434783bf681005c62200877aca1f95a395f21f228a2e83689ea0e1b263",
+        "job132387_ephemeral_frame0_tensor_raw_sha256": "a6ce585d73bfa7a5e607356c9c06c25ec4f5e1d6f8c3b5e2c83d685b6910c6e1",
+        "fresh_frame0_must_match_job132387_ephemeral": false
+      }
+    ]
+  },
+  "implementation_dependencies": {
+    "infer_saic_source_state_flow_transport_v2.py": "ea94c9d7fdbd99f04510b38a1b3056e8aa874cc283253589e89a740e6484f01c",
+    "materialize_saic_frame0_latent_v1.py": "48768562a080df5feaa24e0e766c9372224a64fedbd14377922e99a09519215d"
+  },
+  "authority": {
+    "semantic_action_success": false,
+    "identity_preservation_success": false,
+    "quality_authority": false,
+    "selection_authority": false,
+    "training_authority": false,
+    "optimizer_authority": false,
+    "checkpoint_or_lora_artifact": false,
+    "production_claim_authorized": false
+  }
+}

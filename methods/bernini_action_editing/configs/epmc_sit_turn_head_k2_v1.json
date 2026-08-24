@@ -1,0 +1,101 @@
+{
+  "schema_version": "bernini-epmc-exact-micro-program-k2-v1",
+  "purpose": "experimental_engineering_canary_only",
+  "production_claim_forbidden": true,
+  "scientific_claim_authorized": false,
+  "upstream_authorization": {
+    "post_video_acceptance": "pending",
+    "preview_only": true,
+    "training_authorized": false,
+    "training_use_forbidden": true,
+    "user_requested_experimental_training_ack_required": true
+  },
+  "inference_contract": {
+    "external_inputs": [
+      "source_video",
+      "edit_instruction"
+    ],
+    "target_available": false,
+    "support_available": false,
+    "external_mask_flow_pose_track_trajectory": false
+  },
+  "dataset_binding": {
+    "preview_manifest_sha256": "49506e003f86f319ebe8a5e843d19c88cef75e84cd4250968da283bb19252e47",
+    "vae_index_sha256": "d36fb5de3487ba5bf494589948430a60e214851d29776cc4f439e4e2d54ee52b"
+  },
+  "micro_program": {
+    "target_action_signature": "sit_and_turn_head",
+    "entity_type": "animal",
+    "num_rgb_frames": 81,
+    "fps": 25,
+    "latent_phases": 21,
+    "bucket_hw": [
+      480,
+      496
+    ],
+    "posterior_parameters_shape": [
+      1,
+      32,
+      21,
+      60,
+      62
+    ],
+    "patch_grid_thw": [
+      21,
+      30,
+      31
+    ]
+  },
+  "split_seed": 20260807,
+  "rows": [
+    {
+      "role": "support",
+      "support_index": 1,
+      "iid": "841b5e0080a1441d",
+      "group_id": "459a8922a2b474a152284138ca3349f86e5c336076900e191d4d18b21e9a3421",
+      "source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+      "target_video_sha256": "c26970c7d263587db5e5f96b98b30072d7f4b30bc242f9ef581e5780d7c9f070",
+      "edit_instruction_sha256": "bccbd8c712aca793d7a35818a850b3357486860f7e8299e522c2adbbade5219d",
+      "vae_parquet_sha256": "51b30d41032fa443e667261af2ffeb8e9e1875338c41655c8f5e8e9ecd37fdc1",
+      "source_action_signature": "standing_still_with_minor_head_movements"
+    },
+    {
+      "role": "support",
+      "support_index": 2,
+      "iid": "7262dd490cbf42c5",
+      "group_id": "de372cff8706e3968bb1c83f4776fd93b799c253111a99aab9d00edf5ba036c8",
+      "source_video_sha256": "f2807db8eda17c9657fe33552d1c58b208af08f88394396a5b4acedbec4f3548",
+      "target_video_sha256": "1bc20ee874314a60914a71554f109d38dfc4b02c706f9eabb0dc46e92b2879bc",
+      "edit_instruction_sha256": "902caf37a85a5c508c0a80aec4753f0f46757981659d783d517f9d99988da737",
+      "vae_parquet_sha256": "23924dea163e45ed1aaae7ebce36eb689304bf630200c9662766437a2141c69a",
+      "source_action_signature": "walking_right"
+    },
+    {
+      "role": "heldout",
+      "iid": "7b88a1ca1f804f41",
+      "group_id": "829c459746eea3310f385b834d2848ce580b5d4f79f9f41b0c430a4bb346ca3d",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "target_video_sha256": "8234f5f35f7001134cf074263c481e3a8079c10f799370090d30e054aef02015",
+      "edit_instruction_sha256": "105ee8052a0f65d700736a8a25fdf02eb56f1b60d581403c328a8db3d500558c",
+      "vae_parquet_sha256": "a84fc017ce59de301a9b31208a358a1559f24c50c4f14c2e8d7990a8f2ad9e44",
+      "source_action_signature": "standing_still"
+    }
+  ],
+  "manual_contact_sheet_review": {
+    "date": "2026-08-07",
+    "frames": [
+      0,
+      20,
+      40,
+      60,
+      80
+    ],
+    "verdict": "eligible_for_representation_canary_not_dataset_acceptance",
+    "observations": [
+      "all three targets execute a visible sit transition",
+      "all three targets subsequently turn or reorient the head",
+      "scene and subject identity are broadly retained in sampled frames",
+      "full temporal and artifact acceptance remains pending"
+    ]
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "native-rv2v-crosscase-same-process-formal-v1",
+  "launch_authorized": true,
+  "authorization_basis": "user_explicit_crosscase_experiment_go_in_thread",
+  "case": {
+    "case_id": "40712e1341dc",
+    "source_video": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/40712e1341dc/source-exact81.mp4",
+      "sha256": "654e997c46a6f78a2ad78359b713767aefe61a6cc732b5be4527720323349f69"
+    }
+  },
+  "prompt_matrix": {
+    "basename": "prompt_matrix.json",
+    "sha256": "cd8a7be73b70aeb7b1a3333e338b8c622536d344b1def2fc7a06b0c424af495d",
+    "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+    "labels": ["P0", "P1", "P2"],
+    "only_registered_design_variable": "positive_prompt_utf8"
+  },
+  "prompts": {
+    "P0": {
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 276,
+      "full_prompt_utf8_sha256": "928ab797e46ab6402489fd1eee02e811385b22c4f998e2a168edf9a4cddc3b34",
+      "final_task_prompt_utf8_bytes": 529,
+      "final_task_prompt_utf8_sha256": "6b380de982c27578740b57ca9f5a8fcf278da96e9415ca60239bb4d616d251e7",
+      "untruncated_token_count": 140,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. Follow this event order: The man first stops scrolling while continuing to hold the same smartphone. He then moves the held phone toward the nightstand. The phone reaches and is supported by the nightstand before he releases it. After release, the phone remains on the nightstand while his hand withdraws. Only then does he turn his torso over into a sleeping orientation. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 649,
+      "full_prompt_utf8_sha256": "3f8d35ce8711cf8c70dfddfa45fa6985fbe44757767a46853134c958cb117a32",
+      "final_task_prompt_utf8_bytes": 902,
+      "final_task_prompt_utf8_sha256": "fbb39fa4e5bfa48efb4bc06aca18324f0516b94c77f42c24886dfea0de68a36b",
+      "untruncated_token_count": 222,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. Follow these contact relations: Maintain hand-to-phone contact while smoothly decreasing the phone-to-nightstand distance. Establish phone-to-nightstand support contact before ending hand-to-phone contact. After release, maintain phone-to-nightstand contact while the hand-to-phone distance increases. Then change the man's torso orientation while the phone remains stationary on the nightstand. Use exactly one smartphone, and keep it as the same phone throughout; do not duplicate or replace it. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 774,
+      "full_prompt_utf8_sha256": "099c72d84cccffe28ba6f7cce0d116dc2fbd431ffdaf36c9c73bb664576d2e0b",
+      "final_task_prompt_utf8_bytes": 1027,
+      "final_task_prompt_utf8_sha256": "33c39c12386de6efe263349046173e394c2694fc843ef1a2efa3f576671c1b7b",
+      "untruncated_token_count": 256,
+      "terminal_token_id": 1
+    }
+  },
+  "same_process_pairing": {
+    "execution_order": ["p0a", "p1", "p2", "p0b"],
+    "prompt_label_by_execution_cell": {"p0a": "P0", "p1": "P1", "p2": "P2", "p0b": "P0"},
+    "source_decode_count": 1,
+    "full_source_vae_encode_count": 1,
+    "reference_frame_indices": [0, 27, 53, 80],
+    "each_reference_vae_encode_count": 1,
+    "rank_zero_condition_broadcast_before_first_sample": true,
+    "same_condition_tensor_objects_for_all_four_calls": true,
+    "same_seed_for_all_four_calls": true,
+    "official_fresh_gaussian_per_call": true,
+    "external_gaussian_injection": false,
+    "custom_sampler_or_scheduler": false,
+    "same_scheduler_object_all_calls": true,
+    "no_manual_model_or_scheduler_state_reset_between_calls": true,
+    "rope_unregistered_state_observed_not_mutated": true,
+    "p0a_p0b_generated_latent_bit_exact_required": true
+  },
+  "runtime_authority": {
+    "unipc_source": {
+      "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/diffusers/schedulers/scheduling_unipc_multistep.py",
+      "sha256": "5bfe1dcf55ebea6dbbf624d3af676b2529b81fbcaf493150d562ec9e1aba3872"
+    },
+    "formal_slurm_by_seed": {
+      "2027": {"job_id": "147881", "node": "auh7-1b-gpu-213", "world_size": 4},
+      "2028": {"job_id": "147881", "node": "auh7-1b-gpu-213", "world_size": 4}
+    },
+    "nearest_finite_cgroup_limit_bytes": 68719476736,
+    "minimum_cgroup_headroom_bytes": 67108864
+  },
+  "execution_mode": {
+    "run_class": "target_oracle_diagnostic",
+    "seeds": [2027, 2028],
+    "num_inference_steps": 40,
+    "decode_cells": ["p0a", "p1", "p2"],
+    "latent_only_replay_cells": ["p0b"],
+    "scientific_candidate": false
+  },
+  "generator_contract": {
+    "guidance_mode": "rv2v",
+    "frame_count": 81,
+    "fps": 25,
+    "zero_update": true,
+    "optimizer_updates": 0,
+    "accepted_external_conditions": ["source_video", "positive_prompt_matrix"],
+    "target_video_read": false,
+    "target_action_json_read": false,
+    "target_rgb_mask_box_xy_flow_feature_embedding_latent_qkv_gaussian_read": false,
+    "anchor_rgb_kv_latent_gaussian_read": false,
+    "legacy_activity25_qk_read": false
+  },
+  "receipt_schemas": {
+    "formal_receipt": "native-rv2v-crosscase-paired-prompt-matrix-formal-v1",
+    "paired_contract": "native-rv2v-crosscase-paired-same-process-contract-v1"
+  },
+  "receipt_pins": {"mechanical_gate": null},
+  "claim_limits": {
+    "scientific_claim_authorized": false,
+    "cross_case_action_success_not_predeclared": true,
+    "runtime_p0_replay_and_dynamic_input_gates_required": true
+  }
+}

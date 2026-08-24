@@ -1,0 +1,118 @@
+{
+  "schema_version": "pair-v5-native-rv2v4-rollout-spec-v1",
+  "sampling_contract": {
+    "condition_mode": "rv2v4",
+    "num_frames": 81,
+    "latent_frames": 21,
+    "fps": 25,
+    "num_inference_steps": 40,
+    "source_reference_indices": [0, 27, 53, 80],
+    "target_initialization": "official_gen_wanx22_fresh_gaussian"
+  },
+  "semantic_input_closure": {
+    "accepted": ["source_video", "complete_caption"],
+    "target_video": false,
+    "t2v_proposal_media": false,
+    "donor_video": false,
+    "external_reference": false,
+    "mask": false,
+    "flow": false,
+    "pose": false,
+    "track": false,
+    "trajectory": false
+  },
+  "groups": [
+    {
+      "group_id": "sp4-a",
+      "visible_gpus": [0, 1, 2, 3],
+      "candidates": [
+        {
+          "candidate_id": "dog-ball-action-s2026080811",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0159124a76ff4e09/samples/0159124a76ff4e09/source_video.mp4",
+          "source_video_sha256": "0640862f5d36292d8eb5f3e5d2e242bd5cf6ab5ee732f5134aacb1852447dbc7",
+          "complete_caption": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with its tongue out and one paw on a red hexagonal-patterned ball; the grey dog on the right begins separate, looking upward with its mouth open. The black dog lowers its muzzle to the same red ball, grips it in its mouth, lifts it clear of the lawn, raises its head, and holds the ball gently through the end. The grey dog remains on the right, separate from the ball, breathing gently. Preserve both dogs, the lawn, the lighting, and the locked camera.",
+          "complete_caption_sha256": "322cbf488fe0fc5d7d4a0b351b5ddba3d61bcf82c850fb77e05a380cab77930d",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080811,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "dog-ball-action-s2026080812",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0159124a76ff4e09/samples/0159124a76ff4e09/source_video.mp4",
+          "source_video_sha256": "0640862f5d36292d8eb5f3e5d2e242bd5cf6ab5ee732f5134aacb1852447dbc7",
+          "complete_caption": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with its tongue out and one paw on a red hexagonal-patterned ball; the grey dog on the right begins separate, looking upward with its mouth open. The black dog lowers its muzzle to the same red ball, grips it in its mouth, lifts it clear of the lawn, raises its head, and holds the ball gently through the end. The grey dog remains on the right, separate from the ball, breathing gently. Preserve both dogs, the lawn, the lighting, and the locked camera.",
+          "complete_caption_sha256": "322cbf488fe0fc5d7d4a0b351b5ddba3d61bcf82c850fb77e05a380cab77930d",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080812,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "dog-ball-action-s2026080813",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0159124a76ff4e09/samples/0159124a76ff4e09/source_video.mp4",
+          "source_video_sha256": "0640862f5d36292d8eb5f3e5d2e242bd5cf6ab5ee732f5134aacb1852447dbc7",
+          "complete_caption": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with its tongue out and one paw on a red hexagonal-patterned ball; the grey dog on the right begins separate, looking upward with its mouth open. The black dog lowers its muzzle to the same red ball, grips it in its mouth, lifts it clear of the lawn, raises its head, and holds the ball gently through the end. The grey dog remains on the right, separate from the ball, breathing gently. Preserve both dogs, the lawn, the lighting, and the locked camera.",
+          "complete_caption_sha256": "322cbf488fe0fc5d7d4a0b351b5ddba3d61bcf82c850fb77e05a380cab77930d",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080813,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "dog-ball-action-s2026080814",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0159124a76ff4e09/samples/0159124a76ff4e09/source_video.mp4",
+          "source_video_sha256": "0640862f5d36292d8eb5f3e5d2e242bd5cf6ab5ee732f5134aacb1852447dbc7",
+          "complete_caption": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with its tongue out and one paw on a red hexagonal-patterned ball; the grey dog on the right begins separate, looking upward with its mouth open. The black dog lowers its muzzle to the same red ball, grips it in its mouth, lifts it clear of the lawn, raises its head, and holds the ball gently through the end. The grey dog remains on the right, separate from the ball, breathing gently. Preserve both dogs, the lawn, the lighting, and the locked camera.",
+          "complete_caption_sha256": "322cbf488fe0fc5d7d4a0b351b5ddba3d61bcf82c850fb77e05a380cab77930d",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080814,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        }
+      ]
+    },
+    {
+      "group_id": "sp4-b",
+      "visible_gpus": [4, 5, 6, 7],
+      "candidates": [
+        {
+          "candidate_id": "puzzle-action-s2026080811",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a9e969c99361494e/samples/a9e969c99361494e/source_video.mp4",
+          "source_video_sha256": "20295249a487c11fa4022240844fc48d309bd820f516a7300ab58d56514b9801",
+          "complete_caption": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. A light blue puzzle piece begins separated from the main puzzle, which shows a cartoon sun and the upper body of a man in a black coat. The boy reaches for that same light blue piece, grips and lifts it, rotates it into alignment, connects it to the main puzzle to complete the cartoon man's lower body, and leaves it connected through the end. Preserve the boy, floor, puzzle artwork, lighting, and locked camera.",
+          "complete_caption_sha256": "c0f547f89b99d6b2b1508d0a723863f1eada4aa6f705ec76ce7a427ccab4d917",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080811,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "puzzle-action-s2026080812",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a9e969c99361494e/samples/a9e969c99361494e/source_video.mp4",
+          "source_video_sha256": "20295249a487c11fa4022240844fc48d309bd820f516a7300ab58d56514b9801",
+          "complete_caption": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. A light blue puzzle piece begins separated from the main puzzle, which shows a cartoon sun and the upper body of a man in a black coat. The boy reaches for that same light blue piece, grips and lifts it, rotates it into alignment, connects it to the main puzzle to complete the cartoon man's lower body, and leaves it connected through the end. Preserve the boy, floor, puzzle artwork, lighting, and locked camera.",
+          "complete_caption_sha256": "c0f547f89b99d6b2b1508d0a723863f1eada4aa6f705ec76ce7a427ccab4d917",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080812,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "puzzle-action-s2026080813",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a9e969c99361494e/samples/a9e969c99361494e/source_video.mp4",
+          "source_video_sha256": "20295249a487c11fa4022240844fc48d309bd820f516a7300ab58d56514b9801",
+          "complete_caption": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. A light blue puzzle piece begins separated from the main puzzle, which shows a cartoon sun and the upper body of a man in a black coat. The boy reaches for that same light blue piece, grips and lifts it, rotates it into alignment, connects it to the main puzzle to complete the cartoon man's lower body, and leaves it connected through the end. Preserve the boy, floor, puzzle artwork, lighting, and locked camera.",
+          "complete_caption_sha256": "c0f547f89b99d6b2b1508d0a723863f1eada4aa6f705ec76ce7a427ccab4d917",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080813,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "puzzle-action-s2026080814",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a9e969c99361494e/samples/a9e969c99361494e/source_video.mp4",
+          "source_video_sha256": "20295249a487c11fa4022240844fc48d309bd820f516a7300ab58d56514b9801",
+          "complete_caption": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. A light blue puzzle piece begins separated from the main puzzle, which shows a cartoon sun and the upper body of a man in a black coat. The boy reaches for that same light blue piece, grips and lifts it, rotates it into alignment, connects it to the main puzzle to complete the cartoon man's lower body, and leaves it connected through the end. Preserve the boy, floor, puzzle artwork, lighting, and locked camera.",
+          "complete_caption_sha256": "c0f547f89b99d6b2b1508d0a723863f1eada4aa6f705ec76ce7a427ccab4d917",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080814,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        }
+      ]
+    }
+  ]
+}

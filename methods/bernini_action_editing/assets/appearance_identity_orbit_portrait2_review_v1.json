@@ -1,0 +1,110 @@
+{
+  "schema_version": "bernini-appearance-identity-orbit-review-decisions-v1",
+  "qualifier_id": "codex-full81-grid-review-20260808-v1",
+  "protocol_sha256": "6adfdff2830a4c7f1aaf2f0244c234a608509f6d3f1b0b3a2c0bca9b84982c09",
+  "downstream_training_results_seen": false,
+  "rows": [
+    {
+      "iid": "0014a41e55e44670",
+      "source": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0014a41e55e44670/samples/0014a41e55e44670/source_video.mp4",
+        "video_sha256": "b0255970cdbb42375cd783e8f2ab9b8099d5f02ec96f62085be77e24eb5f2437"
+      },
+      "variant_a": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_appearance_counterfactual_20260808_74ed30c/runs/0014a41e55e44670-old-man-seed2027/rv2v/rv2v.mp4",
+        "video_sha256": "f83c4ff76985f389f2cc51a487d01d4490d3da571786d89d8f584bc1789dbefd",
+        "native_arm": "rv2v",
+        "native_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_appearance_counterfactual_20260808_74ed30c/runs/0014a41e55e44670-old-man-seed2027/rv2v/receipt.json",
+        "native_receipt_file_sha256": "800c9b8bca4f2ee3b71f1bc4a855293589f952220d579e4ef2772f9cf032df15",
+        "native_receipt_digest": "c65ffd0f39a75703710b17a31abca880c6ad08421fd3e4eeda2218bbf4bebfe1"
+      },
+      "variant_b": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/0014a41e55e44670-black-woman-yellow-suit-seed2027/rv2v/rv2v.mp4",
+        "video_sha256": "592aecba9ae7af0278ea45ebb73d34d385094c8ef47269e966b74bbc211f9eee",
+        "native_arm": "rv2v",
+        "native_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/0014a41e55e44670-black-woman-yellow-suit-seed2027/rv2v/receipt.json",
+        "native_receipt_file_sha256": "7133e256dfdd62bf6bedb7b615a6b1e347c19d24f05e2755bd8e9654bdf85962",
+        "native_receipt_digest": "582046e742d6803add22aa8bde2355ca5c1f99d8359f839f181d3c52e643352c"
+      },
+      "qualification_gates": {
+        "variant_a": {
+          "appearance_identity_changed_from_source": true,
+          "motion_phase_and_order_preserved": true,
+          "camera_path_preserved": true,
+          "background_scene_preserved": true,
+          "object_correspondence_preserved": true,
+          "temporal_quality_passed": true,
+          "spatial_quality_passed": true,
+          "no_extra_actor_or_object": true
+        },
+        "variant_b": {
+          "appearance_identity_changed_from_source": true,
+          "motion_phase_and_order_preserved": true,
+          "camera_path_preserved": true,
+          "background_scene_preserved": true,
+          "object_correspondence_preserved": true,
+          "temporal_quality_passed": true,
+          "spatial_quality_passed": true,
+          "no_extra_actor_or_object": true
+        },
+        "cross_member": {
+          "variant_a_and_variant_b_semantic_identities_distinct": true,
+          "same_motion_across_all_members": true,
+          "same_camera_across_all_members": true,
+          "same_scene_across_all_members": true
+        }
+      }
+    },
+    {
+      "iid": "00435ad621c44fac",
+      "source": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/00435ad621c44fac/samples/00435ad621c44fac/source_video.mp4",
+        "video_sha256": "b9218921597e43e2a3a6b223899ab84fb1b8d1a51692766bb2167e5941efbba1"
+      },
+      "variant_a": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/00435ad621c44fac-east-asian-woman-blue-longhair-retry-seed2027/rv2v/rv2v.mp4",
+        "video_sha256": "dc03115417c6c74c2b21d8a6d18ed076cace647efb1ede85149879ef13402d0f",
+        "native_arm": "rv2v",
+        "native_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/00435ad621c44fac-east-asian-woman-blue-longhair-retry-seed2027/rv2v/receipt.json",
+        "native_receipt_file_sha256": "a5633eb1a264dde233e8327d3d13337aea651f77d2cf5fe6a6b97dec298d817f",
+        "native_receipt_digest": "0fc1467300baf57db990d3abf687e43059b17d0042c3c7744bbb68e84ecacf0c"
+      },
+      "variant_b": {
+        "video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/00435ad621c44fac-older-woman-green-silverhair-retry2-seed2027/t2v-r2v/r2v.mp4",
+        "video_sha256": "e7b097e8e229359b6a89cbb16f7b87dae1b84cbeb5521245c2e91bc4d36e7351",
+        "native_arm": "r2v",
+        "native_receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_identity_orbit_v2_20260808_74ed30c/runs/00435ad621c44fac-older-woman-green-silverhair-retry2-seed2027/t2v-r2v/receipt.json",
+        "native_receipt_file_sha256": "ed9dc161b56ba0ca270c3f6d0ec303ab9233fb1f86b8706bdb70bfb7af285b0c",
+        "native_receipt_digest": "567074abd936a8ba686103a2128174797b34e0c485328b42088e72094da01326"
+      },
+      "qualification_gates": {
+        "variant_a": {
+          "appearance_identity_changed_from_source": true,
+          "motion_phase_and_order_preserved": true,
+          "camera_path_preserved": true,
+          "background_scene_preserved": true,
+          "object_correspondence_preserved": true,
+          "temporal_quality_passed": true,
+          "spatial_quality_passed": true,
+          "no_extra_actor_or_object": true
+        },
+        "variant_b": {
+          "appearance_identity_changed_from_source": true,
+          "motion_phase_and_order_preserved": true,
+          "camera_path_preserved": true,
+          "background_scene_preserved": true,
+          "object_correspondence_preserved": true,
+          "temporal_quality_passed": true,
+          "spatial_quality_passed": true,
+          "no_extra_actor_or_object": true
+        },
+        "cross_member": {
+          "variant_a_and_variant_b_semantic_identities_distinct": true,
+          "same_motion_across_all_members": true,
+          "same_camera_across_all_members": true,
+          "same_scene_across_all_members": true
+        }
+      }
+    }
+  ]
+}

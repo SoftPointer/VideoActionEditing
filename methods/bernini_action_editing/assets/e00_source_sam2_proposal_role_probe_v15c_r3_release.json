@@ -1,0 +1,53 @@
+{
+  "schema_version": "bernini-source-object-proposal-role-v15c-r3-release",
+  "tag": "v15c-r3",
+  "member_count": 8,
+  "members": [
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c.json",
+      "sha256": "fe6dc44d013fe730291fc58954886d41119f3409b2af873b3d82c4d05177b9f5",
+      "size": 13110
+    },
+    {
+      "path": "methods/bernini_action_editing/finalize_source_sam2_proposal_role_probe_v15c_r3.py",
+      "sha256": "dc582a21765c97700e21c1c6226458b129879caceddc939094bd8ad3277c9b1a",
+      "size": 15443
+    },
+    {
+      "path": "methods/bernini_action_editing/materialize_source_sam2_proposal_tracks_v15c.py",
+      "sha256": "f7d4f9e674a859481a6335599deef984ef9ea40100fd69f3a11cdec67db0dc6e",
+      "size": 65537
+    },
+    {
+      "path": "methods/bernini_action_editing/postflight_source_sam2_proposal_role_probe_v15c_r3.py",
+      "sha256": "d677bc9319b6938e1fb7dfcf9fba8658eda3670555026043ac2e6dfbd96f9cbf",
+      "size": 9171
+    },
+    {
+      "path": "methods/bernini_action_editing/run_source_object_proposal_role_probe_v15c.py",
+      "sha256": "6e2630fb000df6d0862946b52528ab1fd1ea25d548e3723ef774e383e726e631",
+      "size": 33296
+    },
+    {
+      "path": "methods/bernini_action_editing/scripts/auh_launch_e00_source_sam2_proposal_role_probe_v15c_r3_sealed.sh",
+      "sha256": "331229954b86cab259f6e92a8a2ff7dc347220fa5be0e4e2589a6f3d1582467d",
+      "size": 10562
+    },
+    {
+      "path": "methods/bernini_action_editing/source_object_proposal_role_probe_v15c.py",
+      "sha256": "81e3f168d9064f6136ef24b1b6c49a7f3630cdfbe31593f8ae4218651b68b26d",
+      "size": 32964
+    },
+    {
+      "path": "methods/bernini_action_editing/tools/build_source_object_proposal_role_v15c_r3_review.py",
+      "sha256": "2f1463783b1d092ef1767d70ffb7022bc53a9c1b14036fee050597dcf7ea93cf",
+      "size": 23542
+    }
+  ],
+  "dependency_files": [
+    "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r3_release.json"
+  ],
+  "observer_only": true,
+  "route_authorized": false,
+  "release_sha256": "cc0b434f802101bce9a13edd61a175467b9193ade6e0517cc81c8d2eaa7afefa"
+}

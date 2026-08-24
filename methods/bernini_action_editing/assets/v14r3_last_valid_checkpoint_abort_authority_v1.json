@@ -1,0 +1,82 @@
+{
+  "arms": {
+    "sameaction_global_actiononly_s8_v14r3_gradgeom": {
+      "checkpoint": {
+        "adapter_config_sha256": "40aa2094f7a0b1c3a4d5933b2f622df8e902f0ca400d21866dd825593cd0208a",
+        "adapter_model_sha256": "85fe52e1eb9235f58341ab2d744cbf9a7d9483380f0a7e33632de150ecdc04fa",
+        "expected_run_entries": [
+          "checkpoint-00000001",
+          "checkpoint-00000004"
+        ],
+        "last_completed_optimizer_step": 4,
+        "receipt_sha256": "b8a0894fb78817bfaa918ac31344ff859e2333d1491193193bec3352523c0385"
+      },
+      "failure": {
+        "failed_attempt_step": 5,
+        "message_exact": "action-only formal update has excessive action/replay conflict: cosine=-0.7900579431767648, minimum=-0.5",
+        "rank_error_count": 4,
+        "stage": "before_parameter_gradient_mutation_and_optimizer_step"
+      },
+      "log": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/online_anchor_attention_training_v1/logs/target_owned_routed_teacher_v14r3_gradgeom/sameaction_global_actiononly_s8_v14r3_gradgeom_auh7-1b-gpu-233.log",
+        "sha256": "a925ed2ceea1e007521c16a26e7c37663505a9d3afe93ab9bec42ef9deca9d66",
+        "size_bytes": 70176
+      },
+      "node": "auh7-1b-gpu-233",
+      "replay_combine_mode": "action_only",
+      "slurm": {
+        "elapsed": "00:05:20",
+        "end": "2026-08-20T11:58:30",
+        "exit_code": "1:0",
+        "start": "2026-08-20T11:53:10",
+        "state": "FAILED",
+        "step_id": "143808.336"
+      },
+      "training_run_complete": false
+    },
+    "sameaction_global_norm025_s8_v14r3_gradgeom": {
+      "checkpoint": {
+        "adapter_config_sha256": "baa1e1b7722946464ca60b9715b15f4e2fe4fa0429c290d168647afef21317a6",
+        "adapter_model_sha256": "04fc5a24d4a4aa79416d8a9d374610dd91c54f764a5679a5118a4e758fc6ea51",
+        "expected_run_entries": [
+          "checkpoint-00000001",
+          "checkpoint-00000004"
+        ],
+        "last_completed_optimizer_step": 4,
+        "receipt_sha256": "461e3842ad61c4f34292b5401e29889900fc4ba9443e7285962147eed38fd5c0"
+      },
+      "failure": {
+        "failed_attempt_step": 5,
+        "message_exact": "norm-balanced replay left the source-descent half-space: mode=norm_balanced_025, raw_replay_dot_combined=-0.0008271200337209091, cosine=-0.8170764893098168, q=0.25",
+        "rank_error_count": 4,
+        "stage": "before_parameter_gradient_mutation_and_optimizer_step"
+      },
+      "log": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/online_anchor_attention_training_v1/logs/target_owned_routed_teacher_v14r3_gradgeom/sameaction_global_norm025_s8_v14r3_gradgeom_auh7-1b-gpu-268.log",
+        "sha256": "bff4757ec34af4fb37ae94592c3529bcb1e58903c88cd6902efb3348b89e8e7c",
+        "size_bytes": 71600
+      },
+      "node": "auh7-1b-gpu-268",
+      "replay_combine_mode": "norm_balanced_025",
+      "slurm": {
+        "elapsed": "00:04:54",
+        "end": "2026-08-20T11:57:57",
+        "exit_code": "1:0",
+        "start": "2026-08-20T11:53:03",
+        "state": "FAILED",
+        "step_id": "143808.335"
+      },
+      "training_run_complete": false
+    }
+  },
+  "checkpoint_artifact_complete": true,
+  "diagnostic_decode_only": true,
+  "promotion_authorized": false,
+  "requested_max_steps": 8,
+  "schema_version": "bernini-v14r3-last-valid-preoptimizer-abort-authority-v1",
+  "training_authority": {
+    "archive_sha256": "7a8acbf18a03df4740927bf98019875bf07cc9665857f519b261f1fda33eedec",
+    "deployment_marker_sha256": "8cd78c38792e143cb5c4e068d93e80de0845605ef0f5b17ff61a67f49bee2b1e",
+    "trainer_sha256": "fd8c5b6d8d7fb94de9cb8d2811a953b116643216162b5cfe758f50ef0b55626c"
+  }
+}

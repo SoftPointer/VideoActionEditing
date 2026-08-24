@@ -1,0 +1,207 @@
+{
+  "schema_version": "bernini-action-repr-stage-b-t0-single-update-retry6-authority-addendum-v1",
+  "experiment_id": "action_repr_target_selfgen_middle_g1_20260824_v2",
+  "created_on": "2026-08-24",
+  "document_role": "create_once_stage_b_target_t0_single_update_retry6_authority",
+  "activation": {
+    "state": "ACTIVE_CREATE_ONCE_AUTHORITY",
+    "create_once": true,
+    "all_placeholders_replaced": true,
+    "activation_rule": "copy_to_stage_b_t0_single_update_retry6_authority_addendum.json_once_only_after_runner_tests_and_launcher_are_final_then_replace_every_explicit_sha256_placeholder_and_set_state_ACTIVE_CREATE_ONCE_AUTHORITY",
+    "template_itself_authorizes_optimizer_creation": false
+  },
+  "canonical_preregistration": {
+    "path": "stage1_v2_preregistration.json",
+    "sha256": "294168e596212bd61e8d555e72702ceeeb993fb18c7fa7536a43d0b00ad592b3",
+    "modified": false
+  },
+  "prior_quantized_energy_match_addendum": {
+    "path": "stage1_v2_quantized_energy_match_addendum.json",
+    "sha256": "39a2879c35bdc0fc87c67f05adc11e5766f7dae61792c75f44653450b7ee04da",
+    "modified": false
+  },
+  "upstream_gate_evidence": {
+    "manifest": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_repr_target_selfgen_20260824_v1/source/experiment_manifest.json",
+      "sha256": "c78e42f0661e5905407505037ce322d32d67ffec0b70b1cab466f895dc8d0632"
+    },
+    "g1_target": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_repr_target_selfgen_middle_g1_20260824_v2/stage1_v2_7/g1_admission/target/receipt.json",
+      "receipt_sha256": "974471a39e8c904cc5234b244d2e59fbf6540d5e951cc2c285454486c8f8066e",
+      "required_status": "passed",
+      "selfgen_status_required": "not_evaluated",
+      "optimizer_creation_authorized_by_receipt": false
+    },
+    "production_g2a": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_repr_target_selfgen_middle_g1_20260824_v2/stage1_v2_7/g2a/production_world4/0be6494dfac3/receipt.json",
+      "receipt_sha256": "7ea0ab20709d942ca51a3062f2306407be8f9d0f4445926dca57af9b83fc3f09",
+      "receipt_digest": "a39b1be65887532a24378fda25f517bb7b8edb60831e91aaf55468b70f2802b7",
+      "required_status": "PASSED",
+      "six_routes_exact_native_bits_required": true,
+      "renderer_base_unchanged_required": true,
+      "optimizer_created": false,
+      "optimization_steps": 0
+    },
+    "required_order_closed_before_optimizer": [
+      "G0_integrity",
+      "G1_target_8_of_8_flow_AND_middle",
+      "production_WORLD4_six_route_G2a"
+    ]
+  },
+  "canary_scope": {
+    "arm": "T0",
+    "case_id": "0be6494dfac3",
+    "case_split": "fit",
+    "world_size": 4,
+    "sequence_parallel_size": 4,
+    "optimization_steps": 1,
+    "parameter_updates_required": true,
+    "target_representation": true,
+    "TP": false,
+    "sourcecopy": false,
+    "selfgen": false,
+    "graph": false,
+    "automatic_expansion": false,
+    "longer_training_authorized": false,
+    "decode_authorized_by_this_addendum": false
+  },
+  "representation_contract": {
+    "accepted_payloads": [
+      "authenticated_detached_dense_flow",
+      "authenticated_detached_projected_action_minus_noop_middle_residual"
+    ],
+    "target_rgb_allowed_in_trainer": false,
+    "target_video_cli_argument_allowed": false,
+    "target_vae_or_clean_latent_allowed_in_trainer": false,
+    "absolute_target_hidden_or_qkv_allowed_in_trainer": false,
+    "fixed_jl": {
+      "kind": "case_independent_fixed_rademacher_jl",
+      "seed": 2026082401,
+      "input_width": 1536,
+      "output_width": 256,
+      "tensor_sha256": "6291f3e65908fc8500b7529873f1165011b8bd61916b19d82d696f2485a01dbe",
+      "fitted_on_input_video": false,
+      "applied_differentiably_to_student_trace": true,
+      "teacher_cache_remains_detached": true
+    },
+    "phase_activity": {
+      "phase0_active": false,
+      "onset_active": true,
+      "terminal_active": true,
+      "phase0_may_be_relabelled_active": false
+    },
+    "energy_rms": {
+      "stable_floor_used_for_backward": true,
+      "raw_rms_recorded_separately": true,
+      "exact_zero_student_nonzero_teacher_requires_finite_nonzero_gradient": true
+    }
+  },
+  "counterfactual_gradient_contract": {
+    "required_controls_in_order": [
+      "zero",
+      "temporal_shuffle",
+      "reverse",
+      "incomplete",
+      "wrong_action"
+    ],
+    "no_grad_hinge_prepass": true,
+    "correct_side_gradient_passes": 1,
+    "separate_control_gradient_passes": 5,
+    "detached_control_scores_without_control_side_gradient_are_sufficient": false,
+    "all_gradients_finite": true,
+    "all_control_hinges_and_gradient_passes_must_be_receipted": true
+  },
+  "optimizer_contract": {
+    "optimizer_creation_authorized_by_final_active_addendum": true,
+    "kind": "AdamW",
+    "learning_rate": 0.0001,
+    "weight_decay": 0,
+    "steps_exact": 1,
+    "gradient_norm_max": 1,
+    "state_before_and_after_required": true,
+    "at_least_one_allowlisted_parameter_element_must_change": true,
+    "second_step_forbidden": true,
+    "resume_forbidden": true
+  },
+  "parameter_firewall": {
+    "base_generator_frozen": true,
+    "vae_frozen": true,
+    "text_encoder_frozen": true,
+    "lora_enabled": false,
+    "trainable_roles_exact": [
+      "motion_adapter",
+      "middle_projector"
+    ],
+    "optimizer_parameter_ids_must_equal_exact_allowlist": true,
+    "base_parameter_identity_version_and_bytes_unchanged_required": true
+  },
+  "distributed_contract": {
+    "world_size": 4,
+    "sequence_parallel_size": 4,
+    "runtime_backend": "nccl/rccl",
+    "rank0_initial_parameter_broadcast": true,
+    "explicit_gradient_all_reduce": true,
+    "post_update_parameter_digest_consensus": true,
+    "rank_divergence_fails_closed": true,
+    "slurm_rocr_visible_devices_mapping_preserved": true,
+    "slurm_rocr_visible_devices_mapping_receipted": true,
+    "slurm_rocr_visible_devices_exact_device_count": 4,
+    "slurm_rocr_visible_devices_physical_range_inclusive": [
+      0,
+      7
+    ],
+    "hip_visible_devices_must_be_empty": true,
+    "cuda_visible_devices_must_be_empty": true,
+    "rank0_atomic_preoptimizer_attempt_claim": true,
+    "rank0_claim_outcome_broadcast_before_peer_replay": true,
+    "all_ranks_replay_attempt_claim_from_disk": true,
+    "claim_creation_before_cache_model_adapter_optimizer": true
+  },
+  "source_hash_pins": {
+    "methods/bernini_action_editing/train_action_repr_target_t0_canary_retry6_v1.py": "326b87e1b462baead05ca53f5bf578e50ecdcb1d72c7e55e2c9fce5e660292a6",
+    "methods/bernini_action_editing/action_representation_joint_objective_v1.py": "98c0bf555f75563f4cafc6a0bbb828327bc0b5bd9dd5356e786b67e6f6073ef8",
+    "methods/bernini_action_editing/action_repr_g2a_adapter_v1.py": "3e3542042d71cd567429e764637e0be561f3d08827058e251dcdecfd017bb758",
+    "methods/bernini_action_editing/audit_action_repr_g2a_world4_v1.py": "8f6f13e76bcba0defd9af7576912eb55eddd76c1cc74ba334e1b11d5e0dd359d",
+    "methods/bernini_action_editing/materialize_decoded_middle_action_repr_v1.py": "f3fa0138ffcff997a604567c0951bf7f9aba74ae6cb66acb943eddef2aa6a1ac",
+    "methods/bernini_action_editing/dense_flow_token_adapter_v1.py": "82f8f0f375e3f341ffbafe45b4598035752bcd3b8436545dc521c4bdde3c327f",
+    "methods/bernini_action_editing/exact_local_video_materializer_v1.py": "83c0410ebbba177af73eff658f70146b1e0a7a9b711bfc3e4a94c4c29ba2409a",
+    "methods/bernini_action_editing/train_lora.py": "ead547b8309e1b5ae5c831444e9f5d1d8e1785fed5fe39cf7b97f13f82a9ce85",
+    "methods/bernini_action_editing/train_self_generated_action_quotient_v1.py": "dac80325bbcd0f83e7c982d13bca7f3fb73f0785b4f28df33752143462176116",
+    "methods/bernini_action_editing/scripts/auh_stage_b_t0_single_update_20260824_retry6.sh": "17446af768535deaa84d1cf09c37324eee2e14a90cd8aeba8fa295d90ca583a7",
+    "methods/bernini_action_editing/tests/test_train_action_repr_target_t0_canary_retry6_v1.py": "30978b223065a51acd57f0beff2c3830654c84ed54e994c9e4f9337442780cf2",
+    "tests/test_auh_stage_b_t0_single_update_20260824_retry6.py": "be8a19e0b6b6825392df247b211e03138d504132d721b8040a3a463791e54c24"
+  },
+  "runtime_paths": {
+    "fresh_source_root_name": "source_stage_b_t0_retry6",
+    "fresh_stage_root_name": "stage_b_t0_retry6",
+    "fresh_log_root_name": "logs/stage_b_t0_retry6",
+    "bernini_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/motive_action_repr_auto/vendor/Bernini-2d2b4591",
+    "veomni_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/vendor/VeOmni-v0.1.11",
+    "checkpoint": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/checkpoints/Bernini-R-1.3B-Diffusers-ff4c5d4"
+  },
+  "output_contract": {
+    "fresh_create_only": true,
+    "step0_and_step1_adapter_states_required": true,
+    "receipt_create_only": true,
+    "receipt_must_bind_authority_file_sha256": true,
+    "checkpoint_contains_allowlisted_adapter_state_only": true,
+    "trained_video_created": false,
+    "review_webpage_created": false,
+    "atomic_preoptimizer_attempt_claim_required": true,
+    "attempt_claim_marker_name": ".single_update.retry6.attempt_claim.json",
+    "canonical_output_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_repr_target_selfgen_middle_g1_20260824_v2/stage_b_t0_retry6/target_t0/0be6494dfac3/single_update",
+    "attempt_claim_marker_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_repr_target_selfgen_middle_g1_20260824_v2/stage_b_t0_retry6/target_t0/0be6494dfac3/.single_update.retry6.attempt_claim.json",
+    "attempt_claim_permanent_on_failure": true,
+    "existing_claim_requires_new_revision": true,
+    "claim_path_file_sha_and_object_digest_receipted": true
+  },
+  "next_order_boundary": {
+    "immediate_next_if_single_update_passes": "matched_step0_step1_decode_quality_gate",
+    "longer_T0_before_matched_decode": false,
+    "TP_authorized": false,
+    "selfgen_requires_independent_G1": true,
+    "graph_requires_independent_G3": true
+  },
+  "claim_boundary": "optimizer_integration_canary_only_not_ours_not_quality_not_decoded_video",
+  "source_hash_pins_digest": "ee368080e81304450d5086b0032d8d5e8a661e44033f0e793929741fc740da7b"
+}

@@ -1,0 +1,105 @@
+SAIC T2V top-up formal-r2 detached-review-v2 fresh release pins
+================================================================
+
+This is a fail-closed materialization worksheet, not a release manifest and not
+submission authority.  Never invent a JobID, receipt digest, or SHA.  Populate
+the formal fields only from one terminal COMPLETED/0:0 full60 run whose master
+receipt has been re-read as canonical sealed JSON.
+The review submission receipt calls these inputs a `formal_terminal_input_bundle`:
+it is a sealed master/submission/live-sacct bundle, not a separate formal
+terminal-admission receipt.
+
+RELEASE_ROOT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-t2v-topup-r6-formal-v2-r2-retfd-20260812-r1-review-v2-r1
+FORMAL_OUTPUT_ROOT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/runs/t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1
+REVIEW_PACKET_ROOT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/reviews/t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1-detached-review-v2-r1
+AUTOMATION_RECEIPT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/reviews/t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1-detached-review-v2-r1.automation.receipt.json
+TERMINAL_ADMISSION=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/reviews/t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1-detached-review-v2-r1.terminal.admission.receipt.json
+
+SOURCE_ARCHIVE_SHA256=3f6a713c762751b06723448b22e627ec6571eae502d7311811005db91812ee7b
+SOURCE_REVISION=20c2193954e780e9654347754b1485f3492fbea5
+EVENT_SPEC_RAW_SHA256=d693d0784530f007888e2825d15db3db808fdf4f1d111b5d080d968c894ff145
+PYTHON_SHA256=8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a
+FFMPEG_SHA256=e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99
+FFPROBE_WRAPPER_SHA256=06a5698bdaa8069e541e804e2f0e945665b2d16409633aa92d37f76ed7506710
+SACCT_SHA256=fadcd62c4a3b28e3a185c8eacf23691e0bd208839aee40c82076fa9364e84f9e
+POSTFLIGHT_SHA256=__REVIEW_POSTFLIGHT_SHA256__
+
+ADAPTER_SHA256=__REVIEW_ADAPTER_SHA256__
+LAUNCHER_SHA256=__REVIEW_LAUNCHER_SHA256__
+SUBMITTER_SHA256=__REVIEW_SUBMITTER_SHA256__
+AUH_HOSTILE_SHA256=__REVIEW_AUH_HOSTILE_SHA256__
+RELEASE_MANIFEST_MATERIALIZER_SHA256=__REVIEW_RELEASE_MANIFEST_MATERIALIZER_SHA256__
+RELEASE_MANIFEST_SHA256=__REVIEW_RELEASE_MANIFEST_SHA256__
+RELEASE_MANIFEST_DIGEST=__REVIEW_RELEASE_MANIFEST_DIGEST__
+
+FORMAL_JOB_ID=__REVIEW_FORMAL_JOB_ID__
+FORMAL_MASTER_SHA256=__REVIEW_FORMAL_MASTER_SHA256__
+FORMAL_MASTER_DIGEST=__REVIEW_FORMAL_MASTER_DIGEST__
+FORMAL_SUBMISSION_SHA256=__REVIEW_FORMAL_SUBMISSION_SHA256__
+FORMAL_SUBMISSION_DIGEST=__REVIEW_FORMAL_SUBMISSION_DIGEST__
+
+COMPUTE_BASH_PATH=/usr/bin/bash
+COMPUTE_BASH_SHA256=__REVIEW_COMPUTE_BASH_SHA256__
+COMPUTE_BASH_VERSION_STDOUT_SHA256=__REVIEW_COMPUTE_BASH_VERSION_STDOUT_SHA256__
+COMPUTE_BASH_VERSION_FIRST_LINE=__REVIEW_COMPUTE_BASH_VERSION_FIRST_LINE__
+
+Materialization order
+---------------------
+1. Freeze the v2 adapter, compute ADAPTER_SHA256, and substitute it into the
+   fresh CPU launcher together with the terminal formal and compute-Bash pins.
+2. Compute the resulting LAUNCHER_SHA256.  Do not edit that launcher again.
+3. Freeze the terminal postflight and compute POSTFLIGHT_SHA256.  Then substitute
+   ADAPTER_SHA256, LAUNCHER_SHA256, POSTFLIGHT_SHA256, formal pins, and Bash pins
+   into the submitter.  Compute SUBMITTER_SHA256 only after this final substitution.
+4. Stage archive/adapter/launcher/submitter/postflight/hostile sources plus the
+   release-manifest materializer
+   create-only under the fresh RELEASE_ROOT inputs, each plain nlink=1 mode
+   0444. The materializer additionally retains and pins the formal master and
+   formal submission receipts as external `formal_inputs`. Run it exactly once,
+   seal RELEASE_MANIFEST_SHA256 and RELEASE_MANIFEST_DIGEST outside the manifest,
+   and pass both explicitly to hostile, submitter, and postflight; directories
+   become 0555 only after this closure.
+5. On AUH, run the hostile source in release mode with the exact Bash pins plus
+   `--hostile`, `--manifest-materializer`, `--source-archive`,
+   `--release-manifest`, `--expected-release-manifest-sha256`, and
+   `--expected-release-manifest-digest`. It must reject placeholders, deeply
+   verify the external manifest/self/formal-input closure, compile all Python
+   release sources, and pass Bash -n.
+6. Invoke the submitter only after its own fresh sacct observation again sees
+   the formal Job as one exact COMPLETED/0:0 row.  It queues directly: hold=false
+   and dependency=null.  Before that queue, it also deeply revalidates the
+   formal receipt's three non-substitutable gates: Job134393 exact60 lifecycle,
+   Job134647 retained-Bash probe, and the fresh retained-FD WORLD8 admission
+   that binds the exact probe.
+7. After the review Job terminates, run the sealed postflight.  Only its fresh
+   terminal admission may change machine artifact ingestion readiness to true.
+   The postflight rebinds all 60 assessor-private items to the sealed formal
+   master, event spec, and source manifest before admitting any output.
+
+Automatic output interface
+--------------------------
+- diagnostics/*.json: 60 assessor-private exact81 technical/camera/temporal diagnostics.
+- index.html: assessor-private machine stage; it must not be copied or published
+  to observers before two external human response seals exist.
+- blind-review.html: the only stage-1 public surface; all 68 href/src bindings
+  are closed to opaque source/candidate aliases, with no registered candidate
+  ID, iid, seed, branch label, technical path, or machine value.
+- media/sources and media/candidates: fresh cryptographically randomized,
+  domain-separated, pre-registered opaque aliases; the random nonce is
+  discarded and the registered mapping remains only in the sealed
+  assessor-private manifest.
+- observer-templates/*.json: exactly two immutable blank templates.
+- *.automation.receipt.json: canonical sealed paths/hashes for MD/HTML ingestion.
+
+The runtime automation receipt must retain machine_artifacts_materialized=true,
+machine_ingest_ready=false, human_label_ingest_ready=false, and
+external_terminal_postflight_required=true, plus
+blind_stage_public_surface_only=true,
+technical_html_may_publish_before_two_external_human_seals=false, and
+assessor_private_mapping_may_be_copied_to_stage1=false.  A later external terminal
+postflight may admit machine ingestion only after exact COMPLETED/0:0 and only
+with machine_artifact_ingest_scope=assessor_private_only; human-visible machine
+backfill remains false.  It still may not fill observer templates or infer
+semantic event/identity labels.
+The blind page is the only pre-label UI; index.html/diagnostics visibility waits
+for two independently sealed external human response artifacts.

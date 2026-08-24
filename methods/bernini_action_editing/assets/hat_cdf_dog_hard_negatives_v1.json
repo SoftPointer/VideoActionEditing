@@ -1,0 +1,18 @@
+{
+  "schema_version": "bernini-iar-hard-negative-manifest-v1",
+  "action_instruction_sha256": "fc7565bd4141eb9753822ab7be05b7e718d9e3dcd5dea52733fd3c173e491937",
+  "hard_negatives": [
+    {
+      "condition_id": "semantic_noop",
+      "instruction": "Overhead medium shot of a tan pit bull dog sitting still on gray concrete beside a yellow bone. The same dog remains seated and keeps its head away from the bone; it never touches, grips, lifts, or holds the bone. Natural daylight, stable camera, anatomically consistent dog.",
+      "instruction_sha256": "8d97e2244a6ce621a4106ca96cafda2f41b279977827d9c1ec3077c73291cd28"
+    },
+    {
+      "condition_id": "incomplete_approach_without_pickup",
+      "instruction": "Overhead medium shot of a tan pit bull dog sitting on gray concrete beside a yellow bone. The same dog lowers its head and sniffs near the bone but never touches, grips, lifts, or holds it; the bone remains on the floor. Natural daylight, stable camera, anatomically consistent dog.",
+      "instruction_sha256": "c9571813c6795f286de6c9d6c26b5a2027673eb0db197b0c887d22c44eda2e0f"
+    }
+  ],
+  "energy_semantics": "runtime_fp32_mse_to_epsilon_minus_bridge_clean_lower_is_harder",
+  "declared_use": "engineering_plumbing_only"
+}

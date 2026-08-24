@@ -1,0 +1,40 @@
+{
+  "schema_version": "bernini-appearance-identity-orbit-qualification-protocol-v1",
+  "purpose": "Qualify source plus two frozen-Bernini appearance variants as same-motion, different-identity pretext data; never as action-edit supervision.",
+  "review_unit": "one complete three-member exact81 orbit",
+  "review_visibility": {
+    "required_members": [
+      "source",
+      "variant_a",
+      "variant_b"
+    ],
+    "all_81_frames_required": true,
+    "same_frame_index_comparison_required": true,
+    "forward_temporal_order_review_required": true,
+    "downstream_training_results_must_be_hidden": true
+  },
+  "member_gates": {
+    "appearance_identity_changed_from_source": "The edited actor has a stable, visibly different identity/appearance from frame 0 through frame 80; a mid-video identity transition fails.",
+    "motion_phase_and_order_preserved": "Actor pose, articulated motion phases, direction, object interaction, and coarse timing correspond to the source; pixel equality is not required.",
+    "camera_path_preserved": "Framing, viewpoint, and any camera motion correspond to the source across the full clip.",
+    "background_scene_preserved": "Scene layout, lighting family, and background content remain source-corresponding.",
+    "object_correspondence_preserved": "Every action-relevant source object remains present with corresponding position and temporal role.",
+    "temporal_quality_passed": "No identity morph, subject duplication, temporal discontinuity, or progressive collapse is visible.",
+    "spatial_quality_passed": "No severe anatomical, texture, or compositing failure makes the member unusable as a visual condition.",
+    "no_extra_actor_or_object": "No actor or action-relevant object is added or removed."
+  },
+  "cross_member_gates": {
+    "variant_a_and_variant_b_semantic_identities_distinct": "The two variants are semantically distinct identities/appearances, not merely byte-distinct encodes or tiny color jitter.",
+    "same_motion_across_all_members": "All three members retain corresponding ordered motion phases and interaction structure.",
+    "same_camera_across_all_members": "All three members retain the same camera path and framing.",
+    "same_scene_across_all_members": "All three members retain the same scene and action-relevant objects."
+  },
+  "decision_rule": "Every member and cross-member gate must pass; no weighted compensation and no post-training reselection are allowed.",
+  "authorized_claim": "appearance-counterfactual factor-exchange pretext only",
+  "forbidden_claims": [
+    "successful action editing",
+    "synthetic action target ground truth",
+    "pixel-exact motion preservation",
+    "independent human evaluation unless a human actually signs a separate seal"
+  ]
+}

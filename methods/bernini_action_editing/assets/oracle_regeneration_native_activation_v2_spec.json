@@ -1,0 +1,120 @@
+{
+  "schema_version": "bernini-oracle-regeneration-native-activation-v2-spec-v1",
+  "status": "BLOCKED_PENDING_INDEPENDENT_MODEL_GATE_REVIEW_AND_COMPILED_TRUST_ANCHORS",
+  "launch_ready": false,
+  "scope": "experimental diagnostic canary only",
+  "authority_kind": "diagnostic_exact_packet_and_code_review_trust_root",
+  "formal_authority": false,
+  "training_authority": false,
+  "training": false,
+  "optimizer": false,
+  "automatic_replacement": false,
+  "selection_authority": null,
+  "native_only": true,
+  "flowedit": false,
+  "connected_route": false,
+  "learned_gate": false,
+  "world_size": 4,
+  "sequence_parallel_size": 4,
+  "one_node": true,
+  "candidate_count_per_arm": 1,
+  "runner_allowlist": [
+    "infer_oracle_regeneration_native_activation_v2.py"
+  ],
+  "components": {
+    "activation_core": {
+      "path": "oracle_regeneration_activation_v2.py",
+      "sha256": null
+    },
+    "native_runner": {
+      "path": "infer_oracle_regeneration_native_activation_v2.py",
+      "sha256": null
+    },
+    "vae_reference_materializer": {
+      "path": "tools/materialize_oracle_regeneration_vae_refs_activation_v2.py",
+      "sha256": null
+    },
+    "prompt_materializer": {
+      "path": "tools/materialize_oracle_regeneration_prompts_activation_v2.py",
+      "sha256": null
+    }
+  },
+  "frozen_runtime_dependencies": {
+    "oracle_regeneration_canary_v1.py": "0148b137c200e426ff18571f71d373a9e6ef595c620664925dae0ab9d1d91081",
+    "native_branch_homotopy_runtime_v1.py": "b81ee152e358e4d5a6638dfccf1232c4e221311ffb38937e61be3c6a799b84d5",
+    "native_branch_homotopy_v1.py": "2585416e61935db62cc7534daf19b4bb851f9fdcdeb92f78e6152f55e034f3d0",
+    "self_guided_action_field_v1.py": "2ad204c09f5eb60865017b1e596de25b777d8d6ed43774f4dcbc23a4ad58bc7e",
+    "tri_branch_unipc.py": "58d2e0e8d56a500eea07ec20f0fb101539ac846bbd039c0d50a22506b58fb3d2",
+    "infer_native_identity_generation_canary.py": "bf402cd65257121d1ebedcc83c2c59965b37305a36b0b5a6327241e74d7b4f42",
+    "infer_native_branch_homotopy_canary.py": "d6dab735ce52da151848c96f9e00775994dc281ace20afa6dcb9fb64709e5983",
+    "infer_source_kv_carrier_oracle.py": "fcf77576735c89e685415b94b2dc0f0c5b8d1dd8dc1c55832538ff0daafb4604",
+    "infer_source_value_residual_oracle.py": "40e581db7906f20103a16ad47fda76978cbad21c9277723f3e8e022d717ed2d8",
+    "infer_native_self_guided_action_field_canary.py": "ad591fe5bd5943fab59603400fcf70a126f3461a39670f93a78aa24b1902d313",
+    "infer_lora.py": "acc46ff5b2106b7974bc8e1effd5e5c9b682b7ff16421c6d7d3d0d18d396a553",
+    "tools/materialize_vae.py": "a09677c9308fa030449f481da42dbc6d1bf2a88cbcd92e9cd1f26c3967bfb6f0"
+  },
+  "compiled_authority_packet_sha256": null,
+  "compiled_external_ledger_receipt_sha256": null,
+  "cases": {
+    "e02": {
+      "decision": "ACTIVE_DIAGNOSTIC_AFTER_REVIEW_ONLY",
+      "arms": [
+        "official-v2v-base",
+        "local-source-reference-r2v4-in-manual-G"
+      ],
+      "gate_channels": ["D", "C", "K", "G"],
+      "hard_support": "G=D|C|K",
+      "expected_nonempty_phase_windows": {
+        "D": [1, 20],
+        "C": [5, 20],
+        "K": [4, 20],
+        "G": [1, 20]
+      },
+      "maximum_per_phase_G_fraction": 0.3,
+      "gate_author_kind": "AI_AGENT",
+      "gate_reviewer_kind": "AI_AGENT",
+      "authority_packet": null,
+      "external_ledger_receipt": null,
+      "gate_manifest": null,
+      "gate_review_receipt": null,
+      "vae_reference_receipt": null,
+      "prompt_receipt": null
+    },
+    "e03": {
+      "decision": "ABSTAIN_KEEP_BASE",
+      "arms": ["official-v2v-base"],
+      "active_gate": null,
+      "automatic_replacement": false,
+      "strict_non_regression_required_for_any_later_selection": true,
+      "authority_packet": null,
+      "external_ledger_receipt": null,
+      "vae_reference_receipt": null,
+      "prompt_receipt": null
+    }
+  },
+  "scientific_boundary": {
+    "source_reference_r2v4_regeneration_expert": true,
+    "self_generated_anchor_tensor_used": false,
+    "anchor_used_only_as_review_context": true,
+    "anchor_reference_or_quotient_arm_deferred": true,
+    "global_source_reference_r2v4_upper_bound_arm_deferred": true,
+    "outside_G_claim": "within local arm, scheduler model_output bytes equal that same step official V2V bytes outside exact G",
+    "cross_arm_final_outside_pixel_identity_claimed": false
+  },
+  "post_run_contract": {
+    "outputs_side_by_side_only": true,
+    "base_and_regen_video_hashes_required": true,
+    "automatic_selection": false,
+    "background_cosine_selection": false,
+    "e03_keep_base": true,
+    "later_output_bound_independent_review_required_for_any_selection": true
+  },
+  "mandatory_blockers": [
+    "independent e02 AI-agent gate review has not accepted exact D/C/K bytes",
+    "VAE source/reference receipts have not been materialized and frozen",
+    "prompt receipts have not been materialized and frozen",
+    "diagnostic authority packet and external ledger exact SHAs are not compiled",
+    "component SHAs are not finalized",
+    "runner and launcher have not passed final static audit"
+  ]
+}

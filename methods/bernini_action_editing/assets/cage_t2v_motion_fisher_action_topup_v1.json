@@ -1,0 +1,51 @@
+{
+  "schema_version": "bernini-cage-t2v-motion-fisher-action-topup-spec-v1",
+  "base_core4_v2_spec_sha256": "a18387b383fb11f19279c67694089754ff84b51e939e7a92b51a7e35a0743a95",
+  "sampling_contract": "inherit_pair_v5_native_exact81_unipc40_t2v",
+  "semantic_contract": {
+    "action_branch_only": true,
+    "base_action_caption_and_geometry_reused_exactly": true,
+    "new_generation_seed_required": true,
+    "official_initial_gaussian_required": true,
+    "event_audit_not_in_generation_condition": true,
+    "negative_branch_generation_required": false,
+    "rv2v_condition_target_donor_or_noise": false
+  },
+  "groups": [
+    {
+      "group_id": "sp4-a",
+      "visible_gpus": [0, 1, 2, 3],
+      "candidates": [
+        {
+          "candidate_id": "pair5-t2v-motion-fisher-topup-v1-7b88a1ca1f804f41-action-s2026081825",
+          "base_action_candidate_id": "pair5-t2v-core4-v2-7b88a1ca1f804f41-action",
+          "seed": 2026081825
+        },
+        {
+          "candidate_id": "pair5-t2v-motion-fisher-topup-v1-a66e6818e4144928-action-s2026081828",
+          "base_action_candidate_id": "pair5-t2v-core4-v2-a66e6818e4144928-action",
+          "seed": 2026081828
+        }
+      ]
+    },
+    {
+      "group_id": "sp4-b",
+      "visible_gpus": [4, 5, 6, 7],
+      "candidates": [
+        {
+          "candidate_id": "pair5-t2v-motion-fisher-topup-v1-841b5e0080a1441d-action-s2026081826",
+          "base_action_candidate_id": "pair5-t2v-core4-v2-841b5e0080a1441d-action",
+          "seed": 2026081826
+        },
+        {
+          "candidate_id": "pair5-t2v-motion-fisher-topup-v1-a35b590961d24694-action-s2026081827",
+          "base_action_candidate_id": "pair5-t2v-core4-v2-a35b590961d24694-action",
+          "seed": 2026081827
+        }
+      ]
+    }
+  ],
+  "training_performed": false,
+  "optimizer_created": false,
+  "optimizer_update_authorized": false
+}

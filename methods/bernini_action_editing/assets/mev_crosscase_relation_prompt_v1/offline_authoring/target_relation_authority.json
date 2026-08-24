@@ -1,0 +1,108 @@
+{
+  "schema": "mev-crosscase-human-target-relation-authoring-v1",
+  "experiment_role": "offline-human-relation-authoring-only",
+  "data_split": "test",
+  "evaluation_role": "calibration-only-not-independent-test",
+  "authority": {
+    "generator_read_authorized": false,
+    "renderer_condition_authorized": false,
+    "training_authorized": false,
+    "optimizer_updates": 0,
+    "text_prompt_authoring_only": true
+  },
+  "evidence_files": {
+    "manual_action_contracts": {
+      "path": "methods/action_anchor_target_gap_audit/manual_action_contracts_v2.json",
+      "sha256": "6fcba9ea0cf003691fa3a3ec9ccc70077ed1bfdea0b7c70527caa3be2f9a57e8"
+    },
+    "selected_pairs": {
+      "path": "methods/action_anchor_target_gap_audit/selected_pair_prefixes.json",
+      "sha256": "e89a38c68bebc861bf5c7533da9d2a66ef7e02d9e3543667027a8ec2b9d70870"
+    },
+    "review_bundle": {
+      "path": "md/action_editing/20260819_anchor_gap16_review/bundle_manifest.json",
+      "sha256": "b188a2189847987b1520b84f53baa4ca3992e7ea87028b017574f630d0937307"
+    }
+  },
+  "cases": {
+    "8b05aaf463db": {
+      "target_video_original": {
+        "path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/94499794-8ef0-43ee-af6b-3c780492fb00-00.00.02.804-00.00.08.436-seg2.mp4",
+        "sha256": "a3dcd52078ec463c5b4b951fd4dd2b45a81b5e29a1a45e47a0802c011e115144"
+      },
+      "target_video_normalized81": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/8b05aaf463db/real_target.mp4",
+        "sha256": "f4b7548345fdfd3167316966461f4d0f4e6d085191ba9a36a89882da5a96c0a7"
+      },
+      "action_semantics": "The same metal grill basket containing the meat lifts away from the grill and then returns to rest on it.",
+      "roles": {
+        "agent": "implicit off-screen actuator",
+        "moving_object": "metal grill basket containing the meat",
+        "recipient_or_support": "grill above the hot coals"
+      },
+      "ordered_relations": [
+        "basket-to-grill support contact is initially present",
+        "support contact ends while basket-to-grill distance increases",
+        "basket-to-grill distance then decreases",
+        "support contact is re-established and maintained at the endpoint"
+      ],
+      "identity_invariants": ["one persistent grill basket", "the same meat remains inside", "no pan substitution or duplication"]
+    },
+    "40712e1341dc": {
+      "target_video_original": {
+        "path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/88a17729-f1d4-489d-8e73-248bbc088141-00.00.03.347-00.00.06.668-seg2.mp4",
+        "sha256": "2b64f8177ba8494d727bf440238f183a40df32d13d93e8ceb381617063c4fc6a"
+      },
+      "target_video_normalized81": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/40712e1341dc/real_target.mp4",
+        "sha256": "b3ee66f0baab504c4f88f64159055bb94b0281fd3907d9fbdd37bff054b199ab"
+      },
+      "action_semantics": "The man places the same smartphone on the nightstand, releases it, withdraws his hand, and then turns over to sleep.",
+      "roles": {
+        "agent": "man and manipulating hand",
+        "moving_object": "smartphone",
+        "recipient_or_support": "nightstand",
+        "secondary_motion_role": "the man's torso relative to the bed"
+      },
+      "ordered_relations": [
+        "hand-to-phone contact is maintained during approach",
+        "phone-to-nightstand distance decreases",
+        "phone-to-nightstand support contact precedes hand release",
+        "phone remains supported while hand-to-phone distance increases",
+        "torso orientation changes only after the phone is left on the nightstand"
+      ],
+      "identity_invariants": ["one persistent smartphone", "phone is not retained in the hand", "phone remains on the nightstand during the body turn"]
+    },
+    "5e83a9279951": {
+      "target_video_original": {
+        "path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/7f77acdb-6772-4e14-9c14-98f2cb2fa9b5-00.00.03.699-00.00.09.464-seg2.mp4",
+        "sha256": "8e3a31d29fcbff2e57979afb7d93b0eef6fc1dd8ae23659baa787f6f9e96af79"
+      },
+      "target_video_normalized81": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/5e83a9279951/real_target.mp4",
+        "sha256": "4fbdc6b88956b2822be356eb79c4c3148d93f2bbc6b09fff089d7ae3a68f56e6"
+      },
+      "action_semantics": "The elderly man adjusts his glasses and only afterward reaches for, grasps, and lifts a smartphone distinct from the tablet.",
+      "roles": {
+        "agent": "elderly man and manipulating hand",
+        "first_contact_object": "glasses",
+        "moving_object": "smartphone",
+        "distractor_object": "tablet",
+        "recipient_or_gripper": "the man's hand"
+      },
+      "ordered_relations": [
+        "hand-to-glasses contact is established for adjustment",
+        "hand-to-glasses contact ends before phone pickup",
+        "hand-to-phone distance decreases while the tablet stays separate",
+        "hand-to-phone grasp is established",
+        "phone-to-initial-support distance increases while the grasp is maintained"
+      ],
+      "identity_invariants": ["glasses, tablet, and smartphone stay distinct", "one persistent smartphone", "tablet is not transformed into or exchanged with the phone"]
+    }
+  },
+  "generation_boundary": {
+    "this_file_must_not_be_read_by_generator": true,
+    "generation_receipts_must_list_only_source_video_and_positive_prompt_matrix": true,
+    "target_paths_must_not_appear_in_generation_config_or_receipt": true
+  }
+}

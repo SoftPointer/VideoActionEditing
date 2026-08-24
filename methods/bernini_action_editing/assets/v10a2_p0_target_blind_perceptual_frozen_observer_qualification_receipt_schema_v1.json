@@ -1,0 +1,228 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bernini-v10a2-p0-target-blind-perceptual-frozen-observer-qualification-receipt-schema-v1",
+  "title": "V10-A2 P0 target-blind perceptual and frozen-observer qualification receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "qualification_id",
+    "status",
+    "decision",
+    "contract",
+    "inputs",
+    "execution",
+    "perceptual_qualification",
+    "observer_qualification",
+    "frozen_base_b0",
+    "target_teacher_boundary",
+    "permissions",
+    "blockers",
+    "claim_boundary",
+    "receipt_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "bernini-v10a2-p0-target-blind-perceptual-frozen-observer-qualification-receipt-v1"
+    },
+    "qualification_id": {
+      "const": "v10a2_p0_target_blind_perceptual_frozen_observer_qualification_v1"
+    },
+    "status": {
+      "enum": [
+        "QUALIFICATION_NO_ABSTAIN",
+        "QUALIFICATION_EVIDENCE_PASS_P0_AUTHORITY_NO"
+      ]
+    },
+    "decision": {
+      "enum": ["ABSTAIN", "PASS"]
+    },
+    "contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["file_sha256", "self_sha256", "verified"],
+      "properties": {
+        "file_sha256": {"$ref": "#/$defs/sha256"},
+        "self_sha256": {"$ref": "#/$defs/sha256"},
+        "verified": {"type": "boolean"}
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provisional_registry_file_sha256",
+        "provisional_registry_self_sha256",
+        "actual_manifest_file_sha256",
+        "actual_manifest_self_sha256",
+        "candidate_count",
+        "actual_media_count",
+        "target_or_action_metadata_released_to_p0"
+      ],
+      "properties": {
+        "provisional_registry_file_sha256": {"$ref": "#/$defs/sha256"},
+        "provisional_registry_self_sha256": {"$ref": "#/$defs/sha256"},
+        "actual_manifest_file_sha256": {"$ref": "#/$defs/sha256"},
+        "actual_manifest_self_sha256": {"$ref": "#/$defs/sha256"},
+        "candidate_count": {"const": 64},
+        "actual_media_count": {"const": 32},
+        "target_or_action_metadata_released_to_p0": {"const": false}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "gpu_used_by_this_runner",
+        "models_loaded_by_this_runner",
+        "optimizer_created",
+        "backward_calls",
+        "parameter_updates",
+        "generator_loaded",
+        "generator_forward_calls"
+      ],
+      "properties": {
+        "mode": {"const": "cpu_readonly_receipt_admission"},
+        "gpu_used_by_this_runner": {"const": false},
+        "models_loaded_by_this_runner": {"const": false},
+        "optimizer_created": {"const": false},
+        "backward_calls": {"const": 0},
+        "parameter_updates": {"const": 0},
+        "generator_loaded": {"const": false},
+        "generator_forward_calls": {"const": 0}
+      }
+    },
+    "perceptual_qualification": {"$ref": "#/$defs/stage"},
+    "observer_qualification": {"$ref": "#/$defs/stage"},
+    "frozen_base_b0": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arm_id",
+        "first_class_future_arm_preserved",
+        "replaced_by_historical_or_metadata_row",
+        "executed_by_qualification",
+        "capture_calls",
+        "generator_forward_calls",
+        "parameter_updates",
+        "future_mev_40_cell_parity_still_required",
+        "future_factorial_36_cell_b0_closure_still_required",
+        "future_total_b0_action_cell_count",
+        "fallback_still_required"
+      ],
+      "properties": {
+        "arm_id": {"const": "B0_FROZEN_BASE"},
+        "first_class_future_arm_preserved": {"const": true},
+        "replaced_by_historical_or_metadata_row": {"const": false},
+        "executed_by_qualification": {"const": false},
+        "capture_calls": {"const": 0},
+        "generator_forward_calls": {"const": 0},
+        "parameter_updates": {"const": 0},
+        "future_mev_40_cell_parity_still_required": {"const": true},
+        "future_factorial_36_cell_b0_closure_still_required": {"const": true},
+        "future_total_b0_action_cell_count": {"const": 76},
+        "fallback_still_required": {"const": true}
+      }
+    },
+    "target_teacher_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_observer_process_target_teacher_read_count",
+        "p3_route_process_target_teacher_read_count",
+        "p3_route_process_actual_locked_graph_read_count",
+        "p3_reward_source",
+        "actual_target_graph_used_in_generator_loss",
+        "actual_locked_graph_external_evaluator_only"
+      ],
+      "properties": {
+        "p0_observer_process_target_teacher_read_count": {"const": 0},
+        "p3_route_process_target_teacher_read_count": {"const": 0},
+        "p3_route_process_actual_locked_graph_read_count": {"const": 0},
+        "p3_reward_source": {"const": "frozen_binder_same_state_self_generated_action_minus_mean_noop_a_noop_b_middle_layer_only"},
+        "actual_target_graph_used_in_generator_loss": {"const": false},
+        "actual_locked_graph_external_evaluator_only": {"const": true}
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_slot_pretraining_authorized",
+        "binder_training_authorized",
+        "generator_training_authorized",
+        "gpu_launch_authorized",
+        "parameter_updates_authorized"
+      ],
+      "properties": {
+        "p0_slot_pretraining_authorized": {"const": false},
+        "binder_training_authorized": {"const": false},
+        "generator_training_authorized": {"const": false},
+        "gpu_launch_authorized": {"const": false},
+        "parameter_updates_authorized": {"const": false}
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "claim_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "perceptual_disjointness_supported",
+        "observer_observability_supported",
+        "official_registry_supported",
+        "representation_supported",
+        "transfer_supported",
+        "training_run"
+      ],
+      "properties": {
+        "perceptual_disjointness_supported": {"type": "boolean"},
+        "observer_observability_supported": {"type": "boolean"},
+        "official_registry_supported": {"const": false},
+        "representation_supported": {"const": false},
+        "transfer_supported": {"const": false},
+        "training_run": {"const": false}
+      }
+    },
+    "receipt_sha256": {"$ref": "#/$defs/sha256"}
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "receipt_present",
+        "receipt_file_sha256",
+        "receipt_self_sha256",
+        "external_completion_seal_present",
+        "external_completion_seal_file_sha256",
+        "evidence_admitted"
+      ],
+      "properties": {
+        "status": {"enum": ["MISSING", "INVALID", "PASS"]},
+        "receipt_present": {"type": "boolean"},
+        "receipt_file_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "receipt_self_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "external_completion_seal_present": {"type": "boolean"},
+        "external_completion_seal_file_sha256": {
+          "oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]
+        },
+        "evidence_admitted": {"type": "boolean"}
+      }
+    }
+  },
+  "receipt_schema_sha256": "f049d734f00d83a115dc61a96f5bb1466634c3e7105ec6d2edf069c4bf8c83ee"
+}

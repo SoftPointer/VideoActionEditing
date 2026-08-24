@@ -1,0 +1,225 @@
+{
+  "action_contract": {
+    "action_id": "pour",
+    "actor_role": "new_actor_2",
+    "appearance_values_in_prompt_or_graph_forbidden": true,
+    "canonical_target_action_text": "#2 follows the registered target-native trajectory; #2 contacts #3 and performs the registered pour timing.",
+    "editable_factors": [
+      "new_actor_2.target_native_trajectory",
+      "new_actor_2_to_recipient_3.contact_timing",
+      "new_actor_2_to_recipient_3.pour_timing"
+    ],
+    "identity_locks": {
+      "human_agent": "source-bound identity only; not a learnable appearance target",
+      "new_actor_2": "source-bound identity only; not a learnable appearance target",
+      "old_actor_1": "source-bound identity only; not a learnable appearance target",
+      "recipient_3": "source-bound identity only; not a learnable appearance target"
+    },
+    "recipient_role": "recipient_3",
+    "source_owned_nonlearnable_property_factors": [
+      "human_agent.color",
+      "human_agent.material",
+      "human_agent.shape",
+      "old_actor_1.color",
+      "old_actor_1.material",
+      "old_actor_1.shape",
+      "new_actor_2.color",
+      "new_actor_2.material",
+      "new_actor_2.shape",
+      "recipient_3.color",
+      "recipient_3.material",
+      "recipient_3.shape",
+      "liquid.color",
+      "liquid.material",
+      "liquid.shape",
+      "liquid.appearance"
+    ],
+    "source_visible_amber_is_source_property_not_action_target": true
+  },
+  "arms": [
+    {
+      "arm_id": "A_NATIVE_FROZEN_OBSERVERS_ONLY",
+      "current_write_policy": "synthetic_plan_exact_zero_not_runtime_observation",
+      "graph_slot": null,
+      "intended_components_after_future_authorization": []
+    },
+    {
+      "arm_id": "B_LEDGER_PROPERTY_BACKGROUND_GRAPH0",
+      "current_write_policy": "synthetic_plan_exact_zero_not_runtime_observation",
+      "graph_slot": null,
+      "intended_components_after_future_authorization": [
+        "instance_ledger",
+        "source_property_memory",
+        "strict_source_background_restore",
+        "hole_guard"
+      ]
+    },
+    {
+      "arm_id": "C_SIGNED_GRAPH_V0",
+      "current_write_policy": "synthetic_plan_exact_zero_not_runtime_observation",
+      "graph_slot": "v0",
+      "intended_components_after_future_authorization": [
+        "instance_ledger",
+        "source_property_memory",
+        "strict_source_background_restore",
+        "hole_guard",
+        "signed_action_graph_v0"
+      ]
+    },
+    {
+      "arm_id": "D_APPEARANCE_COUNTERFACTUAL_GRAPH_V1",
+      "current_write_policy": "synthetic_plan_exact_zero_not_runtime_observation",
+      "graph_slot": "v1",
+      "intended_components_after_future_authorization": [
+        "instance_ledger",
+        "source_property_memory",
+        "strict_source_background_restore",
+        "hole_guard",
+        "appearance_counterfactual_action_graph_v1"
+      ]
+    }
+  ],
+  "authorizations": {
+    "decode_authorized": false,
+    "external_source_authority_passed": false,
+    "gpu_execution_authorized": false,
+    "nonzero_write_authorized": false,
+    "optimizer_authorized": false,
+    "route_execution_authorized": false,
+    "scientific_claim_authorized": false,
+    "training_authorized": false
+  },
+  "background_carrier_policy": {
+    "allowed_scope": [
+      "background",
+      "strict_support"
+    ],
+    "forbidden_scope": [
+      "human_agent",
+      "old_actor_1",
+      "new_actor_2",
+      "recipient_3",
+      "motion_corridor",
+      "contact",
+      "HOLE"
+    ],
+    "outside_allowed_mask_delta": "exact_zero_per_execution_cell",
+    "provenance": "same_source_static_reforward_runtime"
+  },
+  "cfg_branches": [
+    "negative",
+    "conditional"
+  ],
+  "default_write_scales": {
+    "attention_output_rewrite": 0.0,
+    "graph_route_v0": 0.0,
+    "graph_route_v1": 0.0,
+    "hidden_residual": 0.0,
+    "hole_completion": 0.0,
+    "parameter_update": 0.0,
+    "pre_rope_key_rewrite": 0.0,
+    "source_background_restore": 0.0,
+    "source_property_restore": 0.0,
+    "value_rewrite": 0.0
+  },
+  "cell_audits_are_synthetic_plan": true,
+  "decision": "UNEXECUTED_SYNTHETIC_PLAN_R4_PASS__RUNTIME_ROUTE_TRAINING_SCIENCE_NO_GO",
+  "fresh_bundle_validation_required": true,
+  "denoise_steps": 40,
+  "grid": [
+    21,
+    37,
+    25
+  ],
+  "ledger_roles": [
+    "human_agent",
+    "old_actor_1",
+    "new_actor_2",
+    "recipient_3",
+    "HOLE",
+    "background"
+  ],
+  "method": "bernini-zero-update-route-integration-v15d-r4",
+  "object_feature_policy": "source_property_memory_only",
+  "ordinal_block_addressing_forbidden": true,
+  "physical_block_address_kind": "physical_transformer_block",
+  "physical_block_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "physical_block_namespace": "bernini_r_1p3b.transformer.blocks",
+  "route_physical_block_count": 22,
+  "route_physical_block_ids": [
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19,
+    21,
+    22,
+    23,
+    25,
+    26,
+    27,
+    29
+  ],
+  "runtime_execution_observed": false,
+  "schema_version": "bernini-zero-update-route-integration-contract-v15d-r4",
+  "scope": "unexecuted_local_cpu_synthetic_plan_only",
+  "single_ledger_across_all_blocks_and_cfg": true,
+  "standalone_receipt_authority": false,
+  "source_authority_state": "EXTERNAL_SOURCE_AUTHORITY_REQUIRED_NOT_PRESENT",
+  "source_future_track_policy": "not_an_input_to_target_motion_or_action_graph",
+  "unresolved_dependencies": [
+    "externally authenticated v15c source authority for human/#1/#2/#3",
+    "production proof that v15b property memory was extracted from that same source",
+    "production proof of position removal for source property memory",
+    "production target-role transport geometry/shape-preservation gate from v15b-r8",
+    "runtime binding of the actual Bernini 30 physical block objects to these IDs",
+    "externally authenticated target-native motion provenance independent of source-future tracks",
+    "same-source static re-forward/runtime authentication for the background carrier",
+    "overlap-aware human/vessel contact and corridor rasterization",
+    "real per-cell route instrumentation for mask-exterior delta and HOLE/object-source checks",
+    "human review of complete source tracks and appearance-counterfactual Graph-v1",
+    "separate route/decode/training authorization; this scaffold can never grant it"
+  ],
+  "vacated_new_actor_2_initial_site_policy": "HOLE_no_source_object_restore"
+}

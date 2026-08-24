@@ -1,0 +1,125 @@
+{
+  "schema_version": "bernini-self-imagined-motion-cotangent-core2-registry-v1",
+  "probe_id": "self-imagined-motion-cotangent-core2-p1",
+  "contract": {
+    "method": "per-query-frozen-bernini-self-imagined-motion-cotangent",
+    "external_inference_inputs": [
+      "source_video",
+      "instruction"
+    ],
+    "forbidden_auxiliary_inputs": [
+      "mask",
+      "track",
+      "pose",
+      "flow",
+      "detector_box",
+      "swept_tube"
+    ],
+    "owner_mode": "frozen_bernini_pure_t2v",
+    "owner_generation_count_per_cell": 1,
+    "owner_to_editor_allowed_channel": "detached_normalized_prompt_relative_temporal_hidden_quotient",
+    "owner_to_editor_forbidden_channels": [
+      "rgb",
+      "clean_latent",
+      "gaussian",
+      "text_condition",
+      "velocity",
+      "reference",
+      "initial_noise",
+      "target",
+      "donor",
+      "parameter_gradient"
+    ],
+    "hook_coordinate": "block.15.output",
+    "prompt_relative_pair": "action_minus_scene_matched_noop_same_x_sigma",
+    "spatial_signature": [
+      "signed_channel_mean",
+      "centered_channel_rms_second_moment"
+    ],
+    "owner_editor_spatial_geometry_may_differ": true,
+    "content_selected_mask_matching_or_ot": false,
+    "native_schedule_index": 33,
+    "native_timestep": 516,
+    "sigma": 0.5161304473876953,
+    "query_seed_count_per_cell": 2,
+    "frame_count": 81,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "world_topology": "two_concurrent_world4_sp4_groups_on_one_8gpu_node",
+    "relative_l2_dose": 0.01,
+    "minimum_owner_template_cosine": 0.05,
+    "minimum_same_topology_specificity_margin": 0.1,
+    "minimum_projected_cotangent_cosine": 0.0,
+    "minimum_projection_survival_cosine": 0.1,
+    "symmetric_arm_order": [
+      "plus",
+      "minus"
+    ],
+    "same_topology_reverse_query_required": true,
+    "plus_must_not_improve_reverse_rubric": true,
+    "seed_selection": false,
+    "seed_averaging": false,
+    "optimizer": false,
+    "parameter_update": false,
+    "failure_policy": "null_no_intervention_no_decode_no_update",
+    "scientific_or_action_editing_claim_authorized": false
+  },
+  "cells": [
+    {
+      "cell_id": "dog",
+      "actor_kind": "dog",
+      "source_iid": "7b88a1ca1f804f41",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "latent_shape": [
+        1,
+        16,
+        21,
+        60,
+        62
+      ],
+      "action_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+      "noop_caption": "A static camera observes one grey French bulldog in a black harness among yellow autumn leaves in a sunlit park; the continuous shot keeps the same dog, scene, framing, and illumination.",
+      "noop_caption_utf8_sha256": "aa0b2462d297fe31e47c676e21f1a5d8d99f21983493da034cf1482d79d91441",
+      "action_family_id": "dog-stand-to-sit-facing-camera",
+      "reverse_wrong_family_id": "dog-sit-to-stand-facing-camera",
+      "reverse_wrong_family_caption": "A single French bulldog starts in a stable seated pose facing the camera, pushes upward, extends both hind legs, reaches a stable four-legged stand, and holds the stand.",
+      "reverse_wrong_family_caption_utf8_sha256": "7913c0ff365301a2b970dbc4c2098c37a76301b8bf2e153850e143633f0199a5",
+      "owner_generation_seed": 2026081501,
+      "query_seeds": [
+        2026081502,
+        2026081503
+      ],
+      "selected_before_generation": true
+    },
+    {
+      "cell_id": "human",
+      "actor_kind": "human",
+      "source_iid": "a35b590961d24694",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "latent_shape": [
+        1,
+        16,
+        21,
+        64,
+        58
+      ],
+      "action_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_caption_utf8_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+      "noop_caption": "A static camera observes one woman against a solid warm yellow background; the continuous full-body shot keeps the same person, clothing, scene, framing, and illumination.",
+      "noop_caption_utf8_sha256": "1be9aa015aba37c8df5c0e22c92ef7117258cfdaa97de6373a8e9323a0198007",
+      "action_family_id": "human-one-knee-to-upright-stand",
+      "reverse_wrong_family_id": "human-upright-stand-to-one-knee",
+      "reverse_wrong_family_caption": "A single woman starts in a stable upright stand, bends both knees, lowers her pelvis, settles onto one knee in a stable kneeling pose, and holds it.",
+      "reverse_wrong_family_caption_utf8_sha256": "e821960d84dd4f04fa7845823e312bbcdc0276af0ba34ba08dff596ad5ace93b",
+      "owner_generation_seed": 2026081504,
+      "query_seeds": [
+        2026081505,
+        2026081506
+      ],
+      "selected_before_generation": true
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": "bernini-caper-cdf-dog-object-grounding-exact81-v1",
+  "method": "frozen-bernini-caper-cdf-dog-object-grounding-exact81-canary",
+  "arm_order": [
+    "native-source-video-only-v2v-endpoint",
+    "pure-target-only-t2v-endpoint",
+    "t2v-v2v-branch-homotopy-095-075"
+  ],
+  "contract": {
+    "external_inference_inputs": [
+      "source_video",
+      "target_action_caption"
+    ],
+    "native_source_video_only_v2v_endpoint": {
+      "guidance_mode": "v2v_apg",
+      "positive_task": "mv2v",
+      "full_source_video_count": 1,
+      "source_reference_count": 0,
+      "first_frame_condition_count": 0,
+      "mask_track_pose_flow_count": 0,
+      "visual_condition_fixed_in_negative_and_action_forwards": true,
+      "forward_order": [
+        "V_negative",
+        "V_action"
+      ],
+      "transformer_forwards_per_step": 2,
+      "pure_source_video_only": true,
+      "homotopy_weight": 0.0
+    },
+    "pure_target_only_t2v_endpoint": {
+      "guidance_mode": "t2v_apg",
+      "positive_task": "t2v",
+      "full_source_video_count": 0,
+      "source_reference_count": 0,
+      "first_frame_condition_count": 0,
+      "mask_track_pose_flow_count": 0,
+      "target_only_visual_tokens": true,
+      "source_object_passed_to_sampler": false,
+      "forward_order": [
+        "none_negative",
+        "none_action"
+      ],
+      "transformer_forwards_per_step": 2,
+      "homotopy_weight": 1.0
+    },
+    "homotopy": {
+      "coordinate": "post_apg_scheduler_bound_target_velocity_fp32",
+      "formula": "v_exec=(1-h(sigma))*v_source_v2v+h(sigma)*v_pure_t2v",
+      "weight_formula": "h(sigma)=smoothstep(clamp((sigma-0.75)/(0.95-0.75),0,1))",
+      "smoothstep_formula": "smoothstep(u)=u*u*(3-2*u)",
+      "high_sigma": 0.95,
+      "low_sigma": 0.75,
+      "weight_at_or_above_high_sigma": 1.0,
+      "weight_at_or_below_low_sigma": 0.0,
+      "endpoint_velocities_measured_at_same_x_t_timestep_and_sigma": true,
+      "branch_apg_completed_independently_before_interpolation": true,
+      "fp32_interpolation_before_one_official_scheduler_step": true,
+      "hard_switch": false
+    },
+    "prompt_homotopy_disclosure": {
+      "same_target_action_caption_body": true,
+      "same_renderer_negative_embedding_object": true,
+      "source_v2v_positive_task_prefix": "official_mv2v_video_editing",
+      "pure_t2v_positive_task_prefix": "official_t2v_generation",
+      "task_prefix_and_visual_regime_change_together": true,
+      "shared_positive_embedding_across_endpoints": false
+    },
+    "apg_and_scheduler": {
+      "flow_shift_from_renderer_config": 5.0,
+      "sample_flow_shift_argument_alone_is_not_authority_under_unipc": true,
+      "omega_text": 4.0,
+      "eta": 0.5,
+      "norm_threshold": 50.0,
+      "momentum": 0.0,
+      "unipc_steps": 40,
+      "original_scheduler_steps_per_denoising_step": 1,
+      "exact40_shift5_schedule_sha256": "46f3dcb6e2d65cb7921e5217e2a20dfe008b366cfacafe455fee4d3c45f63ae2",
+      "homotopy_regions": {
+        "high_pure_t2v_weight_one_step_indices": [
+          0, 1, 2, 3, 4, 5, 6, 7, 8
+        ],
+        "strict_transition_step_indices": [
+          9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25
+        ],
+        "low_source_v2v_weight_one_step_indices": [
+          26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39
+        ]
+      }
+    },
+    "embedding_contract": {
+      "source_v2v_positive_shape": [1, 512, 4096],
+      "pure_t2v_positive_shape": [1, 512, 4096],
+      "negative_shape": [1, 512, 4096],
+      "negative_prompt": "verbatim_pinned_bernini_default_negative_prompt"
+    },
+    "condition_contract": {
+      "full_source_video_is_independently_vae_encoded_from_all_81_rgb_frames": true,
+      "pure_t2v_sampler_visual_conditions_all_none": true,
+      "source_v2v_sampler_has_exactly_one_full_source_video": true,
+      "source_references": false,
+      "first_frame_anchor": false,
+      "mask_track_pose_flow": false
+    },
+    "target_initialization": "official_gen_wanx22_fresh_gaussian",
+    "same_seed_and_official_gaussian_across_all_arms_within_cell": true,
+    "frame_count": 81,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "fps": 25,
+    "frozen_model": true,
+    "training": false,
+    "optimizer": false,
+    "parameter_update": false,
+    "generated_owner_media": false,
+    "target_video": false,
+    "custom_initial_noise": false,
+    "selected_before_generation": true
+  },
+  "object_grounding_evaluation_contract": {
+    "ordered_object_event_gate": {
+      "required_stage_order": [
+        "approach",
+        "contact",
+        "grip",
+        "lift",
+        "hold"
+      ],
+      "all_stages_required_in_order": true,
+      "stage_semantics": {
+        "approach": "the source-corresponding dog moves its mouth toward the source-corresponding bone",
+        "contact": "the source-corresponding dog's mouth visibly contacts the source-corresponding bone",
+        "grip": "the source-corresponding bone becomes secured by the source-corresponding mouth",
+        "lift": "the source-corresponding bone rises from its prior support while remaining gripped",
+        "hold": "the source-corresponding dog maintains the lifted source-corresponding bone in its mouth"
+      },
+      "automatic_adjudication_performed": false,
+      "automatic_success_claim_authorized": false,
+      "manual_review_required": true
+    },
+    "source_correspondence_gate": {
+      "required_correspondences": [
+        "source_dog_identity",
+        "source_bone_identity",
+        "source_dog_mouth_anatomical_identity"
+      ],
+      "dog_must_correspond_to_source_dog": true,
+      "bone_must_correspond_to_source_bone": true,
+      "mouth_must_correspond_to_source_dog_mouth": true,
+      "replacement_dog_does_not_pass": true,
+      "replacement_bone_does_not_pass": true,
+      "detached_or_anatomically_incoherent_mouth_does_not_pass": true,
+      "automatic_adjudication_performed": false,
+      "automatic_success_claim_authorized": false,
+      "manual_review_required": true
+    },
+    "conjunctive_pass_requires_both_gates": true,
+    "receipt_records_contract_not_outcome": true,
+    "automatic_success_claim_authorized": false,
+    "single_example_success_claim_authorized": false
+  },
+  "population_design": {
+    "wave_order": [
+      "wave1-same-source-seed-replication"
+    ],
+    "waves": [
+      {
+        "wave_id": "wave1-same-source-seed-replication",
+        "cohort": "cdf_dog_same_source_seed_replication",
+        "cell_ids": [
+          "cdf-dog-historical-seed-2027",
+          "cdf-dog-fresh-seed-2026081701"
+        ]
+      }
+    ],
+    "same_source_cells_are_seed_replicates_not_independent_identities": true,
+    "aggregate_as_independent_identities_authorized": false,
+    "single_example_conclusion_authorized": false,
+    "automatic_success_claim_authorized": false,
+    "seed_preregistration": {
+      "historical_comparison_seed": 2027,
+      "fresh_seed": 2026081701,
+      "selected_before_generation": true,
+      "seed_search_or_posthoc_selection_authorized": false
+    }
+  },
+  "cells": [
+    {
+      "cell_id": "cdf-dog-historical-seed-2027",
+      "wave_id": "wave1-same-source-seed-replication",
+      "cohort": "cdf_dog_same_source_seed_replication",
+      "replicate_role": "historical_comparison_seed",
+      "actor_kind": "dog",
+      "source_iid": "cdf-dog-288545b9c031491a",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/288545b9c031491a/source.mp4",
+      "source_video_sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+      "target_action_caption": "Make the dog pick up the bone and hold it in its mouth.",
+      "target_action_caption_sha256": "84df12ede824d239a4c7c3d21dccdf22663535d1e504e7b280544c8a9be0fd5d",
+      "seed": 2027,
+      "bucket_hw": [496, 480],
+      "latent_shape": [1, 16, 21, 62, 60],
+      "selected_before_generation": true
+    },
+    {
+      "cell_id": "cdf-dog-fresh-seed-2026081701",
+      "wave_id": "wave1-same-source-seed-replication",
+      "cohort": "cdf_dog_same_source_seed_replication",
+      "replicate_role": "fresh_preregistered_seed",
+      "actor_kind": "dog",
+      "source_iid": "cdf-dog-288545b9c031491a",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/288545b9c031491a/source.mp4",
+      "source_video_sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+      "target_action_caption": "Make the dog pick up the bone and hold it in its mouth.",
+      "target_action_caption_sha256": "84df12ede824d239a4c7c3d21dccdf22663535d1e504e7b280544c8a9be0fd5d",
+      "seed": 2026081701,
+      "bucket_hw": [496, 480],
+      "latent_shape": [1, 16, 21, 62, 60],
+      "selected_before_generation": true
+    }
+  ]
+}

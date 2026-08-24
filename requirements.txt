@@ -1,0 +1,26 @@
+# Install the accelerator-specific PyTorch build before this file.
+# See ENVIRONMENT.md. Torch is intentionally not listed here.
+
+accelerate>=1.0,<2
+av>=14.3,<15
+datasets==2.21.0
+decord
+diffusers==0.38.0
+einops>=0.8.1
+ftfy
+huggingface-hub>=0.34
+imageio
+imageio-ffmpeg
+numpy>=1.23
+opencv-python-headless>=4.8
+pandas>=2.0
+peft==0.19.1
+Pillow>=10
+pyarrow>=16
+PyYAML>=6
+qwen-vl-utils>=0.0.8
+safetensors>=0.4
+scipy>=1.10
+torchdata==0.11.0
+tqdm>=4.66
+transformers==5.5.4

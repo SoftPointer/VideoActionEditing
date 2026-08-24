@@ -1,0 +1,74 @@
+{
+  "schema_version": "bernini-source-object-proposal-role-v15c-r6-release",
+  "tag": "v15c-r6",
+  "core_member_count": 8,
+  "snapshot_file_count": 9,
+  "members": [
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r6.json",
+      "sha256": "d8932e965db30b5929e479527c46c27ad0395a9dc573a13b6e68c24720d3d1f8",
+      "size": 13409
+    },
+    {
+      "path": "methods/bernini_action_editing/finalize_source_sam2_proposal_role_probe_v15c_r6.py",
+      "sha256": "e210e52b6ca028ec583e11047492eee7742bf84495c7b5caf8edf5de6295c5d3",
+      "size": 52490
+    },
+    {
+      "path": "methods/bernini_action_editing/materialize_source_sam2_proposal_tracks_v15c_r6.py",
+      "sha256": "e9372c9ec419d990e31dc6ae5c29468f8097074eccaa33e68e3a3ca1dc44518f",
+      "size": 65876
+    },
+    {
+      "path": "methods/bernini_action_editing/postflight_source_sam2_proposal_role_probe_v15c_r6.py",
+      "sha256": "23544c29fa317635ab75902335f42a2cd483e44156c6223d671493d022a86d1b",
+      "size": 9183
+    },
+    {
+      "path": "methods/bernini_action_editing/run_source_object_proposal_role_probe_v15c_r6.py",
+      "sha256": "136bd309c1e224f973ca8623b440553d0491de9de27b18d402460d24ec466050",
+      "size": 33302
+    },
+    {
+      "path": "methods/bernini_action_editing/scripts/auh_launch_e00_source_sam2_proposal_role_probe_v15c_r6_sealed.sh",
+      "sha256": "c6756c6668ae0b00a3cba3356669960e10753f8fdc35a9f8bb4aec60e120f63c",
+      "size": 6908
+    },
+    {
+      "path": "methods/bernini_action_editing/source_object_proposal_role_probe_v15c.py",
+      "sha256": "81e3f168d9064f6136ef24b1b6c49a7f3630cdfbe31593f8ae4218651b68b26d",
+      "size": 32964
+    },
+    {
+      "path": "methods/bernini_action_editing/tools/build_source_object_proposal_role_v15c_r6_review.py",
+      "sha256": "59abe17313d24047e9f3a6e2245477a3284e488259ec76ce6341ff5ab541d541",
+      "size": 24160
+    }
+  ],
+  "manifest_relative_path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r6_release.json",
+  "snapshot_policy": {
+    "construction_phase": {
+      "directory_mode": "0700",
+      "member_mode": "0400",
+      "receipt_semantics": "historical_observation_before_sealing"
+    },
+    "sealed_phase": {
+      "directory_mode": "0500",
+      "member_mode": "0400",
+      "receipt_semantics": "current_state_reverified_at_runtime"
+    },
+    "core_member_count": 8,
+    "snapshot_file_count": 9,
+    "exact_tree_required": true,
+    "reject_extra_symlink_pyc": true,
+    "single_link_regular_files_required": true
+  },
+  "observer_only": true,
+  "human_audit_action": "reject_only",
+  "remote_gpu_status": "REMOTE_GPU_UNAUDITED",
+  "route_status": "ROUTE_NO_GO",
+  "route_authorized": false,
+  "decode_authorized": false,
+  "training_authorized": false,
+  "release_sha256": "5beab01963d8433b24235f4e5d79c51c922fd1b1d153904de8acaf89ab74e837"
+}

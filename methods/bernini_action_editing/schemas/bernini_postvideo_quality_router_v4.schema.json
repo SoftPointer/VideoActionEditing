@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bernini-postvideo-quality-router-v4.schema.json",
+  "title": "Bernini post-video quality router v4 artifacts",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/input_manifest"
+    },
+    {
+      "$ref": "#/$defs/route_record"
+    },
+    {
+      "$ref": "#/$defs/receipt"
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "axis_state": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNRESOLVED"
+      ]
+    },
+    "input_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "complete",
+        "row_count",
+        "rows",
+        "rows_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4-input-manifest-v1"
+        },
+        "complete": {
+          "const": true
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "iid",
+              "gate_report_path",
+              "gate_report_sha256"
+            ],
+            "properties": {
+              "iid": {
+                "type": "string",
+                "minLength": 1
+              },
+              "gate_report_path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "gate_report_sha256": {
+                "$ref": "#/$defs/sha256"
+              }
+            }
+          }
+        },
+        "rows_digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "route_record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "iid",
+        "evidence_binding",
+        "qwen_audit",
+        "axes",
+        "decision",
+        "policy_sha256",
+        "record_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4-record-v1"
+        },
+        "iid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_binding": {
+          "type": "object"
+        },
+        "qwen_audit": {
+          "type": "object"
+        },
+        "axes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artifact_quality",
+            "identity_content_preservation",
+            "action_alignment",
+            "camera_flicker"
+          ],
+          "properties": {
+            "artifact_quality": {
+              "$ref": "#/$defs/axis"
+            },
+            "identity_content_preservation": {
+              "$ref": "#/$defs/axis"
+            },
+            "action_alignment": {
+              "$ref": "#/$defs/axis"
+            },
+            "camera_flicker": {
+              "$ref": "#/$defs/axis"
+            }
+          }
+        },
+        "decision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "route",
+            "overall_status",
+            "training_eligible",
+            "promotion_eligible",
+            "manual_review_required",
+            "fail_closed",
+            "reason_codes"
+          ],
+          "properties": {
+            "route": {
+              "enum": [
+                "PROMOTE",
+                "REVIEW",
+                "REJECT"
+              ]
+            },
+            "overall_status": {
+              "$ref": "#/$defs/axis_state"
+            },
+            "training_eligible": {
+              "type": "boolean"
+            },
+            "promotion_eligible": {
+              "type": "boolean"
+            },
+            "manual_review_required": {
+              "type": "boolean"
+            },
+            "fail_closed": {
+              "const": true
+            },
+            "reason_codes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          }
+        },
+        "policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "record_digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "axis": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/axis_state"
+        }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "complete",
+        "fail_closed",
+        "record_schema_version",
+        "row_count",
+        "route_counts",
+        "axis_counts",
+        "training_eligible_count",
+        "gate_manifest_path",
+        "gate_manifest_sha256",
+        "gate_manifest_rows_digest",
+        "qwen_audit_dir",
+        "qwen_audit_done_sha256",
+        "policy",
+        "policy_sha256",
+        "implementation",
+        "routing_jsonl_path",
+        "routing_jsonl_sha256",
+        "routing_jsonl_bytes",
+        "routing_rows_digest",
+        "publication_contract",
+        "receipt_path",
+        "sha256_sidecar_path",
+        "receipt_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4-receipt-v1"
+        },
+        "complete": {
+          "const": true
+        },
+        "fail_closed": {
+          "const": true
+        },
+        "record_schema_version": {
+          "const": "bernini-postvideo-quality-router-v4-record-v1"
+        },
+        "row_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "route_counts": {
+          "type": "object"
+        },
+        "axis_counts": {
+          "type": "object"
+        },
+        "training_eligible_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gate_manifest_path": {
+          "type": "string"
+        },
+        "gate_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "gate_manifest_rows_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "qwen_audit_dir": {
+          "type": "string"
+        },
+        "qwen_audit_done_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "qwen_audit_input_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "qwen_model_identity_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "qwen_method_source_revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "policy": {
+          "type": "object"
+        },
+        "policy_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "implementation": {
+          "type": "object"
+        },
+        "routing_jsonl_path": {
+          "type": "string"
+        },
+        "routing_jsonl_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "routing_jsonl_bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "routing_rows_digest": {
+          "$ref": "#/$defs/sha256"
+        },
+        "publication_contract": {
+          "const": "create_only_jsonl_receipt_sha256_sidecar"
+        },
+        "receipt_path": {
+          "type": "string"
+        },
+        "sha256_sidecar_path": {
+          "type": "string"
+        },
+        "receipt_digest": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

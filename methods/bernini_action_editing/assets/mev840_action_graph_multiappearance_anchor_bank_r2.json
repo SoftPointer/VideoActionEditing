@@ -1,0 +1,106 @@
+{
+  "schema_version": "mev840-self-generated-action-graph-anchor-bank-r2",
+  "purpose": "representation_only_multiappearance_consensus_for_generic_action_graph",
+  "experiment_tag": "mev840_self_generated_action_graph_anchor_bank_20260821_r2",
+  "supersedes_failed_preflight": {
+    "experiment_tag": "mev840_self_generated_action_graph_anchor_bank_20260821_v1",
+    "slurm_steps": ["143808.468", "143808.469", "143808.470"],
+    "failure_stage": "validate_cli_before_model_load",
+    "failure_reason": "unverified_truncated_checkpoint_tree_pin",
+    "outputs_created": false
+  },
+  "mev_pair_id": "840b214afead0811a2b27c91aa9081bd06f921ec35ed2a9cc1e49d65e6c291bf",
+  "generic_action": {
+    "canonical_label": "turn_head_left_then_place_held_object_onto_support",
+    "ordered_relations": [
+      "agent_head_yaw_changes_toward_left",
+      "held_object_moves_from_agent_hand_to_support",
+      "held_object_contacts_support"
+    ],
+    "appearance_fields_authorized_in_representation": false,
+    "source_instance_identity_fields_authorized_in_representation": false
+  },
+  "authorization": {
+    "native_frozen_t2v_anchor_generation": true,
+    "source_edit_route": false,
+    "source_edit_decode": false,
+    "training": false,
+    "optimizer_steps": 0,
+    "lora": false,
+    "parameter_updates": false,
+    "real_target_read": false,
+    "external_reference_read": false,
+    "mask_flow_pose_track_trajectory_read": false,
+    "scientific_use_before_visual_review": "representation_preflight_only"
+  },
+  "slurm": {
+    "job_id": "143808",
+    "topology": "one_independent_sp4_model_per_node",
+    "gpus_per_variant": 4,
+    "allowed_gpu_ordinals": [0, 1, 2, 3],
+    "node_variant_map": {
+      "v1": "auh7-1b-gpu-268",
+      "v2": "auh7-1b-gpu-315",
+      "v3": "auh7-1b-gpu-233"
+    }
+  },
+  "sealed_runtime": {
+    "release_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_graft_v1_20260810/phase_a_native_gpu_canary_dual4_all8_v1/releases/source-00f7aba-launcher-1dafc42-r1",
+    "source_archive": "inputs/runtime-source.tar",
+    "source_archive_sha256": "ef7b83a12e5dcb94274fa2e9aea5c4067f0c7e82c2f1c733af020d430ecbcbf0",
+    "source_revision": "00f7aba4bd58e67778542273cfca82fb785b648c",
+    "runtime_closure": "inputs/runtime-closure.json",
+    "runtime_closure_sha256": "61cb4198613d497e0f858740322aa874a8c479ed89c8b123db6f2e8f74b38abb",
+    "native_canary_relative_path": "methods/bernini_action_editing/infer_native_identity_generation_canary.py",
+    "native_canary_sha256": "a60c37591c40206c6130185f1a2d2a7a8e473f5af4425205e268ae4a8b58f334",
+    "bernini_root": "vendor/Bernini-2d2b4591",
+    "bernini_commit": "2d2b4591ac053ec25c6371b01a5a6746679e5793",
+    "veomni_root": "vendor/VeOmni-f90b3dc6",
+    "veomni_commit": "f90b3dc6fbb0ce693745223cc7a94064123dbf4d",
+    "python": "/vast/users/guangyi.chen/anaconda3/envs/vace/bin/python3.12",
+    "python_sha256": "8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a",
+    "checkpoint": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/checkpoints/Bernini-R-1.3B-Diffusers-ff4c5d4",
+    "checkpoint_tree_sha256": "6be0d0db0dd483daf1a843efa2b5aafc20090ad11dc0fc6ee8859bdf150635ca",
+    "checkpoint_content_manifest": "inputs/bernini_r13_ff4c5d4_checkpoint.sha256",
+    "checkpoint_content_manifest_sha256": "a95ac2d74fc4379134a6276355d472810ef08e3d9de79761f1244375a6fad831"
+  },
+  "geometry_source": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/840b214afead/source-exact81.mp4",
+    "sha256": "a6e42a447d7fef26b073878c551a631afd6371987910a332e51e4a9e4dfb4646",
+    "frame_count": 81,
+    "fps": 25,
+    "native_t2v_conditioning_count": 0,
+    "usage": "native_bucket_geometry_preflight_only"
+  },
+  "output": {
+    "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_self_generated_action_graph_anchor_bank_20260821_r2",
+    "native_arm": "t2v",
+    "num_inference_steps": 40,
+    "expected_frame_count": 81,
+    "expected_fps": 25,
+    "fresh_output_required": true
+  },
+  "variants": [
+    {
+      "variant_id": "v1",
+      "seed": 2026082101,
+      "prompt": "An adult man wearing a dark-blue work uniform stands beside a conveyor in a clean industrial workshop, holding a red metal flask. In one continuous static-camera shot, he turns his head to the left and places the same flask onto the conveyor. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "prompt_sha256": "021c9a63f4cb4e4d7052da8c70ac6401952beeb29eaa2d04e78882accdb9eed2",
+      "appearance_family": "dark_blue_uniform_red_metal_flask_industrial_conveyor"
+    },
+    {
+      "variant_id": "v2",
+      "seed": 2026082102,
+      "prompt": "An older woman wearing a yellow apron stands at a kitchen counter in a bright home kitchen, holding a green bottle. In one continuous static-camera shot, she turns her head to the left and places the same bottle onto the counter. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "prompt_sha256": "b2c1699340dd76834b14bedbd679a4710656fa24b5acebc846848d42c56327f2",
+      "appearance_family": "yellow_apron_green_bottle_home_kitchen_counter"
+    },
+    {
+      "variant_id": "v3",
+      "seed": 2026082103,
+      "prompt": "A young man wearing black sports clothing stands beside an exercise machine in a minimalist training room, holding a blue bottle. In one continuous static-camera shot, he turns his head to the left and places the same bottle onto the machine platform. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "prompt_sha256": "420bab945a3d22cd94d613d9cd6fbe84d92b59dab4ebea06e0ee599390d07e83",
+      "appearance_family": "black_sports_clothing_blue_bottle_training_machine_platform"
+    }
+  ]
+}

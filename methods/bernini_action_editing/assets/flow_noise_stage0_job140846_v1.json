@@ -1,0 +1,43 @@
+{
+  "schema_version": "bernini-flow-noise-stage0-job140846-v1",
+  "job_id": 140846,
+  "allowed_nodes": [
+    "auh7-1b-gpu-246",
+    "auh7-1b-gpu-247"
+  ],
+  "forbidden_nodes": [
+    "auh7-1b-gpu-248",
+    "auh7-1b-gpu-279"
+  ],
+  "remote_media_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_endpoint_consensus_release_11f3ed1/source/md/action_editing/20260815_reward/model_gain_135096/review/media",
+  "runtime": {
+    "bernini_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/motive_action_repr_auto/vendor/Bernini-2d2b4591",
+    "veomni_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/vendor/VeOmni-v0.1.11",
+    "checkpoint": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/checkpoints/Bernini-R-1.3B-Diffusers-ff4c5d4",
+    "bernini_commit": "2d2b4591ac053ec25c6371b01a5a6746679e5793",
+    "veomni_commit": "f90b3dc6fbb0ce693745223cc7a94064123dbf4d",
+    "checkpoint_tree_sha256": "6be0d0db0dd483daf1a843efa2b5aafc20090ad11dc0fc6ee8859bdf150635ca"
+  },
+  "rows": [
+    {
+      "iid": "7b88a1ca1f804f41",
+      "action": "French bulldog stand to sit",
+      "instruction": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent."
+    },
+    {
+      "iid": "841b5e0080a1441d",
+      "action": "German shepherd stand to sit",
+      "instruction": "A fixed camera shows a single black-and-tan German shepherd standing on a leash in a grassy field, looking upward toward the viewer, with clumps of shed fur on the ground and subtle ear and breeze movement. The main German shepherd bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent."
+    },
+    {
+      "iid": "a35b590961d24694",
+      "action": "woman kneel to stand",
+      "instruction": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent."
+    },
+    {
+      "iid": "a66e6818e4144928",
+      "action": "woman crouch to stand",
+      "instruction": "A static camera shows a single young woman in a low crouch on a city sidewalk beside a modern dark-glass building with horizontal metal bars, looking back over her shoulder, with tied dark hair, a black sports bra, grey trousers, and a blue-green plaid shirt in harsh sunlight and deep shadow. The main person presses through both feet, rises smoothly from the low crouch, straightens the legs and torso, faces the viewer, and holds upright. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent."
+    }
+  ]
+}

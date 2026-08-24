@@ -1,0 +1,100 @@
+{
+  "schema_version": "bernini-self-generated-action-lora-heldout-core4-v1",
+  "source_registry": {
+    "path": "methods/bernini_action_editing/assets/saic_reversible_source_set_v1.json",
+    "sha256": "899b5a1dd66fc0bf6d4d0192fb6157f4afe691c50633246dddcaa1db2c2a98a9",
+    "split": "confirmation",
+    "selection_rule": "all_four_immutable_confirmation_sources_without_metric_selection"
+  },
+  "training_exclusion": {
+    "self_generated_owner_job": 131524,
+    "owner_fit_iids": [
+      "7b88a1ca1f804f41",
+      "a35b590961d24694"
+    ],
+    "heldout_iids_disjoint_from_owner_fit_iids": true,
+    "heldout_media_or_latents_enter_optimizer": false
+  },
+  "inference_contract": {
+    "runner": "methods/bernini_action_editing/infer_seer_scoped_lora.py",
+    "conditions": [
+      "source_video",
+      "edit_instruction"
+    ],
+    "arms": [
+      "frozen_base",
+      "trained_adapter"
+    ],
+    "same_source_instruction_seed_between_arms": true,
+    "num_frames": 81,
+    "fps": 25,
+    "num_inference_steps": 40,
+    "guidance_mode": "v2v_apg",
+    "ulysses_size": 4,
+    "target_video_available_to_inference": false
+  },
+  "decision_contract": {
+    "unit": "paired_heldout_source_seed",
+    "joint_safe_definition": "requested_action_reaches_terminal_and_holds AND identity_scene_camera_inventory_preserved",
+    "minimum_trained_joint_safe": 3,
+    "minimum_base_fail_to_trained_joint_safe_flips": 2,
+    "minimum_flip_actor_family_coverage": [
+      "dog",
+      "human"
+    ],
+    "maximum_joint_safe_to_unsafe_regressions": 0,
+    "training_completion_is_success": false,
+    "latent_only_or_pipeline_only_result_is_success": false,
+    "human_full_video_review_required": true
+  },
+  "cases": [
+    {
+      "iid": "99cde432839f4240",
+      "actor_family": "dog",
+      "analysis_split": "confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/99cde432839f4240/samples/99cde432839f4240/source_video.mp4",
+      "source_video_sha256": "4fcd6d75b09e3b294d3dfff15fc7b523a536551e592484eed91de66e2e733a2c",
+      "source_caption": "A locked-off monochrome exact81 forest shot shows a single pointed-ear dog standing on all four legs facing forward, tongue out and tail curved upward; only minor facial and tail motion occurs.",
+      "source_caption_utf8_sha256": "641b2b8f6591e1b2f1a154043f7ad0f8dd9744cca3c11d3601256e829e15a5a2",
+      "instruction": "Have the same dog bend its hind legs, lower its hips, settle into a stable sit at the same forest location, let the tail relax toward the ground, and hold the seated state. Preserve identity, facial features, forest background, monochrome appearance, scale, framing, and locked camera.",
+      "instruction_utf8_sha256": "06f84b307cc83b8c83666e4d793e856f22d3eef164b6189c50bb6abf9293ef79",
+      "seed": 2026082201
+    },
+    {
+      "iid": "6ea45d35943742bb",
+      "actor_family": "dog",
+      "analysis_split": "confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/6ea45d35943742bb/samples/6ea45d35943742bb/source_video.mp4",
+      "source_video_sha256": "a4f0567c8c7a63421a34099bd16c13f4ca77dd4bbe9b0ce3725a363e96b6d193",
+      "source_caption": "A locked-off exact81 shot shows a single white dog standing on all four legs on grass facing forward, mouth open with tongue visible, tail upright and ears perked; its body stays standing while its head slowly turns right.",
+      "source_caption_utf8_sha256": "8874ad77ab0fd87e7b6551d57c31de10b4ea35bf427b6593a258a21903d14a6c",
+      "instruction": "Have the same white dog bend its hind legs, lower its hips, settle into a stable sit at the same location while completing the original slow rightward head turn, and hold the seated state. Preserve identity, coat, collar, grass, tree shadows, scale, framing, and locked camera.",
+      "instruction_utf8_sha256": "5a7a123cfd9749b1ca690a27fe614aa46653a23a2656a975e04f0f5a5ece0e47",
+      "seed": 2026082211
+    },
+    {
+      "iid": "311c82f83eca4a7f",
+      "actor_family": "human",
+      "analysis_split": "confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/311c82f83eca4a7f/samples/311c82f83eca4a7f/source_video.mp4",
+      "source_video_sha256": "cc329d61942f02e9e58c43e455e95bf892dcf8b8cd5c2785c3fff1e2e6fbd798",
+      "source_caption": "A locked-off exact81 gym-mirror shot shows a blond subject kneeling on the right knee with the left foot planted, holding a smartphone in the left hand while the right arm rises into a bicep flex; the lower-body kneeling state remains unchanged.",
+      "source_caption_utf8_sha256": "76c571321dd5bfb075a02a93ecc55cb649b55bf60d9879c461a39a66d6e34a7b",
+      "instruction": "Have the same subject transfer weight onto both feet, rise from the right-knee kneel at the same location, straighten into a stable upright stand while keeping the smartphone and completing the same right-arm bicep flex, and hold. Preserve identity, tattoos, hair, clothing, mirror scene, scale, framing, and locked camera.",
+      "instruction_utf8_sha256": "ae7c052e6e275c58390fdbc080ab1c949cce14a062884f00918abed76478e875",
+      "seed": 2026082221
+    },
+    {
+      "iid": "6d346c38cf504493",
+      "actor_family": "human",
+      "analysis_split": "confirmation",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/6d346c38cf504493/samples/6d346c38cf504493/source_video.mp4",
+      "source_video_sha256": "99483c3d0dacb86658841df54452c0a3492563f197813c4a2526e4f096dba14f",
+      "source_caption": "A locked-off exact81 convention photo-set shot shows a blue-wig cosplay subject holding two white prop pistols while kneeling with the right knee on the floor and the left foot planted; the body remains in the same kneeling pose.",
+      "source_caption_utf8_sha256": "8e126423ff42ecf8f2472dd64770712d578219f5dc49edfd31df6f4ca87a0393",
+      "instruction": "Have the same subject transfer weight onto both feet, rise from the right-knee kneel at the same location, straighten into a stable upright stand while retaining the same safe grip on both white cosplay props, and hold. Preserve identity, blue wig, costume, props, background people and equipment, scale, framing, and locked camera.",
+      "instruction_utf8_sha256": "03af5eb5bd8afd82b36e6ab8f2efe67c8b621643e44864f7766279bfd8a41966",
+      "seed": 2026082231
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": "bernini-dmiq-pure-t2v-factorial-spec-v2",
+  "bank_id": "cdf-dog-pickup-hold-engineering-micro-v2",
+  "profile": "engineering_micro",
+  "design": "engineering_cartesian_tiny_v2",
+  "action_family_id": "dog-pickup-hold-object",
+  "action_program": {
+    "actor_role": "the preregistered primary dog",
+    "patient_role": "the preregistered primary pickup object",
+    "preconditions": [
+      "both objects begin supported by the ground and spatially separated",
+      "both dogs begin empty-mouthed and spatially distinguishable"
+    ],
+    "ordered_milestones": [
+      "the acting dog lowers or brings its muzzle toward the selected object",
+      "the acting dog's muzzle or mouth contacts that same selected object",
+      "the acting dog grips that same selected object and lifts it from its supporting surface",
+      "the acting dog raises or withdraws its head while retaining that same selected object"
+    ],
+    "terminal_hold_required": true,
+    "terminal_hold_video_frames": [65, 80],
+    "reverse_action_definition": "from the same empty-mouth grounded-object precondition, the primary dog contacts and pushes the primary object along the ground without gripping or lifting it, then raises its head empty and remains empty-mouthed"
+  },
+  "source_geometry_video": {
+    "sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+    "frame_count": 81,
+    "fps": 25,
+    "height": 496,
+    "width": 480
+  },
+  "object_pair": {
+    "object_id": "yellow-bone-with-blue-ball-distractor",
+    "object_phrase": "a yellow canvas bone",
+    "object_reference": "the same yellow canvas bone",
+    "distractor_object_phrase": "a blue rubber ball",
+    "distractor_object_reference": "the same blue rubber ball"
+  },
+  "actor_levels": [
+    {
+      "actor_id": "tan-pitbull-with-beagle",
+      "split": "discovery",
+      "actor_phrase": "a tan pit bull",
+      "actor_reference": "the tan pit bull",
+      "distractor_actor_phrase": "a spotted beagle",
+      "distractor_actor_reference": "the spotted beagle"
+    }
+  ],
+  "scene_levels": [
+    {
+      "scene_id": "gray-concrete-daylight",
+      "scene_phrase": "an open area of gray concrete in soft natural daylight"
+    }
+  ],
+  "camera_levels": [
+    {
+      "camera_id": "locked-overhead-medium",
+      "camera_phrase": "a locked overhead medium camera"
+    }
+  ],
+  "wording_levels": [
+    {
+      "wording_id": "direct-event-chain",
+      "templates": {
+        "full_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers its muzzle to {object_ref}, grips it, lifts it clear, raises its head, and holds it through the end; {distractor_actor_ref} stays still and {distractor_object_ref} remains down.",
+        "noop": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} and {distractor_actor_ref} remain still and separate; neither touches {object_ref} or {distractor_object_ref}, and both objects stay down.",
+        "incomplete_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers its muzzle to sniff and briefly touch {object_ref} but never grips or lifts it; {distractor_actor_ref} and {distractor_object_ref} remain still.",
+        "reverse_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. Keeping that initial condition, {actor_ref} lowers to {object_ref}, contacts and pushes it away along the ground without gripping or lifting, then raises its head empty and remains empty-mouthed; {distractor_actor_ref} and {distractor_object_ref} stay still.",
+        "shuffled_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} raises its empty head, nudges {object_ref}, lowers only afterward, and withdraws without holding it; {distractor_actor_ref} and {distractor_object_ref} stay still.",
+        "wrong_actor": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {distractor_actor_ref}, not {actor_ref}, lowers to {object_ref}, grips it, lifts it, raises its head, and holds it through the end; {distractor_object_ref} remains down.",
+        "wrong_object": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers to {distractor_object_ref}, grips it, lifts it, raises its head, and holds it through the end; {distractor_actor_ref} stays still and {object_ref} remains down.",
+        "camera_only": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. The viewpoint alone makes a smooth orbit and tilt while {actor_ref}, {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain fixed and separate.",
+        "appearance_only": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. Only the coat color and texture of {actor_ref} change; {distractor_actor_ref}, {object_ref}, {distractor_object_ref}, all poses, and the viewpoint stay fixed.",
+        "generic_wrong_motion": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. In four clear events, {actor_ref} steps left, turns toward the camera, crouches, and rises, matching the target clip's gross motion without approaching either object; {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} stay still."
+      }
+    }
+  ],
+  "seed_replicates": [
+    {
+      "replicate_id": "rep-a",
+      "initial_seed": 20260808,
+      "topup_seeds": []
+    },
+    {
+      "replicate_id": "rep-b",
+      "initial_seed": 20260809,
+      "topup_seeds": []
+    }
+  ],
+  "spatial_sketch": {
+    "schema_version": "fitq-fixed-signed-spatial-sketch-v1",
+    "status": "pending",
+    "sketch_id": null,
+    "construction_id": "none",
+    "construction_digest": null,
+    "seed": 0,
+    "matrix_shape": [0, 0],
+    "patch_height": 31,
+    "patch_width": 30,
+    "flatten_order": "patch-y-x",
+    "value_dtype": "float32",
+    "value_encoding": "little-endian-c-row-major",
+    "normalization": "none",
+    "matrix_value_digest_scheme": null,
+    "verified_exact_row_rank": null,
+    "signed": false,
+    "data_dependent": false,
+    "matrix_value_sha256": null,
+    "matrix_raw_bytes_sha256": null
+  }
+}

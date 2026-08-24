@@ -1,0 +1,60 @@
+{
+  "format": "marp-omnivideo2-action-training-v2",
+  "seed": 20260805,
+  "data": {
+    "video_num_frames": 81,
+    "video_fps": 25.0,
+    "video_height": 384,
+    "video_width": 640,
+    "temporal_mode": "full_81_25fps",
+    "spatial_profile": "motion_384p",
+    "allow_transpose": true,
+    "smoke_only": false,
+    "require_materialization_metadata": true
+  },
+  "model": {
+    "max_context_len": 6144,
+    "checkpoint_contract_id": "omnivideo2-1.3b-adcee0a4-f269fe8c-72129ce9-v1",
+    "context_padding_mode": "fixed_budget",
+    "expected_special_token_rows": 26,
+    "visual_patch_size": [1, 4, 4],
+    "wan_patch_size": [1, 2, 2],
+    "require_special_tokens": true,
+    "require_uncompressed_source": true,
+    "gradient_checkpointing": true
+  },
+  "flow": {
+    "shift": 5.0,
+    "num_train_timesteps": 1000
+  },
+  "lora": {
+    "scope": "all_attn",
+    "rank": 4,
+    "alpha": 4.0,
+    "dropout": 0.0
+  },
+  "planner": {
+    "num_tokens": 16,
+    "input_dim": 2048,
+    "hidden_dim": 128,
+    "depth": 1,
+    "weight": 0.1
+  },
+  "optimizer": {
+    "learning_rate": 0.0001,
+    "betas": [0.9, 0.999],
+    "weight_decay": 0.01,
+    "eps": 1e-8
+  },
+  "training": {
+    "batch_size": 1,
+    "gradient_accumulation_steps": 1,
+    "max_steps": 1,
+    "num_workers": 0,
+    "mixed_precision": "bf16",
+    "log_every": 1,
+    "save_every": 1,
+    "allow_preview": true,
+    "allowed_task_types": ["action_edit"]
+  }
+}

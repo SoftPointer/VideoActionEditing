@@ -1,0 +1,162 @@
+{
+  "schema_version": "bernini-caper-dual-coordinate-core4-canary-v1",
+  "method_name": "bernini-caper-dual-coordinate-stateless-canary",
+  "status": "DIRECTION_MATERIALIZATION_ONLY_NO_TRAINING_AUTHORITY",
+  "topology": {
+    "node_gpu_count": 8,
+    "dp_arms": 2,
+    "sp_size_per_arm": 4,
+    "world_size_per_process_group": 4,
+    "parallel_contract": "two_concurrent_WORLD4_SP4_groups"
+  },
+  "model": {
+    "bernini_commit": "2d2b4591ac053ec25c6371b01a5a6746679e5793",
+    "veomni_commit": "f90b3dc6fbb0ce693745223cc7a94064123dbf4d",
+    "checkpoint_tree_sha256": "6be0d0db0dd483daf1a843efa2b5aafc20090ad11dc0fc6ee8859bdf150635ca",
+    "checkpoint_content_manifest_sha256": "a95ac2d74fc4379134a6276355d472810ef08e3d9de79761f1244375a6fad831",
+    "frame_count": 81,
+    "latent_phases": 21,
+    "sampler_steps": 40,
+    "native_schedule_index": 33,
+    "native_timestep": 516,
+    "direction_relative_l2_dose": 0.01
+  },
+  "owner_authority": {
+    "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1",
+    "registry": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/sealed-self-imagined-core2.json",
+    "registry_file_sha256": "01fe53b02fa42da8eb5c187a81e6737f323604e7dc26b3eee4f941ad4de82d96",
+    "master_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/owner-core2-master-receipt.json",
+    "master_receipt_file_sha256": "c0d8f3e4a7f3b95269b5196c0d8844327d9e7296dda1828493683a9ae7d707de",
+    "master_receipt_digest": "b71d726c7001c57da80391b18c5c82b8fe0910a62f8cd99484d3a90d218347ab",
+    "audit_sidecar": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/audits/full81-v1/qm-owner-audit-131524-sidecar.json",
+    "audit_sidecar_file_sha256": "24746c91e88e4051c49fe18b06e0e58bb2c4b119b3d946586d9dd6092308030b",
+    "audit_evidence": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/audits/full81-v1/bernini_self_imagined_owner_full81_audit_131524.md",
+    "audit_evidence_file_sha256": "3e2335d4d335a9ee8262aa319fc2790dbac3e59b20e554f54b4dc1273f259dc3",
+    "audit_public_key": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/audits/full81-v1/qm-owner-audit-131524-ed25519-public.pem",
+    "audit_public_key_file_sha256": "d1bba83ca1d162128bda71e21c419c476b9328c7892bd1998adcd24c09c577ec",
+    "owner_rgb_latent_noise_velocity_in_editor_graph": false,
+    "only_detached_normalized_hidden_quotient_authorized": true
+  },
+  "quotient_authority": {
+    "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1",
+    "master_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1/owner-core2-specificity-receipt.json",
+    "master_receipt_file_sha256": "fde8de229135bf46682681bbc83fc39d7554e144b6d97991741e39a2ebfe98c3",
+    "master_receipt_digest": "8fa7e4cf01d9fa49b506aa66b50932c2ac767faa4727dc772e407d41052652e6",
+    "query_specific_detached_unit_only": true
+  },
+  "editor_runtime_authority": {
+    "private_key": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qmosaic_editor_authority_20260809/editor-runtime-ed25519-private.pem",
+    "public_key": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qmosaic_editor_authority_20260809/editor-runtime-ed25519-public.pem",
+    "public_key_sha256": "b1357fcf5d3b30e51d686a2f1170bc139a7d8c5ea3ef99dc7cc9b2b008d3052d"
+  },
+  "cells": [
+    {
+      "cell_id": "dog",
+      "source_iid": "7b88a1ca1f804f41",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "latent_shape": [1, 16, 21, 60, 62],
+      "action_family_id": "dog-stand-to-sit-facing-camera",
+      "action_prompt_utf8": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_prompt_utf8_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+      "noop_prompt_utf8": "A static camera observes one grey French bulldog in a black harness among yellow autumn leaves in a sunlit park; the continuous shot keeps the same dog, scene, framing, and illumination.",
+      "noop_prompt_utf8_sha256": "aa0b2462d297fe31e47c676e21f1a5d8d99f21983493da034cf1482d79d91441",
+      "role_prompt_binding_digest": "5c6f0d0f1a8349373cf7a2102d061b77fc020650365f7a7a319c53033186e645",
+      "query_seeds": [2026081502, 2026081503],
+      "editor_noise_seeds": [2026082502, 2026082503],
+      "generation_mode": "pure_t2v_exact81",
+      "editor_mode": "native_rv2v_exact81",
+      "segment_order": ["onset", "transition", "completion", "hold"],
+      "generation_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/dog/owner-generation-receipt.json",
+      "generation_receipt_file_sha256": "e6e6cdcd7ffbb6c3fcbaad52ac3ed088429c842777238aa021fc07de1fa67cf2",
+      "generation_receipt_digest": "10acf8d383185ae87f19a966ae2d9a524d793ca315ce7e1779a18de62661cafe",
+      "quotient_cell_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1/dog",
+      "quotient_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1/dog/owner-motion-specificity-receipt.json",
+      "quotient_receipt_file_sha256": "5630c0f511360a6ae0386855f4c00e78e226fea32f71d340773db83ab5c49bd2",
+      "quotient_receipt_digest": "6970b785eda453afa7a382c2ab6638e6f286ba8115bdcfb632af4eefd02bdf90"
+    },
+    {
+      "cell_id": "human",
+      "source_iid": "a35b590961d24694",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "latent_shape": [1, 16, 21, 64, 58],
+      "action_family_id": "human-one-knee-to-upright-stand",
+      "action_prompt_utf8": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "action_prompt_utf8_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+      "noop_prompt_utf8": "A static camera observes one woman against a solid warm yellow background; the continuous full-body shot keeps the same person, clothing, scene, framing, and illumination.",
+      "noop_prompt_utf8_sha256": "1be9aa015aba37c8df5c0e22c92ef7117258cfdaa97de6373a8e9323a0198007",
+      "role_prompt_binding_digest": "22a0e943affb2478abdb21090173bf451e9d75776ef5e67cf25b0d9e9ee6aa2a",
+      "query_seeds": [2026081505, 2026081506],
+      "editor_noise_seeds": [2026082505, 2026082506],
+      "generation_mode": "pure_t2v_exact81",
+      "editor_mode": "native_rv2v_exact81",
+      "segment_order": ["onset", "transition", "completion", "hold"],
+      "generation_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/human/owner-generation-receipt.json",
+      "generation_receipt_file_sha256": "b1fd8e8a8296bb8e688fb09e84141ce67a5f5416ccd0e1cdca39ca18f307ac9b",
+      "generation_receipt_digest": "6ff703a713b92faf8e0e1ff83c76ceb45715ef821ce025b210a5e4e13e7b5b01",
+      "quotient_cell_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1/human",
+      "quotient_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qm_owner_quotient_680324e_20260809/runs/core2_quotients_v1/human/owner-motion-specificity-receipt.json",
+      "quotient_receipt_file_sha256": "fb6a37464e98841fe340e5a1411dffe8135640410fd0cef5c1f89b86fe81184e",
+      "quotient_receipt_digest": "5471955cfc8a67ec4aef0e414815fc1dec763db9322951e2f485bfa790fe97f3"
+    }
+  ],
+  "waves": [
+    {
+      "wave_id": 1,
+      "groups": [
+        {"cell_id": "dog", "query_seed": 2026081502, "cuda_visible_devices": "0,1,2,3", "master_port_offset": 0},
+        {"cell_id": "human", "query_seed": 2026081505, "cuda_visible_devices": "4,5,6,7", "master_port_offset": 1}
+      ]
+    },
+    {
+      "wave_id": 2,
+      "groups": [
+        {"cell_id": "dog", "query_seed": 2026081503, "cuda_visible_devices": "0,1,2,3", "master_port_offset": 0},
+        {"cell_id": "human", "query_seed": 2026081506, "cuda_visible_devices": "4,5,6,7", "master_port_offset": 1}
+      ]
+    }
+  ],
+  "direction_phase": {
+    "runner": "run_qmosaic_editor_direction_sp4_v1.py",
+    "coordinate": "source_clean_latent_plus_minus_owner_hidden_quotient_vjp",
+    "no_lora_vjp_required": true,
+    "optimizer": false,
+    "parameter_update": false,
+    "semantic_authority_after_decode": false,
+    "requires_independent_segment_evaluator": true,
+    "required_evaluator_cells": 16,
+    "required_evaluator_index": "cell_x_query_seed_x_onset_transition_completion_hold",
+    "batch_or_segment_mean_compensation": false
+  },
+  "later_update_phase": {
+    "authorized": false,
+    "reason": "missing_registered_per_sample_per_segment_exact81_direction_gates",
+    "direction_gate_authority_private_key": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qmosaic_editor_authority_20260809/direction-gate-ed25519-private.pem",
+    "direction_gate_authority_public_key": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_qmosaic_editor_authority_20260809/direction-gate-ed25519-public.pem",
+    "direction_gate_authority_public_key_sha256": "655befbbf0deea1006e33e9656127e11753d85a0ae22d84619bfbcb8185dcdbd",
+    "required_order": ["fresh_training_epsilon", "lora_b_vjp", "six_source_native_slab_families", "fp64_qp", "temporary_direct_add", "fresh_v_only_exact81", "all_cell_segment_gate", "byte_exact_rollback"],
+    "optimizer": false,
+    "generation_gaussian_reuse": false
+  },
+  "forbidden_inputs": [
+    "mask",
+    "track",
+    "pose",
+    "flow",
+    "trajectory",
+    "owner_rgb_in_editor_graph",
+    "owner_latent_in_editor_graph",
+    "owner_noise_in_editor_graph",
+    "generation_gaussian_as_training_epsilon",
+    "t2v_pixels_in_v2v_graph"
+  ],
+  "hard_negative_authority": {
+    "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_mosaic_seed2_bank_b714a9b_20260808/runs/core4_seed2_bank_v2",
+    "bank_receipt_file_sha256": "0d7335c894d2bcd9c517c3e67e669434ba008ff7221c89d2cdc27c46dc42e511",
+    "bank_receipt_digest": "e664bebd5281cfdfb2b6d60bd136c1193947ea9b9c1bc13a4bdf6158762b45ab",
+    "semantic_audit": "md/action_editing/bernini_mosaic_core4_seed2_event_audit_20260808.md",
+    "gradient_source_authorized": false,
+    "use": "NO_GO_OR_HARD_NEGATIVE_ONLY"
+  }
+}

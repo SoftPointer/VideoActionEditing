@@ -1,0 +1,86 @@
+{
+  "schema_version": "actual-target-foundation-canary-availability-v1",
+  "created_at_utc": "2026-08-23T00:00:00Z",
+  "scope": "AUH read-only inventory; no download, training, generator, or GPU execution",
+  "runtime_environment": {"python": "3.12", "torch": "2.7.1+rocm6.3", "transformers": "5.5.4"},
+  "runtime_class_authority": [
+    {"module": "sam2.modeling.sam2_base", "class": "SAM2Base", "source_sha256": "69a46b44e8625f509791352bd09beaafe589cd7d872721384e63d37f9fdc6e41"},
+    {"module": "sam2.automatic_mask_generator", "class": "SAM2AutomaticMaskGenerator", "source_sha256": "66df266dbe14412305ae3398f0ec1bb21b303a93216b102d767e6c4ee5d4c3d7"},
+    {"module": "cotracker.predictor", "class": "CoTrackerPredictor", "source_sha256": "783536d6c77790fa6c8e005f2df1d6bd4f0d8955c2c67d464bfb4e64d366375f"},
+    {"module": "transformers.models.dinov2.modeling_dinov2", "class": "Dinov2Model", "source_sha256": "c015ae9453503db2bedd91598370dba9773a6d60bfd64a23f3b9744f69ea21a5"},
+    {"module": "transformers.models.vjepa2.modeling_vjepa2", "class": "VJEPA2Model", "source_sha256": "08613fb28cf11f4c46f234d9681a954fd12bd93b2f8b67229e5721974e0632fc"}
+  ],
+  "foundations": {
+    "sam2": {
+      "package": "SAM-2==1.0",
+      "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+      "checkpoint_bytes": 898083611,
+      "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+      "config_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+      "config_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+      "source_files": {
+        "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/build_sam.py": "856d64d71e44407401297b551884fb4cd1aba8082de0ff5fc60fac3dd42f094d",
+        "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/automatic_mask_generator.py": "66df266dbe14412305ae3398f0ec1bb21b303a93216b102d767e6c4ee5d4c3d7",
+        "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/sam2_video_predictor.py": "912555920a77f72ded07839efa33fcceecc79f3523abbec783f0be46ee2c55c2"
+      },
+      "cpu_load_smoke": {
+        "status": "PASS",
+        "model_class": "SAM2Base",
+        "parameter_count": 224446642,
+        "trainable_parameter_count_after_freeze": 0
+      }
+    },
+    "cotracker": {
+      "import_mode": "explicit vendored PYTHONPATH; not globally installed",
+      "repository_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/methods/FiVE-Bench/code/co-tracker",
+      "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/methods/FiVE-Bench/code/co-tracker/checkpoints/scaled_offline.pth",
+      "checkpoint_bytes": 101890938,
+      "checkpoint_sha256": "2670d4562ed69326dda775a26e54883925cd11b6fc9b24cb7aa9f8078bce7834",
+      "source_files": {
+        "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/methods/FiVE-Bench/code/co-tracker/cotracker/models/build_cotracker.py": "72a2d04fafb26c7f2ee0d7236fa63d5a7adbc9a9f1bab1d68f41bdd1ea657c89",
+        "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/methods/FiVE-Bench/code/co-tracker/cotracker/predictor.py": "783536d6c77790fa6c8e005f2df1d6bd4f0d8955c2c67d464bfb4e64d366375f"
+      },
+      "cpu_load_smoke": {
+        "status": "PASS",
+        "model_class": "CoTrackerThreeOffline",
+        "model_resolution": [384, 512],
+        "parameter_count": 25385700,
+        "trainable_parameter_count_after_freeze": 0,
+        "real_video_forward_executed_in_this_inventory": false
+      }
+    },
+    "dinov2": {
+      "model_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_pair_v5_source_bound_preservation_v1_20260808/vendor/dinov2-base-f9e44c8",
+      "required_files": {
+        "config.json": "f7ff4cfa73d2f70647dbf6950541ad25d73082d54c2e7e9bded160c7656b2a70",
+        "model.safetensors": "d73036b56966966d07975d696bde331762f37297e2f095de8cea0040c3aa0841",
+        "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828"
+      },
+      "cpu_forward_smoke": {
+        "status": "PASS",
+        "model_class": "Dinov2Model",
+        "parameter_count": 86580480,
+        "trainable_parameter_count_after_freeze": 0,
+        "output_shape": [1, 257, 768],
+        "all_finite": true
+      }
+    },
+    "vjepa2": {
+      "model_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v3/vendor/vjepa2-vitl-fpc64-256-b3c1679",
+      "required_files": {
+        "config.json": "3dec96fe962e94e569182d3a7b9ef0dd74b6b8c89c337a428e43e10d593e70c9",
+        "model.safetensors": "25466aef85727d16546c6cf8c99f12fcfad9cbca8225d45f23685e2e025b786b",
+        "video_preprocessor_config.json": "d2fab4418fc0390b62c4cd72ade56908a7929f80c62288adbe10dd8d23421227"
+      },
+      "formal_forward_evidence": {
+        "status": "PASS",
+        "receipt_file_sha256": "815ccf8eb6b5ef877a13e30f52892db3ce371a71967b378aa52d0334b57cd5d6",
+        "frozen_forward_count": 80,
+        "parameter_updates": 0
+      }
+    }
+  },
+  "gpu_smoke_authorized": false,
+  "formal_gpu_execution_authorized": false,
+  "availability_self_sha256": "55b08ca2b529703cd5671278ed4e9222b408cf78815d5168122393c0209e1fce"
+}

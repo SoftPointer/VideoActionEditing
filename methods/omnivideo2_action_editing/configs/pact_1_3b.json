@@ -1,0 +1,59 @@
+{
+  "format": "pact-omnivideo2-training-v2",
+  "seed": 20260803,
+  "model": {
+    "max_context_len": 6144,
+    "visual_patch_size": [1, 4, 4],
+    "wan_patch_size": [1, 2, 2],
+    "source_erasure_mode": "zero",
+    "require_special_tokens": true,
+    "train_visual_adapter": true,
+    "train_vlm_projection": true,
+    "gradient_checkpointing": true
+  },
+  "mask": {
+    "dilation_radius": [0, 1, 1],
+    "feather_radius": [0, 1, 1]
+  },
+  "flow": {
+    "num_train_timesteps": 1000,
+    "shift": 5.0,
+    "timestep_sampling": "uniform_discrete_batch_shared",
+    "loss_weighting": "diffsynth_bsmntw"
+  },
+  "lora": {
+    "scope": "diffsynth_full",
+    "rank": 32,
+    "alpha": 32.0,
+    "dropout": 0.0
+  },
+  "router": {
+    "hidden_channels": 32,
+    "depth": 2
+  },
+  "loss_weights": {
+    "velocity_edit": 1.0,
+    "velocity_preserve": 1.0,
+    "x0_boundary": 0.25,
+    "x0_temporal_outside": 0.25,
+    "router": 0.1
+  },
+  "optimizer": {
+    "learning_rate": 0.0001,
+    "pretrained_adapter_learning_rate": 0.00001,
+    "weight_decay": 0.01,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-8,
+    "max_grad_norm": 1.0
+  },
+  "training": {
+    "epochs": 10,
+    "batch_size": 1,
+    "gradient_accumulation_steps": 8,
+    "num_workers": 0,
+    "max_steps": 0,
+    "checkpoint_every": 100,
+    "log_every": 1
+  }
+}

@@ -1,0 +1,549 @@
+#!/usr/bin/env bash
+#SBATCH --job-name=bernini-branch-homotopy
+#SBATCH --partition=faculty
+#SBATCH --qos=gtqos
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=256G
+#SBATCH --gres=gpu:mi210:8
+#SBATCH --time=08:00:00
+#SBATCH --exclude=auh7-1b-gpu-185,auh7-1b-gpu-187,auh7-1b-gpu-195,auh7-1b-gpu-233,auh7-1b-gpu-318
+
+set -Eeuo pipefail
+
+# Two sequential waves use the whole node.  In each wave GPUs 0-3 run one dog
+# and GPUs 4-7 one human as independent WORLD4/SP4 groups.  Wave 1 is the fit
+# identity-compatibility cohort; wave 2 is held-out confirmation.  Cohorts are
+# sealed and never aggregated.  Every cell executes the same three frozen
+# exact81/exact40 arms without training, selection, or parameter update.
+
+repo_root="${BRANCH_HOMOTOPY_REPO_ROOT:?set clean repository root}"
+source_archive="${BRANCH_HOMOTOPY_SOURCE_ARCHIVE:?set git archive}"
+source_archive_sha256="${BRANCH_HOMOTOPY_SOURCE_ARCHIVE_SHA256:?set archive SHA-256}"
+registry="${BRANCH_HOMOTOPY_REGISTRY:?set sealed core4 registry}"
+registry_sha256="${BRANCH_HOMOTOPY_REGISTRY_SHA256:?set registry SHA-256}"
+bernini_root="${BERNINI_OFFICIAL_ROOT:?set pinned Bernini root}"
+veomni_root="${BERNINI_VEOMNI_ROOT:?set pinned VeOmni root}"
+checkpoint="${BERNINI_ACTION_CHECKPOINT:?set Bernini checkpoint}"
+checkpoint_manifest="${BERNINI_CHECKPOINT_CONTENT_MANIFEST:?set checkpoint manifest}"
+output_root="${BRANCH_HOMOTOPY_OUTPUT_ROOT:?set fresh output root}"
+python_bin="${BRANCH_HOMOTOPY_PYTHON_BIN:?set vace Python executable}"
+
+fail() {
+  echo "[native-branch-homotopy] ERROR: $*" >&2
+  exit 2
+}
+
+for value in \
+  "${repo_root}" "${source_archive}" "${registry}" "${bernini_root}" \
+  "${veomni_root}" "${checkpoint}" "${checkpoint_manifest}" \
+  "${output_root}" "${python_bin}"
+do
+  [[ "${value}" == /* ]] || fail "all paths must be absolute"
+done
+for value in "${source_archive_sha256}" "${registry_sha256}"
+do
+  [[ "${value}" =~ ^[0-9a-f]{64}$ ]] || fail "SHA-256 input differs"
+done
+
+repo_root="$(realpath -e -- "${repo_root}")"
+source_archive="$(realpath -e -- "${source_archive}")"
+registry="$(realpath -e -- "${registry}")"
+bernini_root="$(realpath -e -- "${bernini_root}")"
+veomni_root="$(realpath -e -- "${veomni_root}")"
+checkpoint="$(realpath -e -- "${checkpoint}")"
+checkpoint_manifest="$(realpath -e -- "${checkpoint_manifest}")"
+python_bin="$(realpath -e -- "${python_bin}")"
+
+[[ -d "${repo_root}" && ! -L "${repo_root}" ]] || fail "repository root differs"
+[[ -f "${source_archive}" && ! -L "${source_archive}" ]] || fail "source archive differs"
+[[ -f "${registry}" && ! -L "${registry}" ]] || fail "registry differs"
+[[ -d "${bernini_root}" && ! -L "${bernini_root}" ]] || fail "Bernini root differs"
+[[ -d "${veomni_root}" && ! -L "${veomni_root}" ]] || fail "VeOmni root differs"
+[[ -d "${checkpoint}" && ! -L "${checkpoint}" ]] || fail "checkpoint differs"
+[[ -f "${checkpoint_manifest}" && ! -L "${checkpoint_manifest}" ]] || fail "checkpoint manifest differs"
+[[ -x "${python_bin}" && -f "${python_bin}" ]] || fail "Python runtime differs"
+[[ "$(sha256sum "${source_archive}" | awk '{print $1}')" == "${source_archive_sha256}" ]] || fail "source archive changed"
+[[ "$(sha256sum "${registry}" | awk '{print $1}')" == "${registry_sha256}" ]] || fail "registry changed"
+
+method_root="${repo_root}/methods/bernini_action_editing"
+runtime="${method_root}/infer_native_branch_homotopy_canary.py"
+core="${method_root}/native_branch_homotopy_v1.py"
+runtime_patch="${method_root}/native_branch_homotopy_runtime_v1.py"
+repo_launcher="${method_root}/scripts/auh_infer_native_branch_homotopy_dual4.sbatch"
+running_launcher="$(realpath -e -- "$0")"
+repo_closure=(
+  "${runtime}"
+  "${core}"
+  "${runtime_patch}"
+  "${method_root}/infer_native_identity_generation_canary.py"
+  "${method_root}/infer_native_self_guided_action_field_canary.py"
+  "${method_root}/self_guided_action_field_v1.py"
+  "${method_root}/source_self_native_ref_contrastive_v3.py"
+  "${method_root}/tri_branch_unipc.py"
+  "${method_root}/infer_lora.py"
+  "${method_root}/train_lora.py"
+  "${method_root}/infer_source_kv_carrier_oracle.py"
+  "${method_root}/infer_source_value_residual_oracle.py"
+  "${method_root}/source_kv_replay.py"
+  "${method_root}/source_kv_route_batches.py"
+  "${method_root}/source_value_residual.py"
+  "${method_root}/assets/wrong_family_prompt_swap_pilot_registry_v1.json"
+  "${method_root}/tests/test_native_branch_homotopy_v1.py"
+  "${method_root}/tests/test_native_branch_homotopy_runtime_v1.py"
+  "${method_root}/tests/test_infer_native_branch_homotopy_canary.py"
+  "${method_root}/tests/test_auh_native_branch_homotopy_launcher.py"
+  "${repo_launcher}"
+)
+closure=("${repo_closure[@]}" "${registry}")
+for path in "${closure[@]}"; do
+  [[ -f "${path}" && ! -L "${path}" ]] || fail "source closure file missing: ${path}"
+done
+[[ "$(sha256sum "${running_launcher}" | awk '{print $1}')" == "$(sha256sum "${repo_launcher}" | awk '{print $1}')" ]] || fail "running launcher differs"
+
+source_revision="$(git -C "${repo_root}" rev-parse HEAD)"
+[[ "${source_revision}" =~ ^[0-9a-f]{40}$ ]] || fail "source revision differs"
+[[ "$(git get-tar-commit-id <"${source_archive}")" == "${source_revision}" ]] || fail "archive/repository revision differs"
+for path in "${repo_closure[@]}"; do
+  relative="${path#"${repo_root}/"}"
+  [[ "${relative}" != "${path}" ]] || fail "repository closure path escaped"
+  git -C "${repo_root}" ls-files --error-unmatch -- "${relative}" >/dev/null || fail "closure path is untracked: ${relative}"
+done
+git -C "${repo_root}" diff --quiet -- "${repo_closure[@]}" || fail "runtime closure has unstaged edits"
+git -C "${repo_root}" diff --cached --quiet -- "${repo_closure[@]}" || fail "runtime closure has staged edits"
+launcher_sha256="$(sha256sum "${repo_launcher}" | awk '{print $1}')"
+source_closure_sha256="$(sha256sum "${closure[@]}" | sha256sum | awk '{print $1}')"
+
+[[ "${output_root}" != / && ! -e "${output_root}" && ! -L "${output_root}" ]] || fail "output root must be fresh"
+output_parent="$(dirname -- "${output_root}")"
+[[ -d "${output_parent}" && ! -L "${output_parent}" ]] || fail "output parent differs"
+output_parent="$(realpath -e -- "${output_parent}")"
+[[ "${output_root}" == "${output_parent}/${output_root##*/}" ]] || fail "output path is not canonical"
+[[ "${output_root##*/}" =~ ^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$ ]] || fail "unsafe output basename"
+
+export PYTHONDONTWRITEBYTECODE=1
+export PYTHONNOUSERSITE=1
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_DATASETS_OFFLINE=1
+export TOKENIZERS_PARALLELISM=false
+export MODELING_BACKEND=hf
+export OMP_NUM_THREADS=4
+export MKL_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
+export NCCL_DEBUG=WARN
+
+for test_file in \
+  test_native_branch_homotopy_v1.py \
+  test_native_branch_homotopy_runtime_v1.py \
+  test_infer_native_branch_homotopy_canary.py \
+  test_auh_native_branch_homotopy_launcher.py
+do
+  PYTHONPATH="${method_root}" "${python_bin}" -B "${method_root}/tests/${test_file}"
+done
+
+[[ "${SLURM_JOB_ID:?launcher requires Slurm}" =~ ^[0-9]+$ ]] || fail "Slurm ID differs"
+scratch_parent="${SLURM_TMPDIR:-/tmp}"
+[[ "${scratch_parent}" == /* && -d "${scratch_parent}" && ! -L "${scratch_parent}" && -w "${scratch_parent}" ]] || fail "scratch parent differs"
+task_scratch="$(mktemp -d "${scratch_parent%/}/native-branch-homotopy-${SLURM_JOB_ID}.XXXXXX")"
+dog_pid=""
+human_pid=""
+
+cleanup() {
+  local status=$?
+  trap - EXIT TERM INT
+  case "${task_scratch:-}" in
+    "${scratch_parent%/}/native-branch-homotopy-${SLURM_JOB_ID}."*) ;;
+    *) exit 2 ;;
+  esac
+  if [[ -d "${task_scratch}" && ! -L "${task_scratch}" ]]; then
+    chmod -R u+w -- "${task_scratch}"
+    rm -rf -- "${task_scratch}"
+  fi
+  [[ ! -e "${task_scratch}" ]] || status=2
+  if [[ "${status}" == 0 ]]; then
+    echo "[native-branch-homotopy] PASS all8=true exact81=true exact40=true training=false output=${output_root}"
+  fi
+  exit "${status}"
+}
+
+terminate_children() {
+  local status="$1"
+  trap - TERM INT
+  for child in "${dog_pid}" "${human_pid}"; do
+    if [[ "${child}" =~ ^[0-9]+$ ]]; then kill "${child}" 2>/dev/null || true; fi
+  done
+  for child in "${dog_pid}" "${human_pid}"; do
+    if [[ "${child}" =~ ^[0-9]+$ ]]; then wait "${child}" 2>/dev/null || true; fi
+  done
+  exit "${status}"
+}
+
+trap cleanup EXIT
+trap 'terminate_children 143' TERM
+trap 'terminate_children 130' INT
+
+mkdir -- "${output_root}"
+mkdir -- "${output_root}/logs"
+cp -- "${registry}" "${output_root}/sealed-native-branch-homotopy-core4.json"
+chmod 0444 -- "${output_root}/sealed-native-branch-homotopy-core4.json"
+
+job_mod=$((SLURM_JOB_ID % 10000))
+wave1_dog_port=$((40000 + 2 * job_mod))
+wave1_human_port=$((wave1_dog_port + 1))
+wave2_dog_port=$((wave1_dog_port + 2))
+wave2_human_port=$((wave1_dog_port + 3))
+
+launch_group() (
+  set -Eeuo pipefail
+  local label="$1"
+  local visible="$2"
+  local port="$3"
+  local group_scratch="${task_scratch}/${label}"
+  mkdir -p -- "${group_scratch}/miopen-user" "${group_scratch}/miopen-custom" "${group_scratch}/torch-extensions" "${group_scratch}/triton" "${group_scratch}/xdg" "${group_scratch}/pycache" "${group_scratch}/tmp"
+  unset HIP_VISIBLE_DEVICES CUDA_VISIBLE_DEVICES GPU_DEVICE_ORDINAL
+  export ROCR_VISIBLE_DEVICES="${visible}"
+  export MIOPEN_USER_DB_PATH="${group_scratch}/miopen-user"
+  export MIOPEN_CUSTOM_CACHE_DIR="${group_scratch}/miopen-custom"
+  export TORCH_EXTENSIONS_DIR="${group_scratch}/torch-extensions"
+  export TRITON_CACHE_DIR="${group_scratch}/triton"
+  export XDG_CACHE_HOME="${group_scratch}/xdg"
+  export PYTHONPYCACHEPREFIX="${group_scratch}/pycache"
+  export TMPDIR="${group_scratch}/tmp"
+  export BERNINI_OUTPUT_TRANSACTION_ID="native-branch-homotopy-${SLURM_JOB_ID}-${label}"
+  exec "${python_bin}" -B -m torch.distributed.run \
+    --nproc_per_node=4 \
+    --master_addr=127.0.0.1 \
+    --master_port="${port}" \
+    "${runtime}" \
+    --registry "${output_root}/sealed-native-branch-homotopy-core4.json" \
+    --expected-registry-sha256 "${registry_sha256}" \
+    --cell-id "${label}" \
+    --bernini-root "${bernini_root}" \
+    --veomni-root "${veomni_root}" \
+    --checkpoint "${checkpoint}" \
+    --checkpoint-content-manifest "${checkpoint_manifest}" \
+    --output-dir "${output_root}/${label}" \
+    --runtime-source-revision "${source_revision}" \
+    --runtime-source-archive-sha256 "${source_archive_sha256}" \
+    --runtime-source-closure-sha256 "${source_closure_sha256}" \
+    --launcher-source-sha256 "${launcher_sha256}"
+)
+
+run_wave() {
+  local wave_id="$1"
+  local dog_cell="$2"
+  local human_cell="$3"
+  local dog_port="$4"
+  local human_port="$5"
+  local dog_status=0
+  local human_status=0
+
+  launch_group "${dog_cell}" 0,1,2,3 "${dog_port}" >"${output_root}/logs/${dog_cell}.log" 2>&1 &
+  dog_pid=$!
+  launch_group "${human_cell}" 4,5,6,7 "${human_port}" >"${output_root}/logs/${human_cell}.log" 2>&1 &
+  human_pid=$!
+  wait "${dog_pid}" || dog_status=$?
+  wait "${human_pid}" || human_status=$?
+  dog_pid=""
+  human_pid=""
+  [[ "${dog_status}" == 0 ]] || fail "${wave_id}/${dog_cell} SP4 failed with ${dog_status}"
+  [[ "${human_status}" == 0 ]] || fail "${wave_id}/${human_cell} SP4 failed with ${human_status}"
+}
+
+run_wave \
+  wave1-fit-compatibility \
+  fit-dog-7b88 \
+  fit-human-a35b \
+  "${wave1_dog_port}" \
+  "${wave1_human_port}"
+run_wave \
+  wave2-heldout-confirmation \
+  confirmation-dog-841b \
+  confirmation-human-a66e \
+  "${wave2_dog_port}" \
+  "${wave2_human_port}"
+
+"${python_bin}" -B - "${output_root}" "${registry_sha256}" "${source_revision}" "${source_archive_sha256}" "${source_closure_sha256}" <<'PY'
+from __future__ import annotations
+import hashlib
+import json
+import os
+from pathlib import Path
+import sys
+import tempfile
+
+import av
+import torch
+from safetensors import safe_open
+
+root = Path(sys.argv[1]).resolve(strict=True)
+registry_sha, revision, archive_sha, closure_sha = sys.argv[2:]
+arms = [
+    "native-full-source-endpoint",
+    "r2v4-reference-only-endpoint",
+    "native-branch-homotopy-090-060",
+]
+cells = [
+    "fit-dog-7b88",
+    "fit-human-a35b",
+    "confirmation-dog-841b",
+    "confirmation-human-a66e",
+]
+waves = [
+    {
+        "wave_id": "wave1-fit-compatibility",
+        "cohort": "fit_identity_compatibility",
+        "cell_ids": cells[:2],
+    },
+    {
+        "wave_id": "wave2-heldout-confirmation",
+        "cohort": "heldout_confirmation_action_rescue",
+        "cell_ids": cells[2:],
+    },
+]
+cell_contract = {
+    cell: (wave["wave_id"], wave["cohort"])
+    for wave in waves
+    for cell in wave["cell_ids"]
+}
+schedule_sha = "46f3dcb6e2d65cb7921e5217e2a20dfe008b366cfacafe455fee4d3c45f63ae2"
+
+def file_sha(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+def object_sha(value: object) -> str:
+    encoded = json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode("ascii")
+    return hashlib.sha256(encoded).hexdigest()
+
+def plain_child_file(cell_root: Path, declared: object, expected_name: str) -> Path:
+    if not isinstance(declared, str):
+        raise SystemExit(f"{expected_name} path is not text")
+    requested = Path(declared)
+    expected = cell_root / expected_name
+    if (
+        not requested.is_absolute()
+        or requested != expected
+        or requested.is_symlink()
+        or requested.resolve(strict=True) != requested
+        or not requested.is_file()
+    ):
+        raise SystemExit(f"{expected_name} path differs")
+    return requested
+
+def decoded_video_contract(path: Path, *, cell: str, arm: str, height: int, width: int) -> dict[str, object]:
+    frames = 0
+    observed_hw: set[tuple[int, int]] = set()
+    with av.open(str(path), mode="r") as container:
+        streams = list(container.streams.video)
+        if len(streams) != 1:
+            raise SystemExit(f"{cell}/{arm} video stream count differs")
+        stream = streams[0]
+        fps = float(stream.average_rate) if stream.average_rate is not None else 0.0
+        for frame in container.decode(stream):
+            frames += 1
+            observed_hw.add((int(frame.height), int(frame.width)))
+    if frames != 81 or abs(fps - 25.0) > 1.0e-6 or observed_hw != {(height, width)}:
+        raise SystemExit(f"{cell}/{arm} decoded media differs")
+    return {"decoded_frame_count": frames, "decoded_fps": fps, "decoded_hw": [height, width]}
+
+def safetensor_raw_sha(path: Path, *, key: str, expected_shape: list[int]) -> str:
+    with safe_open(str(path), framework="pt", device="cpu") as opened:
+        if list(opened.keys()) != [key]:
+            raise SystemExit(f"{path.name} safetensors key differs")
+        tensor = opened.get_tensor(key).contiguous()
+    if tensor.dtype != torch.float32 or list(tensor.shape) != expected_shape:
+        raise SystemExit(f"{path.name} tensor geometry differs")
+    return hashlib.sha256(tensor.view(torch.uint8).numpy().tobytes(order="C")).hexdigest()
+
+children = []
+for cell in cells:
+    cell_root = root / cell
+    receipt_path = cell_root / "receipt.json"
+    if receipt_path.is_symlink() or receipt_path.resolve(strict=True) != receipt_path:
+        raise SystemExit(f"{cell} receipt path differs")
+    row = json.loads(receipt_path.read_text(encoding="utf-8"))
+    unsigned = dict(row)
+    declared = unsigned.pop("receipt_digest")
+    if object_sha(unsigned) != declared:
+        raise SystemExit(f"{cell} receipt seal differs")
+    if (
+        row.get("schema_version") != "bernini-native-branch-homotopy-canary-receipt-v1"
+        or row.get("method") != "frozen-bernini-native-visual-branch-homotopy-canary"
+        or row.get("cell_id") != cell
+        or (row.get("wave_id"), row.get("cohort")) != cell_contract[cell]
+        or row.get("training_performed") is not False
+        or row.get("optimizer_created") is not False
+        or row.get("parameter_update") is not False
+        or row.get("fit_and_confirmation_never_aggregated") is not True
+        or row.get("single_example_conclusion_authorized") is not False
+    ):
+        raise SystemExit(f"{cell} receipt boundary differs")
+    sampling = row.get("sampling", {})
+    schedule = sampling.get("schedule_receipt", {})
+    if (
+        sampling.get("frame_count") != 81
+        or sampling.get("latent_phases") != 21
+        or sampling.get("num_inference_steps") != 40
+        or sampling.get("arm_order") != arms
+        or sampling.get("guidance_by_arm") != {
+            arms[0]: "v2v_apg", arms[1]: "r2v_apg", arms[2]: "v2v_apg"
+        }
+        or sampling.get("same_official_gaussian_all_arms") is not True
+        or sampling.get("flow_shift_from_renderer_config") != 5.0
+        or sampling.get("eta") != 0.5
+        or sampling.get("norm_thresholds") != [50.0, 50.0]
+        or sampling.get("momentum") != 0.0
+        or sampling.get("schedule_sha256") != schedule_sha
+        or schedule.get("digest") != schedule_sha
+        or sampling.get("high_endpoint_step_indices") != list(range(15))
+        or sampling.get("transition_step_indices") != list(range(15, 31))
+        or sampling.get("low_endpoint_step_indices") != list(range(31, 40))
+    ):
+        raise SystemExit(f"{cell} exact81/exact40 sampling differs")
+    prompts = row.get("prompts", {})
+    if (
+        prompts.get("same_target_action_caption_body") is not True
+        or prompts.get("same_verbatim_negative_prompt_all_arms") is not True
+        or prompts.get("positive_task_prefix_and_visual_regime_change_together") is not True
+        or prompts.get("shared_vr2v_positive_embedding_across_endpoints") is not False
+        or prompts.get("embedding_shape") != [1, 512, 4096]
+        or prompts.get("low_is_official_v2v_apg_guidance_but_not_stock_vr2v_deployment_parity") is not True
+    ):
+        raise SystemExit(f"{cell} mode-native prompt disclosure differs")
+    traces = row.get("runtime_traces", {})
+    # Receipts are written with canonical JSON (sort_keys=True), so mapping
+    # insertion order is intentionally not preserved on disk.  The explicit
+    # sampling.arm_order above is the signed order contract; runtime_traces is
+    # a keyed lookup and must contain exactly the same arm names.
+    if not isinstance(traces, dict) or set(traces) != set(arms):
+        raise SystemExit(f"{cell} trace arm set differs")
+    low, high, hom = (traces[arm] for arm in arms)
+    if (
+        low.get("guidance_mode") != "v2v_apg"
+        or low.get("expected_transformer_forwards_per_step_from_pinned_vendor") != 2
+        or high.get("guidance_mode") != "r2v_apg"
+        or high.get("expected_transformer_forwards_per_step_from_pinned_vendor") != 3
+        or hom.get("steps") != 40
+        or hom.get("transformer_forwards") != 200
+        or hom.get("low_vi_forwards") != 80
+        or hom.get("high_r2v4_forwards") != 120
+        or hom.get("patch_vae_latent_calls") != 400
+        or hom.get("original_scheduler_calls") != 40
+        or hom.get("low_official_apg_exact_parity_all_steps") is not True
+        or hom.get("scheduler_mutation_surface") != "model_output_argument_only"
+    ):
+        raise SystemExit(f"{cell} endpoint/homotopy trace root differs")
+    trace_rows = hom.get("trace")
+    if not isinstance(trace_rows, list) or len(trace_rows) != 40:
+        raise SystemExit(f"{cell} homotopy exact40 trace differs")
+    for index, step in enumerate(trace_rows):
+        expected_endpoint = "high_r2v4_apg" if index < 15 else "transition" if index < 31 else "low_official_v2v_apg"
+        weight = step.get("high_r2v4_weight") if isinstance(step, dict) else None
+        weight_ok = weight == 1.0 if index < 15 else (isinstance(weight, float) and 0.0 < weight < 1.0) if index < 31 else weight == 0.0
+        if (
+            not isinstance(step, dict)
+            or step.get("step_index") != index
+            or step.get("endpoint") != expected_endpoint
+            or not weight_ok
+            or step.get("transformer_forwards") != 5
+            or step.get("original_scheduler_calls") != 1
+            or step.get("low_official_apg_exact_parity") is not True
+        ):
+            raise SystemExit(f"{cell} homotopy step {index} differs")
+    freeze = row.get("freeze_certificate", {})
+    if (
+        freeze.get("base_frozen") is not True
+        or freeze.get("model_eval") is not True
+        or freeze.get("adapter_modules_absent") is not True
+        or freeze.get("exact_parameter_and_buffer_bytes_hashed") is not True
+    ):
+        raise SystemExit(f"{cell} freeze certificate differs")
+    latent_shape = list(row.get("generated_identities", {}).get(arms[0], {}).get("identity", {}).get("shape", []))
+    if len(latent_shape) != 5 or latent_shape[:3] != [1, 16, 21]:
+        raise SystemExit(f"{cell} latent geometry differs")
+    live_outputs, live_clean, live_noise = {}, {}, {}
+    noise_hashes = set()
+    for arm in arms:
+        output = row.get("outputs", {}).get(arm, {})
+        video = plain_child_file(cell_root, output.get("path"), f"{arm}.mp4")
+        if file_sha(video) != output.get("sha256"):
+            raise SystemExit(f"{cell}/{arm} MP4 hash differs")
+        live_outputs[arm] = {
+            "sha256": output["sha256"],
+            **decoded_video_contract(video, cell=cell, arm=arm, height=int(output.get("height", -1)), width=int(output.get("width", -1))),
+        }
+        clean_row = output.get("normalized_clean_latent", {})
+        clean = plain_child_file(cell_root, clean_row.get("path"), f"{arm}.normalized-clean-latent.safetensors")
+        clean_raw = safetensor_raw_sha(clean, key="normalized_clean_latent", expected_shape=latent_shape)
+        if file_sha(clean) != clean_row.get("sha256") or clean_raw != row["generated_identities"][arm]["identity"]["raw_storage_sha256"]:
+            raise SystemExit(f"{cell}/{arm} clean latent differs")
+        live_clean[arm] = {"container_sha256": clean_row["sha256"], "raw_value_sha256": clean_raw}
+        noise_row = row.get("initial_noise_artifacts", {}).get(arm, {})
+        noise = plain_child_file(cell_root, noise_row.get("path"), f"{arm}.official-initial-gaussian.safetensors")
+        noise_raw = safetensor_raw_sha(noise, key="official_initial_gaussian", expected_shape=latent_shape)
+        if file_sha(noise) != noise_row.get("sha256") or noise_raw != noise_row.get("raw_value_sha256"):
+            raise SystemExit(f"{cell}/{arm} official Gaussian differs")
+        noise_hashes.add(noise_raw)
+        live_noise[arm] = {"container_sha256": noise_row["sha256"], "raw_value_sha256": noise_raw}
+    if len(noise_hashes) != 1 or next(iter(noise_hashes)) != sampling.get("official_gaussian_raw_sha256"):
+        raise SystemExit(f"{cell} arms did not share one live Gaussian")
+    children.append({
+        "cell_id": cell,
+        "receipt_path": str(receipt_path),
+        "receipt_file_sha256": file_sha(receipt_path),
+        "receipt_digest": declared,
+        "runtime_trace_digest": row.get("runtime_trace_digest"),
+        "live_output_postflight": live_outputs,
+        "live_clean_latent_postflight": live_clean,
+        "live_initial_gaussian_postflight": live_noise,
+    })
+
+master = {
+    "schema_version": "bernini-native-branch-homotopy-all8-receipt-v1",
+    "method": "frozen-bernini-native-visual-branch-homotopy-canary",
+    "topology": "two_sequential_waves_each_two_concurrent_world4_sp4_groups_on_one_8gpu_node",
+    "all8_used": True,
+    "two_sequential_waves": True,
+    "wave_order": [wave["wave_id"] for wave in waves],
+    "waves": waves,
+    "cell_order": cells,
+    "arm_order": arms,
+    "registry_file_sha256": registry_sha,
+    "runtime_source_revision": revision,
+    "runtime_source_archive_sha256": archive_sha,
+    "runtime_source_closure_sha256": closure_sha,
+    "exact81": True,
+    "exact40": True,
+    "schedule_sha256": schedule_sha,
+    "training_performed": False,
+    "parameter_update": False,
+    "target_video_consumed": False,
+    "custom_initial_noise": False,
+    "mask_track_pose_flow": False,
+    "fit_and_confirmation_never_aggregated": True,
+    "single_example_conclusion_authorized": False,
+    "children": children,
+}
+master["receipt_digest"] = object_sha(master)
+target = root / "all8-receipt.json"
+with tempfile.NamedTemporaryFile(dir=root, prefix=".all8-receipt.", suffix=".tmp", delete=False) as handle:
+    temporary = Path(handle.name)
+    handle.write(json.dumps(master, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False).encode("ascii") + b"\n")
+    handle.flush()
+    os.fsync(handle.fileno())
+os.replace(temporary, target)
+descriptor = os.open(root, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
+try:
+    os.fsync(descriptor)
+finally:
+    os.close(descriptor)
+print(json.dumps(master, sort_keys=True, separators=(",", ":"), ensure_ascii=True))
+PY

@@ -1,0 +1,66 @@
+{
+  "schema_version": "bernini-target-factorized-soft-ot-graph-source-closure-v5-r1b",
+  "experiment_id": "target_factorized_soft_ot_graph_teacher_pilot_v5_r1b",
+  "source_closure_sha256": "cebc9cd91f2af042d83bf9991ae97bb52993d58f0539845153db13788cf5dbae",
+  "gpu_launch_authorized": false,
+  "gpu_launch_performed": false,
+  "files": [
+    {
+      "path": "methods/bernini_action_editing/target_factorized_soft_ot_graph_teacher_pilot_v5_r1b.py",
+      "sha256": "f45b8599f4581aa8c88d0e28dea9a687a108ef2ffbd4c941190baaf045c4cdba"
+    },
+    {
+      "path": "methods/bernini_action_editing/tests/test_target_factorized_soft_ot_graph_teacher_pilot_v5_r1b.py",
+      "sha256": "334507e7355225b5fe399f9beac1f16c9ea62e61ddbc60a23b58976e40016fa4"
+    },
+    {
+      "path": "methods/bernini_action_editing/scripts/auh_target_factorized_soft_ot_graph_teacher_rank_wrapper_v5_r1b.sh",
+      "sha256": "6c3d9d148e96fd6b5d14b703ded5c807baf46bd43f65d9cb09c94a9c10ae50b0"
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/target_factorized_soft_ot_graph_teacher_manifest_v5_r1b.json",
+      "sha256": "d43ff7f7c14b2c25bf949798fb71839f6f0e6325d8829784f2d9eef5a1516929"
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/target_factorized_soft_ot_graph_teacher_prereg_v5_r1b.json",
+      "sha256": "27c4e6ba4a3d1817e46cbf36ecd6fd5a2d37577b8431601443afde65db4ac3d4"
+    },
+    {
+      "path": "methods/bernini_action_editing/target_middle_object_graph_teacher_pilot_v5.py",
+      "sha256": "92e1bb4f80a804935c1d7948dffed40d9a929b671b9274dae67f5b31205c22cf"
+    },
+    {
+      "path": "methods/bernini_action_editing/extract_vjepa2_ordered_contextual_features_v4c.py",
+      "sha256": "720033ac069dd1ee33463d2c439199cfdce3a1c595d4252b7f395e68c56e1cfc"
+    },
+    {
+      "path": "methods/action_anchor_target_gap_audit/representation_eval.py",
+      "sha256": "fb001d6865f93d4e4f19fb03574f5eb089c21d9b393f632d7c26d85519018aca"
+    },
+    {
+      "path": "methods/action_anchor_target_gap_audit/audit.py",
+      "sha256": "6cd89a6a7e870b5b433b7c4c4e5ad47f56f77babfa9a559581b18a339ce95aff"
+    },
+    {
+      "path": "methods/action_anchor_target_gap_audit/corrected_eval.py",
+      "sha256": "c31ac281da10fabda148b9f9614cf98847fd83271a91c922af0822230a9cc3fb"
+    },
+    {
+      "path": "methods/action_anchor_target_gap_audit/__init__.py",
+      "sha256": "5a576ac296d3e826d035f6025b5aaba96e7525b50cfeabfcabd31d3fa3672efa"
+    }
+  ],
+  "frozen_model": {
+    "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v3/vendor/vjepa2-vitl-fpc64-256-b3c1679",
+    "repo": "facebook/vjepa2-vitl-fpc64-256",
+    "revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+    "required_files": {
+      "config.json": {"sha256": "3dec96fe962e94e569182d3a7b9ef0dd74b6b8c89c337a428e43e10d593e70c9", "size_bytes": 785},
+      "model.safetensors": {"sha256": "25466aef85727d16546c6cf8c99f12fcfad9cbca8225d45f23685e2e025b786b", "size_bytes": 1303947864},
+      "video_preprocessor_config.json": {"sha256": "d2fab4418fc0390b62c4cd72ade56908a7929f80c62288adbe10dd8d23421227", "size_bytes": 1298}
+    }
+  },
+  "expected_cpu_tests": 20,
+  "exact_gpu_model_forwards_if_later_audited_and_launched": 80,
+  "claim_boundary": "source closure only; no GPU launch or representation result"
+}

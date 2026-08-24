@@ -1,0 +1,203 @@
+{
+  "schema_version": "bernini-dmiq-pure-t2v-factorial-spec-v2",
+  "bank_id": "dog-pickup-hold-oa16-2rep-scientific-v2",
+  "profile": "scientific",
+  "design": "oa_l16_4level_actor_scene_camera_wording_2rep_v2",
+  "action_family_id": "dog-pickup-hold-object",
+  "action_program": {
+    "actor_role": "the preregistered primary dog",
+    "patient_role": "the preregistered primary pickup object",
+    "preconditions": [
+      "both objects begin supported by the ground and spatially separated",
+      "both dogs begin empty-mouthed and spatially distinguishable"
+    ],
+    "ordered_milestones": [
+      "the acting dog lowers or brings its muzzle toward the selected object",
+      "the acting dog's muzzle or mouth contacts that same selected object",
+      "the acting dog grips that same selected object and lifts it from its supporting surface",
+      "the acting dog raises or withdraws its head while retaining that same selected object"
+    ],
+    "terminal_hold_required": true,
+    "terminal_hold_video_frames": [65, 80],
+    "reverse_action_definition": "from the same empty-mouth grounded-object precondition, the primary dog contacts and pushes the primary object along the ground without gripping or lifting it, then raises its head empty and remains empty-mouthed"
+  },
+  "source_geometry_video": {
+    "sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+    "frame_count": 81,
+    "fps": 25,
+    "height": 496,
+    "width": 480
+  },
+  "object_pair": {
+    "object_id": "yellow-bone-with-blue-ball-distractor",
+    "object_phrase": "a yellow canvas bone",
+    "object_reference": "the same yellow canvas bone",
+    "distractor_object_phrase": "a blue rubber ball",
+    "distractor_object_reference": "the same blue rubber ball"
+  },
+  "actor_levels": [
+    {
+      "actor_id": "tan-pitbull-with-beagle",
+      "split": "discovery",
+      "actor_phrase": "a tan pit bull",
+      "actor_reference": "the tan pit bull",
+      "distractor_actor_phrase": "a spotted beagle",
+      "distractor_actor_reference": "the spotted beagle"
+    },
+    {
+      "actor_id": "black-labrador-with-poodle",
+      "split": "discovery",
+      "actor_phrase": "a black Labrador",
+      "actor_reference": "the black Labrador",
+      "distractor_actor_phrase": "a white poodle",
+      "distractor_actor_reference": "the white poodle"
+    },
+    {
+      "actor_id": "golden-retriever-with-collie",
+      "split": "discovery",
+      "actor_phrase": "a golden retriever",
+      "actor_reference": "the golden retriever",
+      "distractor_actor_phrase": "a black-and-white border collie",
+      "distractor_actor_reference": "the black-and-white border collie"
+    },
+    {
+      "actor_id": "white-husky-with-corgi",
+      "split": "confirmation",
+      "actor_phrase": "a white Siberian husky",
+      "actor_reference": "the white Siberian husky",
+      "distractor_actor_phrase": "a brown Pembroke corgi",
+      "distractor_actor_reference": "the brown Pembroke corgi"
+    }
+  ],
+  "scene_levels": [
+    {
+      "scene_id": "gray-concrete-daylight",
+      "scene_phrase": "an open area of gray concrete in soft natural daylight"
+    },
+    {
+      "scene_id": "pale-kitchen-tiles",
+      "scene_phrase": "a bright kitchen with pale tiled flooring and diffuse window light"
+    },
+    {
+      "scene_id": "short-grass-field",
+      "scene_phrase": "a field of short green grass under even overcast daylight"
+    },
+    {
+      "scene_id": "stone-patio-morning",
+      "scene_phrase": "a clean stone patio in cool morning light"
+    }
+  ],
+  "camera_levels": [
+    {
+      "camera_id": "locked-overhead-medium",
+      "camera_phrase": "a locked overhead medium camera"
+    },
+    {
+      "camera_id": "locked-eye-level-medium",
+      "camera_phrase": "a locked eye-level medium camera"
+    },
+    {
+      "camera_id": "locked-low-angle-medium",
+      "camera_phrase": "a locked low-angle medium camera"
+    },
+    {
+      "camera_id": "locked-three-quarter-medium",
+      "camera_phrase": "a locked three-quarter medium camera"
+    }
+  ],
+  "wording_levels": [
+    {
+      "wording_id": "direct-event-chain",
+      "templates": {
+        "full_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers its muzzle to {object_ref}, grips it, lifts it clear, raises its head, and holds it through the end; {distractor_actor_ref} stays still and {distractor_object_ref} remains down.",
+        "noop": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} and {distractor_actor_ref} remain still and separate; neither touches {object_ref} or {distractor_object_ref}, and both objects stay down.",
+        "incomplete_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers its muzzle to sniff and briefly touch {object_ref} but never grips or lifts it; {distractor_actor_ref} and {distractor_object_ref} remain still.",
+        "reverse_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. Keeping that initial condition, {actor_ref} lowers to {object_ref}, contacts and pushes it away along the ground without gripping or lifting, then raises its head empty and remains empty-mouthed; {distractor_actor_ref} and {distractor_object_ref} stay still.",
+        "shuffled_action": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} raises its empty head, nudges {object_ref}, lowers only afterward, and withdraws without holding it; {distractor_actor_ref} and {distractor_object_ref} stay still.",
+        "wrong_actor": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {distractor_actor_ref}, not {actor_ref}, lowers to {object_ref}, grips it, lifts it, raises its head, and holds it through the end; {distractor_object_ref} remains down.",
+        "wrong_object": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. {actor_ref} lowers to {distractor_object_ref}, grips it, lifts it, raises its head, and holds it through the end; {distractor_actor_ref} stays still and {object_ref} remains down.",
+        "camera_only": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. The viewpoint alone makes a smooth orbit and tilt while {actor_ref}, {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain fixed and separate.",
+        "appearance_only": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. Only the coat color and texture of {actor_ref} change; {distractor_actor_ref}, {object_ref}, {distractor_object_ref}, all poses, and the viewpoint stay fixed.",
+        "generic_wrong_motion": "At the start, {camera} shows {actor} and {distractor_actor}, both empty-mouthed, beside {object} and {distractor_object} resting apart in {scene}. In four clear events, {actor_ref} steps left, turns toward the camera, crouches, and rises, matching the target clip's gross motion without approaching either object; {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} stay still."
+      }
+    },
+    {
+      "wording_id": "continuous-take",
+      "templates": {
+        "full_action": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. In one unbroken motion, {actor_ref} bends to {object_ref}, closes its jaws around it, elevates it, lifts its head, and retains it to the last frame; {distractor_actor_ref} and {distractor_object_ref} do not move.",
+        "noop": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. Throughout the take, {actor_ref} and {distractor_actor_ref} keep their initial poses, and neither {object_ref} nor {distractor_object_ref} is contacted or displaced.",
+        "incomplete_action": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. {actor_ref} bends and briefly touches {object_ref} with its nose, but its jaws never secure it and it stays supported; {distractor_actor_ref} and {distractor_object_ref} remain still.",
+        "reverse_action": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. From that same initial state, {actor_ref} bends to {object_ref}, makes contact and slides it across the ground without securing or lifting it, then raises its empty head and stays empty-mouthed; {distractor_actor_ref} and {distractor_object_ref} remain fixed.",
+        "shuffled_action": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. {actor_ref} withdraws first, taps {object_ref} second, bends third, and finishes empty-mouthed; {distractor_actor_ref} and {distractor_object_ref} remain fixed.",
+        "wrong_actor": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. {distractor_actor_ref} performs the entire bend, grip, lift, head-rise, and final hold on {object_ref}, while {actor_ref} stays still and {distractor_object_ref} stays down.",
+        "wrong_object": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. {actor_ref} performs the entire bend, grip, lift, head-rise, and final hold on {distractor_object_ref}, while {distractor_actor_ref} stays still and {object_ref} stays down.",
+        "camera_only": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. Only the camera cranes, pans, and rotates; {actor_ref}, {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain motionless and separate.",
+        "appearance_only": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. Only the fur pattern of {actor_ref} transforms; {distractor_actor_ref}, {object_ref}, {distractor_object_ref}, geometry, pose, and framing do not change.",
+        "generic_wrong_motion": "A continuous take from {camera} begins with {actor} and {distractor_actor} empty-mouthed while {object} and {distractor_object} lie separately in {scene}. In four energy-matched events, {actor_ref} sidesteps, looks upward, sits, and stands without nearing an object; {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain fixed."
+      }
+    },
+    {
+      "wording_id": "documentary-sequence",
+      "templates": {
+        "full_action": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. {actor_ref} approaches downward, secures {object_ref}, raises it off the ground, withdraws upward, and visibly keeps it until frame 80; {distractor_actor_ref} leaves {distractor_object_ref} untouched.",
+        "noop": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. {actor_ref} and {distractor_actor_ref} remain passive, and {object_ref} and {distractor_object_ref} preserve their original positions without contact.",
+        "incomplete_action": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. {actor_ref} approaches, sniffs, and briefly contacts {object_ref}, then stops before gripping or lifting; {distractor_actor_ref} and {distractor_object_ref} remain passive.",
+        "reverse_action": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. Without changing that first-frame condition, {actor_ref} lowers to {object_ref}, contacts and pushes it sideways while it stays ground-supported, then raises its head empty and remains empty-mouthed; {distractor_actor_ref} leaves {distractor_object_ref} untouched.",
+        "shuffled_action": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. {actor_ref} withdraws upward, bends, raises empty again, and merely touches {object_ref} near the end; {distractor_actor_ref} and {distractor_object_ref} remain passive.",
+        "wrong_actor": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. The action is assigned to {distractor_actor_ref}: it approaches, grips, lifts, raises, and retains {object_ref}; {actor_ref} remains passive and {distractor_object_ref} stays down.",
+        "wrong_object": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. The patient is changed: {actor_ref} approaches, grips, lifts, raises, and retains {distractor_object_ref}; {distractor_actor_ref} remains passive and {object_ref} stays down.",
+        "camera_only": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. The lens executes a conspicuous lateral track and perspective change while {actor_ref}, {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain stationary.",
+        "appearance_only": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. The coat length and color of {actor_ref} alone change over time; {distractor_actor_ref}, {object_ref}, {distractor_object_ref}, positions, and camera remain fixed.",
+        "generic_wrong_motion": "Documentary footage from {camera} opens on {actor} and {distractor_actor} with empty mouths, with {object} and {distractor_object} apart on the ground in {scene}. Across four comparable-motion events, {actor_ref} walks right, turns left, lowers its torso, and stands, never approaching an object; {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain still."
+      }
+    },
+    {
+      "wording_id": "observational-milestones",
+      "templates": {
+        "full_action": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. The milestones are explicit: {actor_ref} lowers to {object_ref}, grips the same item, lifts it, raises its head, and sustains the hold to the final frame; {distractor_actor_ref} and {distractor_object_ref} are inactive.",
+        "noop": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. No milestone occurs: {actor_ref} and {distractor_actor_ref} maintain their poses, and {object_ref} and {distractor_object_ref} stay grounded and untouched.",
+        "incomplete_action": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Only the approach and contact milestones occur when {actor_ref} lowers and touches {object_ref}; there is no grip, lift, or hold, and {distractor_actor_ref} plus {distractor_object_ref} are inactive.",
+        "reverse_action": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Under the same precondition, {actor_ref} lowers to {object_ref}, contacts it and pushes it away while it remains ground-supported, then raises its head empty and stays empty-mouthed; {distractor_actor_ref} and {distractor_object_ref} are inactive.",
+        "shuffled_action": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. {actor_ref} performs the milestone-like events out of order by raising, touching {object_ref}, withdrawing, and lowering, never ending in a hold; {distractor_actor_ref} and {distractor_object_ref} are inactive.",
+        "wrong_actor": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Every target milestone is executed by {distractor_actor_ref} on {object_ref}, ending in a sustained hold, while {actor_ref} remains inactive and {distractor_object_ref} remains grounded.",
+        "wrong_object": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Every target milestone is executed by {actor_ref} on {distractor_object_ref}, ending in a sustained hold, while {distractor_actor_ref} remains inactive and {object_ref} remains grounded.",
+        "camera_only": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Only framing changes through a dolly and orbit; {actor_ref}, {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} remain at their initial coordinates.",
+        "appearance_only": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Only the visible breed texture of {actor_ref} changes; {distractor_actor_ref}, {object_ref}, {distractor_object_ref}, motion, scene geometry, and framing remain constant.",
+        "generic_wrong_motion": "An uncut observation by {camera} starts with empty-mouthed {actor} and {distractor_actor}, plus separated grounded {object} and {distractor_object}, in {scene}. Four non-target milestones with matched gross energy occur as {actor_ref} backs up, pivots, lies down, and rises; {distractor_actor_ref}, {object_ref}, and {distractor_object_ref} stay unchanged."
+      }
+    }
+  ],
+  "seed_replicates": [
+    {
+      "replicate_id": "rep-a",
+      "initial_seed": 20260808,
+      "topup_seeds": [20260810, 20260812]
+    },
+    {
+      "replicate_id": "rep-b",
+      "initial_seed": 20260809,
+      "topup_seeds": [20260811, 20260813]
+    }
+  ],
+  "spatial_sketch": {
+    "schema_version": "fitq-fixed-signed-spatial-sketch-v1",
+    "status": "preregistered",
+    "sketch_id": "dmiq-fitq-patch31x30-rademacher-s20260808017-v1",
+    "construction_id": "sha256-counter-rademacher-f32le-v1",
+    "construction_digest": "2b3a9965f1855db5f3700a26749ac3e233973bd78cf481113e4323e8f1ed5aba",
+    "seed": 20260808017,
+    "matrix_shape": [16, 930],
+    "patch_height": 31,
+    "patch_width": 30,
+    "flatten_order": "patch-y-x",
+    "value_dtype": "float32",
+    "value_encoding": "little-endian-c-row-major",
+    "normalization": "per-row-rademacher-1-over-sqrt-930",
+    "matrix_value_digest_scheme": "fitq-canonical-fp32-little-endian-v1",
+    "verified_exact_row_rank": 16,
+    "signed": true,
+    "data_dependent": false,
+    "matrix_value_sha256": "be43863f6a000fb00083798610e3993200c24e5fd94dcb2ef7d4e3858618dde7",
+    "matrix_raw_bytes_sha256": "5a75404b60cadddb29ac7473fc4596d7ebfcd306acfb3fa1a6bc6575a228a246"
+  }
+}

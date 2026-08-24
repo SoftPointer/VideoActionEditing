@@ -1,0 +1,496 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:bernini:oceg:z0:canonical-observations:v1",
+  "title": "OCEG-R1 Z0 canonical graph observations",
+  "description": "Minimal interchange schema for already-extracted graph observations. The Python admission validator is authoritative for cross-field/profile constraints and never extracts media.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profile",
+    "bundle_id",
+    "input_kind",
+    "observer_execution",
+    "cases"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "bernini-oceg-z0-canonical-observations-v1"
+    },
+    "profile": {
+      "enum": [
+        "synthetic_smoke",
+        "development_draft",
+        "formal_confirmation_draft"
+      ]
+    },
+    "bundle_id": {
+      "$ref": "#/$defs/id"
+    },
+    "input_kind": {
+      "const": "canonical_graph_observations_not_raw_media"
+    },
+    "observer_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["origin", "validator_runs_extractor"],
+      "properties": {
+        "origin": {
+          "enum": ["synthetic_smoke", "external_observer"]
+        },
+        "validator_runs_extractor": {
+          "const": false
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_.:-]{0,127}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "measure": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "value"],
+          "properties": {
+            "status": {"const": "observed"},
+            "value": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "value"],
+          "properties": {
+            "status": {"const": "uncertain"},
+            "value": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 4,
+      "properties": {
+        "role_binding": {"$ref": "#/$defs/measure"},
+        "relative_kinematics": {"$ref": "#/$defs/measure"},
+        "contact_state": {"$ref": "#/$defs/measure"},
+        "event_order": {"$ref": "#/$defs/measure"},
+        "terminal_hold": {"$ref": "#/$defs/measure"},
+        "secondary_effect": {"$ref": "#/$defs/measure"}
+      }
+    },
+    "identity_gate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "idf1", "id_switch_count"],
+          "properties": {
+            "status": {"enum": ["pass", "fail"]},
+            "idf1": {"type": "number", "minimum": 0, "maximum": 1},
+            "id_switch_count": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "idf1", "id_switch_count"],
+          "properties": {
+            "status": {"const": "uncertain"},
+            "idf1": {"type": "null"},
+            "id_switch_count": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "contact_gate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "macro_f1"],
+          "properties": {
+            "status": {"enum": ["pass", "fail"]},
+            "macro_f1": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "macro_f1"],
+          "properties": {
+            "status": {"enum": ["uncertain", "not_applicable"]},
+            "macro_f1": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "terminal_gate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "macro_f1", "hold_rgb_frames"],
+          "properties": {
+            "status": {"enum": ["pass", "fail"]},
+            "macro_f1": {"type": "number", "minimum": 0, "maximum": 1},
+            "hold_rgb_frames": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "macro_f1", "hold_rgb_frames"],
+          "properties": {
+            "status": {"const": "uncertain"},
+            "macro_f1": {"type": "null"},
+            "hold_rgb_frames": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "uncertainty_gate": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "unresolved_required_nodes", "unresolved_required_edges"],
+          "properties": {
+            "status": {"enum": ["pass", "fail"]},
+            "unresolved_required_nodes": {"type": "integer", "minimum": 0},
+            "unresolved_required_edges": {"type": "integer", "minimum": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["status", "unresolved_required_nodes", "unresolved_required_edges"],
+          "properties": {
+            "status": {"const": "uncertain"},
+            "unresolved_required_nodes": {"type": "null"},
+            "unresolved_required_edges": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "hard_gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "contact", "terminal", "uncertainty"],
+      "properties": {
+        "identity": {"$ref": "#/$defs/identity_gate"},
+        "contact": {"$ref": "#/$defs/contact_gate"},
+        "terminal": {"$ref": "#/$defs/terminal_gate"},
+        "uncertainty": {"$ref": "#/$defs/uncertainty_gate"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation_id", "arm", "evidence_sha256", "scores", "hard_gates"],
+      "properties": {
+        "observation_id": {"$ref": "#/$defs/id"},
+        "arm": {
+          "enum": [
+            "target_forward",
+            "target_reverse",
+            "target_shuffle",
+            "source_noop",
+            "anchor_action",
+            "anchor_noop",
+            "anchor_reverse",
+            "anchor_phase0_static"
+          ]
+        },
+        "evidence_sha256": {"$ref": "#/$defs/sha256"},
+        "scores": {"$ref": "#/$defs/scores"},
+        "hard_gates": {"$ref": "#/$defs/hard_gates"}
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "role",
+        "ownership",
+        "introduction_authority",
+        "source_node_id",
+        "first_reliable_phase",
+        "preappearance_state",
+        "source_identity_match_required",
+        "postappearance_persistence",
+        "morph_or_split_from_source",
+        "source_noninterference"
+      ],
+      "properties": {
+        "node_id": {"$ref": "#/$defs/id"},
+        "role": {
+          "enum": ["actor", "effector_hand", "tool", "moving_object", "support", "patient"]
+        },
+        "ownership": {"enum": ["source_owned", "instruction_introduced"]},
+        "introduction_authority": {
+          "enum": ["source_registry", "instruction_self_anchor_generic_node"]
+        },
+        "source_node_id": {
+          "oneOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]
+        },
+        "first_reliable_phase": {
+          "oneOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]
+        },
+        "preappearance_state": {
+          "enum": ["not_applicable", "unresolved_until_first_reliable_appearance"]
+        },
+        "source_identity_match_required": {"type": "boolean"},
+        "postappearance_persistence": {"enum": ["pass", "fail", "uncertain"]},
+        "morph_or_split_from_source": {"enum": ["not_detected", "detected", "uncertain"]},
+        "source_noninterference": {"enum": ["pass", "fail", "uncertain", "not_applicable"]}
+      }
+    },
+    "effector": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "observed_node_id",
+        "mask_identity_claimed",
+        "contact_truth_observed",
+        "latent_action_evidence"
+      ],
+      "properties": {
+        "mode": {"enum": ["observed_node", "exogenous_or_offscreen_effector"]},
+        "observed_node_id": {
+          "oneOf": [{"$ref": "#/$defs/id"}, {"type": "null"}]
+        },
+        "mask_identity_claimed": {"type": "boolean"},
+        "contact_truth_observed": {"type": "boolean"},
+        "latent_action_evidence": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["support_edge_off_on", "relative_height_reversal", "terminal_supported_hold"],
+          "properties": {
+            "support_edge_off_on": {"enum": ["pass", "fail", "uncertain", "not_applicable"]},
+            "relative_height_reversal": {"enum": ["pass", "fail", "uncertain", "not_applicable"]},
+            "terminal_supported_hold": {"enum": ["pass", "fail", "uncertain", "not_applicable"]}
+          }
+        }
+      }
+    },
+    "terminal_visibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "node_id",
+        "mode",
+        "preexit_approach_contact_phase_count",
+        "hand_release",
+        "trajectory_to_known_support_or_frame_boundary",
+        "bounded_support_state"
+      ],
+      "properties": {
+        "node_id": {"$ref": "#/$defs/id"},
+        "mode": {
+          "enum": [
+            "visible_at_terminal",
+            "out_of_frame_after_confirmed_support_release",
+            "unresolved_disappearance"
+          ]
+        },
+        "preexit_approach_contact_phase_count": {
+          "oneOf": [{"type": "integer", "minimum": 0}, {"type": "null"}]
+        },
+        "hand_release": {"enum": ["pass", "fail", "uncertain", "not_applicable"]},
+        "trajectory_to_known_support_or_frame_boundary": {
+          "enum": ["pass", "fail", "uncertain", "not_applicable"]
+        },
+        "bounded_support_state": {"enum": ["pass", "fail", "uncertain", "not_applicable"]}
+      }
+    },
+    "graph_registry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product_graph_authority",
+        "target_usage",
+        "nodes",
+        "effector",
+        "terminal_visibility"
+      ],
+      "properties": {
+        "product_graph_authority": {
+          "const": "instruction_and_self_anchor_generic_node_only"
+        },
+        "target_usage": {"const": "teacher_evaluation_only"},
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/node"}
+        },
+        "effector": {"$ref": "#/$defs/effector"},
+        "terminal_visibility": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/terminal_visibility"}
+        }
+      }
+    },
+    "critical_edge": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["edge_id", "status", "aligned_cosine", "normalized_distance"],
+          "properties": {
+            "edge_id": {"$ref": "#/$defs/id"},
+            "status": {"const": "observed"},
+            "aligned_cosine": {"type": "number", "minimum": 0, "maximum": 1},
+            "normalized_distance": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["edge_id", "status", "aligned_cosine", "normalized_distance"],
+          "properties": {
+            "edge_id": {"$ref": "#/$defs/id"},
+            "status": {"const": "uncertain"},
+            "aligned_cosine": {"type": "null"},
+            "normalized_distance": {"type": "null"}
+          }
+        }
+      ]
+    },
+    "consensus_pair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["left", "right", "critical_edges"],
+      "properties": {
+        "left": {"$ref": "#/$defs/id"},
+        "right": {"$ref": "#/$defs/id"},
+        "critical_edges": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/critical_edge"}
+        }
+      }
+    },
+    "frozen_base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_id",
+        "seed",
+        "media_sha256",
+        "graph_observation_supplied",
+        "graph_success",
+        "used_as_graph_positive",
+        "comparison_role"
+      ],
+      "properties": {
+        "record_id": {"$ref": "#/$defs/id"},
+        "seed": {"type": "integer", "minimum": 0},
+        "media_sha256": {"$ref": "#/$defs/sha256"},
+        "graph_observation_supplied": {"const": false},
+        "graph_success": {"type": "null"},
+        "used_as_graph_positive": {"const": false},
+        "comparison_role": {"const": "matched_quality_reference_only"}
+      }
+    },
+    "appearance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appearance_id", "anchor_asset_sha256", "middle_feature_receipt_sha256", "observations"],
+      "properties": {
+        "appearance_id": {"$ref": "#/$defs/id"},
+        "anchor_asset_sha256": {"$ref": "#/$defs/sha256"},
+        "middle_feature_receipt_sha256": {"$ref": "#/$defs/sha256"},
+        "observations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["action", "noop", "reverse", "static"],
+          "properties": {
+            "action": {"$ref": "#/$defs/observation"},
+            "noop": {"$ref": "#/$defs/observation"},
+            "reverse": {"$ref": "#/$defs/observation"},
+            "static": {"$ref": "#/$defs/observation"}
+          }
+        }
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "source_media_sha256",
+        "target_media_sha256",
+        "observer_receipt_sha256",
+        "required_axes",
+        "graph_registry",
+        "target_observations",
+        "anchor_appearances",
+        "multiappearance_consensus",
+        "frozen_base_records"
+      ],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/id"},
+        "source_media_sha256": {"$ref": "#/$defs/sha256"},
+        "target_media_sha256": {"$ref": "#/$defs/sha256"},
+        "observer_receipt_sha256": {"$ref": "#/$defs/sha256"},
+        "required_axes": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "enum": ["role_binding", "relative_kinematics", "contact_state", "event_order", "terminal_hold", "secondary_effect"]
+          }
+        },
+        "graph_registry": {"$ref": "#/$defs/graph_registry"},
+        "target_observations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["forward", "reverse", "shuffle", "source_noop"],
+          "properties": {
+            "forward": {"$ref": "#/$defs/observation"},
+            "reverse": {"$ref": "#/$defs/observation"},
+            "shuffle": {"$ref": "#/$defs/observation"},
+            "source_noop": {"$ref": "#/$defs/observation"}
+          }
+        },
+        "anchor_appearances": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"$ref": "#/$defs/appearance"}
+        },
+        "multiappearance_consensus": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {"$ref": "#/$defs/consensus_pair"}
+        },
+        "frozen_base_records": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/frozen_base"}
+        }
+      }
+    }
+  }
+}

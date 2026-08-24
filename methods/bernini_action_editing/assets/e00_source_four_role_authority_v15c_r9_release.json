@@ -1,0 +1,97 @@
+{
+  "schema_version": "bernini-source-four-role-authority-v15c-r9-local-release",
+  "tag": "v15c-r9-local-source-observer-only",
+  "status": "LOCAL_COMMON_NULL_DIAGNOSTIC_ONLY_FOUR_ROLE_JOINT_FWER_UNCERTIFIED",
+  "member_count": 14,
+  "members": [
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_four_role_authority_v15c_r9.json",
+      "sha256": "0fced569a60ae9ed82b4fd355b03a12faedfac6ff60aa74b6f0a6aa8c46da776",
+      "size": 8898
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r6.json",
+      "sha256": "d8932e965db30b5929e479527c46c27ad0395a9dc573a13b6e68c24720d3d1f8",
+      "size": 13409
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r8_release.json",
+      "sha256": "d77d5d7cae221d1fc3cbf82c8b1f6f72483b477870cfc5c2b7f88738d1c9ee1c",
+      "size": 2737
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/interaction_e00_source_instance_role_token_spans_v15b.json",
+      "sha256": "47dc8374bbb969a7766744b8014bd04edcc469923d4dd26ebfdc985bb2579638",
+      "size": 5579
+    },
+    {
+      "path": "methods/bernini_action_editing/materialize_source_role_ownership_v15c_r9.py",
+      "sha256": "60b8e25559a858b95f105098051223a329792b0c113ce6a6a0aed8ac51a6c161",
+      "size": 19981
+    },
+    {
+      "path": "methods/bernini_action_editing/materialize_source_sam2_proposal_tracks_v15c_r8.py",
+      "sha256": "c795aab6af98f7b6a6c7ce1dbc302d91d363a5038e6ac2497748fc88b64dd643",
+      "size": 86649
+    },
+    {
+      "path": "methods/bernini_action_editing/postflight_source_four_role_authority_v15c_r9.py",
+      "sha256": "8f9c355ca60c84cfba41b6b7e3913e4cf330a87616130da56b983067b9476a8a",
+      "size": 19676
+    },
+    {
+      "path": "methods/bernini_action_editing/run_source_four_role_authority_v15c_r9.py",
+      "sha256": "1c491238e114e7256555fdd975fbcd944f410219caaab9380286daf0ccebab07",
+      "size": 10030
+    },
+    {
+      "path": "methods/bernini_action_editing/run_source_object_proposal_role_probe_v15c_r8.py",
+      "sha256": "5b547dcc937a14dadfa09111c296cb8efd2e81907715c85fcec4e32444ec88f6",
+      "size": 43262
+    },
+    {
+      "path": "methods/bernini_action_editing/sam2_observer_evidence_v15c_r8.py",
+      "sha256": "8da48b0c6ae00d80624f80d7e792bed1475c88aa769c70dc4f663cc3eaedf688",
+      "size": 41561
+    },
+    {
+      "path": "methods/bernini_action_editing/source_object_proposal_role_probe_v15c.py",
+      "sha256": "81e3f168d9064f6136ef24b1b6c49a7f3630cdfbe31593f8ae4218651b68b26d",
+      "size": 32964
+    },
+    {
+      "path": "methods/bernini_action_editing/source_role_authority_v15c_r9.py",
+      "sha256": "eb9b8b17ab0ffb362d36172057f3d159528b4925dcfea063b0acae8a5aab43f3",
+      "size": 62415
+    },
+    {
+      "path": "methods/bernini_action_editing/tools/build_source_four_role_authority_v15c_r9_review.py",
+      "sha256": "46a61f64fa4f58721024177a4723b06153e74df08a6de92448fbf95a946eba55",
+      "size": 21710
+    },
+    {
+      "path": "methods/bernini_action_editing/validate_source_role_authority_v15c_r9.py",
+      "sha256": "db2c0bbbfebe08d80e3bc8c9044a76f05c24cf770d6f75ada6318988b9df0859",
+      "size": 15316
+    }
+  ],
+  "base_r8_local_replay_preserved": true,
+  "source_only": true,
+  "r6_common_null_scope": "COMMON_NULL_DIAGNOSTIC_ONLY",
+  "four_role_joint_fwer_certified": false,
+  "future_exact_role_indexed_null_abi_only": true,
+  "mechanical_candidate_qualified": false,
+  "raw_proposal_overlap_allowed_as_evidence": true,
+  "final_ownership_pairwise_exclusive": true,
+  "contact_relation_mask_independent": true,
+  "human_audit_action": "reject_only",
+  "local_evidence_status": "FOUR_ROLE_JOINT_FWER_UNCERTIFIED",
+  "remote_observer_status": "REMOTE_OBSERVER_NO_GO_NOT_DEPLOYED",
+  "observer_execution_authorized": false,
+  "localization_semantically_certified": false,
+  "scientific_claim_authorized": false,
+  "route_authorized": false,
+  "decode_authorized": false,
+  "training_authorized": false,
+  "release_sha256": "352e61d65cf25843eb527522968c47f6ef50edef1fdc83d35da59b904a1d418e"
+}

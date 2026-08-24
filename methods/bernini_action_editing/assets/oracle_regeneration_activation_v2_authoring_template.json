@@ -1,0 +1,162 @@
+{
+  "schema_version": "bernini-oracle-regeneration-activation-v2-authoring-template-v1",
+  "status": "MODEL_AUTHORING_TEMPLATE_ONLY_NOT_AUTHORITY_NOT_RUNNABLE",
+  "template_id": "round37-e02-e03-native-local-regeneration-v2",
+  "may_authorize_execution": false,
+  "compiled_authority_packet_sha256": null,
+  "compiled_external_ledger_receipt_sha256": null,
+  "scientific_scope": "native source-reference R2V-4 permission/capacity diagnostic only",
+  "execution_contract": {
+    "arms": [
+      "official-v2v-base",
+      "local-source-reference-r2v4-in-manual-G"
+    ],
+    "global_homotopy_arm": "deferred_not_in_first_activation",
+    "flowedit_enabled": false,
+    "connected_runner_enabled": false,
+    "learned_gate_enabled": false,
+    "training_authorized": false,
+    "optimizer_authorized": false,
+    "automatic_model_replacement_authorized": false,
+    "world_size": 4,
+    "sequence_parallel_size": 4,
+    "one_node": true,
+    "same_seed_and_official_gaussian": true,
+    "source_reference_r2v4_regeneration_expert": true,
+    "self_generated_anchor_tensor_used_by_native_expert": false,
+    "anchor_reference_or_quotient_arm_deferred": true,
+    "global_source_reference_r2v4_upper_bound_arm_deferred": true
+  },
+  "required_authoring_order": [
+    "source-only AI agent proposes source-coordinate exact-bool D/C/K from typed semantics without anchor-source differences",
+    "a distinct AI agent independently reviews and accepts or rejects the exact gate bytes",
+    "VAE-only WORLD4 materializer freezes source/raw-frame/preprocess/VAE/full-source/four-reference provenance",
+    "prompt-only WORLD4 materializer freezes low/high/negative token and embedding provenance",
+    "diagnostic exact packet is finalized without any activation core, runner, launcher, or spec hash",
+    "model-review ledger binds the finalized packet SHA and distinct AI-agent author/reviewer identities",
+    "a later reviewed activation core compiles both exact packet and ledger receipt SHA values"
+  ],
+  "cases": [
+    {
+      "case_id": "e02",
+      "decision": "PENDING_EXTERNAL_REVIEW_FOR_ACTIVE_DIAGNOSTIC",
+      "source_iid": "10ed90644f81461d",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/10ed90644f81461d/source.mp4",
+      "source_sha256": "63dd620627e18d0f6836058bf725ffba7ab1f9b0b455e784c6a71dc68a8de46c",
+      "anchor_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/interaction_complex8_multianchor_v2_r1/e02_twist-pull-mushroom/v0/t2v.mp4",
+      "anchor_sha256": "a1076cbe83c9dae4a4fddc25f73077288f6a3240324fd2d5e1854aa842b07b63",
+      "anchor_role": "review_context_action_prototype_only_not_target_and_no_tensor_enters_native_expert",
+      "anchor_terminal_disappearance_observed": true,
+      "anchor_strict_target_pass": false,
+      "anchor_used_only_as_review_context": true,
+      "action_caption": "The same pale bare hand firmly grips the same red mushroom at its lower stem, twists and pulls it free from the same soil, lifts the same intact mushroom above the newly empty root hole, and holds it there. Exactly one hand and one mushroom remain visible; do not duplicate, split, or fuse either one.",
+      "action_caption_sha256": "2d73663bc49f398d6e082cfca00497616c034a66843ad8e74651f5334a34e27f",
+      "structured_action_program": {
+        "schema_version": "bernini-oracle-action-program-v2",
+        "entities": ["same_pale_bare_hand", "same_red_mushroom", "same_soil_root_hole"],
+        "typed_states": [
+          "owner=same_soil/rooted",
+          "contact=same_hand/lower_stem_grip_twist",
+          "detached=true/newly_empty_root_hole",
+          "owner=same_hand/held",
+          "motion=upward",
+          "terminal=same_intact_mushroom_held_above_empty_hole"
+        ],
+        "terminal_constraints": [
+          "exactly_one_hand",
+          "exactly_one_intact_mushroom",
+          "newly_empty_root_hole",
+          "same_mushroom_held_last_10_frames",
+          "no_duplicate_split_or_fuse"
+        ]
+      },
+      "full_source_latent_geometry": [1, 16, 21, 74, 50],
+      "hard_gate_geometry": [1, 1, 21, 74, 50],
+      "reference_latent_geometry": [1, 16, 1, 74, 50],
+      "reference_rgb_indices": [0, 27, 53, 80],
+      "seed": null,
+      "manual_gate_manifest": null,
+      "manual_gate_manifest_sha256": null,
+      "independent_review_receipt": null,
+      "independent_review_receipt_sha256": null,
+      "vae_reference_receipt": null,
+      "vae_reference_receipt_sha256": null,
+      "prompt_receipt": null,
+      "prompt_receipt_sha256": null,
+      "source_only_model_region_suggestions_not_mask_authority": {
+        "coordinate_order": "phase,y,x",
+        "phase_zero": "D=C=K=empty",
+        "delete_semantics": "phases 1-20 may remove obsolete source-hand occupancy; phases 5-20 also remove the old rooted mushroom near x=6:49,y=30:56",
+        "expected_nonempty_phase_windows": {
+          "delete_D": [1, 20],
+          "create_C": [5, 20],
+          "contact_ownership_K": [4, 20],
+          "execution_support_G": [1, 20]
+        },
+        "create_semantics": [
+          "phases 5-8 detach/new-state corridor near x=10:46,y=22:49",
+          "phases 9-15 upward corridor near x=12:44,y=14:42",
+          "phases 16-20 terminal held region near x=12:42,y=10:35"
+        ],
+        "contact_ownership_semantics": "K is exact-empty in phases 0-3 and active in phases 4-20; preserve it as an independent contact/ownership transition corridor and do not relabel K as create C",
+        "execution_support": "G is the exact boolean union D|C|K",
+        "maximum_per_phase_G_fraction": 0.3,
+        "reviewer_instruction": "draw/adjust semantic polygons or ellipses, allow reviewed D from phase1 when obsolete hand occupancy must exit, ensure one continuous actor-object component, reject duplicates, and do not rasterize anchor-source differences"
+      }
+    },
+    {
+      "case_id": "e03",
+      "decision": "ABSTAIN_KEEP_BASE",
+      "source_iid": "7a33b36459c84289",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a33b36459c84289/source.mp4",
+      "source_sha256": "c1455b9b89d1f352da69e7bb07e955ee4495df94f5ef6f3f09fe7fd9eac035bb",
+      "anchor_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/interaction_complex8_multianchor_v2_r1/e03_release-harvest-into-basket/v0/t2v.mp4",
+      "anchor_sha256": "1d0a0e8895ec976d3cb1f9ee3070ac36c75ca29247bb52f81677135f7786f12f",
+      "anchor_role": "review_context_only_not_target_and_no_tensor_enters_native_expert",
+      "action_caption": "The same farm worker moves the same harvested root cluster over the same woven basket, lowers it past the rim, opens the same hand, and releases it. The cluster falls, bounces slightly, and settles inside while the now-empty hand withdraws. Do not duplicate the hand or cluster.",
+      "action_caption_sha256": "970625b4d83e8aaaa8133d8ca8c8964c6962ef221070f4cece4439e26442be2b",
+      "structured_action_program": {
+        "schema_version": "bernini-oracle-action-program-v2",
+        "entities": ["same_farm_worker_hand", "same_harvested_root_cluster", "same_woven_basket"],
+        "typed_states": [
+          "owner=same_worker_hand/held",
+          "crosses=same_woven_basket_rim",
+          "release=same_hand_opens",
+          "motion=fall_and_slight_bounce",
+          "owner=same_woven_basket",
+          "terminal=settled_cluster_and_empty_withdrawn_hand"
+        ],
+        "terminal_constraints": [
+          "exactly_one_hand",
+          "exactly_one_harvested_root_cluster",
+          "same_cluster_settled_inside_same_basket",
+          "empty_hand_withdrawn",
+          "no_duplicate_hand_or_cluster"
+        ]
+      },
+      "full_source_latent_geometry": [1, 16, 21, 70, 52],
+      "hard_gate_geometry": [1, 1, 21, 70, 52],
+      "reference_latent_geometry": [1, 16, 1, 70, 52],
+      "reference_rgb_indices": [0, 27, 53, 80],
+      "seed": null,
+      "manual_gate_manifest": null,
+      "manual_gate_manifest_sha256": null,
+      "independent_review_receipt": null,
+      "independent_review_receipt_sha256": null,
+      "vae_reference_receipt": null,
+      "vae_reference_receipt_sha256": null,
+      "prompt_receipt": null,
+      "prompt_receipt_sha256": null,
+      "run_arms": ["official-v2v-base"],
+      "local_regeneration_selection_authorized": false,
+      "post_run_policy": "keep official base unless a later independent output-bound receipt explicitly proves strict non-regression and material improvement"
+    }
+  ],
+  "forbidden_authority_inputs": {
+    "failed_active_video_or_latent": true,
+    "raw_anchor_source_pixel_or_latent_difference": true,
+    "predicted_soft_gate": true,
+    "target_video_or_latent": true,
+    "self_generated_anchor_tensor": true
+  }
+}

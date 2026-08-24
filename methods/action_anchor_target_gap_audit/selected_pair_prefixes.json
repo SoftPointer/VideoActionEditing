@@ -1,0 +1,30 @@
+{
+  "schema_version": "mev-action-anchor-gap-selection-v1",
+  "selection_policy": {
+    "split": "test",
+    "automatic_visual_audit.verdict": "accept",
+    "automatic_visual_audit.dependency_level": "none",
+    "automatic_visual_audit.initial_state_compatibility": "aligned",
+    "automatic_visual_audit.target_action_quality": "clear_action",
+    "automatic_visual_audit.preservation": "same_identity_scene_camera",
+    "instruction_source": "mev.json target event caption"
+  },
+  "pair_id_prefixes": [
+    "7fa338474c75",
+    "fb7725c351ba",
+    "3fadbe0c2961",
+    "d908552fb691",
+    "7077cfb160cf",
+    "d977ce147d80",
+    "7e488525099e",
+    "d5221a1b69d5",
+    "0be6494dfac3",
+    "5e83a9279951",
+    "10af6c651dbc",
+    "40712e1341dc",
+    "8b05aaf463db",
+    "840b214afead",
+    "0faecd13ef67",
+    "81533c9e56ec"
+  ]
+}

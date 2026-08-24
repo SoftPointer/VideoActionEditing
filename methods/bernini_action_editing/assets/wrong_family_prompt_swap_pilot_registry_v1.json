@@ -1,0 +1,320 @@
+{
+  "schema_version": "bernini-starc-wrong-family-prompt-swap-registry-v1",
+  "pilot_id": "starc-family-swap-prospective-p1",
+  "source_bank": {
+    "asset_basename": "pair_v5_t2v_calibration_core4_bank_v2.json",
+    "raw_sha256": "a18387b383fb11f19279c67694089754ff84b51e939e7a92b51a7e35a0743a95",
+    "schema_version": "pair-v5-frozen-bernini-t2v-calibration-bank-spec-v2"
+  },
+  "sampling_contract": {
+    "condition_mode": "t2v_apg",
+    "num_frames": 81,
+    "latent_frames": 21,
+    "fps": 25,
+    "num_inference_steps": 40,
+    "target_initialization": "official_gen_wanx22_fresh_gaussian",
+    "guidance": {
+      "omega_txt": 4.0,
+      "omega_vid": 1.25,
+      "omega_img": 4.5
+    },
+    "same_cell_official_gaussian_reuse_by_seed": true,
+    "semantic_branch_order": [
+      "action",
+      "noop",
+      "incomplete",
+      "reverse",
+      "shuffle",
+      "wrong_actor",
+      "wrong_object",
+      "camera_only",
+      "appearance_only",
+      "generic_wrong_motion"
+    ]
+  },
+  "interpretation_contract": {
+    "editor": false,
+    "scientific_critic": false,
+    "optimizer_authorized": false,
+    "fresh_confirmation_enters_optimizer": false,
+    "retrospective_media_can_fit_or_confirm": false,
+    "generated_media_role": "critic_query_and_detached_family_audit_only",
+    "generated_media_as_editor_target_condition_reference_noise_or_donor": false,
+    "passing_tuple_role": "pilot_evidence_only_cannot_authorize_editor_backward"
+  },
+  "seed_preflight_contract": {
+    "scope": "all_known_bernini_t2v_bank_specs_and_receipts",
+    "scan_before_any_fresh_render": true,
+    "scan_all_json_scalar_occurrences": true,
+    "registry_file_is_the_only_allowed_occurrence": true,
+    "collision_policy": "fail_entire_tuple_no_seed_replacement",
+    "on_site_seed_swap": false
+  },
+  "gaussian_binding_contract": {
+    "required_after_render_before_query_or_audit": true,
+    "tensor_key": "official_initial_gaussian",
+    "stored_dtype": "torch.float32",
+    "all_ten_branches_share_raw_and_content_digest": true,
+    "different_fresh_cells_must_have_different_raw_digest": true,
+    "integer_seed_without_tensor_digest_is_sufficient": false
+  },
+  "audit_contract": {
+    "audit_key": [
+      "candidate_id",
+      "evaluated_family_id"
+    ],
+    "family_a_branch_order": [
+      "action",
+      "noop",
+      "incomplete",
+      "reverse",
+      "shuffle",
+      "wrong_actor",
+      "wrong_object",
+      "camera_only",
+      "appearance_only",
+      "generic_wrong_motion"
+    ],
+    "family_a_required_outcome_by_branch": {
+      "action": true,
+      "noop": false,
+      "incomplete": false,
+      "reverse": false,
+      "shuffle": false,
+      "wrong_actor": false,
+      "wrong_object": false,
+      "camera_only": false,
+      "appearance_only": false,
+      "generic_wrong_motion": false
+    },
+    "family_b_branch_order": [
+      "action",
+      "reverse"
+    ],
+    "family_b_required_outcome_by_branch": {
+      "action": false,
+      "reverse": true
+    },
+    "judgments_per_fresh_cell": 12,
+    "total_fresh_judgments": 24,
+    "full_exact81_required": true,
+    "generation_prompt_hidden_from_auditor": true,
+    "unknown_or_ambiguous_policy": "fail_entire_prospective_tuple",
+    "common_null_policy": "same_cell_same_utf8_bytes_for_a_and_b",
+    "branch_name_is_not_observation": true
+  },
+  "cells": [
+    {
+      "cell_id": "dog-fit-7b88-retrospective",
+      "iid": "7b88a1ca1f804f41",
+      "actor_topology_id": "single-quadruped-dog",
+      "source_seed": 2026080825,
+      "source_media_seen_before_seal": true,
+      "role": "retrospective_discovery",
+      "fresh_seed": null,
+      "fresh_media_status": "not_applicable_source_media_previously_seen",
+      "source_result_use": "rubric_discovery_only_never_fit_confirmation_or_threshold_selection",
+      "a_family_id": "dog-stand-to-sit-facing-camera",
+      "b_family_id": "dog-sit-to-stand-facing-camera",
+      "query_prompts": {
+        "a": {
+          "utf8_text": "A single French bulldog starts standing on all four legs, bends both hind legs, lowers its pelvis, reaches a stable seated pose facing the camera, and holds the sit.",
+          "utf8_sha256": "0cef53f6dfc2078292b99992d1f1b18be2d71790c381fad286fe2f53fc5e5bf2"
+        },
+        "b": {
+          "utf8_text": "A single French bulldog starts in a stable seated pose facing the camera, pushes upward, extends both hind legs, reaches a stable four-legged stand, and holds the stand.",
+          "utf8_sha256": "7913c0ff365301a2b970dbc4c2098c37a76301b8bf2e153850e143633f0199a5"
+        },
+        "common_null": {
+          "utf8_text": "A static camera observes one grey French bulldog in a black harness among yellow autumn leaves in a sunlit park; the continuous shot keeps the same dog, scene, framing, and illumination.",
+          "utf8_sha256": "aa0b2462d297fe31e47c676e21f1a5d8d99f21983493da034cf1482d79d91441"
+        }
+      },
+      "family_rubrics": {
+        "a": {
+          "rubric_id": "dog-stand-to-sit-v1",
+          "evaluated_family_id": "dog-stand-to-sit-facing-camera",
+          "start_state": "The same main dog is visibly weight-bearing on all four legs before the transition.",
+          "ordered_milestones": [
+            "Both hind legs visibly flex while the front support remains attributable to the same dog.",
+            "The pelvis and hips descend because of articulated leg motion rather than camera motion or a cut.",
+            "The same dog reaches a seated configuration with the rear grounded and the torso supported upright."
+          ],
+          "terminal_hold": "The seated configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        },
+        "b": {
+          "rubric_id": "dog-sit-to-stand-v1",
+          "evaluated_family_id": "dog-sit-to-stand-facing-camera",
+          "start_state": "The same main dog is visibly in a stable seated configuration before the transition.",
+          "ordered_milestones": [
+            "The dog pushes upward and the pelvis rises because of articulated hind-leg motion.",
+            "Both hind legs extend while all four paws become weight-bearing.",
+            "The same dog reaches a stable four-legged standing configuration."
+          ],
+          "terminal_hold": "The four-legged standing configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        }
+      }
+    },
+    {
+      "cell_id": "human-fit-a35b-retrospective",
+      "iid": "a35b590961d24694",
+      "actor_topology_id": "single-fullbody-human-one-knee",
+      "source_seed": 2026080827,
+      "source_media_seen_before_seal": true,
+      "role": "retrospective_discovery",
+      "fresh_seed": null,
+      "fresh_media_status": "not_applicable_source_media_previously_seen",
+      "source_result_use": "rubric_discovery_only_never_fit_confirmation_or_threshold_selection",
+      "a_family_id": "human-one-knee-to-upright-stand",
+      "b_family_id": "human-upright-stand-to-one-knee",
+      "query_prompts": {
+        "a": {
+          "utf8_text": "A single woman starts kneeling on one knee, transfers weight onto both feet, raises her pelvis, extends both legs and torso, reaches a stable upright stand, and holds it.",
+          "utf8_sha256": "8d948cb7f6720e6487ff06d42cf54f2e6a76ead0cb7b3944eb32e00d20874013"
+        },
+        "b": {
+          "utf8_text": "A single woman starts in a stable upright stand, bends both knees, lowers her pelvis, settles onto one knee in a stable kneeling pose, and holds it.",
+          "utf8_sha256": "e821960d84dd4f04fa7845823e312bbcdc0276af0ba34ba08dff596ad5ace93b"
+        },
+        "common_null": {
+          "utf8_text": "A static camera observes one woman against a solid warm yellow background; the continuous full-body shot keeps the same person, clothing, scene, framing, and illumination.",
+          "utf8_sha256": "1be9aa015aba37c8df5c0e22c92ef7117258cfdaa97de6373a8e9323a0198007"
+        }
+      },
+      "family_rubrics": {
+        "a": {
+          "rubric_id": "human-one-knee-to-upright-v1",
+          "evaluated_family_id": "human-one-knee-to-upright-stand",
+          "start_state": "The same main person is visibly supported in a one-knee kneeling state before the transition.",
+          "ordered_milestones": [
+            "Weight transfers onto the feet and the pelvis visibly rises.",
+            "Both legs and the torso extend in temporal order without a cut or camera substitution.",
+            "The same person reaches a full upright standing configuration."
+          ],
+          "terminal_hold": "The upright standing configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        },
+        "b": {
+          "rubric_id": "human-upright-to-one-knee-v1",
+          "evaluated_family_id": "human-upright-stand-to-one-knee",
+          "start_state": "The same main person is visibly in a stable upright standing state before the transition.",
+          "ordered_milestones": [
+            "Both knees flex and the pelvis visibly descends.",
+            "One knee approaches and contacts the ground through articulated body motion.",
+            "The same person reaches a stable one-knee kneeling configuration."
+          ],
+          "terminal_hold": "The one-knee kneeling configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        }
+      }
+    },
+    {
+      "cell_id": "dog-confirm-841b-fresh",
+      "iid": "841b5e0080a1441d",
+      "actor_topology_id": "single-quadruped-dog",
+      "source_seed": 2026080826,
+      "source_media_seen_before_seal": true,
+      "role": "prospective_confirmation",
+      "fresh_seed": 2026081301,
+      "fresh_media_status": "unrendered_and_unseen_at_registry_seal",
+      "source_result_use": "caption_and_geometry_authority_only_old_seed_media_outcomes_forbidden",
+      "a_family_id": "dog-stand-to-sit-facing-camera",
+      "b_family_id": "dog-sit-to-stand-facing-camera",
+      "query_prompts": {
+        "a": {
+          "utf8_text": "A single German shepherd starts standing on all four legs, bends both hind legs, lowers its pelvis, reaches a stable seated pose facing the camera, and holds the sit.",
+          "utf8_sha256": "21717dd248d2fb66fe08dbcf23fab9560acb01d5a077a715bad67d187fe0ea01"
+        },
+        "b": {
+          "utf8_text": "A single German shepherd starts in a stable seated pose facing the camera, pushes upward, extends both hind legs, reaches a stable four-legged stand, and holds the stand.",
+          "utf8_sha256": "bf50138faa5539a008cec8cc7c0d5d8a227a8623004b4169eabe00dd1e77123f"
+        },
+        "common_null": {
+          "utf8_text": "A fixed camera observes one black-and-tan German shepherd on a leash in a grassy field; the continuous shot keeps the same dog, scene, framing, and illumination.",
+          "utf8_sha256": "6edf0497426f8cdd8c39cfc67cd149909bcc0499ce361fc891e9bbff44cf8895"
+        }
+      },
+      "family_rubrics": {
+        "a": {
+          "rubric_id": "dog-stand-to-sit-v1",
+          "evaluated_family_id": "dog-stand-to-sit-facing-camera",
+          "start_state": "The same main dog is visibly weight-bearing on all four legs before the transition.",
+          "ordered_milestones": [
+            "Both hind legs visibly flex while the front support remains attributable to the same dog.",
+            "The pelvis and hips descend because of articulated leg motion rather than camera motion or a cut.",
+            "The same dog reaches a seated configuration with the rear grounded and the torso supported upright."
+          ],
+          "terminal_hold": "The seated configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        },
+        "b": {
+          "rubric_id": "dog-sit-to-stand-v1",
+          "evaluated_family_id": "dog-sit-to-stand-facing-camera",
+          "start_state": "The same main dog is visibly in a stable seated configuration before the transition.",
+          "ordered_milestones": [
+            "The dog pushes upward and the pelvis rises because of articulated hind-leg motion.",
+            "Both hind legs extend while all four paws become weight-bearing.",
+            "The same dog reaches a stable four-legged standing configuration."
+          ],
+          "terminal_hold": "The four-legged standing configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        }
+      }
+    },
+    {
+      "cell_id": "human-confirm-a66e-fresh",
+      "iid": "a66e6818e4144928",
+      "actor_topology_id": "single-fullbody-human-low-crouch",
+      "source_seed": 2026080828,
+      "source_media_seen_before_seal": true,
+      "role": "prospective_confirmation",
+      "fresh_seed": 2026081302,
+      "fresh_media_status": "unrendered_and_unseen_at_registry_seal",
+      "source_result_use": "caption_and_geometry_authority_only_old_seed_media_outcomes_forbidden",
+      "a_family_id": "human-low-crouch-to-upright-stand",
+      "b_family_id": "human-upright-stand-to-low-crouch",
+      "query_prompts": {
+        "a": {
+          "utf8_text": "A single woman starts in a low crouch, presses through both feet, raises her pelvis, extends both legs and torso, reaches a stable upright stand, and holds it.",
+          "utf8_sha256": "cf61f106ec91c78e96dc744a922072234f50d938d01fed770ddb05cdc221d034"
+        },
+        "b": {
+          "utf8_text": "A single woman starts in a stable upright stand, bends both knees, lowers her pelvis into a deep low crouch, keeps both feet planted, and holds the crouch.",
+          "utf8_sha256": "dc0f9cfa24965baa8994c04af9ae4fbe4288170164317e28d43d7a90358b7da9"
+        },
+        "common_null": {
+          "utf8_text": "A static camera observes one woman on a city sidewalk beside a dark-glass building; the continuous full-body shot keeps the same person, clothing, scene, framing, and illumination.",
+          "utf8_sha256": "dd3ee56e6a10d5459cc396a1c8a5afb2afbdc5b768de3d6c838c2c146be09fb6"
+        }
+      },
+      "family_rubrics": {
+        "a": {
+          "rubric_id": "human-low-crouch-to-upright-v1",
+          "evaluated_family_id": "human-low-crouch-to-upright-stand",
+          "start_state": "The same main person is visibly in a low crouch with both knees deeply flexed before the transition.",
+          "ordered_milestones": [
+            "Both feet remain attributable while the pelvis visibly rises.",
+            "Both legs and the torso extend in temporal order without a cut or camera substitution.",
+            "The same person reaches a full upright standing configuration."
+          ],
+          "terminal_hold": "The upright standing configuration is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        },
+        "b": {
+          "rubric_id": "human-upright-to-low-crouch-v1",
+          "evaluated_family_id": "human-upright-stand-to-low-crouch",
+          "start_state": "The same main person is visibly in a stable upright standing state before the transition.",
+          "ordered_milestones": [
+            "Both knees flex while both feet remain attributable to the same person.",
+            "The pelvis visibly descends because of articulated body motion rather than camera motion or a cut.",
+            "The same person reaches a deep low crouch with both knees flexed."
+          ],
+          "terminal_hold": "The deep low crouch is stably held through the final temporal segment.",
+          "decision_protocol": "true only if start, ordered transition, terminal state, and hold are all visible in the full exact81 clip; false only if the family clearly does not occur; occlusion, identity replacement, cropping, or causal uncertainty is unknown or ambiguous"
+        }
+      }
+    }
+  ]
+}

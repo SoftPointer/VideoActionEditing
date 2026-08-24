@@ -1,0 +1,450 @@
+{
+  "schema_version": "bernini-oceg-z0-canonical-observations-v1",
+  "profile": "synthetic_smoke",
+  "bundle_id": "oceg-z0-synthetic-smoke-v1",
+  "input_kind": "canonical_graph_observations_not_raw_media",
+  "observer_execution": {
+    "origin": "synthetic_smoke",
+    "validator_runs_extractor": false
+  },
+  "cases": [
+    {
+      "case_id": "synthetic-lift-return",
+      "source_media_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "target_media_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "observer_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "required_axes": [
+        "role_binding",
+        "relative_kinematics",
+        "contact_state",
+        "event_order",
+        "terminal_hold"
+      ],
+      "graph_registry": {
+        "product_graph_authority": "instruction_and_self_anchor_generic_node_only",
+        "target_usage": "teacher_evaluation_only",
+        "nodes": [
+          {
+            "node_id": "actor",
+            "role": "actor",
+            "ownership": "source_owned",
+            "introduction_authority": "source_registry",
+            "source_node_id": "source.actor",
+            "first_reliable_phase": 0,
+            "preappearance_state": "not_applicable",
+            "source_identity_match_required": true,
+            "postappearance_persistence": "pass",
+            "morph_or_split_from_source": "not_detected",
+            "source_noninterference": "pass"
+          },
+          {
+            "node_id": "basket",
+            "role": "moving_object",
+            "ownership": "source_owned",
+            "introduction_authority": "source_registry",
+            "source_node_id": "source.basket",
+            "first_reliable_phase": 0,
+            "preappearance_state": "not_applicable",
+            "source_identity_match_required": true,
+            "postappearance_persistence": "pass",
+            "morph_or_split_from_source": "not_detected",
+            "source_noninterference": "pass"
+          },
+          {
+            "node_id": "table",
+            "role": "support",
+            "ownership": "source_owned",
+            "introduction_authority": "source_registry",
+            "source_node_id": "source.table",
+            "first_reliable_phase": 0,
+            "preappearance_state": "not_applicable",
+            "source_identity_match_required": true,
+            "postappearance_persistence": "pass",
+            "morph_or_split_from_source": "not_detected",
+            "source_noninterference": "pass"
+          }
+        ],
+        "effector": {
+          "mode": "observed_node",
+          "observed_node_id": "actor",
+          "mask_identity_claimed": true,
+          "contact_truth_observed": true,
+          "latent_action_evidence": {
+            "support_edge_off_on": "not_applicable",
+            "relative_height_reversal": "not_applicable",
+            "terminal_supported_hold": "not_applicable"
+          }
+        },
+        "terminal_visibility": [
+          {
+            "node_id": "basket",
+            "mode": "visible_at_terminal",
+            "preexit_approach_contact_phase_count": null,
+            "hand_release": "not_applicable",
+            "trajectory_to_known_support_or_frame_boundary": "not_applicable",
+            "bounded_support_state": "not_applicable"
+          }
+        ]
+      },
+      "target_observations": {
+        "forward": {
+          "observation_id": "target-forward",
+          "arm": "target_forward",
+          "evidence_sha256": "9000000000000000000000000000000000000000000000000000000000000001",
+          "scores": {
+            "role_binding": {"status": "observed", "value": 0.94},
+            "relative_kinematics": {"status": "observed", "value": 0.92},
+            "contact_state": {"status": "observed", "value": 0.91},
+            "event_order": {"status": "observed", "value": 0.93},
+            "terminal_hold": {"status": "observed", "value": 0.90}
+          },
+          "hard_gates": {
+            "identity": {"status": "pass", "idf1": 0.96, "id_switch_count": 0},
+            "contact": {"status": "pass", "macro_f1": 0.93},
+            "terminal": {"status": "pass", "macro_f1": 0.94, "hold_rgb_frames": 10},
+            "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+          }
+        },
+        "reverse": {
+          "observation_id": "target-reverse",
+          "arm": "target_reverse",
+          "evidence_sha256": "9000000000000000000000000000000000000000000000000000000000000002",
+          "scores": {
+            "role_binding": {"status": "observed", "value": 0.86},
+            "relative_kinematics": {"status": "observed", "value": 0.84},
+            "contact_state": {"status": "observed", "value": 0.80},
+            "event_order": {"status": "observed", "value": 0.25},
+            "terminal_hold": {"status": "observed", "value": 0.82}
+          },
+          "hard_gates": {
+            "identity": {"status": "pass", "idf1": 0.96, "id_switch_count": 0},
+            "contact": {"status": "pass", "macro_f1": 0.93},
+            "terminal": {"status": "pass", "macro_f1": 0.94, "hold_rgb_frames": 10},
+            "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+          }
+        },
+        "shuffle": {
+          "observation_id": "target-shuffle",
+          "arm": "target_shuffle",
+          "evidence_sha256": "9000000000000000000000000000000000000000000000000000000000000003",
+          "scores": {
+            "role_binding": {"status": "observed", "value": 0.84},
+            "relative_kinematics": {"status": "observed", "value": 0.82},
+            "contact_state": {"status": "observed", "value": 0.78},
+            "event_order": {"status": "observed", "value": 0.30},
+            "terminal_hold": {"status": "observed", "value": 0.80}
+          },
+          "hard_gates": {
+            "identity": {"status": "pass", "idf1": 0.96, "id_switch_count": 0},
+            "contact": {"status": "pass", "macro_f1": 0.93},
+            "terminal": {"status": "pass", "macro_f1": 0.94, "hold_rgb_frames": 10},
+            "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+          }
+        },
+        "source_noop": {
+          "observation_id": "target-source-noop",
+          "arm": "source_noop",
+          "evidence_sha256": "9000000000000000000000000000000000000000000000000000000000000004",
+          "scores": {
+            "role_binding": {"status": "observed", "value": 0.88},
+            "relative_kinematics": {"status": "observed", "value": 0.20},
+            "contact_state": {"status": "observed", "value": 0.76},
+            "event_order": {"status": "observed", "value": 0.70},
+            "terminal_hold": {"status": "observed", "value": 0.79}
+          },
+          "hard_gates": {
+            "identity": {"status": "pass", "idf1": 0.96, "id_switch_count": 0},
+            "contact": {"status": "pass", "macro_f1": 0.93},
+            "terminal": {"status": "pass", "macro_f1": 0.94, "hold_rgb_frames": 10},
+            "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+          }
+        }
+      },
+      "anchor_appearances": [
+        {
+          "appearance_id": "appearance-a",
+          "anchor_asset_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "middle_feature_receipt_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+          "observations": {
+            "action": {
+              "observation_id": "a-action",
+              "arm": "anchor_action",
+              "evidence_sha256": "9100000000000000000000000000000000000000000000000000000000000001",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.92},
+                "relative_kinematics": {"status": "observed", "value": 0.91},
+                "contact_state": {"status": "observed", "value": 0.90},
+                "event_order": {"status": "observed", "value": 0.89},
+                "terminal_hold": {"status": "observed", "value": 0.88}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "noop": {
+              "observation_id": "a-noop",
+              "arm": "anchor_noop",
+              "evidence_sha256": "9100000000000000000000000000000000000000000000000000000000000002",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.82},
+                "relative_kinematics": {"status": "observed", "value": 0.21},
+                "contact_state": {"status": "observed", "value": 0.74},
+                "event_order": {"status": "observed", "value": 0.71},
+                "terminal_hold": {"status": "observed", "value": 0.75}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "reverse": {
+              "observation_id": "a-reverse",
+              "arm": "anchor_reverse",
+              "evidence_sha256": "9100000000000000000000000000000000000000000000000000000000000003",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.81},
+                "relative_kinematics": {"status": "observed", "value": 0.76},
+                "contact_state": {"status": "observed", "value": 0.72},
+                "event_order": {"status": "observed", "value": 0.20},
+                "terminal_hold": {"status": "observed", "value": 0.73}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "static": {
+              "observation_id": "a-static",
+              "arm": "anchor_phase0_static",
+              "evidence_sha256": "9100000000000000000000000000000000000000000000000000000000000004",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.80},
+                "relative_kinematics": {"status": "observed", "value": 0.18},
+                "contact_state": {"status": "observed", "value": 0.70},
+                "event_order": {"status": "observed", "value": 0.69},
+                "terminal_hold": {"status": "observed", "value": 0.71}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            }
+          }
+        },
+        {
+          "appearance_id": "appearance-b",
+          "anchor_asset_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "middle_feature_receipt_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+          "observations": {
+            "action": {
+              "observation_id": "b-action",
+              "arm": "anchor_action",
+              "evidence_sha256": "9200000000000000000000000000000000000000000000000000000000000001",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.91},
+                "relative_kinematics": {"status": "observed", "value": 0.90},
+                "contact_state": {"status": "observed", "value": 0.89},
+                "event_order": {"status": "observed", "value": 0.90},
+                "terminal_hold": {"status": "observed", "value": 0.88}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "noop": {
+              "observation_id": "b-noop",
+              "arm": "anchor_noop",
+              "evidence_sha256": "9200000000000000000000000000000000000000000000000000000000000002",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.81},
+                "relative_kinematics": {"status": "observed", "value": 0.22},
+                "contact_state": {"status": "observed", "value": 0.73},
+                "event_order": {"status": "observed", "value": 0.70},
+                "terminal_hold": {"status": "observed", "value": 0.74}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "reverse": {
+              "observation_id": "b-reverse",
+              "arm": "anchor_reverse",
+              "evidence_sha256": "9200000000000000000000000000000000000000000000000000000000000003",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.80},
+                "relative_kinematics": {"status": "observed", "value": 0.75},
+                "contact_state": {"status": "observed", "value": 0.71},
+                "event_order": {"status": "observed", "value": 0.19},
+                "terminal_hold": {"status": "observed", "value": 0.72}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "static": {
+              "observation_id": "b-static",
+              "arm": "anchor_phase0_static",
+              "evidence_sha256": "9200000000000000000000000000000000000000000000000000000000000004",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.79},
+                "relative_kinematics": {"status": "observed", "value": 0.17},
+                "contact_state": {"status": "observed", "value": 0.69},
+                "event_order": {"status": "observed", "value": 0.68},
+                "terminal_hold": {"status": "observed", "value": 0.70}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            }
+          }
+        },
+        {
+          "appearance_id": "appearance-c",
+          "anchor_asset_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "middle_feature_receipt_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "observations": {
+            "action": {
+              "observation_id": "c-action",
+              "arm": "anchor_action",
+              "evidence_sha256": "9300000000000000000000000000000000000000000000000000000000000001",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.90},
+                "relative_kinematics": {"status": "observed", "value": 0.89},
+                "contact_state": {"status": "observed", "value": 0.88},
+                "event_order": {"status": "observed", "value": 0.91},
+                "terminal_hold": {"status": "observed", "value": 0.87}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "noop": {
+              "observation_id": "c-noop",
+              "arm": "anchor_noop",
+              "evidence_sha256": "9300000000000000000000000000000000000000000000000000000000000002",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.80},
+                "relative_kinematics": {"status": "observed", "value": 0.23},
+                "contact_state": {"status": "observed", "value": 0.72},
+                "event_order": {"status": "observed", "value": 0.69},
+                "terminal_hold": {"status": "observed", "value": 0.73}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "reverse": {
+              "observation_id": "c-reverse",
+              "arm": "anchor_reverse",
+              "evidence_sha256": "9300000000000000000000000000000000000000000000000000000000000003",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.79},
+                "relative_kinematics": {"status": "observed", "value": 0.74},
+                "contact_state": {"status": "observed", "value": 0.70},
+                "event_order": {"status": "observed", "value": 0.18},
+                "terminal_hold": {"status": "observed", "value": 0.71}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            },
+            "static": {
+              "observation_id": "c-static",
+              "arm": "anchor_phase0_static",
+              "evidence_sha256": "9300000000000000000000000000000000000000000000000000000000000004",
+              "scores": {
+                "role_binding": {"status": "observed", "value": 0.78},
+                "relative_kinematics": {"status": "observed", "value": 0.16},
+                "contact_state": {"status": "observed", "value": 0.68},
+                "event_order": {"status": "observed", "value": 0.67},
+                "terminal_hold": {"status": "observed", "value": 0.69}
+              },
+              "hard_gates": {
+                "identity": {"status": "pass", "idf1": 0.95, "id_switch_count": 0},
+                "contact": {"status": "pass", "macro_f1": 0.92},
+                "terminal": {"status": "pass", "macro_f1": 0.93, "hold_rgb_frames": 10},
+                "uncertainty": {"status": "pass", "unresolved_required_nodes": 0, "unresolved_required_edges": 0}
+              }
+            }
+          }
+        }
+      ],
+      "multiappearance_consensus": [
+        {
+          "left": "appearance-a",
+          "right": "appearance-b",
+          "critical_edges": [
+            {"edge_id": "actor-basket-contact", "status": "observed", "aligned_cosine": 0.98, "normalized_distance": 0.05},
+            {"edge_id": "basket-table-support", "status": "observed", "aligned_cosine": 0.97, "normalized_distance": 0.06}
+          ]
+        },
+        {
+          "left": "appearance-a",
+          "right": "appearance-c",
+          "critical_edges": [
+            {"edge_id": "actor-basket-contact", "status": "observed", "aligned_cosine": 0.97, "normalized_distance": 0.07},
+            {"edge_id": "basket-table-support", "status": "observed", "aligned_cosine": 0.98, "normalized_distance": 0.05}
+          ]
+        },
+        {
+          "left": "appearance-b",
+          "right": "appearance-c",
+          "critical_edges": [
+            {"edge_id": "actor-basket-contact", "status": "observed", "aligned_cosine": 0.96, "normalized_distance": 0.08},
+            {"edge_id": "basket-table-support", "status": "observed", "aligned_cosine": 0.97, "normalized_distance": 0.06}
+          ]
+        }
+      ],
+      "frozen_base_records": [
+        {
+          "record_id": "b0-seed2027",
+          "seed": 2027,
+          "media_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+          "graph_observation_supplied": false,
+          "graph_success": null,
+          "used_as_graph_positive": false,
+          "comparison_role": "matched_quality_reference_only"
+        },
+        {
+          "record_id": "b0-seed2028",
+          "seed": 2028,
+          "media_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+          "graph_observation_supplied": false,
+          "graph_success": null,
+          "used_as_graph_positive": false,
+          "comparison_role": "matched_quality_reference_only"
+        }
+      ]
+    }
+  ]
+}

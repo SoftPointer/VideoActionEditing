@@ -1,0 +1,154 @@
+{
+  "schema_version": "mev840-generated-candidate-action-observer-batch-v1",
+  "case_id": "MEV840",
+  "output_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_native_target_action_matrix_observer_formal6_v1_20260822",
+  "formal6_interface": {
+    "status": "sealed_all_six_native_candidates",
+    "required_candidate_ids_in_order": [
+      "p0_s2027",
+      "p0_s2028",
+      "p1_s2027",
+      "p1_s2028",
+      "p2_s2027",
+      "p2_s2028"
+    ],
+    "candidate_path_pattern": "<formal_root>/seed<2027|2028>/<p0a|p1|p2>.mp4",
+    "candidate_complete_schema_required": "mev840-native-rv2v-paired-prompt-matrix-formal-v1",
+    "materialization_rule": "completed: every candidate absolute path and sha256 was copied from one independently released formal receipt after exact13, media ABI, and byte-hash verification",
+    "launch_rule": "do not launch before all six candidate slots are sealed and the observer output_root is absent",
+    "observer_scope": "post_generation_action_measurement_only",
+    "formal_seed_receipts": [
+      {
+        "seed": 2027,
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2027/receipt.json",
+        "sha256": "7f431c05e06b87d0ec217105962ad1c77d16c0d4d39d25ff7848ac3fd11c52f3",
+        "schema_version": "mev840-native-rv2v-paired-prompt-matrix-formal-v1",
+        "mechanical_provenance_released": true,
+        "scientific_claim_authorized": false
+      },
+      {
+        "seed": 2028,
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2028/receipt.json",
+        "sha256": "098bbb9919f2b3715bbcd46c9591f912d21d954d4964ad7811579e2309f6f9ae",
+        "schema_version": "mev840-native-rv2v-paired-prompt-matrix-formal-v1",
+        "mechanical_provenance_released": true,
+        "scientific_claim_authorized": false
+      }
+    ],
+    "external_gate_contract": {
+      "appearance_quality_gate_external_required": true,
+      "appearance_quality_gate_passed": null,
+      "single_bottle_gate_external_required": true,
+      "single_bottle_gate_passed": null,
+      "single_bottle_gate_definition": "exactly one bottle remains the same source bottle throughout; no duplicate, replacement, or extra bottle",
+      "selection_authorized": false
+    }
+  },
+  "extractor": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/extract_mev840_coordinate_free_action_oracle_v1.py",
+    "sha256": "f40649ff9b86f82f1dd4bfaa41a72e2a4c98ce86bf31b8f11dccbe41c35c2da2"
+  },
+  "oracle_program": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/mev840_coordinate_free_action_oracle_v1.py",
+    "sha256": "ed00d7d0c0050b2697e8052f085eb6dc9cb6d3872fb2948db2fd26d8b1ddcaae"
+  },
+  "base_target_spec": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/assets/mev840_target_frozen_sam2_action_observer_spec_v1.json",
+    "sha256": "6834200d5bf4b8098cf4958a1939f3255ea461c15122d9ebd7e6b369f39ae3ad"
+  },
+  "target_action_oracle": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_target_action_oracle_sam2_v1_20260822_r2/action.json",
+    "sha256": "2c221020a0e45c5c8355c4be8f93ffb627d3e6bbacc45490122943b6930dbe99",
+    "representation_digest": "7ce831a771d834817475445e38666775707557041d56a5ec5267c7d8bf0f86bd"
+  },
+  "source_initial_reference": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/source_reference_656x368.mp4",
+    "sha256": "56bfe006c8e5dbd8de252e56eee086faedef46808f3a1fcd8fe74304fa260c8e",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 656,
+    "height": 368,
+    "derivation": {
+      "original_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/840b214afead/source-exact81.mp4",
+      "original_sha256": "a6e42a447d7fef26b073878c551a631afd6371987910a332e51e4a9e4dfb4646",
+      "original_frame_count": 81,
+      "original_fps": 25.0,
+      "original_width": 1280,
+      "original_height": 720,
+      "target_width": 656,
+      "target_height": 368,
+      "algorithm": "ffmpeg_scale_bicubic_libx264_preset_veryslow_crf1_yuv420p_r25",
+      "ffmpeg_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/ffmpeg_4.4.2_authority",
+      "ffmpeg_sha256": "36d94a605d612e4090d1b8aec889d0c0801c6eafb1593c90f5c0dfd2e2966a45"
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "p0_s2027",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2027/p0a.mp4",
+      "sha256": "d84d848a6387871ddabde4d1cd65f9dfc0bd41f417cff1c0ecfded7f34a93478",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p0_s2028",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2028/p0a.mp4",
+      "sha256": "80293af6a4abffb7f8eaea078b887c2134db5c054dec7da867ce28fe44f0969f",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p1_s2027",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2027/p1.mp4",
+      "sha256": "183420c2030fbd343b7f9c0d142b4f275bd1e7c5a53739937a6c71a957675b4f",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p1_s2028",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2028/p1.mp4",
+      "sha256": "de640d466a5baebd10caf319627cdee59345e063102be65b052a3c22103ae116",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p2_s2027",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2027/p2.mp4",
+      "sha256": "2c0239e5ba1dd664bf54bbf57ba2e12500d948825c5aa3ed728164acfbca8eab",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p2_s2028",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_same_process_formal_v1_20260822/seed2028/p2.mp4",
+      "sha256": "721c4044f4e77ce872a926df08be6405fc7535f89cf21e11f71baec04ae86c97",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    }
+  ],
+  "authority": {
+    "post_generation_only": true,
+    "all_candidate_media_closed_before_observer_start": true,
+    "generator_process_reads_manifest": false,
+    "generator_process_reads_target_action": false,
+    "generator_process_reads_real_target_media": false,
+    "observer_calls_generator": false,
+    "training_authorized": false,
+    "optimizer_updates": 0,
+    "failed_candidate_policy": "unassigned_reject",
+    "appearance_quality_gate_external_required": true,
+    "appearance_quality_gate_passed": null
+  }
+}

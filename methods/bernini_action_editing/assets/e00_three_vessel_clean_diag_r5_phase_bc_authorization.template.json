@@ -1,0 +1,22 @@
+{
+  "schema_version": "bernini-e00-clean-diagnostic-r5-phase-bc-authorization-v5",
+  "execution_authorized": false,
+  "authorized_phase": "B_THEN_CURRENT_AB_GATE_THEN_C",
+  "package_manifest_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "protocol_file_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "protocol_canonical_sha256": "REPLACE_AFTER_INDEPENDENT_PACKAGE_REVIEW",
+  "bridge_capability_token_sha256": "REPLACE_WITH_SHA256_OF_FRESH_BC_TOKEN",
+  "phase_a_stopped_marker_sha256": "REPLACE_AFTER_PHASE_A_REVIEW",
+  "phase_a_arm_audit_sha256": "REPLACE_AFTER_PHASE_A_REVIEW",
+  "phase_a_mp4_sha256": "REPLACE_AFTER_PHASE_A_REVIEW",
+  "parent_job_id": "143808",
+  "compute_node": "auh7-1b-gpu-292",
+  "authorized_arm_order": [
+    "observer_matched_output_routeoff",
+    "old_pureqk_temporal_routeon"
+  ],
+  "c_requires_bridge_revalidated_current_ab_gate": true,
+  "stop_without_c_on_gate_failure": true,
+  "sp4_observer_released_node292": false,
+  "authorized_by": ""
+}

@@ -1,0 +1,73 @@
+{
+  "schema_version": "bernini-seer-owner-core2-v1",
+  "method": "self-generated-event-erasure-flow-matching",
+  "source_owner_job": 131524,
+  "owner_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1",
+  "owner_registry": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/sealed-self-imagined-core2.json",
+    "sha256": "01fe53b02fa42da8eb5c187a81e6737f323604e7dc26b3eee4f941ad4de82d96"
+  },
+  "owner_master_receipt": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/owner-core2-master-receipt.json",
+    "sha256": "c0d8f3e4a7f3b95269b5196c0d8844327d9e7296dda1828493683a9ae7d707de",
+    "receipt_digest": "b71d726c7001c57da80391b18c5c82b8fe0910a62f8cd99484d3a90d218347ab"
+  },
+  "detached_full81_audit": {
+    "repository_path": "md/action_editing/05_hidden_event_geometry/02_querywise_sail/bernini_self_imagined_owner_full81_audit_131524.md",
+    "sha256": "3e2335d4d335a9ee8262aa319fc2790dbac3e59b20e554f54b4dc1273f259dc3",
+    "dog_action_pass": true,
+    "human_action_pass": true
+  },
+  "event_erasure_contract": {
+    "frame_count": 81,
+    "fps": 25,
+    "audited_initial_state_frames_inclusive": [0, 35],
+    "audited_transition_frames_inclusive": [36, 53],
+    "audited_terminal_and_hold_frames_inclusive": [54, 80],
+    "erasure_cutoff_exclusive": 32,
+    "source_may_reference_target_indices": [0, 31],
+    "source_must_not_contain_transition_or_terminal_frames": true,
+    "source_target_same_generated_video_coordinate": true
+  },
+  "fresh_experiment_authority": {
+    "user_directed_parameter_update": true,
+    "prior_owner_contract_did_not_authorize_rgb_or_target_transfer": true,
+    "prior_contract_is_not_rewritten": true,
+    "new_training_manifest_required": true,
+    "production_claim_authorized": false,
+    "method_success_claim_authorized_by_training_completion": false,
+    "heldout_decoded_review_required": true
+  },
+  "rows": [
+    {
+      "iid": "seer-fit-dog-7b88a1ca1f804f41-truncate32",
+      "source_iid": "7b88a1ca1f804f41",
+      "actor_family": "dog",
+      "action_family": "stand_to_sit_and_hold",
+      "target_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/dog/t2v.mp4",
+      "target_video_sha256": "63c8a8942df118b00aed10c2eecaeeb652d957e7084a1e0fce17e36f581f0a2c",
+      "owner_generation_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/dog/owner-generation-receipt.json",
+      "owner_generation_receipt_sha256": "e6e6cdcd7ffbb6c3fcbaad52ac3ed088429c842777238aa021fc07de1fa67cf2",
+      "native_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/dog/receipt.json",
+      "native_receipt_sha256": "476454e09dbe17066d92067011df27f61a6d8c0dd6d8f6cc1d6dddc77697aba7",
+      "owner_generation_receipt_digest": "10acf8d383185ae87f19a966ae2d9a524d793ca315ce7e1779a18de62661cafe",
+      "instruction": "Have the same grey French bulldog bend its hind legs, lower its hips, settle into a stable sit facing the camera, and hold the seated state. Preserve identity, black harness, yellow leaves, park background, scale, framing, illumination, and locked camera.",
+      "instruction_utf8_sha256": "fa74aae85c3ff2e8eeab8ceb7d8f4f5ef2035ff3204d01cde0963e33f2dbfd29"
+    },
+    {
+      "iid": "seer-fit-human-a35b590961d24694-truncate32",
+      "source_iid": "a35b590961d24694",
+      "actor_family": "human",
+      "action_family": "one_knee_to_upright_stand_and_hold",
+      "target_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/human/t2v.mp4",
+      "target_video_sha256": "05de20ce3c610acf827e796437b4ba1fcc99384d32bcce9b40631581c3c0459a",
+      "owner_generation_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/human/owner-generation-receipt.json",
+      "owner_generation_receipt_sha256": "b1fd8e8a8296bb8e688fb09e84141ce67a5f5416ccd0e1cdca39ca18f307ac9b",
+      "native_receipt": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_self_imagined_owner_c3e6f4b_20260809/runs/core2_owner_v1/human/receipt.json",
+      "native_receipt_sha256": "10215b1f6b9656ca834131067dad892f6ba12bbe75e929d59fabafafc242f822",
+      "owner_generation_receipt_digest": "6ff703a713b92faf8e0e1ff83c76ceb45715ef821ce025b210a5e4e13e7b5b01",
+      "instruction": "Have the same woman shift weight onto both feet, rise from the one-knee kneel at the same location, straighten both legs and torso into a stable upright stand, and hold. Preserve identity, long brown hair, black jacket, pink top, cream trousers, yellow background, scale, framing, illumination, and locked camera.",
+      "instruction_utf8_sha256": "22e53d923fa8a1bfb92386acbbb927485f913c3e401ca5f264a164f33f4c2b7a"
+    }
+  ]
+}

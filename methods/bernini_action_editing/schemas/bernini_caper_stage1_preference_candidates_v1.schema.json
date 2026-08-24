@@ -1,0 +1,473 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://videoedit.local/schemas/bernini_caper_stage1_preference_candidates_v1.schema.json",
+  "title": "Bernini CAPER Stage-1 same-source on-policy preference candidates",
+  "description": "Closed candidate-manifest schema. Cross-field equality, split isolation, artifact verification, admission, and zero-update certification are enforced by caper_stage1_preference_admission_v1.py.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "created_utc",
+    "purpose",
+    "admission_contract",
+    "deployable_policy",
+    "reward_evaluator",
+    "rollout_population_ledger",
+    "exposure_ledger",
+    "pure_t2v_calibration_owners",
+    "splits"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "bernini-caper-stage1-preference-candidates-v1"
+    },
+    "manifest_id": { "$ref": "#/$defs/identifier" },
+    "created_utc": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])-([0-2][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]Z$"
+    },
+    "purpose": { "$ref": "#/$defs/nonemptyText" },
+    "admission_contract": { "$ref": "#/$defs/admissionContract" },
+    "deployable_policy": { "$ref": "#/$defs/deployablePolicy" },
+    "reward_evaluator": { "$ref": "#/$defs/rewardEvaluator" },
+    "rollout_population_ledger": { "$ref": "#/$defs/artifact" },
+    "exposure_ledger": { "$ref": "#/$defs/artifact" },
+    "pure_t2v_calibration_owners": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/pureT2VCalibrationOwner" }
+    },
+    "splits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fit", "heldout"],
+      "properties": {
+        "fit": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/preferencePairCandidate" }
+        },
+        "heldout": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/preferencePairCandidate" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,191}$"
+    },
+    "nonemptyText": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S(?:.*\\S)?$"
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "size_bytes"],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!.*(?:^|/)\\.\\.?(/|$))(?!.*\\\\)(?!.*\\x00).+[^/]$"
+        },
+        "sha256": { "$ref": "#/$defs/sha256" },
+        "size_bytes": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "admissionContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "preference_target_mode",
+        "pure_t2v_role",
+        "pure_t2v_preference_target_allowed",
+        "target_video_dependency_allowed",
+        "scalar_reward_admission_allowed",
+        "scalar_compensation_allowed",
+        "preservation_gate_semantics",
+        "preservation_gate_names",
+        "split_isolation_axes",
+        "no_valid_fit_pair_behavior"
+      ],
+      "properties": {
+        "stage": { "const": "CAPER-stage1" },
+        "preference_target_mode": {
+          "const": "same_source_on_policy_source_conditioned_video_editing_only"
+        },
+        "pure_t2v_role": {
+          "const": "action_reward_calibration_owner_only"
+        },
+        "pure_t2v_preference_target_allowed": { "const": false },
+        "target_video_dependency_allowed": { "const": false },
+        "scalar_reward_admission_allowed": { "const": false },
+        "scalar_compensation_allowed": { "const": false },
+        "preservation_gate_semantics": {
+          "const": "conjunctive_hard_gates_no_compensation"
+        },
+        "preservation_gate_names": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "identity" },
+            { "const": "object_correspondence" },
+            { "const": "background" },
+            { "const": "camera" },
+            { "const": "non_target" },
+            { "const": "quality" }
+          ],
+          "items": false,
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "split_isolation_axes": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "source_id" },
+            { "const": "source_media_sha256" },
+            { "const": "identity_id" },
+            { "const": "scene_id" },
+            { "const": "action_family" }
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "no_valid_fit_pair_behavior": {
+          "const": "emit_zero_update_certificate"
+        }
+      }
+    },
+    "deployablePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "model_family",
+        "checkpoint_tree_sha256",
+        "inference_contract_sha256",
+        "deployable",
+        "source_conditioned",
+        "weights_frozen_during_rollout"
+      ],
+      "properties": {
+        "policy_id": { "$ref": "#/$defs/identifier" },
+        "model_family": { "$ref": "#/$defs/nonemptyText" },
+        "checkpoint_tree_sha256": { "$ref": "#/$defs/sha256" },
+        "inference_contract_sha256": { "$ref": "#/$defs/sha256" },
+        "deployable": { "const": true },
+        "source_conditioned": { "const": true },
+        "weights_frozen_during_rollout": { "const": true }
+      }
+    },
+    "rewardEvaluator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evaluator_id",
+        "evaluator_type",
+        "evaluator_version",
+        "weights_artifact",
+        "runtime_artifact",
+        "input_contract_sha256",
+        "required_inputs",
+        "optional_inputs",
+        "forbidden_inputs"
+      ],
+      "properties": {
+        "evaluator_id": { "$ref": "#/$defs/identifier" },
+        "evaluator_type": {
+          "const": "decoded_rgb24_action_preservation_evaluator"
+        },
+        "evaluator_version": { "$ref": "#/$defs/identifier" },
+        "weights_artifact": { "$ref": "#/$defs/artifact" },
+        "runtime_artifact": { "$ref": "#/$defs/artifact" },
+        "input_contract_sha256": { "$ref": "#/$defs/sha256" },
+        "required_inputs": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "decoded_candidate_rgb24" },
+            { "const": "action_instruction" },
+            { "const": "action_rubric" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "optional_inputs": {
+          "type": "array",
+          "prefixItems": [{ "const": "decoded_source_rgb24" }],
+          "items": false,
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "forbidden_inputs": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "mask" },
+            { "const": "track" },
+            { "const": "pose" },
+            { "const": "flow" },
+            { "const": "pure_t2v_origin_metadata" }
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        }
+      }
+    },
+    "policyBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "checkpoint_tree_sha256",
+        "inference_contract_sha256"
+      ],
+      "properties": {
+        "policy_id": { "$ref": "#/$defs/identifier" },
+        "checkpoint_tree_sha256": { "$ref": "#/$defs/sha256" },
+        "inference_contract_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "generatorBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generator_id",
+        "checkpoint_tree_sha256",
+        "inference_contract_sha256"
+      ],
+      "properties": {
+        "generator_id": { "$ref": "#/$defs/identifier" },
+        "checkpoint_tree_sha256": { "$ref": "#/$defs/sha256" },
+        "inference_contract_sha256": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "conditioningAttestation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_kinds",
+        "source_media_sha256",
+        "target_video_read",
+        "target_video_latent_read",
+        "paired_target_read",
+        "pure_t2v_media_read",
+        "pure_t2v_latent_read"
+      ],
+      "properties": {
+        "input_kinds": {
+          "type": "array",
+          "prefixItems": [
+            { "const": "source_video" },
+            { "const": "edit_instruction" },
+            { "const": "sealed_gaussian" }
+          ],
+          "items": false,
+          "minItems": 3,
+          "maxItems": 3
+        },
+        "source_media_sha256": { "$ref": "#/$defs/sha256" },
+        "target_video_read": { "const": false },
+        "target_video_latent_read": { "const": false },
+        "paired_target_read": { "const": false },
+        "pure_t2v_media_read": { "const": false },
+        "pure_t2v_latent_read": { "const": false }
+      }
+    },
+    "preservationHardGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity",
+        "object_correspondence",
+        "background",
+        "camera",
+        "non_target",
+        "quality"
+      ],
+      "properties": {
+        "identity": { "type": "boolean" },
+        "object_correspondence": { "type": "boolean" },
+        "background": { "type": "boolean" },
+        "camera": { "type": "boolean" },
+        "non_target": { "type": "boolean" },
+        "quality": { "type": "boolean" }
+      }
+    },
+    "preferenceEndpoint": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "population_id",
+        "seed_id",
+        "declared_role",
+        "generation_mode",
+        "eligible_as_preference_target",
+        "source_id",
+        "identity_id",
+        "scene_id",
+        "action_family",
+        "edit_instruction",
+        "policy_binding",
+        "conditioning_attestation",
+        "output_media",
+        "rollout_receipt",
+        "reward_audit",
+        "preservation_hard_gates"
+      ],
+      "properties": {
+        "candidate_id": { "$ref": "#/$defs/identifier" },
+        "population_id": { "$ref": "#/$defs/identifier" },
+        "seed_id": { "$ref": "#/$defs/identifier" },
+        "declared_role": { "enum": ["winner", "loser"] },
+        "generation_mode": {
+          "const": "source_conditioned_video_editing"
+        },
+        "eligible_as_preference_target": { "const": true },
+        "source_id": { "$ref": "#/$defs/identifier" },
+        "identity_id": { "$ref": "#/$defs/identifier" },
+        "scene_id": { "$ref": "#/$defs/identifier" },
+        "action_family": { "$ref": "#/$defs/identifier" },
+        "edit_instruction": { "$ref": "#/$defs/nonemptyText" },
+        "policy_binding": { "$ref": "#/$defs/policyBinding" },
+        "conditioning_attestation": {
+          "$ref": "#/$defs/conditioningAttestation"
+        },
+        "output_media": { "$ref": "#/$defs/artifact" },
+        "rollout_receipt": { "$ref": "#/$defs/artifact" },
+        "reward_audit": { "$ref": "#/$defs/artifact" },
+        "preservation_hard_gates": {
+          "$ref": "#/$defs/preservationHardGates"
+        }
+      }
+    },
+    "actionOrdering": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rubric_id",
+        "winner_action_grade",
+        "loser_action_grade",
+        "strict_preference_claimed",
+        "selection_basis",
+        "pair_selection_rule",
+        "winner_action_score",
+        "winner_action_uncertainty",
+        "loser_action_score",
+        "loser_action_uncertainty",
+        "pairwise_confidence_margin",
+        "minimum_required_pairwise_margin"
+      ],
+      "properties": {
+        "rubric_id": { "$ref": "#/$defs/identifier" },
+        "winner_action_grade": { "$ref": "#/$defs/actionGrade" },
+        "loser_action_grade": { "$ref": "#/$defs/actionGrade" },
+        "strict_preference_claimed": { "const": true },
+        "selection_basis": {
+          "const": "action_event_order_only_after_both_endpoints_pass_all_preservation_gates"
+        },
+        "pair_selection_rule": {
+          "const": "all_preregistered_attempts_recorded_choose_max_action_lcb_vs_min_action_ucb_tie_seed_order"
+        },
+        "winner_action_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "winner_action_uncertainty": { "type": "number", "minimum": 0, "maximum": 1 },
+        "loser_action_score": { "type": "number", "minimum": 0, "maximum": 1 },
+        "loser_action_uncertainty": { "type": "number", "minimum": 0, "maximum": 1 },
+        "pairwise_confidence_margin": { "type": "number" },
+        "minimum_required_pairwise_margin": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "actionGrade": {
+      "enum": [
+        "absent_or_wrong",
+        "started_only",
+        "transition_incomplete",
+        "terminal_reached",
+        "terminal_reached_and_held"
+      ]
+    },
+    "preferencePairCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pair_id",
+        "population_id",
+        "split",
+        "source_id",
+        "identity_id",
+        "scene_id",
+        "action_family",
+        "edit_instruction",
+        "source_media",
+        "source_intake_receipt",
+        "target_video_dependency",
+        "scalar_reward_used_for_admission",
+        "scalar_compensation_used",
+        "winner",
+        "loser",
+        "action_ordering"
+      ],
+      "properties": {
+        "pair_id": { "$ref": "#/$defs/identifier" },
+        "population_id": { "$ref": "#/$defs/identifier" },
+        "split": { "enum": ["fit", "heldout"] },
+        "source_id": { "$ref": "#/$defs/identifier" },
+        "identity_id": { "$ref": "#/$defs/identifier" },
+        "scene_id": { "$ref": "#/$defs/identifier" },
+        "action_family": { "$ref": "#/$defs/identifier" },
+        "edit_instruction": { "$ref": "#/$defs/nonemptyText" },
+        "source_media": { "$ref": "#/$defs/artifact" },
+        "source_intake_receipt": { "$ref": "#/$defs/artifact" },
+        "target_video_dependency": { "const": false },
+        "scalar_reward_used_for_admission": { "const": false },
+        "scalar_compensation_used": { "const": false },
+        "winner": { "$ref": "#/$defs/preferenceEndpoint" },
+        "loser": { "$ref": "#/$defs/preferenceEndpoint" },
+        "action_ordering": { "$ref": "#/$defs/actionOrdering" }
+      }
+    },
+    "pureT2VCalibrationOwner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_id",
+        "split",
+        "role",
+        "generation_mode",
+        "action_family",
+        "prompt",
+        "generator_binding",
+        "output_media",
+        "rollout_receipt",
+        "reward_audit",
+        "eligible_as_preference_target",
+        "eligible_as_training_target",
+        "target_video_dependency"
+      ],
+      "properties": {
+        "owner_id": { "$ref": "#/$defs/identifier" },
+        "split": { "enum": ["fit", "heldout"] },
+        "role": { "const": "action_reward_calibration_owner_only" },
+        "generation_mode": { "const": "pure_t2v" },
+        "action_family": { "$ref": "#/$defs/identifier" },
+        "prompt": { "$ref": "#/$defs/nonemptyText" },
+        "generator_binding": { "$ref": "#/$defs/generatorBinding" },
+        "output_media": { "$ref": "#/$defs/artifact" },
+        "rollout_receipt": { "$ref": "#/$defs/artifact" },
+        "reward_audit": { "$ref": "#/$defs/artifact" },
+        "eligible_as_preference_target": { "const": false },
+        "eligible_as_training_target": { "const": false },
+        "target_video_dependency": { "const": false }
+      }
+    }
+  }
+}

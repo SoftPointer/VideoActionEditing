@@ -1,0 +1,6 @@
+numpy>=1.23
+opencv-python-headless>=4.8
+# Optional, but required for motion-weighted diffusion losses and gradient
+# fingerprints:
+# torch>=2.1
+

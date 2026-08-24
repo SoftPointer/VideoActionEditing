@@ -1,0 +1,233 @@
+{
+  "schema_version": "motive-instruction-video-editor-registry-v1",
+  "source_document": "docs/codex/train/open_video_editing_models_under_5b.md",
+  "scope": {
+    "required_user_inputs": [
+      "source_video",
+      "instruction"
+    ],
+    "forbidden_user_inputs": [
+      "mask",
+      "bbox",
+      "pose",
+      "trajectory",
+      "reference_image",
+      "edited_keyframe",
+      "target_video",
+      "source_prompt",
+      "target_prompt"
+    ],
+    "internal_automatic_analysis_allowed": true,
+    "internal_analysis_is_never_a_required_user_input": true
+  },
+  "promotion_policy": {
+    "representation_gate_required_before_renderer_probe": true,
+    "renderer_probe_required_before_training": true,
+    "cross_content_transfer_required": true,
+    "minimum_distinct_renderers_for_training": 2,
+    "same_representation_payload_required_across_contents": true
+  },
+  "models": [
+    {
+      "id": "lucy_edit_1_1",
+      "display_name": "Lucy-Edit 1.1",
+      "parameter_scale_b": 5.0,
+      "architecture_family": "wan-lucy",
+      "interface": "source_video_plus_instruction",
+      "role": "failed_baseline",
+      "primary_eligible": false,
+      "availability_probe": {
+        "kind": "all_paths",
+        "paths": [
+          "checkpoints/LucyEdit"
+        ]
+      },
+      "reason": "Retained only to quantify source-motion copying and appearance drift."
+    },
+    {
+      "id": "bernini_r_1_3b",
+      "display_name": "Bernini-R 1.3B",
+      "parameter_scale_b": 1.3,
+      "architecture_family": "bernini",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*Bernini*",
+          "methods/*Bernini*"
+        ]
+      },
+      "reason": "Small open renderer suitable for early action-transfer capability screening."
+    },
+    {
+      "id": "liveedit_1_3b",
+      "display_name": "LiveEdit 1.3B",
+      "parameter_scale_b": 1.3,
+      "architecture_family": "liveedit-causal",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*LiveEdit*",
+          "methods/*LiveEdit*"
+        ]
+      },
+      "reason": "Causal editor provides a preservation-heavy counterpoint to other renderers."
+    },
+    {
+      "id": "omnivideo2_v2v_1_3b",
+      "display_name": "OmniVideo2 V2V 1.3B",
+      "parameter_scale_b": 1.3,
+      "architecture_family": "omnivideo2",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*OmniVideo*",
+          "methods/*OmniVideo*"
+        ]
+      },
+      "reason": "Its edit-prompt to target-video route is useful for testing representation-to-instruction compilation."
+    },
+    {
+      "id": "lance_3b",
+      "display_name": "Lance 3B",
+      "parameter_scale_b": 3.0,
+      "architecture_family": "lance-unified",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*Lance*",
+          "methods/*Lance*"
+        ]
+      },
+      "reason": "Non-Wan unified editor is required to test cross-architecture transfer."
+    },
+    {
+      "id": "kiwi_edit_5b_instruct_only",
+      "display_name": "Kiwi-Edit 5B instruct-only",
+      "parameter_scale_b": 5.0,
+      "architecture_family": "wan-kiwi",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*kiwi*",
+          "methods/*kiwi*"
+        ]
+      },
+      "reason": "Strong instruction-only renderer candidate; system dependencies are larger than the DiT alone."
+    },
+    {
+      "id": "loomvideo_5b",
+      "display_name": "LoomVideo 5B",
+      "parameter_scale_b": 5.0,
+      "architecture_family": "loomvideo",
+      "interface": "source_video_plus_instruction",
+      "role": "primary_renderer",
+      "primary_eligible": true,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*Loom*",
+          "methods/*Loom*"
+        ]
+      },
+      "reason": "Independent text and visual conditioning scales expose source-preservation versus action-change tradeoffs."
+    },
+    {
+      "id": "reco_ori_1_3b",
+      "display_name": "ReCo_ori 1.3B",
+      "parameter_scale_b": 1.3,
+      "architecture_family": "vace-reco",
+      "interface": "source_video_plus_instruction",
+      "role": "appearance_leakage_control",
+      "primary_eligible": false,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "checkpoints/*ReCo*",
+          "methods/*ReCo*"
+        ]
+      },
+      "reason": "Instruction-only at the interface but VACE-derived and trained mainly for local appearance edits; never a primary action route."
+    },
+    {
+      "id": "text2video_zero",
+      "display_name": "Text2Video-Zero",
+      "parameter_scale_b": null,
+      "architecture_family": "training-free-t2i",
+      "interface": "source_video_plus_instruction",
+      "role": "mechanism_control",
+      "primary_eligible": false,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "methods/*Text2Video*"
+        ]
+      },
+      "reason": "Training-free historical mechanism control, not an action-renderer ceiling."
+    },
+    {
+      "id": "tokenflow",
+      "display_name": "TokenFlow",
+      "parameter_scale_b": null,
+      "architecture_family": "training-free-t2i",
+      "interface": "source_video_plus_instruction",
+      "role": "mechanism_control",
+      "primary_eligible": false,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "methods/*TokenFlow*"
+        ]
+      },
+      "reason": "Training-free historical mechanism control, not an action-renderer ceiling."
+    },
+    {
+      "id": "rave",
+      "display_name": "RAVE",
+      "parameter_scale_b": null,
+      "architecture_family": "training-free-t2i",
+      "interface": "source_video_plus_instruction",
+      "role": "mechanism_control",
+      "primary_eligible": false,
+      "availability_probe": {
+        "kind": "any_glob",
+        "patterns": [
+          "methods/*RAVE*"
+        ]
+      },
+      "reason": "Training-free historical mechanism control, not an action-renderer ceiling."
+    }
+  ],
+  "explicitly_excluded": [
+    {
+      "id": "vace",
+      "reason": "Out of scope by project decision; mask/control interfaces must not become the user-facing route."
+    },
+    {
+      "id": "propfly",
+      "reason": "Requires an edited keyframe."
+    },
+    {
+      "id": "nova",
+      "reason": "Requires an edited keyframe."
+    },
+    {
+      "id": "fatezero",
+      "reason": "Requires source and target prompts rather than one native edit instruction."
+    }
+  ]
+}

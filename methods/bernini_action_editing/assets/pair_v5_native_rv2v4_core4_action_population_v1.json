@@ -1,0 +1,118 @@
+{
+  "schema_version": "pair-v5-native-rv2v4-rollout-spec-v1",
+  "sampling_contract": {
+    "condition_mode": "rv2v4",
+    "num_frames": 81,
+    "latent_frames": 21,
+    "fps": 25,
+    "num_inference_steps": 40,
+    "source_reference_indices": [0, 27, 53, 80],
+    "target_initialization": "official_gen_wanx22_fresh_gaussian"
+  },
+  "semantic_input_closure": {
+    "accepted": ["source_video", "complete_caption"],
+    "target_video": false,
+    "t2v_proposal_media": false,
+    "donor_video": false,
+    "external_reference": false,
+    "mask": false,
+    "flow": false,
+    "pose": false,
+    "track": false,
+    "trajectory": false
+  },
+  "groups": [
+    {
+      "group_id": "sp4-a",
+      "visible_gpus": [0, 1, 2, 3],
+      "candidates": [
+        {
+          "candidate_id": "pair5-native-core4-v1-7b88a1ca1f804f41-action-s2026080901",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+          "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+          "complete_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080901,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-7b88a1ca1f804f41-action-s2026080902",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+          "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+          "complete_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080902,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-a66e6818e4144928-action-s2026080901",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a66e6818e4144928/samples/a66e6818e4144928/source_video.mp4",
+          "source_video_sha256": "0fdc54d89250f355d2170a4d6f6aac0867abf592afb849668a8e2879a6617147",
+          "complete_caption": "A static camera shows a single young woman in a low crouch on a city sidewalk beside a modern dark-glass building with horizontal metal bars, looking back over her shoulder, with tied dark hair, a black sports bra, grey trousers, and a blue-green plaid shirt in harsh sunlight and deep shadow. The main person presses through both feet, rises smoothly from the low crouch, straightens the legs and torso, faces the viewer, and holds upright. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "f162aa0276e89b485e5216ce825f4f65e198e91e73aed3a6ca44c6e24f4856f7",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080901,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-a66e6818e4144928-action-s2026080902",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a66e6818e4144928/samples/a66e6818e4144928/source_video.mp4",
+          "source_video_sha256": "0fdc54d89250f355d2170a4d6f6aac0867abf592afb849668a8e2879a6617147",
+          "complete_caption": "A static camera shows a single young woman in a low crouch on a city sidewalk beside a modern dark-glass building with horizontal metal bars, looking back over her shoulder, with tied dark hair, a black sports bra, grey trousers, and a blue-green plaid shirt in harsh sunlight and deep shadow. The main person presses through both feet, rises smoothly from the low crouch, straightens the legs and torso, faces the viewer, and holds upright. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "f162aa0276e89b485e5216ce825f4f65e198e91e73aed3a6ca44c6e24f4856f7",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080902,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        }
+      ]
+    },
+    {
+      "group_id": "sp4-b",
+      "visible_gpus": [4, 5, 6, 7],
+      "candidates": [
+        {
+          "candidate_id": "pair5-native-core4-v1-841b5e0080a1441d-action-s2026080901",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+          "source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+          "complete_caption": "A fixed camera shows a single black-and-tan German shepherd standing on a leash in a grassy field, looking upward toward the viewer, with clumps of shed fur on the ground and subtle ear and breeze movement. The main German shepherd bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "739e74f72516a94df75fc60f32f96662599eefc5f21afd2becd16d437f87157f",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080901,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-841b5e0080a1441d-action-s2026080902",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+          "source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a",
+          "complete_caption": "A fixed camera shows a single black-and-tan German shepherd standing on a leash in a grassy field, looking upward toward the viewer, with clumps of shed fur on the ground and subtle ear and breeze movement. The main German shepherd bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "739e74f72516a94df75fc60f32f96662599eefc5f21afd2becd16d437f87157f",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080902,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-a35b590961d24694-action-s2026080901",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+          "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+          "complete_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080901,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        },
+        {
+          "candidate_id": "pair5-native-core4-v1-a35b590961d24694-action-s2026080902",
+          "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+          "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+          "complete_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+          "complete_caption_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+          "caption_contract": "complete_source_content_caption_with_requested_new_action",
+          "seed": 2026080902,
+          "guidance": {"omega_txt": 4.0, "omega_vid": 1.25, "omega_img": 4.5}
+        }
+      ]
+    }
+  ]
+}

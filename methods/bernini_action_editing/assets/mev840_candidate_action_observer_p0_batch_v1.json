@@ -1,0 +1,62 @@
+{
+  "schema_version": "mev840-generated-candidate-action-observer-batch-v1",
+  "case_id": "MEV840",
+  "output_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_p0_v1_20260822",
+  "extractor": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/extract_mev840_coordinate_free_action_oracle_v1.py",
+    "sha256": "dfc5be433e48d98ea102bfa9f0ebe1f84b0e3baa0b3d4844e42e7b99c9f7c856"
+  },
+  "oracle_program": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/mev840_coordinate_free_action_oracle_v1.py",
+    "sha256": "9c1ed616af59a52e66c8414478b143943f9b808231cec8529a5a10345a2c5654"
+  },
+  "base_target_spec": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_candidate_action_observer_v1_20260822_control/assets/mev840_target_frozen_sam2_action_observer_spec_v1.json",
+    "sha256": "6834200d5bf4b8098cf4958a1939f3255ea461c15122d9ebd7e6b369f39ae3ad"
+  },
+  "target_action_oracle": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev840_target_action_oracle_sam2_v1_20260822_r2/action.json",
+    "sha256": "2c221020a0e45c5c8355c4be8f93ffb627d3e6bbacc45490122943b6930dbe99",
+    "representation_digest": "7ce831a771d834817475445e38666775707557041d56a5ec5267c7d8bf0f86bd"
+  },
+  "source_initial_reference": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/840b214afead/source-exact81.mp4",
+    "sha256": "a6e42a447d7fef26b073878c551a631afd6371987910a332e51e4a9e4dfb4646",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 656,
+    "height": 368
+  },
+  "candidates": [
+    {
+      "candidate_id": "p0_s2027",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_candidate_canary_v3_20260822/seed2027/rv2v.mp4",
+      "sha256": "ed5352611c6bcde3fe3b79c95630a85401fc8564d8181c8c225b32ef33c0913f",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    },
+    {
+      "candidate_id": "p0_s2028",
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/mev840_native_rv2v_candidate_canary_v3_20260822/seed2028/rv2v.mp4",
+      "sha256": "894d8cb77c09f3f6081de555fc921dbf52e4dc6899f98b0eec7c7e93c7782108",
+      "frame_count": 81,
+      "fps": 25.0,
+      "width": 656,
+      "height": 368
+    }
+  ],
+  "authority": {
+    "post_generation_only": true,
+    "all_candidate_media_closed_before_observer_start": true,
+    "generator_process_reads_manifest": false,
+    "generator_process_reads_target_action": false,
+    "generator_process_reads_real_target_media": false,
+    "observer_calls_generator": false,
+    "training_authorized": false,
+    "optimizer_updates": 0,
+    "failed_candidate_policy": "unassigned_reject",
+    "appearance_quality_gate_external": true
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "pair-v5-pure-t2v-calibration-authoring-selection-v1",
+  "bank_id": "pair5-t2v-core4-v1",
+  "expected_cell_count": 4,
+  "registry_file": "pair_v5_t2v_calibration_first8_authoring_v1.json",
+  "registry_raw_sha256": "204f7de92fde95a89ab5750ec226dea58fb71edba6c071c76a7c8c56f91bb89c",
+  "selected_iids": [
+    "7b88a1ca1f804f41",
+    "841b5e0080a1441d",
+    "a35b590961d24694",
+    "a66e6818e4144928"
+  ],
+  "first_gpu_job_default": true
+}

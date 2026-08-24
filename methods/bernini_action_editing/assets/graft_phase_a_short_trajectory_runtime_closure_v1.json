@@ -1,0 +1,31 @@
+{
+  "files": {
+    "graft_a_lite_source_release_consumer_v1.py": "13ecb082ab3cff6f809b056c35715123be302a5c8d82a6760a7367861920ee75",
+    "graft_phase_a_native_training_closure_v1.py": "36861e8670fc77d65b469f86aa472a10d453f9ba5fc227a62303329c4c38409a",
+    "graft_phase_a_native_training_closure_v2.py": "bf6a1d438183de5aa0460e729a39382e4597b3e43a4b9f1b3cdff5457439f20f",
+    "identity_rebinder_v1.py": "1f954f7446bdd4c9e465d44b045c8fe40d34dfa9c2aad6585256f5b4fb29dde0",
+    "infer_lora.py": "ce0bb91aa1850fa4568b6441cc4be4f41db8b8dcfc2afe2d9fcc76a6fca2ebe4",
+    "infer_native_i_axis_exact81_canary.py": "c3373d819534ac1e08270356b3311e9ef115390932bdbaa6dca64984ab618c58",
+    "infer_native_identity_generation_canary.py": "a60c37591c40206c6130185f1a2d2a7a8e473f5af4425205e268ae4a8b58f334",
+    "infer_orderless_source_frame_set_noise_canary.py": "f1e0182b6f9f6e2c4da4838b4f74f1ee629541887684a07424ec912e9050921c",
+    "infer_source_kv_carrier_oracle.py": "fcf77576735c89e685415b94b2dc0f0c5b8d1dd8dc1c55832538ff0daafb4604",
+    "infer_source_value_residual_oracle.py": "40e581db7906f20103a16ad47fda76978cbad21c9277723f3e8e022d717ed2d8",
+    "inference_sigma_strata.py": "e3782a22130c09a48dc3ea27fa219af6caca445e1fce2c8f3bca7cde6058afd3",
+    "native_i_axis_guidance.py": "6a7cb379403aca0f6010f14477300ad6af6d3ba8e4581ba1c5890e6ff6fed931",
+    "orderless_source_frame_set_noise.py": "b5ad305798289fcf9112ce004f0305c5fea7f206c9cd9e6b331908c2f9af7bd0",
+    "run_graft_phase_a_native_gpu_canary_v1.py": "e0b69442be284e091bad8d36a205bffe8bd314082188bfa55da72f4c2640945a",
+    "run_graft_phase_a_short_trajectory_diagnostic_gpu_v1.py": "fc2c61cc7d80c234cefa681a900457f31584ea9115bb1531fc63e90f8fc3b74b",
+    "source_kv_replay.py": "45b43426dc7825dbd61280154fc35161c60476ec5cb9e53bc0225f3809c759f3",
+    "source_kv_route_batches.py": "7f3ae0d27747ad58b3b195c712884641012eb836bb59963896c58518b8b5731e",
+    "source_value_residual.py": "420cadf3cb2824b2bf5a809c55086d81351db19f31743b0b77a957adf219e124",
+    "tools/build_renderer_dataset.py": "afc706d4d03bbfee505666476b752cab3fab53a2e80d140de89b06acc162e0f5",
+    "tools/materialize_vae.py": "a09677c9308fa030449f481da42dbc6d1bf2a88cbcd92e9cd1f26c3967bfb6f0",
+    "train_graft_phase_a_a_lite_short_v1.py": "73e39048bb8836fef33516eb1aae4cbc3f9fa4ecefcfb5d2695925bcb150f7bb",
+    "train_lora.py": "630c215240d4547ea0c347b9fb0bf21324ffe5ee229c5f3673d586a4a0eab4d5",
+    "tri_branch_unipc.py": "58d2e0e8d56a500eea07ec20f0fb101539ac846bbd039c0d50a22506b58fb3d2"
+  },
+  "root": "methods/bernini_action_editing",
+  "schema_version": "bernini-graft-phase-a-short-trajectory-runtime-closure-v1",
+  "selection": "fresh-world8-trajectory-diagnostic-r2",
+  "source_git_commit": "87a8b58235377d6f2ef403fab6d4fc81d7a19f6b"
+}

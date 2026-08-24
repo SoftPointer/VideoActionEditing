@@ -1,0 +1,19 @@
+{
+  "schema_version": "bernini-dclr-wrong-source-match-v2",
+  "candidate_iid": "288545b9c031491a",
+  "candidate_source_video_sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+  "wrong_source_iid": "7594dcea796540fc",
+  "wrong_source_video_sha256": "da7e3efa6f4fabac1f1c57b9376667366ca2ad43d4710adea5892eb313cc5e7a",
+  "criteria": {
+    "distinct_identity": true,
+    "same_actor_class": true,
+    "same_actor_count": true,
+    "same_spatial_bucket": true,
+    "same_camera_class": false,
+    "same_composition_class": false,
+    "same_length": true,
+    "manual_reviewed": true
+  },
+  "declared_use": "runtime_plumbing_only",
+  "reviewer": "Codex visual audit: cdf is overhead while donor is front/eye-level; calibration is forbidden"
+}

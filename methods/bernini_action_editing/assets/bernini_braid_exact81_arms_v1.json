@@ -1,0 +1,167 @@
+{
+  "arms": [
+    {
+      "A_motion": false,
+      "A_text": false,
+      "I_source": false,
+      "arm_id": "A",
+      "basis": "none",
+      "branch": "single_native_action",
+      "g": "native_single",
+      "plan": "none",
+      "prompt": "ca",
+      "reset": false,
+      "source_gate": "evaluation_only"
+    },
+    {
+      "A_motion": false,
+      "A_text": false,
+      "I_source": true,
+      "arm_id": "B",
+      "basis": "none",
+      "branch": "single_noop_anchor",
+      "g": "exact_zero",
+      "plan": "canonical_noop_zero",
+      "prompt": "c0",
+      "reset": false,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": false,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "C",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": false,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "D0",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": false,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "D1",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": true,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "E",
+      "basis": "fact_segment_zero_dc_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": true,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "F",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "fixed_action_family_permutation",
+      "prompt": "c0_and_ca",
+      "reset": true,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": false,
+      "arm_id": "H",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": true,
+      "source_gate": "train_and_evaluate_hard"
+    },
+    {
+      "A_motion": true,
+      "A_text": true,
+      "I_source": true,
+      "arm_id": "G",
+      "basis": "cumulative_smoothstep_v1",
+      "branch": "dual_native_apg_then_velocity_interpolation",
+      "g": "braid_sigma_gate_v1",
+      "plan": "canonical_action",
+      "prompt": "c0_and_ca",
+      "reset": true,
+      "source_gate": "disabled_during_training_but_hard_at_evaluation"
+    }
+  ],
+  "forbidden_runtime_inputs": [
+    "mask",
+    "track",
+    "pose",
+    "flow",
+    "trajectory",
+    "edited_first_frame",
+    "target_video",
+    "motion_reference"
+  ],
+  "gates": {
+    "braid_sigma_gate_v1": {
+      "high_min_inclusive": 0.55,
+      "high_weight": 1.0,
+      "low_cutoff_exclusive": 0.25,
+      "low_weight": 0.0,
+      "mid_weight": 0.5
+    }
+  },
+  "method": "BRAID-Bernini",
+  "publication": {
+    "all_attempts_required": true,
+    "decoded_hard_axes": [
+      "action",
+      "identity",
+      "object",
+      "background",
+      "camera",
+      "non_target_motion",
+      "quality",
+      "source_dependence"
+    ],
+    "seed_selection_forbidden": true
+  },
+  "runtime": {
+    "apg_state": "independent_branch_local_identical_initial_bytes",
+    "fps": 25,
+    "frames": 81,
+    "scheduler_advances_per_step": 1,
+    "scheduler_steps": 40,
+    "topology": "one_node_all8_two_concurrent_WORLD4_SP4"
+  },
+  "schema_version": "bernini-braid-exact81-arm-registry-v1",
+  "scientific_authority": false,
+  "status": "prospective_no_update_authority",
+  "training_update_authority": false
+}

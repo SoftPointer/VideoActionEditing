@@ -1,0 +1,94 @@
+{
+  "schema_version": "crosscase-frozen-sam2-graph-teacher-spec-v2",
+  "case_id": "8b05aaf463db",
+  "source": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/8b05aaf463db/source.mp4",
+    "sha256": "4eadf6edcdad8a748fae95af6d9f4d495857f8d814bc9da5e6dd1b36226e153a",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "real_target_teacher": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/8b05aaf463db/real_target.mp4",
+    "sha256": "f4b7548345fdfd3167316966461f4d0f4e6d085191ba9a36a89882da5a96c0a7",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "sam2": {
+    "model_cfg": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config_authority_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "config_authority_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+    "frozen": true,
+    "separate_node_states": true
+  },
+  "phase_frames": [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
+  "nodes": [
+    {
+      "node_id": "grill_basket",
+      "object_id": 1,
+      "semantic_type": "tool",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed basket assembly; sparse-wire segmentation is audit-required",
+      "source_prompt": {"box_xyxy": [110, 55, 930, 515], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [110, 55, 930, 515], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [30, 80, 255]
+    },
+    {
+      "node_id": "basket_handle",
+      "object_id": 2,
+      "semantic_type": "effector",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed rigid handle subpart",
+      "source_prompt": {"box_xyxy": [675, 285, 960, 510], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [675, 285, 960, 510], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [255, 30, 220]
+    },
+    {
+      "node_id": "grill_support",
+      "object_id": 3,
+      "semantic_type": "support",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed stationary black grill/brazier",
+      "source_prompt": {"box_xyxy": [0, 250, 850, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [0, 250, 850, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [255, 190, 20]
+    },
+    {
+      "node_id": "food_contents",
+      "object_id": 4,
+      "semantic_type": "patient",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed meat contents; retained only as a basket-bound patient node",
+      "source_prompt": {"box_xyxy": [185, 105, 785, 405], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [185, 105, 785, 405], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [40, 220, 40]
+    }
+  ],
+  "edges": [
+    {"edge_id": "handle_part_of_basket", "source_node": "basket_handle", "target_node": "grill_basket", "relation_type": "part_of", "required_for_action": false},
+    {"edge_id": "basket_near_grill", "source_node": "grill_basket", "target_node": "grill_support", "relation_type": "supports", "required_for_action": true},
+    {"edge_id": "food_in_basket", "source_node": "food_contents", "target_node": "grill_basket", "relation_type": "contains", "required_for_action": false}
+  ],
+  "manual_event_program": [
+    {"event_id": "basket_lift_from_support", "status": "review_confirmed", "frame_window": [8, 32], "participant_nodes": ["grill_basket", "grill_support"], "evidence_edge": "basket_near_grill", "review_note": "basket visibly separates upward from the brazier"},
+    {"event_id": "basket_peak_away", "status": "review_confirmed", "frame_window": [20, 44], "participant_nodes": ["grill_basket", "grill_support"], "evidence_edge": "basket_near_grill", "review_note": "maximum visible separation occurs in the middle portion"},
+    {"event_id": "basket_return_toward_support", "status": "review_confirmed", "frame_window": [36, 72], "participant_nodes": ["grill_basket", "grill_support"], "evidence_edge": "basket_near_grill", "review_note": "basket moves back toward its initial support relation"},
+    {"event_id": "terminal_support_restored", "status": "review_confirmed", "frame_window": [64, 80], "participant_nodes": ["grill_basket", "grill_support"], "evidence_edge": "basket_near_grill", "review_note": "terminal frames show the basket restored above the brazier"}
+  ],
+  "claim_limits": {
+    "observer_only": true,
+    "review_only_graph_teacher": true,
+    "teacher_observation_scaffold_not_oceg": true,
+    "generator_read_authorized": false,
+    "renderer_condition_authorized": false,
+    "training_authorized": false,
+    "selection_authorized": false,
+    "optimizer_updates": 0,
+    "renderer_forward_calls": 0
+  }
+}

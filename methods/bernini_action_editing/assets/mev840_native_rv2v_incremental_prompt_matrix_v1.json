@@ -1,0 +1,62 @@
+{
+  "schema": "mev840-native-rv2v-incremental-prompt-matrix-v1",
+  "experiment_role": "zero_update_native_candidate_bank_with_incremental_action_language",
+  "pairing": {
+    "seeds": [2027, 2028],
+    "wave_order": ["P0", "P1", "P2"],
+    "seed_2027": {"job_id": "143808", "node": "auh7-1b-gpu-292"},
+    "seed_2028": {"job_id": "147873", "node": "auh7-1b-gpu-284"},
+    "same_seed_same_node_required": true,
+    "same_seed_source_condition_latent_exact_required": true,
+    "same_seed_official_initial_gaussian_exact_required": true
+  },
+  "common": {
+    "source_context_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, ",
+    "source_context_utf8_sha256": "29881967d4c579e5bf8de2b1bd7a6e2df1bc9712164b0fd4b3f09954c583bf64",
+    "base_action_utf8": "The woman turns her head to the left and places her water bottle onto the treadmill.",
+    "base_action_utf8_sha256": "9c5604e518ca19113c4edf861973051e88f6974f867936c248d1612ce84020b5",
+    "preservation_suffix_utf8": " The same subject identity, scene, lighting, framing, and camera remain stable.",
+    "preservation_suffix_utf8_sha256": "28671aaa5859fc313600a2a67447289cbd397231eebc3400178788f4a0ce184e"
+  },
+  "prompts": {
+    "P0": {
+      "supplement_kind": "none",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 370,
+      "full_prompt_utf8_sha256": "effdf094385a4f2486391efc008150b7436a8137c1d5766864a678ed6e0c749f"
+    },
+    "P1": {
+      "supplement_kind": "event_order",
+      "payload_file_sha256_with_terminal_lf": "2a334405d892434b8855d1a652c577c6caedf9bf63e1e0698ee4cd1973dd994b",
+      "payload_utf8_sha256_without_terminal_lf": "6b68dadabdc35b3e47cb9df2c016b1afddbf1ecad0603f69d9003a9cdabad5f7",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. Follow this event order: The woman first turns toward the treadmill while continuing to hold the bottle. She then extends the held bottle toward the treadmill. The bottle reaches and is supported by the treadmill before she releases it. After release, the bottle remains supported while her hand withdraws. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 677,
+      "full_prompt_utf8_sha256": "248410295a0dd4226b478bedaa46cd23f0dd4d406d4d262c692c4006f4481aef"
+    },
+    "P2": {
+      "supplement_kind": "relation_contact",
+      "payload_file_sha256_with_terminal_lf": "e22733bd003e77b0a914ce8a3a15f3b850285f7d721a04a8a51d81c1920e3f34",
+      "payload_utf8_sha256_without_terminal_lf": "23405c6bfbf29e8e77e99261c6f0296dd37e3cc4f006ca991ec1cced1ed6aa71",
+      "full_prompt_utf8": "A young woman with long reddish-blonde hair, wearing a mint green athletic outfit, stands on a treadmill in a modern gym with blue and white striped pillars, holding a water bottle. In this continuous shot, The woman turns her head to the left and places her water bottle onto the treadmill. Follow these contact relations: Maintain hand-to-bottle contact during the approach. Smoothly decrease the bottle-to-treadmill distance while increasing the bottle-to-body distance. Establish bottle-to-treadmill contact before ending hand-to-bottle contact. After release, maintain bottle-to-treadmill contact while the hand-to-bottle distance increases. Use exactly one bottle, and keep it as the same bottle throughout the action; do not duplicate or replace it. The same subject identity, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 835,
+      "full_prompt_utf8_sha256": "63d4cda9cedca68487cdd9c5c951c2fe63226483d8975487114c221e38d1b4e5"
+    }
+  },
+  "generator_contract": {
+    "arms": ["rv2v"],
+    "num_inference_steps": 40,
+    "zero_update": true,
+    "accepted_external_conditions": ["source_video", "action_prompt"],
+    "target_video_read": false,
+    "target_action_json_read": false,
+    "target_rgb_feature_embedding_latent_qkv_gaussian_read": false,
+    "upstream_release_entrypoint_authorized": false,
+    "immutable_release_bytes_reused_under_current_user_authorized_launcher": true
+  },
+  "claim_limits": {
+    "P1_and_P2_are_incremental_language_supplements_not_hidden_controls": true,
+    "prompt_length_and_semantic_content_both_change": true,
+    "candidate_selection_is_separate_from_generation": true,
+    "production_or_scientific_success_not_predeclared": true
+  }
+}

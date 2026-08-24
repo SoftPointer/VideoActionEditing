@@ -1,0 +1,155 @@
+{
+  "schema_version": "bernini-interaction-complex8-multianchor-authoring-v2",
+  "bank_id": "interaction-complex8-multianchor-20260817-v2",
+  "purpose": "Source-free pure-T2V action anchors for pre-training human review of complex interaction rewards.",
+  "training_authorized_before_video_review": false,
+  "qwen_used": false,
+  "event_count": 8,
+  "variants_per_event": 4,
+  "positive_count": 32,
+  "roles": ["action", "noop", "reverse", "incomplete"],
+  "negative_construction": {
+    "noop": "repeat exact action frame 0 for 81 frames",
+    "reverse": "reverse the exact 81 action frames",
+    "incomplete": "retain action frames 0..40 then hold exact frame 40 through frame 80",
+    "reason": "All controls share exact action-video appearance so a metric cannot solve the role task from clothing, identity, background, lighting, or color."
+  },
+  "required_lineage_gates": {
+    "arms": ["t2v"],
+    "external_first_frame_anchor": false,
+    "full_source_video_count": 0,
+    "source_derived_reference_count": 0,
+    "target_video": false,
+    "trainable_parameter_elements": 0
+  },
+  "events": [
+    {
+      "ordinal": 0,
+      "source_iid": "2f183dbf9e7a4d2e",
+      "event_id": "pour-liquid-into-cup",
+      "category": "pour-and-container-state",
+      "review_requirement": "A visible stream must enter the cup, the cup level must rise, and the pour must stop in a stable filled-cup state.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/2f183dbf9e7a4d2e/source.mp4",
+      "action": "Starting with one hand on the pitcher handle and the other near the cup, the person lifts the pitcher, aligns its spout over the cup, tilts it smoothly, and pours a clearly visible continuous stream into the cup. The liquid level in the cup visibly rises. The person stops the stream, returns the pitcher upright, and holds the filled cup and upright pitcher in a stable terminal state.",
+      "constraints": "Keep exactly one person, one pitcher and one cup. Preserve their identity, material, colors, table, lighting, framing and camera throughout. No cuts, teleportation, morphing, replacement, duplication or disappearing contact.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171000, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a young East Asian woman in a dark green cardigan at a warm wooden tea table, with a clear glass pitcher of amber tea and a small white ceramic cup."},
+        {"variant_id": "v1", "seed": 202608171001, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows an elderly Black man in a pale blue linen shirt at a bright garden table, with a clear ribbed pitcher of red fruit drink and a transparent tumbler."},
+        {"variant_id": "v2", "seed": 202608171002, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a middle-aged white woman in a mustard apron at a cafe counter, with a transparent carafe of dark coffee and a cream-colored mug."},
+        {"variant_id": "v3", "seed": 202608171003, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a young South Asian man in a maroon sweater at a stone kitchen island, with a clear pitcher of pale lemonade and a blue cup."}
+      ]
+    },
+    {
+      "ordinal": 1,
+      "source_iid": "186d36f998a14e14",
+      "event_id": "reach-grasp-lift-stone",
+      "category": "reach-grasp-lift",
+      "review_requirement": "The same stone must be contacted, removed from its original spot, lifted, and visibly held after the child stands.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/186d36f998a14e14/source.mp4",
+      "action": "The child notices one marked stone, stops, bends both knees into a crouch, reaches one hand to that exact stone, closes the fingers around it with visible contact, lifts it from the ground, rises back to standing, and holds the same stone visibly in the hand. The vacated spot remains empty.",
+      "constraints": "Keep exactly one child and the original set of stones. Preserve identity, clothing, all other stones, path, plants, lighting, framing and camera. No cuts, teleportation, object replacement, duplication or extra limbs.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171100, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a Black girl in yellow overalls walking slowly on a green garden path beside small grey stones; one oval white stone is clearly marked by position near her shoe."},
+        {"variant_id": "v1", "seed": 202608171101, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows an East Asian boy in a red rain jacket walking slowly on a damp woodland path beside smooth brown stones; one round light-grey stone is isolated in front of him."},
+        {"variant_id": "v2", "seed": 202608171102, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a white girl in a blue sweater and beige trousers walking slowly on a sunny gravel path; one dark flat stone lies separately beside the path edge."},
+        {"variant_id": "v3", "seed": 202608171103, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a South Asian boy in a green hoodie walking slowly through a courtyard bordered by small river stones; one reddish stone is isolated directly ahead."}
+      ]
+    },
+    {
+      "ordinal": 2,
+      "source_iid": "10ed90644f81461d",
+      "event_id": "twist-pull-mushroom",
+      "category": "grasp-detach-deformation",
+      "review_requirement": "The fingers must establish contact, the mushroom must detach from the soil, and an empty hole must remain while the mushroom is held above it.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/10ed90644f81461d/source.mp4",
+      "action": "The fingers approach and wrap firmly around the mushroom's lower stem, visibly establishing contact. The hand twists gently, pulls upward until the mushroom detaches with a small clump of dirt, lifts the intact mushroom several centimeters, and holds it above the newly empty hole.",
+      "constraints": "Keep exactly one hand and one rooted mushroom. Preserve hand appearance, mushroom color and shape, soil, surrounding leaves, lighting, framing and camera. No cuts, morphing, duplication, replacement or disappearing contact.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171200, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a light-skinned bare hand beside one red-capped mushroom rooted in dark damp forest soil with pine needles."},
+        {"variant_id": "v1", "seed": 202608171201, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a dark-skinned bare hand beside one golden-capped mushroom rooted in mossy soil with tiny green leaves."},
+        {"variant_id": "v2", "seed": 202608171202, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows an older freckled bare hand beside one brown-capped mushroom rooted in pale woodland soil with dry oak leaves."},
+        {"variant_id": "v3", "seed": 202608171203, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a young tan bare hand beside one orange-capped mushroom rooted in black garden compost with fine twigs."}
+      ]
+    },
+    {
+      "ordinal": 3,
+      "source_iid": "7a33b36459c84289",
+      "event_id": "release-harvest-into-basket",
+      "category": "object-transfer-and-settle",
+      "review_requirement": "The same cluster must cross the basket rim, be released by an opening hand, fall, bounce and settle while the empty hand withdraws.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a33b36459c84289/source.mp4",
+      "action": "The worker moves the same harvested cluster over the basket opening, lowers it inside the rim, opens the fingers, and clearly releases it. The cluster falls into the basket, lands, bounces slightly, and settles among the existing harvest while the now-empty hand rises away.",
+      "constraints": "Keep exactly one worker, one held cluster and one basket. Preserve worker identity, clothing, hand, basket, plants, harvest material, lighting, framing and camera. No cuts, replacement, duplication, fused objects or disappearing release.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171300, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a woman farm worker in a blue headscarf holding one peanut cluster beside an open tan woven basket in a green field."},
+        {"variant_id": "v1", "seed": 202608171301, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a man farm worker in an orange vest holding one cluster of red radishes beside an open dark wicker basket in a vegetable field."},
+        {"variant_id": "v2", "seed": 202608171302, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows an elderly woman in a grey sun hat holding one small bunch of yellow onions beside an open pale reed basket at a farm stall."},
+        {"variant_id": "v3", "seed": 202608171303, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a young man in a green work shirt holding one bunch of purple grapes beside an open brown woven basket in a vineyard."}
+      ]
+    },
+    {
+      "ordinal": 4,
+      "source_iid": "12eba2f9c15f4d3f",
+      "event_id": "close-door-then-drawer",
+      "category": "articulated-object-state",
+      "review_requirement": "The hinged door must rotate closed first; the same hand must then push the separate drawer closed, leaving both fronts flush.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/12eba2f9c15f4d3f/source.mp4",
+      "action": "One hand grips the open door edge and rotates that same door inward on its visible hinge until it closes flush, releases it, then grips the separate drawer handle and pushes that same drawer fully inward until its front is flush. The hand withdraws and both closed states remain stable.",
+      "constraints": "Keep exactly one hand, one hinged door and one drawer. Preserve cabinet geometry, materials, handles, hinge, room, lighting, framing and camera. No cuts, morphing, duplicated panels, swapped parts or impossible articulation.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171400, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a light-skinned hand at a honey-colored wooden cabinet whose lower left door is open and upper drawer is halfway extended in a bright kitchen."},
+        {"variant_id": "v1", "seed": 202608171401, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a dark-skinned hand at a matte white metal storage cabinet whose lower door is open and upper drawer is partly extended in a workshop."},
+        {"variant_id": "v2", "seed": 202608171402, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows an older hand at a dark walnut bedside cabinet whose hinged door is open and top drawer is partly extended in a softly lit bedroom."},
+        {"variant_id": "v3", "seed": 202608171403, "setup": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows a tan hand at a teal painted camper cabinet whose lower door is open and narrow upper drawer is partly extended in daylight."}
+      ]
+    },
+    {
+      "ordinal": 5,
+      "source_iid": "7a9e7172ed054f57",
+      "event_id": "jet-ski-turn-with-wake",
+      "category": "agent-vehicle-fluid-consequence",
+      "review_requirement": "Rider and vehicle must execute a coherent left turn, with an outside spray arc and curved wake causally following the new path.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a9e7172ed054f57/source.mp4",
+      "action": "The rider turns the handlebars sharply left and leans into the turn. The same jet ski follows a tight curved path, its bow rotates left, and its stern carves the water. A coherent arc of spray erupts outside the turn and a curved wake continuously trails the vehicle. The rider exits under control and holds the new heading.",
+      "constraints": "Keep exactly one rider and one jet ski. Preserve rider, clothing, vehicle design and color, water, horizon, lighting, scale and continuous tracking camera. No cuts, duplicated vehicles, teleportation, detached rider or unrelated spray.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171500, "setup": "An exactly 81-frame realistic continuous telephoto video at 25 fps shows a rider in a red life vest controlling one blue-and-white jet ski across calm turquoise water under clear daylight."},
+        {"variant_id": "v1", "seed": 202608171501, "setup": "An exactly 81-frame realistic continuous telephoto video at 25 fps shows a rider in a black wetsuit controlling one yellow jet ski across dark blue coastal water under overcast light."},
+        {"variant_id": "v2", "seed": 202608171502, "setup": "An exactly 81-frame realistic continuous telephoto video at 25 fps shows a rider in a bright green helmet controlling one red-and-white jet ski across a sunlit lake with distant hills."},
+        {"variant_id": "v3", "seed": 202608171503, "setup": "An exactly 81-frame realistic continuous telephoto video at 25 fps shows a rider in an orange life jacket controlling one black-and-silver jet ski across pale choppy sea water near a distant horizon."}
+      ]
+    },
+    {
+      "ordinal": 6,
+      "source_iid": "4ebd076ff4af4c81",
+      "event_id": "tap-plant-and-rebound",
+      "category": "contact-release-and-elastic-response",
+      "review_requirement": "Two separate taps must produce two visible bend-and-rebound responses followed by diminishing oscillation and settling.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/4ebd076ff4af4c81/source.mp4",
+      "action": "The hand first releases the stem finger by finger, then the index finger taps the same stem twice with two separate visible contacts and withdraws completely. After each tap the stem bends, rebounds, and produces a diminishing oscillation through its attached leaves and buds before settling.",
+      "constraints": "Keep exactly one hand and one rooted plant. Preserve hand, plant identity, branch topology, leaf and flower colors, support, background, lighting, framing and camera. No cuts, morphing, duplication, disappearing plant parts or motion before contact.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171600, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a light-skinned hand gripping the lower stem of one leafy pink-flowering plant against a dark greenhouse background."},
+        {"variant_id": "v1", "seed": 202608171601, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a dark-skinned hand gripping the lower stem of one tall yellow-flowering plant against a pale garden wall."},
+        {"variant_id": "v2", "seed": 202608171602, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows an older freckled hand gripping the lower stem of one purple-flowering herb against a blurred outdoor garden."},
+        {"variant_id": "v3", "seed": 202608171603, "setup": "An exactly 81-frame realistic continuous locked-camera macro video at 25 fps shows a tan hand gripping the lower stem of one white-flowering potted plant against a deep blue greenhouse cloth."}
+      ]
+    },
+    {
+      "ordinal": 7,
+      "source_iid": "a023388fb2374e44",
+      "event_id": "players-contact-then-separate",
+      "category": "human-human-contact",
+      "review_requirement": "Two identifiable players must begin in direct shoulder/forearm contact, disengage into a visible gap, and continue on separate paths without falling.",
+      "geometry_source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/a023388fb2374e44/source.mp4",
+      "action": "While the two players run side by side in direct shoulder and forearm contact, the left player retracts the contacting arm as the right player pushes off once with the forearm. Their bodies separate into a clear gap without either falling, and both continue running forward on distinct paths while the ball remains ahead.",
+      "constraints": "Keep exactly two players and one ball. Preserve both identities, uniforms, limbs, ball, field, stadium, lighting, framing and continuous tracking camera. No cuts, fused bodies, extra limbs, swapped uniforms, duplication or disappearing contact.",
+      "variants": [
+        {"variant_id": "v0", "seed": 202608171700, "setup": "An exactly 81-frame realistic continuous sports video at 25 fps shows two adult women soccer players, one in white and one in blue, running side by side on a sunny stadium field."},
+        {"variant_id": "v1", "seed": 202608171701, "setup": "An exactly 81-frame realistic continuous sports video at 25 fps shows two adult men soccer players, one in red and one in black, running side by side on a floodlit evening field."},
+        {"variant_id": "v2", "seed": 202608171702, "setup": "An exactly 81-frame realistic continuous sports video at 25 fps shows two adult women soccer players, one in yellow and one in green, running side by side on an overcast training field."},
+        {"variant_id": "v3", "seed": 202608171703, "setup": "An exactly 81-frame realistic continuous sports video at 25 fps shows two adult men soccer players, one in pale blue and one in orange, running side by side on a bright professional pitch."}
+      ]
+    }
+  ]
+}

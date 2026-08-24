@@ -1,0 +1,216 @@
+{
+  "schema_version": "bernini-oracle-regeneration-native-activation-v2-spec-r11",
+  "status": "ACTIVATED_INDEPENDENT_MODEL_REVIEWED_DIAGNOSTIC_CANARY",
+  "launch_ready": true,
+  "scope": "experimental diagnostic canary only",
+  "authority_kind": "diagnostic_exact_packet_and_code_review_trust_root",
+  "formal_authority": false,
+  "training_authority": false,
+  "training": false,
+  "optimizer": false,
+  "automatic_replacement": false,
+  "selection_authority": null,
+  "native_only": true,
+  "flowedit": false,
+  "connected_route": false,
+  "learned_gate": false,
+  "world_size": 4,
+  "sequence_parallel_size": 4,
+  "one_node": true,
+  "candidate_count_per_arm": 1,
+  "host_load_contract": {
+    "serialized_host_load_required": true,
+    "shared_lock_absolute_empty_frozen_one_link": true,
+    "world4_lock_identity_exact": true,
+    "unused_t5_constructor_bypassed_all_ranks": true,
+    "prompt_embeddings_rank0_materialized_and_world4_broadcast": true,
+    "same_bypass_for_e02_official_and_local_arms": true
+  },
+  "allocation_contract": {
+    "slurm_job_id": "141620",
+    "hostname": "auh7-1b-gpu-226",
+    "numbered_slurm_step_required": true,
+    "scheduler_injected_tmpdir": "/tmp",
+    "scheduler_tmpdir_unset_before_any_python": true,
+    "scheduler_normalization_receipt_environment_keys": [
+      "ORACLE_ACTIVATION_V2_SCHEDULER_TMPDIR_ACTION",
+      "ORACLE_ACTIVATION_V2_SCHEDULER_TMPDIR_HOSTNAME",
+      "ORACLE_ACTIVATION_V2_SCHEDULER_TMPDIR_JOB_ID",
+      "ORACLE_ACTIVATION_V2_SCHEDULER_TMPDIR_OBSERVED",
+      "ORACLE_ACTIVATION_V2_SCHEDULER_TMPDIR_STEP_ID"
+    ],
+    "allocated_gpu_count": 8,
+    "world4_visible_gpu_indices": [0, 1, 2, 3],
+    "intentionally_idle_gpu_indices": [4, 5, 6, 7],
+    "e02_arms_execute_strictly_serial": true
+  },
+  "miopen_cache_contract": {
+    "cache_root": "exact fresh output sibling with suffix .miopen-cache-r9",
+    "launcher_bootstrap_roles": ["user-db", "kernel-cache"],
+    "rank_private_persistent_roles": ["user-db", "kernel-cache"],
+    "rank_private_node_local_tmp_role": true,
+    "node_local_tmp_parent": "/tmp",
+    "node_local_tmp_domain_includes": [
+      "fixed-domain",
+      "effective-uid",
+      "slurm-job-id",
+      "slurm-step-id",
+      "canonical-output-path"
+    ],
+    "persistent_and_node_local_filesystems_must_differ": true,
+    "rank_count": 4,
+    "root_and_role_directory_mode": "0700",
+    "effective_user_owned": true,
+    "symlinks_allowed": false,
+    "caller_miopen_environment_must_initially_be_empty": true,
+    "launcher_mints_exact_miopen_environment_keys": [
+      "MIOPEN_CUSTOM_CACHE_DIR",
+      "MIOPEN_USER_DB_PATH"
+    ],
+    "launcher_sets_bootstrap_before_any_torch_import": true,
+    "workers_switch_to_rank_private_paths_before_their_torch_import": true,
+    "same_rank_namespace_reused_by_serial_arms": true,
+    "torchrun_parent_temp_environment_unset": ["TEMP", "TEMPDIR", "TMP", "TMPDIR"],
+    "rank_private_tmpdir_isolates_miopen_lockfiles": true,
+    "miopen_disable_cache_used": false,
+    "miopen_system_db_override_used": false,
+    "library": {
+      "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/torch/lib/libMIOpen.so",
+      "sha256": "1e6cc33ca21951dce12795e6c5d99578e8f2f1754b84a703508df44426b44b52",
+      "size": 690355265,
+      "mode": "0755",
+      "nlink": 1
+    },
+    "retained_engineering_evidence": true,
+    "node_local_tmp_runner_cleanup_performed": false,
+    "node_local_tmp_durability_guaranteed": false,
+    "node_local_tmp_node_lifetime_only": true,
+    "node_local_tmp_pre_torch_empty_gate_layers": [
+      "launcher",
+      "cpu-preflight",
+      "worker-activation"
+    ],
+    "node_local_tmp_pre_torch_rank_directories_empty_all_ranks": true,
+    "node_local_tmp_post_runtime_init_baseline_may_be_nonempty": true,
+    "node_local_tmp_post_runtime_init_baseline_strictly_scanned_and_quiescent": true,
+    "node_local_tmp_post_runtime_init_baseline_bound_in_receipt": true,
+    "node_local_tmp_baseline_is_observation_not_allowlist": true,
+    "node_local_tmp_differences_at_observation_boundaries_recorded_not_forbidden": true,
+    "node_local_tmp_continuous_monitoring_claimed": false,
+    "node_local_tmp_between_observation_transients_may_be_unrecorded": true,
+    "node_local_tmp_full_receipt_embedded_in_durable_output_receipt": true,
+    "node_local_tmp_observed_and_replayed_before_WORLD4_step_exit": true,
+    "node_local_tmp_existence_after_process_or_step_exit_guaranteed": false,
+    "scientific_output_artifact": false,
+    "explicit_solver_control_environment_override_used": false,
+    "matched_arms_share_cache_lookup_state": true
+  },
+  "runner_allowlist": [
+    "infer_oracle_regeneration_native_activation_v2_r2.py"
+  ],
+  "components": {
+    "activation_runtime": {
+      "path": "oracle_regeneration_native_runtime_activation_v2.py",
+      "sha256": "b8e0018893c9582d97d20446956c2bea0506fbc48c7d333a021f70f467edc0d0"
+    },
+    "native_runner": {
+      "path": "infer_oracle_regeneration_native_activation_v2_r2.py",
+      "sha256": "ee7fe068096231f222fe9cb153e754b35be3f9078dc00f3924bb7889142aa2f9"
+    },
+    "vae_reference_materializer": {
+      "path": "tools/materialize_oracle_regeneration_vae_refs_activation_v2_r2.py",
+      "sha256": "07b40cdd67771d257ce546ca4166301980c6768269acc5f097fc08973656bbde"
+    },
+    "prompt_materializer": {
+      "path": "tools/materialize_oracle_regeneration_prompts_activation_v2_r2.py",
+      "sha256": "5bba9f977fa40e5044053baaaf73eba779b3816ef6137457a06ceac82a3463af"
+    }
+  },
+  "frozen_runtime_dependencies": {
+    "oracle_regeneration_canary_v1.py": "0148b137c200e426ff18571f71d373a9e6ef595c620664925dae0ab9d1d91081",
+    "native_branch_homotopy_runtime_v1.py": "b81ee152e358e4d5a6638dfccf1232c4e221311ffb38937e61be3c6a799b84d5",
+    "native_branch_homotopy_v1.py": "2585416e61935db62cc7534daf19b4bb851f9fdcdeb92f78e6152f55e034f3d0",
+    "self_guided_action_field_v1.py": "2ad204c09f5eb60865017b1e596de25b777d8d6ed43774f4dcbc23a4ad58bc7e",
+    "tri_branch_unipc.py": "58d2e0e8d56a500eea07ec20f0fb101539ac846bbd039c0d50a22506b58fb3d2",
+    "infer_native_identity_generation_canary.py": "bf402cd65257121d1ebedcc83c2c59965b37305a36b0b5a6327241e74d7b4f42",
+    "infer_native_branch_homotopy_canary.py": "d6dab735ce52da151848c96f9e00775994dc281ace20afa6dcb9fb64709e5983",
+    "infer_source_kv_carrier_oracle.py": "fcf77576735c89e685415b94b2dc0f0c5b8d1dd8dc1c55832538ff0daafb4604",
+    "infer_source_value_residual_oracle.py": "40e581db7906f20103a16ad47fda76978cbad21c9277723f3e8e022d717ed2d8",
+    "infer_native_self_guided_action_field_canary.py": "ad591fe5bd5943fab59603400fcf70a126f3461a39670f93a78aa24b1902d313",
+    "infer_lora.py": "acc46ff5b2106b7974bc8e1effd5e5c9b682b7ff16421c6d7d3d0d18d396a553",
+    "tools/materialize_vae.py": "a09677c9308fa030449f481da42dbc6d1bf2a88cbcd92e9cd1f26c3967bfb6f0",
+    "tools/build_renderer_dataset.py": "afc706d4d03bbfee505666476b752cab3fab53a2e80d140de89b06acc162e0f5",
+    "tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "train_lora.py": "8e8daf422548bc29e2c18f2d2c692af2dd3109aaad1897fc31e590a69d7e593e",
+    "action_preservation_decoded_eval_model_authority_v2.py": "760ed9988147a44965fd47f68a08fd353ce1d900e661b55bb818088ec9ef848e",
+    "source_kv_replay.py": "45b43426dc7825dbd61280154fc35161c60476ec5cb9e53bc0225f3809c759f3",
+    "source_kv_route_batches.py": "7f3ae0d27747ad58b3b195c712884641012eb836bb59963896c58518b8b5731e",
+    "source_self_native_ref_contrastive_v3.py": "d8825bc167c64e497f8d29c807d9b0a69d9a9a59de09afee863b7fc9df2bdeb0",
+    "source_value_residual.py": "420cadf3cb2824b2bf5a809c55086d81351db19f31743b0b77a957adf219e124"
+  },
+  "compiled_authority_packet_sha256": "6ae5602350d54696e0ddcd716a311f96a3569c6f062622840ad130fcbba0baeb",
+  "compiled_external_ledger_receipt_sha256": "5a9efae443bc8d3cb0886dee7f950204377f653f7dbc474f820d7abbbe437e51",
+  "cases": {
+    "e02": {
+      "decision": "ACTIVE_DIAGNOSTIC",
+      "executed": true,
+      "seed": 0,
+      "arms": [
+        "official-v2v-base",
+        "local-source-reference-r2v4-in-manual-G"
+      ],
+      "gate_channels": ["D", "C", "K", "G"],
+      "hard_support": "G=D|C|K",
+      "expected_nonempty_phase_windows": {
+        "D": [1, 20],
+        "C": [5, 20],
+        "K": [4, 20],
+        "G": [1, 20]
+      },
+      "maximum_per_phase_G_fraction": 0.3,
+      "gate_author_kind": "AI_AGENT",
+      "gate_reviewer_kind": "AI_AGENT",
+      "gate_manifest_sha256": "f5c0e20f478ff11a63fa5c1ecb1d2bfb4a37e655e14f0e2c9739975a3e63dae1",
+      "gate_review_receipt_sha256": "4e060227512687060a32acc0543462be4dfe0364c46e5fe6e7e02416dac93962",
+      "vae_reference_receipt_sha256": "b89840c3f87a0950e5d0634c3697eed7641ae06e840d1804ea30d2ebaf74611f",
+      "vae_authoring_run_receipt_sha256": "65b3acc8e2581bcc7c3311475c95bada1fd25067328627542572933fd930bbb7",
+      "prompt_receipt_sha256": "ed6e11b50651b6d30f067c4dc9d285a3b790658edfd82ac9e0e0df7c3d290924",
+      "prompt_authoring_run_receipt_sha256": "2fd4a232db890dde19cf26fa4596be1279c8756dfa60a943837705aece69da9a",
+      "materialization_review_receipt_sha256": "788cf7b83851b79a662c0040e7470fd32a8aea2456ce47e6b53baff0b2a73c6e"
+    },
+    "e03": {
+      "decision": "ABSTAIN_KEEP_BASE",
+      "executed": false,
+      "seed": 0,
+      "arms": [],
+      "active_gate": null,
+      "automatic_replacement": false,
+      "strict_non_regression_required_for_any_later_selection": true,
+      "vae_reference_receipt": null,
+      "prompt_receipt": null,
+      "kept_frozen_base": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/interaction_complex8_rv2v_candidates_v1/complex8-e03-rv2v-s0/rv2v.mp4",
+        "sha256": "d75bbafbbc225ea3935c2d149be8b3969fffd6d8b645c5ec9edb5968bf25f654"
+      }
+    }
+  },
+  "scientific_boundary": {
+    "source_reference_r2v4_regeneration_expert": true,
+    "self_generated_anchor_tensor_used": false,
+    "anchor_used_only_as_review_context": true,
+    "anchor_reference_or_quotient_arm_deferred": true,
+    "global_source_reference_r2v4_upper_bound_arm_deferred": true,
+    "local_G_step0_domain_separated_gaussian_arm_deferred": true,
+    "outside_G_claim": "within local arm, scheduler model_output bytes equal that same step official V2V bytes outside exact G",
+    "cross_arm_final_outside_pixel_identity_claimed": false
+  },
+  "post_run_contract": {
+    "outputs_side_by_side_only": true,
+    "base_and_regen_video_hashes_required": true,
+    "automatic_selection": false,
+    "background_cosine_selection": false,
+    "e03_keep_base": true,
+    "later_output_bound_independent_review_required_for_any_selection": true
+  },
+  "mandatory_blockers": []
+}

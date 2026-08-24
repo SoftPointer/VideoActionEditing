@@ -1,0 +1,69 @@
+{
+  "schema_version": "bernini-source-four-role-joint-null-observer-v15c-r10-local-release",
+  "tag": "v15c-r10-local-source-only-aligned-negative-control-contract",
+  "status": "LOCAL_SCHEMA_ONLY_NO_REAL_TENSOR_NO_ACTUAL_SP4_SHARDS_NO_RUNNER_NO_STATISTICAL_FWER_NO_GO",
+  "member_count": 5,
+  "members": [
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_four_role_authority_v15c_r9_release.json",
+      "sha256": "5114b48340c4af5d6be71aeb6d66f3a0eecf5bb02de15b3ef66a2437b18bcb25",
+      "size": 4120
+    },
+    {
+      "path": "methods/bernini_action_editing/assets/interaction_e00_four_role_joint_null_registry_v15c_r10.json",
+      "sha256": "79a251440bd96269e3e4d3657464c1d873fd122770a8620fb57566f0ea7514a1",
+      "size": 6818
+    },
+    {
+      "path": "methods/bernini_action_editing/source_four_role_joint_null_observer_v15c_r10.py",
+      "sha256": "52c8049a9a31d15942ae34be1ed23ec3b80dfff60dc7c4527d17aea348dd0627",
+      "size": 63807
+    },
+    {
+      "path": "methods/bernini_action_editing/source_role_authority_v15c_r9.py",
+      "sha256": "eb9b8b17ab0ffb362d36172057f3d159528b4925dcfea063b0acae8a5aab43f3",
+      "size": 62415
+    },
+    {
+      "path": "methods/bernini_action_editing/validate_source_four_role_joint_null_observer_v15c_r10.py",
+      "sha256": "f431febb9d16c3eb828cd3ecf8579b1f2f0bc918ff462f19e149334a08715c95",
+      "size": 2681
+    }
+  ],
+  "r9_release_internal_sha256": "352e61d65cf25843eb527522968c47f6ef50edef1fdc83d35da59b904a1d418e",
+  "registry_sha256": "b184cef1a7e797c24226b7615057cfb284b7ac9cf8a40657871f705cc696d79e",
+  "role_control_registry_sha256": [
+    "4744c8165efb3710c76e25ed1a2e796fe82dc72a8aa12f7dc1ddbbb60dec85fb",
+    "4a8949a10e837a7821daf4e77852924df31e908954de020d16b82a6b4f15b023",
+    "1ca1bfa1e683a00cc5fc209665d92fdc544798cfa87ca00db48806b75a104c0b",
+    "2fd677f9bdce917ff7ed5a5df6ec0236c77777ad6dacbea86fd68e82b0c27e75"
+  ],
+  "joint_index_registry_sha256": "a66ea28c2bdbefddb88434415eed2f3658956b4e1f06a5eec56e1d9f27ce1ba9",
+  "capture_channel_registry_sha256": "caba9f40811b61f94acbe226f07bdcc6eac239e2669476b97436bdbf4629d699",
+  "pinned_capture_channel_value_binding_sha256": null,
+  "control_bank_kind": "aligned_negative_control_bank",
+  "control_exchangeability_proven": false,
+  "same_index_common_randomization_transform_proven": false,
+  "statistical_error_control_available": false,
+  "pre_affinity_ordered_proposal_family_binding_verified": false,
+  "real_tensor_present": false,
+  "separate_repeat_artifacts_present": false,
+  "producer_process_independence_verified": false,
+  "actual_sp4_rank_shard_files_present": false,
+  "official_r10_runner_present": false,
+  "official_r10_postflight_present": false,
+  "r9_future_affinity_constructed": false,
+  "global_role_proposal_control_max_rank_gate_pass": false,
+  "mechanical_candidate_qualified": false,
+  "source_only": true,
+  "frozen_model_required": true,
+  "eval_mode_required": true,
+  "all_adapters_off_required": true,
+  "renderer_forward_calls": 0,
+  "optimizer_updates": 0,
+  "route_authorized": false,
+  "decode_authorized": false,
+  "training_authorized": false,
+  "scientific_claim_authorized": false,
+  "release_sha256": "a86281885d39eb2fd2b20d55aca558df547ca72369a7c4c10b5b06029e4c3394"
+}

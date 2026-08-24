@@ -1,0 +1,89 @@
+{
+  "schema_version": "bernini-anonymous-object-v6-external-authority-v1",
+  "method": "bernini-self-generated-anonymous-object-probe-v6",
+  "launch_authority_status": "PENDING_FINAL_INDEPENDENT_AUDIT",
+  "gpu_execution_performed": false,
+  "formal_submit_allowed_only_after_final_audit_yes": true,
+  "snapshot": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/self_generated_anonymous_object_probe_v6_20260823/snapshot_83aa45bfe4bd_r2",
+    "sha256s_sha256": "349b793e436ad08219775348770b363ed2a74e96606d506a70dfd3c75d0234e7",
+    "contract_digest": "83aa45bfe4bd782a4ae55206758dae2aa151317cef45b198b8264858b9aa73aa",
+    "runtime_manifest_digest": "0226358316c061bd813d4bfd8aaad98ad09f5c29d31bc223ff7085a5b1f2a0a9",
+    "test_manifest_digest": "5695fb948aed99367f52c174f86c4615fdbcf5484012c5998c622763070a99b8",
+    "launch_template_digest": "eba7fe5f0ad7605c95d4877fcfbc186401142e4f15eb199e8b33b081a6c2a74a"
+  },
+  "external_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/self_generated_anonymous_object_probe_v6_20260823/completion_controller_604c600d246b_r2",
+  "external_sha256s": {
+    "path": "methods/bernini_action_editing/tools/EXTERNAL_SHA256SUMS_v6_r2",
+    "sha256": "c4686d5fbec7cb717a7b76ea7802f7243b20fdd19e7acf48f5e584e6a1d33e0e"
+  },
+  "files": [
+    {
+      "role": "external_completion_controller",
+      "path": "methods/bernini_action_editing/tools/complete_self_generated_anonymous_object_probe_v6.py",
+      "sha256": "604c600d246b0b01dd1c4fad3250ec2d580d71b4d1e4001c6f79490cab1bf339",
+      "mode": "0444"
+    },
+    {
+      "role": "external_controller_cpu_tests",
+      "path": "methods/bernini_action_editing/tests/test_anonymous_object_v6_completion_controller.py",
+      "sha256": "c1c8bb2bdce6ce33e23cb4326cfed067519f0ad5b65bc79439db4151e0e0f268",
+      "mode": "0444",
+      "expected_test_count": 8
+    },
+    {
+      "role": "formal_sbatch_launcher_and_postflight_control_flow",
+      "path": "methods/bernini_action_editing/tools/formal_launch_self_generated_anonymous_object_probe_v6_r2.sbatch",
+      "sha256": "cef583e60c0a668e5dba8e65db7780cde9acbf5baf75b2bec0258c1d51d11c5e",
+      "mode": "0555"
+    }
+  ],
+  "formal_launch": {
+    "submit_command": "cd /vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/self_generated_anonymous_object_probe_v6_20260823/completion_controller_604c600d246b_r2 && test \"$(sha256sum methods/bernini_action_editing/tools/EXTERNAL_SHA256SUMS_v6_r2 | awk '{print $1}')\" = c4686d5fbec7cb717a7b76ea7802f7243b20fdd19e7acf48f5e584e6a1d33e0e && sha256sum --quiet -c methods/bernini_action_editing/tools/EXTERNAL_SHA256SUMS_v6_r2 && sbatch --parsable methods/bernini_action_editing/tools/formal_launch_self_generated_anonymous_object_probe_v6_r2.sbatch",
+    "allocation": {
+      "nodes": 1,
+      "tasks": 1,
+      "cpus_per_task": 32,
+      "mi210_gpus": 4,
+      "host_memory_gib": 256,
+      "srun_step_memory_gib": 240,
+      "fresh_batch_allocation_required": true
+    },
+    "srun_flags": [
+      "--exclusive",
+      "--exact",
+      "--nodes=1",
+      "--ntasks=1",
+      "--cpus-per-task=32",
+      "--gres=gpu:mi210:4",
+      "--mem=240G",
+      "--kill-on-bad-exit=1"
+    ],
+    "torchrun": [
+      "/vast/users/guangyi.chen/anaconda3/envs/vace/bin/python3.12",
+      "-B",
+      "-m",
+      "torch.distributed.run",
+      "--standalone",
+      "--nproc_per_node=4",
+      "--no-python"
+    ],
+    "run_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/self_generated_anonymous_object_probe_v6_20260823/real_anonymous_object_same_state_probe_v6_r2",
+    "candidate": "real_anonymous_object_same_state_probe_v6_r2/candidate.json",
+    "cache": "real_anonymous_object_same_state_probe_v6_r2/miopen-cache",
+    "launcher_log": "real_anonymous_object_same_state_probe_v6_r2/srun.log",
+    "captured_step_id": "real_anonymous_object_same_state_probe_v6_r2/slurm-step-id.txt",
+    "completion_seal": "real_anonymous_object_same_state_probe_v6_r2/completion.seal.json"
+  },
+  "completion_control_flow": {
+    "srun_rc_source": "bash_PIPESTATUS_0_immediately_after_reviewed_srun_pipeline",
+    "launcher_log_rc_source": "bash_PIPESTATUS_1_immediately_after_reviewed_srun_pipeline",
+    "controller_invoked_if_and_only_if_both_rc_are_zero": true,
+    "actual_slurm_step_id_captured_inside_srun_task_before_torchrun_exec": true,
+    "candidate_presence_alone_is_authority": false,
+    "seal_created_with_o_excl": true,
+    "seal_file_and_parent_fsynced": true,
+    "representation_admitted": false,
+    "scientific_claim_authorized": false
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "bernini-self-guided-action-field-core2-v1",
+  "method": "same-state-source-rv2v-plus-frozen-t2v-counterfactual-action-field",
+  "arm_scales": {
+    "native-rv2v": null,
+    "action-field-075": 0.75,
+    "action-field-150": 1.5
+  },
+  "contract": {
+    "external_inference_inputs": [
+      "source_video",
+      "source_action_caption",
+      "target_action_caption"
+    ],
+    "source_condition": "full_exact81_video_plus_independently_encoded_frames_0_27_53_80",
+    "native_guidance_mode": "v2v_apg",
+    "target_initialization": "native_fresh_gaussian",
+    "teacher": "same_frozen_bernini_t2v_target_minus_source_at_current_noisy_target_state",
+    "teacher_generated_media_consumed": false,
+    "source_rich_initial_noise": false,
+    "mask_track_pose_flow_target_video": false,
+    "sigma_zero_below": 0.2,
+    "sigma_full_above": 0.55,
+    "maximum_action_delta_to_native_text_rms": 1.5,
+    "frame_count": 81,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "training": false,
+    "parameter_update": false
+  },
+  "cells": [
+    {
+      "cell_id": "dog",
+      "source_iid": "7b88a1ca1f804f41",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+      "source_action_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog remains in a stable four-legged standing pose for the full continuous shot. The illumination, framing, and background remain stable, and the final frame is temporally coherent.",
+      "source_action_caption_sha256": "23127311281c3c05e285f0e54ffe25a4b7af75714b15a277c88dfdd6ed20f83f",
+      "target_action_caption": "A static camera shows a happy single grey French bulldog in a black harness, standing in a large pile of vibrant yellow autumn leaves in a sunlit park, facing the camera with its tongue out while its chest and the nearby leaves move subtly. The main French bulldog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds that seated pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "target_action_caption_sha256": "5c8defcffe8413cd556e90c5e17345eb21b51bc787d62d6cde0698cd303cd736",
+      "seed": 2026081601,
+      "bucket_hw": [480, 496],
+      "latent_shape": [1, 16, 21, 60, 62]
+    },
+    {
+      "cell_id": "human",
+      "source_iid": "a35b590961d24694",
+      "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed",
+      "source_action_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person remains in the same stable one-knee kneeling pose for the full continuous shot. The illumination, framing, clothing, background, and final frame remain temporally coherent.",
+      "source_action_caption_sha256": "b6f627c72c863e032bf1ff7346b8b1d209df2491975c4b0b560abd2d33a8cfa8",
+      "target_action_caption": "A static camera shows a single young woman with long brown hair kneeling on one knee and looking at the camera against a solid warm yellow background, wearing a black jacket, pink top, cream trousers, and breathing gently. The main person shifts weight onto both feet, rises smoothly from kneeling, straightens both legs and the torso, and holds a stable upright standing pose. The shot stays continuous, the illumination remains stable, and the final frame is temporally coherent.",
+      "target_action_caption_sha256": "472f6bf16e90c4fa8a6538a9c34f02946ef70278fe5d7916c425f76a6581826b",
+      "seed": 2026081602,
+      "bucket_hw": [512, 464],
+      "latent_shape": [1, 16, 21, 64, 58]
+    }
+  ]
+}

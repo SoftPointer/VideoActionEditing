@@ -1,0 +1,113 @@
+{
+  "schema_version": "bernini-oracle-regeneration-external-authority-contract-v1",
+  "status": "SCHEMA_ONLY_NOT_AN_AUTHORITY_OR_RELEASE_RECEIPT",
+  "may_authorize_execution": false,
+  "trust_boundary": {
+    "expected_release_authority_sha256_source": "redundancy-only in this version; it cannot authorize this component-pinned graph",
+    "future_authorization_mechanism": "new separately reviewed schema with a compiled verification public key and detached signature over the canonical authority payload",
+    "exact_authority_sha256_activation_forbidden_due_to_hash_cycle": true,
+    "caller_cli_hash_alone_may_authorize": false,
+    "compiled_release_authority_sha256_in_current_version": null,
+    "spec_may_supply_its_own_expected_authority_sha256": false,
+    "gate_or_receipt_may_supply_its_own_trusted_root": false
+  },
+  "annotation_leaf": {
+    "schema_version": "bernini-manual-gate-authority-leaf-v1",
+    "hash": "sha256(0x00 || canonical_json_utf8_with_terminal_newline(payload))",
+    "payload_keys": [
+      "schema_version",
+      "case_id",
+      "source_sha256",
+      "anchor_sha256",
+      "action_caption_sha256",
+      "structured_action_program_sha256",
+      "mask_sha256",
+      "annotator",
+      "reviewer"
+    ]
+  },
+  "annotation_ledger": {
+    "tree_shape": "perfect_binary_power_of_two_v1",
+    "internal_node_hash": "sha256(0x01 || left_32_bytes || right_32_bytes)",
+    "gate_inclusion_fields": [
+      "tree_shape",
+      "ledger_root_sha256",
+      "leaf_sha256",
+      "leaf_index",
+      "tree_size",
+      "inclusion_proof"
+    ],
+    "root_authority": "external release authority only"
+  },
+  "external_release_authority": {
+    "schema_version": "bernini-oracle-regeneration-external-release-authority-v1",
+    "required_fields": [
+      "schema_version",
+      "authority_id",
+      "spec_sha256",
+      "component_sha256",
+      "annotation_ledger_roots",
+      "runner_allowlist",
+      "runner_abi_receipts",
+      "review_policy_receipt_path",
+      "review_policy_receipt_sha256"
+    ],
+    "annotation_ledger_root_cases": ["e02", "e03"],
+    "runner_allowlist_entry": {"path": "absolute path", "sha256": "lowercase SHA-256"},
+    "expected_sha256_delivery": "redundancy only; this v1 schema cannot authorize execution"
+  },
+  "runner_abi_receipt": {
+    "schema_version": "bernini-oracle-native-runner-abi-receipt-v1",
+    "required_values": {
+      "supported_execution": ["native_local_r2v4"],
+      "native_binding_schema": "bernini-oracle-native-execution-binding-receipt-v1",
+      "world_size": 4,
+      "topology": "one_node_one_sp4",
+      "same_seed_and_initial_noise_for_base_and_regen": true,
+      "emits_official_base_and_local_regen_side_by_side": true,
+      "connected_flowedit_enabled": false,
+      "training_or_optimizer_available": false,
+      "accepted": true
+    }
+  },
+  "pre_run_review_policy_receipt": {
+    "schema_version": "bernini-oracle-regeneration-side-by-side-review-policy-receipt-v1",
+    "required_values": {
+      "cases": ["e02", "e03"],
+      "output_mode": "base_and_regeneration_side_by_side_no_auto_replacement",
+      "background_cosine_may_select": false,
+      "automatic_base_replacement_authorized": false,
+      "e03_policy": "explicit_human_abstain_or_strict_action_non_regression",
+      "accepted": true,
+      "pre_run_policy_only_not_an_outcome_decision": true
+    }
+  },
+  "post_run_outcome_decision": {
+    "current_authority": null,
+    "mandatory_future_bindings": [
+      "case_id",
+      "official_base_video_sha256",
+      "local_regeneration_video_sha256",
+      "human_reviewer_identity_from_independent_authority",
+      "action_state_gate_decision",
+      "e03_explicit_abstain_or_strict_non_regression_decision"
+    ],
+    "automatic_or_background_cosine_selection_authorized": false
+  },
+  "future_activation_blockers": [
+    "native source references require independently VAE-encoded provenance, encoder and source-frame digests, pairwise storage disjointness, and distinct content digests",
+    "FlowEdit independent keyed Gaussian requires a pinned domain, master seed, case/candidate derivation, CPU generator receipt, and content inequality from correlated source noise",
+    "preflight must verify the selected case key and physical native or FlowEdit execution-binding receipt file against its compiled digest",
+    "a new compiled-public-key signature schema must replace cyclic exact authority SHA activation",
+    "future FlowEdit runner ABI must pin callable code and closure identity"
+  ],
+  "checked_in_state": {
+    "external_release_authority_present": false,
+    "compiled_release_authority_trust_anchor_present": false,
+    "annotation_ledger_roots_present": false,
+    "pre_run_review_policy_receipt_present": false,
+    "post_run_outcome_decision_present": false,
+    "runner_allowlisted": false,
+    "launch_ready": false
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MEV annotation-authoritative adjacent-event training candidate",
+  "type": "object",
+  "required": [
+    "schema_version", "row_id", "pair_id", "uuid", "split", "mode",
+    "source_video_path", "target_video_path", "instruction", "instruction_source",
+    "source_action_caption", "target_action_caption", "global_prompt",
+    "source_event_annotation", "target_event_annotation", "target",
+    "automatic_visual_audit", "non_authoritative_qwen_instruction_proposal",
+    "training_use", "is_strict_counterfactual_ground_truth", "formal_sft_authorized"
+  ],
+  "properties": {
+    "schema_version": {"const": "mev-action-edit-paired-training-candidate-v2"},
+    "row_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "pair_id": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "uuid": {"type": "string"},
+    "split": {"enum": ["train", "validation", "test"]},
+    "instruction": {"type": "string", "minLength": 1},
+    "instruction_source": {"const": "mev.json target event caption"},
+    "instruction_semantic_override_by_qwen_allowed": {"const": false},
+    "is_strict_counterfactual_ground_truth": {"const": false},
+    "formal_sft_authorized": {"const": false}
+  }
+}

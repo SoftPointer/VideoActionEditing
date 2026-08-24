@@ -1,0 +1,66 @@
+{
+  "schema_version": "bernini-generic-action-q0-source-authority-v1",
+  "authority_id": "first8-real-q0-20260814-r1",
+  "authoring_registry": {
+    "path": "methods/bernini_action_editing/assets/pair_v5_t2v_calibration_first8_authoring_v1.json",
+    "sha256": "204f7de92fde95a89ab5750ec226dea58fb71edba6c071c76a7c8c56f91bb89c"
+  },
+  "read_only_sha256_audit": {
+    "date": "2026-08-14",
+    "host": "auh",
+    "all_eight_paths_existed_as_plain_files": true,
+    "q1_real_source_count": 0
+  },
+  "rows": [
+    {
+      "iid": "00435ad621c44fac",
+      "analysis_split": "fit",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/00435ad621c44fac/samples/00435ad621c44fac/source_video.mp4",
+      "q0_source_video_sha256": "b9218921597e43e2a3a6b223899ab84fb1b8d1a51692766bb2167e5941efbba1"
+    },
+    {
+      "iid": "0c6915018a5f4d9b",
+      "analysis_split": "confirmation",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0c6915018a5f4d9b/samples/0c6915018a5f4d9b/source_video.mp4",
+      "q0_source_video_sha256": "2c31d51dfe277f0a62089fad506f833067c38550527f08262825386e374d40ad"
+    },
+    {
+      "iid": "33322eb8ec1e4703",
+      "analysis_split": "confirmation",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/33322eb8ec1e4703/samples/33322eb8ec1e4703/source_video.mp4",
+      "q0_source_video_sha256": "309085ec86a40fb399b782d45a0764c99fa0d093e7d5e43673ba047c9691cbec"
+    },
+    {
+      "iid": "71ba57892bd043df",
+      "analysis_split": "fit",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/71ba57892bd043df/samples/71ba57892bd043df/source_video.mp4",
+      "q0_source_video_sha256": "3c61f34222fc6360278bc71b5b92424f76d8bba38039dd4217cf5cd45bea1205"
+    },
+    {
+      "iid": "7b88a1ca1f804f41",
+      "analysis_split": "fit",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+      "q0_source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed"
+    },
+    {
+      "iid": "841b5e0080a1441d",
+      "analysis_split": "confirmation",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/841b5e0080a1441d/samples/841b5e0080a1441d/source_video.mp4",
+      "q0_source_video_sha256": "5f354b6b0f5cf49bf14d57a359bad03e90263d1a3965a57b1b89ce1a707f492a"
+    },
+    {
+      "iid": "a35b590961d24694",
+      "analysis_split": "fit",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a35b590961d24694/samples/a35b590961d24694/source_video.mp4",
+      "q0_source_video_sha256": "6e9381d3889437f618e1ec6b694703b10598c4b42d8b361b0442db7780be97ed"
+    },
+    {
+      "iid": "a66e6818e4144928",
+      "analysis_split": "confirmation",
+      "q0_source_video_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a66e6818e4144928/samples/a66e6818e4144928/source_video.mp4",
+      "q0_source_video_sha256": "0fdc54d89250f355d2170a4d6f6aac0867abf592afb849668a8e2879a6617147"
+    }
+  ],
+  "generated_media_is_editor_input_or_target": false,
+  "optimizer_authorized": false
+}

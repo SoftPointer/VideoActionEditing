@@ -1,0 +1,60 @@
+{
+  "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+  "case_id": "40712e1341dc",
+  "experiment_role": "zero-update-native-candidate-bank-with-case-specific-action-language",
+  "common": {
+    "source_context_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, ",
+    "source_context_utf8_bytes": 110,
+    "source_context_utf8_sha256": "e64dda558a9c77380d0da8922112d74f78deb0f50595c3686988ab8b0b40fecb",
+    "base_action_utf8": "The man in bed puts his smartphone on the nightstand and turns over to go to sleep.",
+    "base_action_utf8_bytes": 83,
+    "base_action_utf8_sha256": "1c88ec8fc8c9282b30608b19fc159e7e75ce9c69195119952ff388fd75fd429f",
+    "preservation_suffix_utf8": " The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+    "preservation_suffix_utf8_bytes": 83,
+    "preservation_suffix_utf8_sha256": "7ece7aa017d98d0a6ad10836165348be7929672032127fc73ab1f0857c149bf0"
+  },
+  "prompts": {
+    "P0": {
+      "supplement_kind": "none",
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 276,
+      "full_prompt_utf8_sha256": "928ab797e46ab6402489fd1eee02e811385b22c4f998e2a168edf9a4cddc3b34",
+      "final_task_prompt_utf8_bytes": 529,
+      "final_task_prompt_utf8_sha256": "6b380de982c27578740b57ca9f5a8fcf278da96e9415ca60239bb4d616d251e7",
+      "untruncated_token_count": 140,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "supplement_kind": "event_order",
+      "payload_basename": "p1_event_order.txt",
+      "payload_file_sha256_with_terminal_lf": "89550a45e9b57cf371675f32643e9b40044356e747317356694f2cbd55aced69",
+      "payload_utf8_sha256_without_terminal_lf": "47f645297edefbb3aed7c05f34bf67c661b5e09049800d5f319cf65cf0e04222",
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. Follow this event order: The man first stops scrolling while continuing to hold the same smartphone. He then moves the held phone toward the nightstand. The phone reaches and is supported by the nightstand before he releases it. After release, the phone remains on the nightstand while his hand withdraws. Only then does he turn his torso over into a sleeping orientation. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 649,
+      "full_prompt_utf8_sha256": "3f8d35ce8711cf8c70dfddfa45fa6985fbe44757767a46853134c958cb117a32",
+      "final_task_prompt_utf8_bytes": 902,
+      "final_task_prompt_utf8_sha256": "fbb39fa4e5bfa48efb4bc06aca18324f0516b94c77f42c24886dfea0de68a36b",
+      "untruncated_token_count": 222,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "supplement_kind": "relation_contact",
+      "payload_basename": "p2_relation_contact.txt",
+      "payload_file_sha256_with_terminal_lf": "f5d77101c43217688a85cc5460b3897636c43dd823b7a622cb3c766301d24311",
+      "payload_utf8_sha256_without_terminal_lf": "e8a909d698e5b12a261a4ce8afa47c71fcf18f7b6bf579deb8bd3d456f56db61",
+      "full_prompt_utf8": "The man with dyed-blond hair lies in bed at night while scrolling on his smartphone. In this continuous shot, The man in bed puts his smartphone on the nightstand and turns over to go to sleep. Follow these contact relations: Maintain hand-to-phone contact while smoothly decreasing the phone-to-nightstand distance. Establish phone-to-nightstand support contact before ending hand-to-phone contact. After release, maintain phone-to-nightstand contact while the hand-to-phone distance increases. Then change the man's torso orientation while the phone remains stationary on the nightstand. Use exactly one smartphone, and keep it as the same phone throughout; do not duplicate or replace it. The same man, bed, nightstand, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 774,
+      "full_prompt_utf8_sha256": "099c72d84cccffe28ba6f7cce0d116dc2fbd431ffdaf36c9c73bb664576d2e0b",
+      "final_task_prompt_utf8_bytes": 1027,
+      "final_task_prompt_utf8_sha256": "33c39c12386de6efe263349046173e394c2694fc843ef1a2efa3f576671c1b7b",
+      "untruncated_token_count": 256,
+      "terminal_token_id": 1
+    }
+  },
+  "claim_limits": {
+    "P1_and_P2_are_incremental_language_supplements_not_hidden_controls": true,
+    "prompt_length_and_semantic_content_both_change": true,
+    "candidate_selection_is_separate_from_generation": true,
+    "cross_case_action_success_not_predeclared": true
+  }
+}

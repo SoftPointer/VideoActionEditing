@@ -1,0 +1,73 @@
+# SAIC formal full60 r2 deterministic release pins (fail-closed template)
+#
+# Fill only from one terminal successful retained-FD WORLD8 postflight
+# admission.  Materialize in the order below because later files pin earlier
+# byte hashes.  Any remaining __R2_*__ token is a release blocker.
+
+FORMAL_RELEASE_STEM=saic-t2v-topup-r6-formal-v2-r2-retfd-20260812-r1
+FORMAL_OUTPUT_STEM=t2v-events-topup-r6-formal-v2-r2-retfd-20260812-r1
+
+# Frozen scientific closure: byte-identical to the audited r1 candidate.
+BASE_LAUNCHER_SHA256=12c1b2baaecfd479f65f9b5dbf0dbae17cd87196767e93c254fe2cffc895f29d
+MATERIALIZER_SHA256=5585abb927206d0813caca4cec8dc10b846fe0ace704538bb12e0ad5cffe8b97
+EFFECTIVE_LAUNCHER_SHA256=4227b4a00b7b2dea786457baad56b4fdcb4b476929e9619cb533a353b369f9f0
+GUARD_V2_SHA256=1a38b2ac18f46e818b1596db884b883dff8e0612fcd5b0cf1ed78aca377ac965
+SOURCE_ARCHIVE_SHA256=3f6a713c762751b06723448b22e627ec6571eae502d7311811005db91812ee7b
+SOURCE_REVISION=20c2193954e780e9654347754b1485f3492fbea5
+SOURCE_MANIFEST_SHA256=899b5a1dd66fc0bf6d4d0192fb6157f4afe691c50633246dddcaa1db2c2a98a9
+EVENT_SPEC_SHA256=d693d0784530f007888e2825d15db3db808fdf4f1d111b5d080d968c894ff145
+CHECKPOINT_MANIFEST_SHA256=a95ac2d74fc4379134a6276355d472810ef08e3d9de79761f1244375a6fad831
+PYTHON_SHA256=8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a
+STATIC_FFMPEG_SHA256=e7e7fb30477f717e6f55f9180a70386c62677ef8a4d4d1a5d948f4098aa3eb99
+STATIC_FFMPEG_VERSION_STDOUT_SHA256=389368da4bcd4e22d7bf9134f3a8c24dd36027de7d963015230969a87c9e3339
+
+# Independent compute-Bash retained-FD probe admission (Job134647 PASS).
+# These known pins may be substituted only together with the later WORLD8
+# admission that explicitly binds this exact admission; the probe alone does
+# not authorize formal submission.
+COMPUTE_BASH_PROBE_JOB_ID=134647
+COMPUTE_BASH_PROBE_ADMISSION_PATH=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/compute-bash-retained-fd-probe-8283e73d-r1/probe-admission.json
+COMPUTE_BASH_PROBE_ADMISSION_SHA256=d51ebf1f894d63483943042faaa2c6ccbf812c0f93769980084bae72f8ab84d8
+COMPUTE_BASH_PROBE_ADMISSION_DIGEST=a37e44c12f935a4f4e11ab08364b019799809fd13299af6459ca6797a8333fb7
+PROBE_VALIDATOR_SHA256=3b5e78a0815fbfdee0404293ad800c640133deacc6b1bfafec12a02ca40ef85b
+COMPUTE_BASH_SHA256=59474588a312b6b6e73e5a42a59bf71e62b55416b6c9d5e4a6e1c630c2a9ecd4
+COMPUTE_BASH_VERSION_STDOUT_SHA256=51bd40ffa4710175920033d329a0e9e1667e6b7f56178e302432ff4610d554a7
+COMPUTE_BASH_VERSION_FIRST_LINE=GNU bash, version 5.1.16(1)-release (x86_64-pc-linux-gnu)
+
+# Replacement retained-FD WORLD8 transport admission.  It must carry an exact
+# external binding to the compute-Bash probe admission above.
+RETAINED_FD_CANARY_JOB_ID=134908
+RETAINED_FD_CANARY_ADMISSION_PATH=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/canary-admission.json
+RETAINED_FD_CANARY_ADMISSION_SHA256=4da203469b022fcdcf7a4d6ba377769d6b220e5b6ce0066e60587104f8405e26
+RETAINED_FD_CANARY_ADMISSION_DIGEST=616c1a7587679975329e1211653720a7a2726c7cd676bcb0eedeea4bdda7b50d
+RETAINED_FD_CANARY_SACCT_STDOUT_SHA256=cbd42dc6447b8fac2554fc70245f3292ea33bae47b581c2b376eaba06a07e8c6
+RETAINED_FD_CANARY_NODELIST=auh7-1b-gpu-185
+RETAINED_FD_CANARY_START=2026-08-12T20:59:50
+RETAINED_FD_CANARY_END=2026-08-12T21:00:05
+RETAINED_FD_CANARY_ELAPSED=00:00:15
+RETAINED_FD_CANARY_SUBMIT_LINE=/usr/bin/sbatch --parsable --output=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/slurm/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/saic-fv2-fd-w8-cny1-%j.out --error=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/slurm/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/saic-fv2-fd-w8-cny1-%j.err --export=NONE,SAIC_FV2_FD_CANARY_PAYLOAD=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/auh_canary_saic_formal_v2_retained_fd_world8_payload_v1.sh,SAIC_FV2_FD_CANARY_PAYLOAD_SHA256=3571e921db4426ea3974ffe5b86618efcc3634cfeed4cf63016343892b3fc15a,SAIC_FV2_FD_CANARY_GUARD=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/saic_t2v_rendezvous_guard_v2.py,SAIC_FV2_FD_CANARY_GUARD_SHA256=1a38b2ac18f46e818b1596db884b883dff8e0612fcd5b0cf1ed78aca377ac965,SAIC_FV2_FD_CANARY_RUNTIME=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/generate_saic_pure_t2v_event_bank_topup_v2.py,SAIC_FV2_FD_CANARY_RUNTIME_SHA256=3372f1f48b9cb235d269ee6352ad4f289a6ee4a4a781c69ce0f7b1862ce77d36,SAIC_FV2_FD_CANARY_SOURCE_ARCHIVE=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/videoedit-saic-20c2193-methods.tar,SAIC_FV2_FD_CANARY_SOURCE_ARCHIVE_SHA256=3f6a713c762751b06723448b22e627ec6571eae502d7311811005db91812ee7b,SAIC_FV2_FD_CANARY_PYTHON=/vast/users/guangyi.chen/anaconda3/envs/vace/bin/python3.12,SAIC_FV2_FD_CANARY_PYTHON_SHA256=8d7e74da2724b634c4ed5c7c5a583f21786883bc76bab93b3e381417a7f7483a,SAIC_FV2_FD_CANARY_OUTPUT_PARENT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7,SAIC_FV2_FD_CANARY_OUTPUT_PARENT_DEVICE=48,SAIC_FV2_FD_CANARY_OUTPUT_PARENT_INODE=4537739536269025942,SAIC_FV2_FD_CANARY_SUBMISSION_RECEIPT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/submission-receipt.json,SAIC_FV2_FD_CANARY_SUBMISSION_RECEIPT_DEVICE=48,SAIC_FV2_FD_CANARY_SUBMISSION_RECEIPT_INODE=11220766893187724058,SAIC_FV2_FD_CANARY_WRAPPER=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/auh_canary_saic_formal_v2_retained_fd_world8_v1.sbatch,SAIC_FV2_FD_CANARY_WRAPPER_SHA256=6a83aaecc3fd794ec3d4241d3d1173e6d44e61d14bd187e815ce7f0cdd037a99,SAIC_FV2_FD_CANARY_POSTFLIGHT=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/postflight/postflight_saic_formal_v2_retained_fd_world8_canary_v1.py,SAIC_FV2_FD_CANARY_POSTFLIGHT_SHA256=b88752227737f622ab6bf99751f4b05fad1661428cca56cb822c34cd7c1065d3,SAIC_FV2_FD_CANARY_RELEASE_MANIFEST=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/release-manifest.json,SAIC_FV2_FD_CANARY_RELEASE_MANIFEST_SHA256=6f66a2bc1dfbe8a8a4d941e0574c2f03090d1f15ba1c5720c531b4f38fd96736,SAIC_FV2_FD_CANARY_RELEASE_MANIFEST_DIGEST=b748b31c517e54e216003ad4215a0b18814a5583a3070be772e3b5a481a5ef28,SAIC_FV2_FD_CANARY_PROBE_VALIDATOR=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/releases/saic-formal-v2-retained-fd-world8-canary-3571e921-6a83aaec-r7/inputs/probe_admission_binding_v1.py,SAIC_FV2_FD_CANARY_PROBE_VALIDATOR_SHA256=3b5e78a0815fbfdee0404293ad800c640133deacc6b1bfafec12a02ca40ef85b,SAIC_FV2_FD_CANARY_PROBE_ADMISSION=/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_saic_v1_20260809/canaries/compute-bash-retained-fd-probe-8283e73d-r1/probe-admission.json,SAIC_FV2_FD_CANARY_PROBE_ADMISSION_SHA256=d51ebf1f894d63483943042faaa2c6ccbf812c0f93769980084bae72f8ab84d8,SAIC_FV2_FD_CANARY_PROBE_ADMISSION_DIGEST=a37e44c12f935a4f4e11ab08364b019799809fd13299af6459ca6797a8333fb7 /proc/self/fd/3
+
+# SACCT_STDOUT_SHA256 and SUBMIT_LINE must come from the postflight's exact
+# `SubmitLine%8192` query; the older `%4096` observation is not admissible.
+
+# Transport note: COMPUTE_BASH_VERSION_FIRST_LINE is embedded in final gate,
+# wrapper, and submitter bytes.  It is intentionally absent from Slurm
+# --export because the AUH Bash first line contains a comma.  Runtime still
+# verifies the exact first line plus the full version-stdout SHA-256.
+
+# Deterministic cascade; compute only after all pins above are instantiated.
+# 1. Hash final saic_t2v_formal_v2_r2_gate.py.
+FORMAL_GATE_SHA256=877186f668f3ba89b9d887e81fbfa32a2d15b40f0e8b5f9c47b159bf88ad4151
+# 2. Put FORMAL_GATE_SHA256 into v5 wrapper, then hash final wrapper.
+FORMAL_WRAPPER_SHA256=4d5572f0c2da3efe84b87f5bf20db53facea8a853de04404388e8dd65b373f5d
+# 3. Put both hashes into v3 submitter, then hash final submitter.
+FORMAL_SUBMITTER_SHA256=2904b35bccf981f09ffd90b100bdb1c28bdbbd3ddc7130b1c2afd514767b4a0b
+
+# Required release verdicts before the one allowed non-hold/no-dependency sbatch:
+# - no __R2_*__ token in final gate/wrapper/submitter/pin manifest;
+# - exact hashes and modes for every release input;
+# - AUH hostile suite and compute-Bash retained-FD handoff PASS;
+# - old Job134393 exact60 lifecycle PASS, Job134647 Bash-probe admission PASS,
+#   and replacement retained-FD WORLD8 transport admission PASS with an exact
+#   binding to that probe; none can substitute for another;
+# - output root, submission receipt, and Slurm log namespace all fresh.

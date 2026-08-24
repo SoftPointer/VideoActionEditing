@@ -1,0 +1,169 @@
+{
+  "schema_version": "bernini-factorial-forward-target-audit-v1",
+  "review_id": "factorial-forward-target-audit-20260813-v1",
+  "source_registry_digest": "d0581ab0fb6ddddc1c5274c87f20d527ec68fbe9862c3a3a8401c32d2f7309af",
+  "source_target_archive_sha256": "8e73e503c5ade4ec2a3e06cf8ea21d466b9d391fd93c10c22f3e401ff56a3e34",
+  "frame_review_indices": [0, 20, 40, 60, 80],
+  "eligibility_rule": "A pre-existing edited target is eligible only when the intended family action completes, identity/scene/camera remain visually stable, and the instruction does not deliberately add gaze, prop, appearance, secondary-actor, or other event changes.",
+  "authority": {
+    "source_target_pair_reviewed": true,
+    "factorial_negatives_present": false,
+    "same_seed_pairing_verified": false,
+    "training_target_authorized": false,
+    "optimizer_step_authorized": false,
+    "method_success_claimed": false
+  },
+  "summary": {
+    "reviewed": 18,
+    "strict_eligible": 6,
+    "compound_instruction": 10,
+    "action_failure": 1,
+    "wrong_target_family": 1
+  },
+  "rows": [
+    {
+      "source_id": "059ab2ce4dec4b71",
+      "action_family": "human-one-knee-to-stand",
+      "split": "calibration",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the person stand up straight, holding the wooden stick vertically in front of them.",
+      "review_note": "Stand completes, but the stick moves from the side into a new frontal vertical pose."
+    },
+    {
+      "source_id": "07a4fa39808a4f02",
+      "action_family": "dog-stand-to-sit",
+      "split": "confirmation",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the dog sit down on the seaweed, looking attentively at the camera.",
+      "review_note": "Sit completes; the dog already faces the camera and identity, harness, beach, and framing remain stable."
+    },
+    {
+      "source_id": "0b2fc177202e4d08",
+      "action_family": "dog-stand-to-sit",
+      "split": "fit",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the dog sit down in the snow, looking directly forward with alert expression.",
+      "review_note": "Sit completes, but the target also rotates the dog's head and body from a side gaze to frontal."
+    },
+    {
+      "source_id": "1367d5595ed641ae",
+      "action_family": "human-one-knee-to-stand",
+      "split": "fit",
+      "status": "action_failure",
+      "raw_prompt": "Make the man stand up fully, positioned slightly behind the plant.",
+      "review_note": "The target remains kneeling/crouched in all reviewed frames and never reaches an upright stand."
+    },
+    {
+      "source_id": "173371bf8fa74785",
+      "action_family": "dog-stand-to-sit",
+      "split": "fit",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the dog sit down on the pavement.",
+      "review_note": "Pure sit completes with the same dog, patio, tennis ball, camera, and framing."
+    },
+    {
+      "source_id": "1a6fdd7d9c19413b",
+      "action_family": "dog-stand-to-sit",
+      "split": "calibration",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the dog sit down on its hind legs, facing forward.",
+      "review_note": "Sit completes; the dog already faces forward and the woodland scene remains stable."
+    },
+    {
+      "source_id": "2af820dd10324328",
+      "action_family": "dog-stand-to-sit",
+      "split": "calibration",
+      "status": "wrong_target_family",
+      "raw_prompt": "Make the dog lie down on its stomach with its head resting on its paws.",
+      "review_note": "The source is a valid dog stand anchor, but the pre-existing target is lie-down rather than sit-down."
+    },
+    {
+      "source_id": "2d98b7c91dbc4d98",
+      "action_family": "human-one-knee-to-stand",
+      "split": "confirmation",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the person stand up, holding one basketball in each hand.",
+      "review_note": "Stand completes, but the second basketball moves from the ground into the other hand."
+    },
+    {
+      "source_id": "31fcd6205efb4b84",
+      "action_family": "human-one-knee-to-stand",
+      "split": "fit",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the man stand up straight, maintaining his embrace with the girl at his side.",
+      "review_note": "Stand completes while the already-present child and embrace remain stable."
+    },
+    {
+      "source_id": "3cd87ccdd8eb40a4",
+      "action_family": "human-one-knee-to-stand",
+      "split": "confirmation",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the boy stand up and hold the trophy with both hands, lifting it slightly off the ice.",
+      "review_note": "Stand completes, but the trophy also moves from the ice into both hands."
+    },
+    {
+      "source_id": "3d7f76d236894678",
+      "action_family": "human-one-knee-to-stand",
+      "split": "calibration",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the man stand up straight and have the dog sit beside him.",
+      "review_note": "The man stands, but the dog simultaneously performs a second sit event."
+    },
+    {
+      "source_id": "436855fcba254e26",
+      "action_family": "dog-stand-to-sit",
+      "split": "confirmation",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the dog sit down on the grass.",
+      "review_note": "Pure sit completes with stable identity, lawn, pool, camera, and framing."
+    },
+    {
+      "source_id": "5213bd7510b2472f",
+      "action_family": "dog-stand-to-sit",
+      "split": "confirmation",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the dog sit down with its front paws extended forward and head tilted slightly to the left.",
+      "review_note": "Sit completes, but the instruction deliberately couples paw placement and head tilt."
+    },
+    {
+      "source_id": "5f4ba4fb4c6441e0",
+      "action_family": "dog-stand-to-sit",
+      "split": "fit",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the dog sit down with its mouth closed and tongue retracted.",
+      "review_note": "Sit completes, but mouth/tongue state changes are an explicit simultaneous event."
+    },
+    {
+      "source_id": "62474c53946445b6",
+      "action_family": "human-one-knee-to-stand",
+      "split": "confirmation",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the adult Spiderman stand up fully and place his left arm around the child's shoulder.",
+      "review_note": "Stand completes, but a new arm-around-child interaction is added."
+    },
+    {
+      "source_id": "7421728d949d40dd",
+      "action_family": "human-one-knee-to-stand",
+      "split": "fit",
+      "status": "strict_eligible",
+      "raw_prompt": "Make the person stand up with their arms relaxed by their side.",
+      "review_note": "Stand completes; relaxed arms are treated as the natural terminal pose rather than a separate event."
+    },
+    {
+      "source_id": "8780e5b895774e8a",
+      "action_family": "dog-stand-to-sit",
+      "split": "calibration",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the dog sit down in the snow, facing the camera.",
+      "review_note": "Sit completes, but the target suppresses the source's registered natural head turn and fixes frontal gaze."
+    },
+    {
+      "source_id": "a67d0ee45df54638",
+      "action_family": "human-one-knee-to-stand",
+      "split": "calibration",
+      "status": "compound_instruction",
+      "raw_prompt": "Make the person stand up and hold the sword vertically with the tip pointing upward.",
+      "review_note": "Stand completes, but the sword is deliberately reoriented into a new vertical pose."
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "bernini-source-object-proposal-role-v15c-r4-release",
+  "tag": "v15c-r4",
+  "member_count": 8,
+  "members": [
+    {
+      "path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c.json",
+      "sha256": "fe6dc44d013fe730291fc58954886d41119f3409b2af873b3d82c4d05177b9f5",
+      "size": 13110
+    },
+    {
+      "path": "methods/bernini_action_editing/finalize_source_sam2_proposal_role_probe_v15c_r4.py",
+      "sha256": "02a14ed9aebb0e9105f55adef37a432a68e00985f394727bad41e7feda3758ab",
+      "size": 41088
+    },
+    {
+      "path": "methods/bernini_action_editing/materialize_source_sam2_proposal_tracks_v15c.py",
+      "sha256": "f7d4f9e674a859481a6335599deef984ef9ea40100fd69f3a11cdec67db0dc6e",
+      "size": 65537
+    },
+    {
+      "path": "methods/bernini_action_editing/postflight_source_sam2_proposal_role_probe_v15c_r3.py",
+      "sha256": "d677bc9319b6938e1fb7dfcf9fba8658eda3670555026043ac2e6dfbd96f9cbf",
+      "size": 9171
+    },
+    {
+      "path": "methods/bernini_action_editing/run_source_object_proposal_role_probe_v15c.py",
+      "sha256": "6e2630fb000df6d0862946b52528ab1fd1ea25d548e3723ef774e383e726e631",
+      "size": 33296
+    },
+    {
+      "path": "methods/bernini_action_editing/scripts/auh_launch_e00_source_sam2_proposal_role_probe_v15c_r4_sealed.sh",
+      "sha256": "e344b021c5f43e873cf2d6db42cd72efedba965621403b43d6ce11e9eed321ca",
+      "size": 6181
+    },
+    {
+      "path": "methods/bernini_action_editing/source_object_proposal_role_probe_v15c.py",
+      "sha256": "81e3f168d9064f6136ef24b1b6c49a7f3630cdfbe31593f8ae4218651b68b26d",
+      "size": 32964
+    },
+    {
+      "path": "methods/bernini_action_editing/tools/build_source_object_proposal_role_v15c_r3_review.py",
+      "sha256": "2f1463783b1d092ef1767d70ffb7022bc53a9c1b14036fee050597dcf7ea93cf",
+      "size": 23542
+    }
+  ],
+  "manifest_relative_path": "methods/bernini_action_editing/assets/e00_source_sam2_proposal_role_probe_v15c_r4_release.json",
+  "snapshot_policy": {
+    "construction_root_mode": "0700",
+    "sealed_directory_mode": "0500",
+    "sealed_member_mode": "0400",
+    "exact_tree_required": true,
+    "reject_extra_symlink_pyc": true
+  },
+  "observer_only": true,
+  "human_audit_action": "reject_only",
+  "remote_gpu_status": "REMOTE_GPU_UNAUDITED",
+  "route_status": "ROUTE_NO_GO",
+  "route_authorized": false,
+  "decode_authorized": false,
+  "training_authorized": false,
+  "release_sha256": "0592cfd2259df3e54b337696f4fb2cfcbd1cfd95873e769a52777e5f6d222b33"
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "bernini-expanded-self-generated-action-bank-input-v1",
+  "rows": [
+    {
+      "iid": "311c82f83eca4a7f",
+      "target_filename": "311c82f83eca4a7f__query-forward-s2026082221.mp4",
+      "target_sha256": "4abba7c19d65ffe1e2dc31af88bb4c9f249760ac092f0eaa8a579338cbd8d93a",
+      "instruction": "A fixed camera shows a single tattooed blonde woman in black athletic clothing in a bright mirrored room, holding a phone while low on one knee. The main woman shifts weight onto both feet, rises smoothly, straightens both legs and torso, and holds a stable upright standing pose while preserving her clothing, tattoos, phone, mirror, room, framing, and camera.",
+      "human_temporal_audit": "action_complete_5_frame_plus_full_video"
+    },
+    {
+      "iid": "31c34509415745ca",
+      "target_filename": "31c34509415745ca__query-forward-s2026082131.mp4",
+      "target_sha256": "297ee47fa24d0d3ac37f9daf75670c67e2ba5d92153a2a938bdc67633f8d3265",
+      "instruction": "A fixed camera shows a single smiling woman with bright red braided hair wearing a loose black outfit in a shopping mall, starting on one knee. The main woman shifts weight onto both feet, rises smoothly, straightens both legs and torso, faces the camera, and holds a stable upright standing pose while preserving her identity, hair, clothing, mall, framing, and camera.",
+      "human_temporal_audit": "action_complete_5_frame_plus_full_video"
+    },
+    {
+      "iid": "6d346c38cf504493",
+      "target_filename": "6d346c38cf504493__query-forward-s2026082231.mp4",
+      "target_sha256": "77dbe10b5104e7b1dea36c5b14663b1825632a25a6ad19c47e3d981107511219",
+      "instruction": "A fixed camera shows a single blue-haired cosplayer in a detailed blue-and-white costume kneeling at a convention while holding two white toy blasters. The main person shifts weight onto both feet, rises smoothly, straightens both legs and torso, and holds a stable upright standing pose while preserving the costume, blue hair, both blasters, background people, framing, and camera.",
+      "human_temporal_audit": "action_complete_5_frame_plus_full_video"
+    },
+    {
+      "iid": "6ea45d35943742bb",
+      "target_filename": "6ea45d35943742bb__query-forward-s2026082211.mp4",
+      "target_sha256": "aa4ec85b20914011683042a5d612a6a21f1ce8010ad26fcdeff4417f95c6b3a8",
+      "instruction": "A fixed camera shows a single white dog standing on bright green grass in a sunny park. The main dog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds the seated pose while preserving its white coat, collar, grass, trees, framing, and camera.",
+      "human_temporal_audit": "action_complete_5_frame_plus_full_video"
+    },
+    {
+      "iid": "99cde432839f4240",
+      "target_filename": "99cde432839f4240__query-forward-s2026082201.mp4",
+      "target_sha256": "158850ed7a0b840a19b131a9b7a300f8eae84b81cf960ac0858bb9e0a9ae09d3",
+      "instruction": "A fixed camera shows a single white-and-tan dog standing among dark tree trunks on a forest floor. The main dog bends its hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds the seated pose while preserving its coat markings, forest, ground texture, framing, and camera.",
+      "human_temporal_audit": "action_complete_5_frame_plus_full_video"
+    }
+  ]
+}

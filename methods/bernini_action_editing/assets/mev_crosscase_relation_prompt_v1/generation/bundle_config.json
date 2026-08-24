@@ -1,0 +1,53 @@
+{
+  "schema": "native-rv2v-crosscase-diagnostic-bundle-v1",
+  "run_class": "target_oracle_diagnostic",
+  "launch_authorized": true,
+  "authorization_basis": "user_explicit_crosscase_experiment_go_in_thread",
+  "seeds": [2027, 2028],
+  "execution_order": ["p0a", "p1", "p2", "p0b"],
+  "cases": {
+    "8b05aaf463db": {
+      "source_video": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/8b05aaf463db/source-exact81.mp4",
+        "sha256": "f6bfc0704852d0887677dd55d7df7b731a09813bc2b3adae868c755aac06718c"
+      },
+      "prompt_matrix": {"path": "8b05aaf463db/prompt_matrix.json", "sha256": "5be6e95872d9dc1fdd4dee56a1542060d46888830faa0f119b7cafcd92e36039"},
+      "authority": {"path": "8b05aaf463db/authority.json", "sha256": "24336b1301ba7e770c1bc22091c694f071dbb4f5d864f58bb45db09992fd536b"},
+      "suggested_allocation": {"job_id": "147873", "node": "auh7-1b-gpu-284", "world_size": 4}
+    },
+    "40712e1341dc": {
+      "source_video": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/40712e1341dc/source-exact81.mp4",
+        "sha256": "654e997c46a6f78a2ad78359b713767aefe61a6cc732b5be4527720323349f69"
+      },
+      "prompt_matrix": {"path": "40712e1341dc/prompt_matrix.json", "sha256": "cd8a7be73b70aeb7b1a3333e338b8c622536d344b1def2fc7a06b0c424af495d"},
+      "authority": {"path": "40712e1341dc/authority.json", "sha256": "5b9cf4b3b73c7ce2e41930378feddd0c79918198600737b0f4097ffd87775491"},
+      "suggested_allocation": {"job_id": "147881", "node": "auh7-1b-gpu-213", "world_size": 4}
+    },
+    "5e83a9279951": {
+      "source_video": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/preprocessed_sources/5e83a9279951/source-exact81.mp4",
+        "sha256": "3cfe3ba4603ae7432f3fe0d9fd1876edda54e18f3c12ab7e8e82977adc60a8bd"
+      },
+      "prompt_matrix": {"path": "5e83a9279951/prompt_matrix.json", "sha256": "01fdd3639026ddac4358046b40af3968d4d3104f40fba07463f083bb92354277"},
+      "authority": {"path": "5e83a9279951/authority.json", "sha256": "edb508775a1777be0edfd5b74d8b370ffba7bea9999af272289bed3932c7ff42"},
+      "suggested_allocation": {"job_id": "147871", "node": "auh7-1b-gpu-232", "world_size": 4}
+    }
+  },
+  "launcher_override_policy": {
+    "allocation_may_be_overridden": true,
+    "authority_must_be_resealed_if_job_or_node_binding_changes": true,
+    "allowed_nodes": ["auh7-1b-gpu-284", "auh7-1b-gpu-213", "auh7-1b-gpu-232"]
+  },
+  "generator_input_boundary": {
+    "accepted_external_conditions": ["source_video", "positive_prompt_matrix"],
+    "all_other_external_conditions_forbidden": true,
+    "zero_update": true,
+    "optimizer_updates": 0
+  },
+  "claim_limits": {
+    "scientific_candidate": false,
+    "scientific_claim_authorized": false,
+    "runtime_p0_replay_and_dynamic_input_gates_required": true
+  }
+}

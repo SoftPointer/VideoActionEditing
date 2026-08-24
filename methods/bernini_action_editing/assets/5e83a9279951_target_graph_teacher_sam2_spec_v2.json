@@ -1,0 +1,117 @@
+{
+  "schema_version": "crosscase-frozen-sam2-graph-teacher-spec-v2",
+  "case_id": "5e83a9279951",
+  "source": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/5e83a9279951/source.mp4",
+    "sha256": "29f70ccfdf4437a58431290e5e003ae5af3ab386b538de18319319b59db7ff7c",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "real_target_teacher": {
+    "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v1/review_html_v1/media/5e83a9279951/real_target.mp4",
+    "sha256": "4fbdc6b88956b2822be356eb79c4c3148d93f2bbc6b09fff089d7ae3a68f56e6",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 960,
+    "height": 540
+  },
+  "sam2": {
+    "model_cfg": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config_authority_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "config_authority_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+    "frozen": true,
+    "separate_node_states": true
+  },
+  "phase_frames": [0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80],
+  "nodes": [
+    {
+      "node_id": "actor_root",
+      "object_id": 1,
+      "semantic_type": "actor_root",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed elderly man identity",
+      "source_prompt": {"box_xyxy": [490, 0, 910, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [490, 0, 910, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [40, 220, 40]
+    },
+    {
+      "node_id": "head",
+      "object_id": 2,
+      "semantic_type": "body_part",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed head",
+      "source_prompt": {"box_xyxy": [500, 0, 805, 335], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [500, 0, 805, 335], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [255, 30, 220]
+    },
+    {
+      "node_id": "glasses",
+      "object_id": 3,
+      "semantic_type": "object",
+      "observation_mode": "tracked",
+      "identity_authority": "shared-frame0-human-reviewed glasses region; tiny-object mask requires overlay audit",
+      "source_prompt": {"box_xyxy": [515, 55, 735, 190], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [515, 55, 735, 190], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [30, 80, 255]
+    },
+    {
+      "node_id": "adjusting_hand",
+      "object_id": 4,
+      "semantic_type": "effector",
+      "observation_mode": "tracked",
+      "identity_authority": "active effector hand: source independently reviewed at frame0 while raised above tablet; target independently reviewed at frame20 during isolated glasses adjustment",
+      "source_prompt": {"box_xyxy": [360, 220, 480, 380], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [410, 130, 560, 375], "frame_index": 20, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [255, 190, 20]
+    },
+    {
+      "node_id": "tablet",
+      "object_id": 5,
+      "semantic_type": "distractor",
+      "observation_mode": "tracked",
+      "identity_authority": "source-owned shared-frame0 tablet; must remain a separate persistent identity and never swap with phone",
+      "source_prompt": {"box_xyxy": [270, 275, 540, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "real_target_teacher_prompt": {"box_xyxy": [270, 275, 540, 540], "frame_index": 0, "review_reliable_start": 0, "review_reliable_end": 80},
+      "color_bgr": [220, 160, 20]
+    },
+    {
+      "node_id": "phone",
+      "object_id": 6,
+      "semantic_type": "object",
+      "observation_mode": "tracked",
+      "identity_authority": "target-teacher-only instruction-introduced-or-initially-occluded phone; source and pre-frame56 identity are unresolved",
+      "source_prompt": null,
+      "real_target_teacher_prompt": {"box_xyxy": [230, 365, 360, 540], "frame_index": 56, "review_reliable_start": 56, "review_reliable_end": 80},
+      "color_bgr": [0, 215, 255]
+    }
+  ],
+  "edges": [
+    {"edge_id": "head_part_of_actor", "source_node": "head", "target_node": "actor_root", "relation_type": "part_of", "required_for_action": false},
+    {"edge_id": "hand_manipulates_glasses", "source_node": "adjusting_hand", "target_node": "glasses", "relation_type": "manipulates", "required_for_action": true},
+    {"edge_id": "hand_manipulates_phone", "source_node": "adjusting_hand", "target_node": "phone", "relation_type": "manipulates", "required_for_action": true},
+    {"edge_id": "tablet_phone_identity_guard", "source_node": "tablet", "target_node": "phone", "relation_type": "appearance_binding", "required_for_action": true},
+    {"edge_id": "tablet_near_actor", "source_node": "tablet", "target_node": "actor_root", "relation_type": "near", "required_for_action": false}
+  ],
+  "manual_event_program": [
+    {"event_id": "adjust_glasses", "status": "review_confirmed", "frame_window": [8, 36], "participant_nodes": ["adjusting_hand", "glasses", "head"], "evidence_edge": "hand_manipulates_glasses", "review_note": "hand approaches and adjusts the glasses before the phone appears"},
+    {"event_id": "tablet_identity_persists", "status": "review_confirmed", "frame_window": [0, 80], "participant_nodes": ["tablet"], "evidence_edge": "tablet_near_actor", "review_note": "tablet is source-owned and remains visually distinct from the later phone"},
+    {"event_id": "phone_initial_identity", "status": "review_unresolved", "frame_window": [0, 55], "participant_nodes": ["phone"], "evidence_edge": "tablet_phone_identity_guard", "review_note": "phone is absent or occluded before reliable appearance; no source phone ID is fabricated"},
+    {"event_id": "pick_up_phone", "status": "review_confirmed", "frame_window": [52, 68], "participant_nodes": ["adjusting_hand", "phone"], "evidence_edge": "hand_manipulates_phone", "review_note": "a distinct phone becomes reliably visible and is lifted after the glasses action"},
+    {"event_id": "terminal_phone_in_hand", "status": "review_confirmed", "frame_window": [64, 80], "participant_nodes": ["adjusting_hand", "phone"], "evidence_edge": "hand_manipulates_phone", "review_note": "terminal frames retain the phone as a distinct object beside the tablet"}
+  ],
+  "claim_limits": {
+    "observer_only": true,
+    "review_only_graph_teacher": true,
+    "teacher_observation_scaffold_not_oceg": true,
+    "generator_read_authorized": false,
+    "renderer_condition_authorized": false,
+    "training_authorized": false,
+    "selection_authorized": false,
+    "optimizer_updates": 0,
+    "renderer_forward_calls": 0
+  }
+}

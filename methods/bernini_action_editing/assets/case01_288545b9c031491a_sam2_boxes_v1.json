@@ -1,0 +1,46 @@
+{
+  "schema_version": "bernini-case01-oracle-sam2-boxes-v1",
+  "case_id": "case01",
+  "iid": "288545b9c031491a",
+  "split": "test-heldout-canary-no-training",
+  "instruction": "Make the dog pick up the bone and hold it in its mouth.",
+  "source": {
+    "path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/288545b9c031491a/source.mp4",
+    "sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+    "frame_count": 81,
+    "fps": 25.0,
+    "width": 704,
+    "height": 736
+  },
+  "sam2": {
+    "model_cfg": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "checkpoint_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/sam2.1_hiera_large.pt",
+    "checkpoint_sha256": "2647878d5dfa5098f2f8649825738a9345572bae2d4350a2468587ece47dd318",
+    "config_authority_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/outputs/lucy_long/mask_annotator_runtime_63512cbb/VACE-Annotators/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "config_authority_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107"
+  },
+  "frame0_objects": [
+    {
+      "object_id": 1,
+      "name": "dog",
+      "role": "actor",
+      "box_xyxy": [45.0, 175.0, 395.0, 540.0],
+      "reviewed_by_human": true
+    },
+    {
+      "object_id": 2,
+      "name": "bone",
+      "role": "patient",
+      "box_xyxy": [465.0, 238.0, 555.0, 430.0],
+      "reviewed_by_human": true
+    }
+  ],
+  "claim_limits": {
+    "training_performed": false,
+    "optimizer_updates": 0,
+    "renderer_inference_performed": false,
+    "automatic_grounding_claim_authorized": false,
+    "manual_masklet_review_required": true,
+    "single_case_scientific_claim_authorized": false
+  }
+}

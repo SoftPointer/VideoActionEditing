@@ -1,0 +1,82 @@
+{
+  "schema_version": "bernini-interaction-complex8-real-source-fields-v1",
+  "anchor_authoring": "methods/bernini_action_editing/assets/interaction_complex8_multianchor_authoring_v2.json",
+  "anchor_authoring_sha256": "767aa8e0502f247c3ab576db4c40a132344295e54aef4170e728bc3ff71cafc5",
+  "purpose": "Bind each complex interaction to its actual source trajectory and source-owned source/target captions for full-field T2V action-minus-noop distillation into DynaEdit fields.",
+  "qwen_used": false,
+  "source_count": 8,
+  "rows": [
+    {
+      "ordinal": 0,
+      "event_id": "pour-liquid-into-cup",
+      "source_iid": "2f183dbf9e7a4d2e",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/2f183dbf9e7a4d2e/source.mp4",
+      "source_video_sha256": "888789206a3120c0780be8961dee7fdda520502cb95f573fe211b269aaea53de",
+      "source_caption": "An East Asian woman in a black floral blouse pours amber tea from a white bowl into a clear glass pitcher on a wooden tea table while a small white cup sits nearby.",
+      "target_caption": "The same woman in the same black floral blouse at the same table holds the same glass pitcher and pours a continuous amber stream from its spout into the same original white cup, fills that cup, then returns the same pitcher upright. The white bowl remains unchanged and is not used as the pouring vessel."
+    },
+    {
+      "ordinal": 1,
+      "event_id": "reach-grasp-lift-stone",
+      "source_iid": "186d36f998a14e14",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/186d36f998a14e14/source.mp4",
+      "source_video_sha256": "60618e5a988f3d8b4f48d4ae46bc7739032663a7f8805ee26d47b7d3c193af48",
+      "source_caption": "An exactly 81-frame realistic continuous locked-camera video at 25 fps shows one young child in pale blue clothing walking slowly away from the camera along a white gravel garden path with large flat stepping stones; the child never picks up a stone.",
+      "target_caption": "The same child in the same pale blue clothing stops, crouches, reaches to one original flat stepping stone, closes one hand around that exact stone with visible contact, lifts it from its original spot, stands, and holds the same stone visibly while the vacated spot stays empty."
+    },
+    {
+      "ordinal": 2,
+      "event_id": "twist-pull-mushroom",
+      "source_iid": "10ed90644f81461d",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/10ed90644f81461d/source.mp4",
+      "source_video_sha256": "63dd620627e18d0f6836058bf725ffba7ab1f9b0b455e784c6a71dc68a8de46c",
+      "source_caption": "Two light-skinned hands touch one red-capped mushroom that remains rooted in dark forest soil among pine needles and leaves.",
+      "target_caption": "The same hands grasp the lower stem of the same red mushroom, twist and pull it free with a small dirt clump, lift it above the newly empty hole, and hold the same intact mushroom there."
+    },
+    {
+      "ordinal": 3,
+      "event_id": "release-harvest-into-basket",
+      "source_iid": "7a33b36459c84289",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a33b36459c84289/source.mp4",
+      "source_video_sha256": "c1455b9b89d1f352da69e7bb07e955ee4495df94f5ef6f3f09fe7fd9eac035bb",
+      "source_caption": "A farm worker holds one freshly uprooted cluster above green field plants beside an open woven basket containing other harvested clusters; the held cluster remains in the hand.",
+      "target_caption": "The same worker moves the same held cluster over the same basket, lowers it inside the original rim, visibly opens the fingers and releases it; the same cluster falls, bounces slightly and settles among the existing harvest while the now-empty hand withdraws."
+    },
+    {
+      "ordinal": 4,
+      "event_id": "close-door-then-drawer",
+      "source_iid": "12eba2f9c15f4d3f",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/12eba2f9c15f4d3f/source.mp4",
+      "source_video_sha256": "d699a8d5e35a57f09ae4ba5fc5124e733be9ed18a2bddb2ee90a1ba0232c53f5",
+      "source_caption": "A honey-colored wooden cabinet inside a blue camper van has its lower hinged door open beneath a partly extended drawer while the fixed camera faces the cabinet.",
+      "target_caption": "The same camper-van cabinet is operated by one hand: the same lower hinged door rotates closed flush first, then the separate original upper drawer is pushed fully inward, and both same-instance closed states remain stable."
+    },
+    {
+      "ordinal": 5,
+      "event_id": "jet-ski-turn-with-wake",
+      "source_iid": "7a9e7172ed054f57",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a9e7172ed054f57/source.mp4",
+      "source_video_sha256": "082dac2db2650cac50564182f3ee7db8db452f13dddf53f2f7536f79aeef5df2",
+      "source_caption": "A single rider on one blue-and-white jet ski travels on a mostly straight heading across calm water and leaves a mostly straight wake under a fixed shore view.",
+      "target_caption": "The same rider turns the handlebars left and leans into one coherent left turn; the same jet ski follows a curved path, produces an outside spray arc and a continuously curved wake, then exits under control on the new heading."
+    },
+    {
+      "ordinal": 6,
+      "event_id": "tap-plant-and-rebound",
+      "source_iid": "4ebd076ff4af4c81",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/4ebd076ff4af4c81/source.mp4",
+      "source_video_sha256": "13ecaf94616c5a9548b80e9c25039def780a9c962dfde6de10a5d9566e3bf66a",
+      "source_caption": "A bare hand grips the lower stem of one rooted leafy flowering plant against a dark background; the hand and stem remain in contact without a clear tap-and-rebound cycle.",
+      "target_caption": "The same hand releases the same stem finger by finger, taps that original stem twice with two separate visible contacts and withdraws; after each tap the same stem and its attached leaves bend, rebound, oscillate with diminishing amplitude and settle."
+    },
+    {
+      "ordinal": 7,
+      "event_id": "players-contact-then-separate",
+      "source_iid": "a023388fb2374e44",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/a023388fb2374e44/source.mp4",
+      "source_video_sha256": "1164531fd34d3d1273d56930aed139eb1a5d8db708ac3cdc4f7434abc0080799",
+      "source_caption": "Two male soccer players, one in blue-and-black and one in white, run shoulder to shoulder in direct contact toward one ball on a stadium field.",
+      "target_caption": "The same two players make one clear forearm push-off, separate from direct contact into a visible gap, and continue forward on distinct paths while the same ball stays ahead."
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "schema_version": "bernini-pair-v5-action-preference-rollout-train-v1",
+  "manifest_id": "pair-v5-real-action-preference-rollout-train-v1-20260808",
+  "status": "preregistered_not_rendered",
+  "purpose": "PAIR-v5 source-first native RV2V-4 discovery rollouts for action-preference selection; no paired target or generated proposal is a student condition.",
+  "claim_limits": {
+    "exploratory_research_only": true,
+    "upstream_preview_only": true,
+    "production_claim_forbidden": true,
+    "scientific_generalization_claim_authorized": false,
+    "iid_disjoint_from_shared8": true,
+    "content_disjoint_from_shared8_proven": false,
+    "action_editing_success_claimed": false
+  },
+  "authorization": {
+    "source_use": "user_authorized_exploratory_source_only_rollout",
+    "full644_upstream_training_authorized": false,
+    "full644_upstream_training_use_forbidden": true,
+    "paired_target_runtime_access": false
+  },
+  "evidence_manifests": {
+    "full644_raw_membership_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/raw_644_release_a6d6c39/preview_manifest.jsonl",
+    "full644_raw_membership_sha256": "49506e003f86f319ebe8a5e843d19c88cef75e84cd4250968da283bb19252e47",
+    "full644_vae_index_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/vae_full_81f_4d41e4c/dataset_index.jsonl",
+    "full644_vae_index_sha256": "d36fb5de3487ba5bf494589948430a60e214851d29776cc4f439e4e2d54ee52b",
+    "shared8_exclusion_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_editing_shared8_20260805_10932d4/frozen/goku_legacy_heldout8_inputs.jsonl",
+    "shared8_exclusion_sha256": "c05c4e5b5bf85de882bde32c71a984d736247733e586ed91d40026b12aaaf701",
+    "shared8_exposure_audit_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_editing_shared8_20260805_10932d4/frozen/goku_legacy_shared8_exposure.json",
+    "shared8_exposure_audit_sha256": "953933f1161b6d62826d388ba5ed42e42792fbf5f2bdeea199c1eb13cd251b4a",
+    "shared8_forbidden_iids": [
+      "1852ada01d7c43a4",
+      "288545b9c031491a",
+      "5ae88e1170c544b8",
+      "81473c034c1b4839",
+      "2766a3662fbf43d1",
+      "219c4c5f56e74b86",
+      "2206cde2643e470a",
+      "7a2f54be92024a19"
+    ]
+  },
+  "model": {
+    "name": "Bernini-R-1.3B-Diffusers renderer-only",
+    "checkpoint_hf_revision": "ff4c5d4d2d31365c2ffeb30e9753065ee18f58ce",
+    "checkpoint_tree_sha256": "6be0d0db0dd483daf1a843efa2b5aafc20090ad11dc0fc6ee8859bdf150635ca",
+    "bernini_commit": "2d2b4591ac053ec25c6371b01a5a6746679e5793",
+    "veomni_commit": "f90b3dc6fbb0ce693745223cc7a94064123dbf4d",
+    "weights_frozen_during_rollout": true
+  },
+  "rendering_contract": {
+    "native_arm": "rv2v",
+    "training_task_name": "vr2v",
+    "guidance_mode": "rv2v",
+    "frame_count": 81,
+    "latent_frame_count": 21,
+    "fps": 25,
+    "num_inference_steps": 40,
+    "flow_shift": 5.0,
+    "target_initialization": "official_gen_wanx22_fresh_gaussian",
+    "full_source_video_count": 1,
+    "source_reference_frame_indices": [0, 27, 53, 80],
+    "source_reference_encode": "four_independent_single_rgb_frame_vae_encodes",
+    "accepted_external_conditions": [
+      "source_video",
+      "source_derived_reference_frames",
+      "action_prompt"
+    ],
+    "forbidden_conditions": {
+      "paired_target_video": false,
+      "paired_target_latent": false,
+      "proposal_video": false,
+      "proposal_latent": false,
+      "motion_donor": false,
+      "external_mask": false,
+      "external_optical_flow": false,
+      "external_pose": false,
+      "external_track": false,
+      "external_trajectory": false,
+      "custom_target_noise": false,
+      "first_frame_only_anchor": false
+    }
+  },
+  "candidate_grid": {
+    "cross_product": [
+      "sources",
+      "prompt_branches",
+      "seeds",
+      "guidance_schedules"
+    ],
+    "seeds": [2026080811, 2026080812, 2026080813, 2026080814],
+    "guidance_schedules": [
+      {
+        "schedule_id": "native-default-fixed-v1",
+        "omega_vid": 1.25,
+        "omega_img": 4.5,
+        "omega_txt": 4.0,
+        "omega_scale": 0.8,
+        "eta": 0.5,
+        "norm_threshold": [50.0, 50.0],
+        "momentum": 0.0,
+        "time_varying_text_guidance": false
+      }
+    ],
+    "prompt_branch_order": [
+      "action",
+      "noop",
+      "incomplete",
+      "reverse",
+      "shuffle",
+      "wrong_actor",
+      "wrong_object",
+      "camera_only",
+      "appearance_only",
+      "generic_wrong_motion"
+    ],
+    "source_count": 2,
+    "branches_per_source": 10,
+    "seed_count": 4,
+    "guidance_schedule_count": 1,
+    "expected_rollout_count": 80,
+    "postseal_seed_topup_allowed": false,
+    "postseal_guidance_change_allowed": false,
+    "failed_cell_replacement_allowed": false
+  },
+  "sources": [
+    {
+      "iid": "0159124a76ff4e09",
+      "split": "pair_v5_rollout_train_discovery_v1",
+      "project_membership": "bernini_full644_train_membership",
+      "shared8_overlap": false,
+      "selection_role": "multi_actor_wrong_actor_probe",
+      "full644_row_digest": "ac863a98fb1bc239e26028e6e1b0781c060122abd55a0e56ddff3f1935413d50",
+      "full644_selection_gates": {
+        "single_dynamic_actor": false,
+        "source_camera_locked_off": true,
+        "source_census_high_confidence": true,
+        "target_camera_locked_off": true,
+        "target_camera_preserve_static": true,
+        "target_plan_high_confidence": true
+      },
+      "source_video": {
+        "path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/0159124a76ff4e09/source.mp4",
+        "full644_mirror_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/0159124a76ff4e09/samples/0159124a76ff4e09/source_video.mp4",
+        "sha256": "0640862f5d36292d8eb5f3e5d2e242bd5cf6ab5ee732f5134aacb1852447dbc7",
+        "width": 736,
+        "height": 704,
+        "frame_count": 81,
+        "fps_num": 25,
+        "fps_den": 1
+      },
+      "source_annotation": {
+        "path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/jsons/combine_json/0159124a76ff4e09_all.json",
+        "sha256": "2b4e8a872b4f4047bd59764fe175909059b9a99fc5fb138e635a2edbb357d9e3",
+        "source_caption_field": "source_caption"
+      },
+      "qwen_source_audit": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/passed/0159124a76ff4e09.jsonl",
+        "sha256": "475466dd5d1cd57a136db932a5b1844590f0dfb7cb11d5171fe081fa1d06ce3e"
+      },
+      "full644_vae_membership": {
+        "bucket_hw": [480, 496],
+        "posterior_parameters_shape": [1, 32, 21, 60, 62],
+        "parquet_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/vae_full_81f_4d41e4c/shards/0159124a76ff4e09.parquet",
+        "parquet_sha256": "d242e9652ad0147858cf48bf3f90fb687c3b7acf6113fd6d5af878252db7d2ca",
+        "receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/vae_full_81f_4d41e4c/receipts/0159124a76ff4e09.json",
+        "receipt_sha256": "22c07dc23f0770db4993a8242337114c233717652f6716ca067d8e940bdf672e"
+      },
+      "source_caption": "A static camera captures a top-down view of two French bulldogs on a bright green lawn under even, bright lighting. On the left, a black dog with its tongue out rests a paw on a red, hexagonal-patterned ball, while on the right, a grey dog looks up eagerly with its mouth open. The scene has a playful and happy atmosphere as the dogs breathe gently. The camera remains completely still throughout.",
+      "action_program": {
+        "actor": "the black French bulldog on the left",
+        "patient": "the red hexagonal-patterned ball",
+        "distractor_actor": "the grey French bulldog on the right",
+        "distractor_patient": "a mouthful of lawn grass beside the red ball",
+        "ordered_milestones": [
+          "the black dog lowers its muzzle to the red ball",
+          "the black dog grips the red ball in its mouth",
+          "the red ball leaves the lawn",
+          "the black dog raises its head while retaining the red ball"
+        ],
+        "terminal_state": "the black dog holds the red ball gently through the end while the grey dog remains separate"
+      },
+      "prompts": {
+        "action": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with its tongue out and one paw on a red hexagonal-patterned ball; the grey dog on the right begins separate, looking upward with its mouth open. The black dog lowers its muzzle to the same red ball, grips it in its mouth, lifts it clear of the lawn, raises its head, and holds the ball gently through the end. The grey dog remains on the right, separate from the ball, breathing gently. Preserve both dogs, the lawn, the lighting, and the locked camera.",
+          "sha256": "322cbf488fe0fc5d7d4a0b351b5ddba3d61bcf82c850fb77e05a380cab77930d"
+        },
+        "noop": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left keeps its tongue out and its paw resting on the red hexagonal-patterned ball; the grey dog on the right keeps looking upward with its mouth open. Both dogs only breathe gently. Neither dog grips or lifts the ball, the ball stays on the lawn, and the camera remains completely still through the end.",
+          "sha256": "b5b4dfeaa993fa8517e6b06c2bbac7d9374557ec70694d61046ad23a47a24d62"
+        },
+        "incomplete": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left lowers its muzzle to the red hexagonal-patterned ball and briefly touches it with its mouth, but never grips it and never lifts it from the lawn; it ends with its head beside the grounded ball. The grey dog on the right stays separate and still. Preserve both dogs and the locked camera.",
+          "sha256": "de88414ca81082d14c1c043f263fe153b6142e8805e7e0204f887867b183be26"
+        },
+        "reverse": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left begins with the red hexagonal-patterned ball held in its mouth and its head raised, then lowers its head, places and releases the ball onto the lawn, raises its empty head, and remains empty-mouthed through the end. The grey dog on the right stays separate and still. Preserve both dogs and the locked camera.",
+          "sha256": "fd501a1b49323a00e4007e7fce9b8e88950b715685c81823a2decff4c2dad51c"
+        },
+        "shuffle": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left first raises its empty head, then lowers its muzzle to grip the red hexagonal-patterned ball, lifts it briefly, lowers and releases it onto the lawn, and finally raises its head empty. The grey dog on the right stays separate and still. Preserve both dogs and the locked camera.",
+          "sha256": "3e6bbdfafc976dc9f377f6fcf5da22c5829c387e47d68a3595098a414a2c1ec9"
+        },
+        "wrong_actor": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The grey dog on the right, not the black dog on the left, lowers its muzzle to the red hexagonal-patterned ball, grips it, lifts it clear of the lawn, raises its head, and holds it through the end. The black dog remains on the left with an empty mouth. Preserve both dogs and the locked camera.",
+          "sha256": "2f0ed6035aaa0e61fd700e37ef074ca701f620d1963d91b7e284c9aa24992eed"
+        },
+        "wrong_object": {
+          "text": "A locked top-down camera shows two French bulldogs on a bright green lawn under even daylight. The black dog on the left ignores the red hexagonal-patterned ball, grips a mouthful of lawn grass beside it, lifts the grass, raises its head, and holds the grass through the end while the red ball remains on the lawn. The grey dog on the right stays separate and still. Preserve both dogs and the locked camera.",
+          "sha256": "9f1b5017dab3b01974de302dde9ffd97dc4828e9da0f951beae6804e7e148eee"
+        },
+        "camera_only": {
+          "text": "A top-down view shows two French bulldogs and a red hexagonal-patterned ball on a bright green lawn under even daylight. Only the camera performs a smooth lateral orbit, tilt, and perspective change. The black dog, the grey dog, and the red ball remain completely fixed and separate; neither dog grips or lifts the ball.",
+          "sha256": "d886e5d174ad5221096be8a777cb31f972ae855f293c973795b59de0781c7eee"
+        },
+        "appearance_only": {
+          "text": "A locked top-down camera shows two French bulldogs and a red hexagonal-patterned ball on a bright green lawn. Only the black dog's coat changes gradually from black to golden brown while its pose, open mouth, and paw-on-ball position remain fixed. The grey dog, red ball, lawn, geometry, and camera remain unchanged; neither dog grips or lifts the ball.",
+          "sha256": "8a8e12e43eaebbc408931fdc8a4cdae52b0b3f18317625abd0cbd9e6424eab75"
+        },
+        "generic_wrong_motion": {
+          "text": "A locked top-down camera shows two French bulldogs and a red hexagonal-patterned ball on a bright green lawn under even daylight. The black dog stands, turns one full circle to the left, sits, and lies down again without approaching, gripping, or lifting the red ball. The grey dog and the ball remain fixed and separate. Preserve both dogs and the locked camera.",
+          "sha256": "b234b937fff546cf02ee0356114b4c457a6025bdb86335d85b04a3f7f619e7e5"
+        }
+      }
+    },
+    {
+      "iid": "a9e969c99361494e",
+      "split": "pair_v5_rollout_train_discovery_v1",
+      "project_membership": "bernini_full644_train_membership",
+      "shared8_overlap": false,
+      "selection_role": "single_actor_wrong_object_probe",
+      "full644_row_digest": "0745369e5063ad5bb4a00d40c40d783c70155d3194bcfc05e2d027e6923d1dcc",
+      "full644_selection_gates": {
+        "single_dynamic_actor": true,
+        "source_camera_locked_off": true,
+        "source_census_high_confidence": true,
+        "target_camera_locked_off": true,
+        "target_camera_preserve_static": true,
+        "target_plan_high_confidence": true
+      },
+      "source_video": {
+        "path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/a9e969c99361494e/source.mp4",
+        "full644_mirror_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/a9e969c99361494e/samples/a9e969c99361494e/source_video.mp4",
+        "sha256": "20295249a487c11fa4022240844fc48d309bd820f516a7300ab58d56514b9801",
+        "width": 736,
+        "height": 704,
+        "frame_count": 81,
+        "fps_num": 25,
+        "fps_den": 1
+      },
+      "source_annotation": {
+        "path": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/jsons/combine_json/a9e969c99361494e_all.json",
+        "sha256": "1d2e856c10a496e9b7880e9b05f84f522c8ec50036714e176d87f6dc7a38406c",
+        "source_caption_field": "source_caption"
+      },
+      "qwen_source_audit": {
+        "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/qwen_next1000_v17/passed/a9e969c99361494e.jsonl",
+        "sha256": "b3035a4655519d59238bec5c95fa8fef2623098a6925d5bb04a83fcc74ea8b28"
+      },
+      "full644_vae_membership": {
+        "bucket_hw": [480, 496],
+        "posterior_parameters_shape": [1, 32, 21, 60, 62],
+        "parquet_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/vae_full_81f_4d41e4c/shards/a9e969c99361494e.parquet",
+        "parquet_sha256": "840c9103eacf4d68687f8b6df4a8e04d0747099368b691cf367367c76d5ee411",
+        "receipt_path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/bernini_r13_action_81f_v1/data/vae_full_81f_4d41e4c/receipts/a9e969c99361494e.json",
+        "receipt_sha256": "8e22c378237f7201a44fc861ca6df32d19ec640bf11a763706de449ceba9adfc"
+      },
+      "source_caption": "A static camera captures a high-angle view of a young boy crouching on a grey tiled floor while assembling a large, colorful floor puzzle. The boy, wearing a black t-shirt and light shorts, reaches for a light blue puzzle piece that is separated from the main puzzle. The partially completed puzzle features a cartoon sun and the upper body of a man in a black coat. The camera remains completely still throughout.",
+      "action_program": {
+        "actor": "the young boy in a black t-shirt and light shorts",
+        "patient": "the separated light blue puzzle piece",
+        "distractor_actor": "the cartoon man in a black coat depicted on the puzzle",
+        "distractor_patient": "the cartoon sun section of the puzzle",
+        "ordered_milestones": [
+          "the boy reaches the separated light blue piece",
+          "the boy grips and lifts that same piece",
+          "the boy rotates and aligns that same piece",
+          "the boy connects that same piece to the main puzzle"
+        ],
+        "terminal_state": "the light blue piece remains connected and completes the lower body of the cartoon man"
+      },
+      "prompts": {
+        "action": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. A light blue puzzle piece begins separated from the main puzzle, which shows a cartoon sun and the upper body of a man in a black coat. The boy reaches for that same light blue piece, grips and lifts it, rotates it into alignment, connects it to the main puzzle to complete the cartoon man's lower body, and leaves it connected through the end. Preserve the boy, floor, puzzle artwork, lighting, and locked camera.",
+          "sha256": "c0f547f89b99d6b2b1508d0a723863f1eada4aa6f705ec76ce7a427ccab4d917"
+        },
+        "noop": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. He keeps reaching toward the separated light blue puzzle piece with only subtle natural movement but never touches, grips, lifts, rotates, or connects it. The light blue piece remains separated, the puzzle artwork remains fixed, and the camera stays completely still.",
+          "sha256": "d7c58ff5361bd1be76419fc9a3e5c11f3539e20b65e09f2f45b509199256ca85"
+        },
+        "incomplete": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. He reaches for the separated light blue piece, grips it, lifts it, and rotates it near the correct opening, but never connects it to the main puzzle; he ends still holding the unconnected piece. Preserve the boy, artwork, floor, and locked camera.",
+          "sha256": "1a84e858d81d254997367a6ddd543c656c5092ede116dd3eb7bbc0fb9c8d2b85"
+        },
+        "reverse": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching on a grey tiled floor beside a large colorful puzzle. He first connects the separated light blue piece to the cartoon man's lower body, then reverses the operation: he grips the same piece, removes it from the main puzzle, rotates it away, and places it back on the floor separated from the puzzle through the end. Preserve the boy, artwork, floor, and locked camera.",
+          "sha256": "fc679a730fd9c80a532a8abe7f945aa07a9f17d29960ae63b6f03c972deec447"
+        },
+        "shuffle": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching beside a large colorful puzzle on a grey tiled floor. He first rotates the separated light blue piece on the floor, connects it to the main puzzle, then grips and removes it, lifts it away, and only afterward reaches toward the empty opening; he ends holding the piece disconnected. Preserve the boy, artwork, floor, and locked camera.",
+          "sha256": "385fb5e85ba66c72a14650e478e130bffcefb70ba5b9f567c8e336f453e56bbb"
+        },
+        "wrong_actor": {
+          "text": "A locked high-angle camera shows a young boy crouching beside a large colorful floor puzzle. The cartoon man in a black coat depicted on the puzzle, not the boy, animates an arm out of the puzzle, grips the separated light blue piece, rotates it, and connects it to its own lower body. The boy remains crouched and motionless. Preserve the floor, puzzle, and locked camera.",
+          "sha256": "7e889306093c86d288236f8e0c25d490e5e980c9f20b85833640fc58725e83b7"
+        },
+        "wrong_object": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts crouching beside a large colorful floor puzzle. The boy ignores the separated light blue piece and instead grips, moves, and reconnects the cartoon sun section at the cartoon man's lower body. The light blue piece remains separated on the grey tile through the end. Preserve the boy, floor, remaining puzzle artwork, and locked camera.",
+          "sha256": "7fed343eda265b985fa711698f63d9041a57e79c962bb423e467aede8b5638de"
+        },
+        "camera_only": {
+          "text": "A high-angle view shows a young boy crouching beside a large colorful puzzle on a grey tiled floor. Only the camera performs a smooth orbit, tilt, and perspective change. The boy, the separated light blue piece, the cartoon sun, and the cartoon man in a black coat remain completely fixed; no puzzle piece is gripped, lifted, rotated, or connected.",
+          "sha256": "6378441649eeb06f381d9e8004605a0df319736a81cd413cda42f4f2530d20fa"
+        },
+        "appearance_only": {
+          "text": "A locked high-angle camera shows a young boy crouching beside a large colorful puzzle on a grey tiled floor. Only the boy's black t-shirt gradually changes to bright red while his pose and reaching hand remain fixed. The separated light blue piece, puzzle geometry, cartoon artwork, floor, and camera remain unchanged; no piece is gripped, lifted, rotated, or connected.",
+          "sha256": "5dc79c64682d6b30c14ff54a37aed534d8926fed25b7b18a84492ba0489026b8"
+        },
+        "generic_wrong_motion": {
+          "text": "A locked high-angle camera shows a young boy in a black t-shirt and light shorts beside a large colorful puzzle on a grey tiled floor. The boy stands up, turns left, waves twice toward the camera, and crouches again without touching any puzzle piece. The separated light blue piece and the main puzzle remain fixed and disconnected. Preserve the boy, floor, artwork, and locked camera.",
+          "sha256": "9906df0ef94d822843ed45ed97fb4e29c6c4abe227feac19167323bae1f6e543"
+        }
+      }
+    }
+  ]
+}

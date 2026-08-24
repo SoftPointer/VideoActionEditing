@@ -1,0 +1,116 @@
+{
+  "authority": {
+    "action_authority": false,
+    "checkpoint_authority": false,
+    "cross_clip_identity_authority": false,
+    "data_governance_authority": false,
+    "data_license_authority": false,
+    "identity_authority": false,
+    "production_authority": false,
+    "publication_authority": false,
+    "quality_authority": false,
+    "scientific_success_claimed": false,
+    "semantic_action_editing_success_claimed": false,
+    "training_authority": false
+  },
+  "claim_scope": "fixed-two-update-trajectory-diagnostic-zero-authority",
+  "families": [
+    {
+      "confirmation_iid": "841b5e0080a1441d",
+      "dp_arm": 0,
+      "family": "dog",
+      "fit_iid": "7b88a1ca1f804f41"
+    },
+    {
+      "confirmation_iid": "a66e6818e4144928",
+      "dp_arm": 1,
+      "family": "human",
+      "fit_iid": "a35b590961d24694"
+    }
+  ],
+  "measurement_contract": {
+    "action_geometry": [
+      "correct_drop_cosine",
+      "correct_drop_norm_ratio"
+    ],
+    "atlas_controls": [
+      "correct_confirmation_atlas",
+      "wrong_same_family_fit_atlas",
+      "drop_identity_rebinder"
+    ],
+    "field_roles": [
+      "source_noop_target_velocity",
+      "correct_atlas_noop_velocity",
+      "wrong_atlas_noop_velocity",
+      "dropped_atlas_noop_velocity",
+      "correct_atlas_action_velocity",
+      "dropped_atlas_action_velocity"
+    ],
+    "losses": [
+      "L_correct",
+      "L_wrong",
+      "L_drop"
+    ],
+    "owner_atlas_route_digests": true,
+    "relative_gains": [
+      "correct_vs_wrong",
+      "correct_vs_drop"
+    ],
+    "same_noise_within_each_stage_index_cell": true,
+    "sp4_exact_consensus": true
+  },
+  "measurement_indices": [
+    29,
+    38
+  ],
+  "no_checkpoint": true,
+  "optimizer_arm": {
+    "kind": "AdamW",
+    "learning_rate_float64_hex": "0x1.0624dd2f1a9fcp-10",
+    "lr_or_step_sweep": false,
+    "post_hoc_selection": false,
+    "single_preregistered_arm": true,
+    "update_count": 2
+  },
+  "original_confirmation": {
+    "minimum_action_delta_correct_drop_norm_ratio_float64_hex": "0x1.0000000000000p-1",
+    "minimum_action_delta_cosine_float64_hex": "0x0.0p+0",
+    "minimum_noop_fm_relative_gain_float64_hex": "0x1.a36e2eb1c432dp-14",
+    "thresholds_unchanged": true,
+    "terminal_no_go_rolls_back": true
+  },
+  "runner_sha256": "fc2c61cc7d80c234cefa681a900457f31584ea9115bb1531fc63e90f8fc3b74b",
+  "runtime": {
+    "a_lite_source_job_id": "132549",
+    "bernini_commit": "2d2b4591ac053ec25c6371b01a5a6746679e5793",
+    "consumer_sha256": "13ecb082ab3cff6f809b056c35715123be302a5c8d82a6760a7367861920ee75",
+    "native_v2_sha256": "bf6a1d438183de5aa0460e729a39382e4597b3e43a4b9f1b3cdff5457439f20f",
+    "short_trainer_sha256": "73e39048bb8836fef33516eb1aae4cbc3f9fa4ecefcfb5d2695925bcb150f7bb",
+    "veomni_commit": "f90b3dc6fbb0ce693745223cc7a94064123dbf4d"
+  },
+  "schema_version": "bernini-graft-phase-a-short-trajectory-world8-plan-v1",
+  "terminal_coordination": {
+    "all_pass_protocol": "all_pass_original_finish_all_ranks",
+    "any_no_go_protocol": "global_no_go_all_rank_rollback_no_finish",
+    "gate_vectors_gathered_before_original_admissions": true,
+    "local_gate_pass_global_no_go_rolls_back": true,
+    "mixed_family_outcomes_allowed_without_collective_divergence": true,
+    "rollback_terminal_equals_initial_all_eight_ranks": true,
+    "world_size": 8
+  },
+  "topology": {
+    "allocation": "single-node-8xMI210",
+    "dp_size": 2,
+    "sp_size": 4,
+    "world_size": 8
+  },
+  "trajectory_stages": [
+    "initial",
+    "after_update_29",
+    "after_update_38"
+  ],
+  "update_indices": [
+    29,
+    38
+  ]
+}

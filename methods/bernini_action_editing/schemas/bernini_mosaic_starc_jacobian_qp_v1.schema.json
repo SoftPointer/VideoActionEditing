@@ -1,0 +1,776 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bernini_mosaic_starc_jacobian_qp_v1.schema.json",
+  "title": "Bernini MOSAIC-STARC stateless Jacobian-QP receipts",
+  "description": "Closed core receipt schema. A PASS is geometry evidence and never scientific or checkpoint-retention authority.",
+  "oneOf": [
+    { "$ref": "#/$defs/candidate" },
+    { "$ref": "#/$defs/realized" }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "safeId": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_][A-Za-z0-9_.:-]{0,255}$"
+    },
+    "nonnegativeNumber": {
+      "type": "number",
+      "minimum": 0
+    },
+    "positiveNumber": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "nullableNonnegativeNumber": {
+      "oneOf": [
+        { "$ref": "#/$defs/nonnegativeNumber" },
+        { "type": "null" }
+      ]
+    },
+    "uniqueStrings": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "parameterLayoutItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "shape", "dtype"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^blocks\\.(?:[0-9]|1[0-5])\\.attn2\\.(?:to_q|to_out\\.0)\\.action_lora_b\\.weight$"
+        },
+        "shape": {
+          "type": "array",
+          "prefixItems": [
+            { "const": 1536 },
+            { "const": 8 }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "dtype": { "const": "torch.float32" }
+      }
+    },
+    "optimizationProblem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sense",
+        "objective",
+        "quadratic_penalty",
+        "equivalent_projection_target",
+        "action_constraints",
+        "preservation_constraints",
+        "trust_constraints"
+      ],
+      "properties": {
+        "sense": { "const": "maximize" },
+        "objective": { "const": "mean_action_dot_d_minus_lambda_l2_squared" },
+        "quadratic_penalty": { "$ref": "#/$defs/positiveNumber" },
+        "equivalent_projection_target": { "const": "mean_action_divided_by_2lambda" },
+        "action_constraints": { "const": "each_raw_row_dot_d_greater_or_equal_declared_positive_lower" },
+        "preservation_constraints": { "const": "each_raw_row_absolute_dot_d_less_or_equal_declared_slab" },
+        "trust_constraints": { "const": "global_delta_B_l2_and_each_effective_weight_(alpha/rank)_delta_B_A_frobenius_ellipsoid" }
+      }
+    },
+    "loraGauge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "alpha",
+        "scale",
+        "b_shape",
+        "a_shape",
+        "b_tensor_count",
+        "b_parameter_count",
+        "b_exact_zero_at_evidence_state",
+        "a_frozen",
+        "a_parameter_state_sha256",
+        "fixed_gauge_receipt_digest",
+        "effective_weight_displacement"
+      ],
+      "properties": {
+        "rank": { "const": 8 },
+        "alpha": { "const": 8.0 },
+        "scale": { "const": 1.0 },
+        "b_shape": {
+          "type": "array",
+          "prefixItems": [{ "const": 1536 }, { "const": 8 }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "a_shape": {
+          "type": "array",
+          "prefixItems": [{ "const": 8 }, { "const": 1536 }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "b_tensor_count": { "const": 32 },
+        "b_parameter_count": { "const": 393216 },
+        "b_exact_zero_at_evidence_state": { "const": true },
+        "a_frozen": { "const": true },
+        "a_parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "fixed_gauge_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "effective_weight_displacement": { "const": "(alpha/rank)_times_delta_B_times_frozen_A" }
+      }
+    },
+    "actionAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "actor_family",
+        "row_sha256",
+        "row_norm",
+        "minimum_dot",
+        "actual_dot",
+        "slack",
+        "survival_over_required_lower",
+        "active",
+        "passed",
+        "gradient_computation_receipt_digest"
+      ],
+      "properties": {
+        "row_id": { "$ref": "#/$defs/safeId" },
+        "actor_family": { "enum": ["dog", "human"] },
+        "row_sha256": { "$ref": "#/$defs/sha256" },
+        "row_norm": { "$ref": "#/$defs/positiveNumber" },
+        "minimum_dot": { "$ref": "#/$defs/positiveNumber" },
+        "actual_dot": { "type": "number" },
+        "slack": { "type": "number" },
+        "survival_over_required_lower": { "type": "number" },
+        "active": { "type": "boolean" },
+        "passed": { "type": "boolean" },
+        "gradient_computation_receipt_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "preservationAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "family",
+        "row_sha256",
+        "row_norm",
+        "maximum_absolute_dot",
+        "actual_dot",
+        "absolute_dot",
+        "slack",
+        "active",
+        "passed",
+        "gradient_computation_receipt_digest"
+      ],
+      "properties": {
+        "row_id": { "$ref": "#/$defs/safeId" },
+        "family": { "enum": ["identity", "camera", "background", "sharpness", "flicker", "noop"] },
+        "row_sha256": { "$ref": "#/$defs/sha256" },
+        "row_norm": { "$ref": "#/$defs/positiveNumber" },
+        "maximum_absolute_dot": { "$ref": "#/$defs/nonnegativeNumber" },
+        "actual_dot": { "type": "number" },
+        "absolute_dot": { "$ref": "#/$defs/nonnegativeNumber" },
+        "slack": { "type": "number" },
+        "active": { "type": "boolean" },
+        "passed": { "type": "boolean" },
+        "gradient_computation_receipt_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "layerAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parameter_name",
+        "fixed_lora_a_parameter_name",
+        "fixed_lora_a_sha256",
+        "fixed_gauge_receipt_digest",
+        "lora_rank",
+        "lora_alpha",
+        "lora_scale",
+        "maximum_relative_delta",
+        "reference_effective_weight_norm",
+        "reference_weight_receipt_digest",
+        "maximum_absolute_delta_norm",
+        "actual_lora_b_delta_norm",
+        "actual_effective_weight_delta_norm",
+        "slack",
+        "active",
+        "passed"
+      ],
+      "properties": {
+        "parameter_name": {
+          "type": "string",
+          "pattern": "^blocks\\.(?:[0-9]|1[0-5])\\.attn2\\.(?:to_q|to_out\\.0)\\.action_lora_b\\.weight$"
+        },
+        "fixed_lora_a_parameter_name": {
+          "type": "string",
+          "pattern": "^blocks\\.(?:[0-9]|1[0-5])\\.attn2\\.(?:to_q|to_out\\.0)\\.action_lora_a\\.weight$"
+        },
+        "fixed_lora_a_sha256": { "$ref": "#/$defs/sha256" },
+        "fixed_gauge_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "lora_rank": { "const": 8 },
+        "lora_alpha": { "const": 8.0 },
+        "lora_scale": { "const": 1.0 },
+        "maximum_relative_delta": { "$ref": "#/$defs/positiveNumber" },
+        "reference_effective_weight_norm": { "$ref": "#/$defs/positiveNumber" },
+        "reference_weight_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "maximum_absolute_delta_norm": { "$ref": "#/$defs/positiveNumber" },
+        "actual_lora_b_delta_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "actual_effective_weight_delta_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "slack": { "type": "number" },
+        "active": { "type": "boolean" },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "globalAudit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maximum_delta_norm", "actual_delta_norm", "slack", "active", "passed"],
+      "properties": {
+        "maximum_delta_norm": { "$ref": "#/$defs/positiveNumber" },
+        "actual_delta_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "slack": { "type": "number" },
+        "active": { "type": "boolean" },
+        "passed": { "type": "boolean" }
+      }
+    },
+    "unionActionRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "actor_family",
+        "minimum_dot",
+        "layout_digest",
+        "checkpoint_content_receipt_digest",
+        "parameter_state_sha256",
+        "gradient_computation_receipt_digest",
+        "row_sha256",
+        "row_norm"
+      ],
+      "properties": {
+        "row_id": { "$ref": "#/$defs/safeId" },
+        "actor_family": { "enum": ["dog", "human"] },
+        "minimum_dot": { "$ref": "#/$defs/positiveNumber" },
+        "layout_digest": { "$ref": "#/$defs/sha256" },
+        "checkpoint_content_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "gradient_computation_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "row_sha256": { "$ref": "#/$defs/sha256" },
+        "row_norm": { "$ref": "#/$defs/positiveNumber" }
+      }
+    },
+    "unionPreservationRow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "row_id",
+        "family",
+        "maximum_absolute_dot",
+        "layout_digest",
+        "checkpoint_content_receipt_digest",
+        "parameter_state_sha256",
+        "gradient_computation_receipt_digest",
+        "row_sha256",
+        "row_norm"
+      ],
+      "properties": {
+        "row_id": { "$ref": "#/$defs/safeId" },
+        "family": { "enum": ["identity", "camera", "background", "sharpness", "flicker", "noop"] },
+        "maximum_absolute_dot": { "$ref": "#/$defs/nonnegativeNumber" },
+        "layout_digest": { "$ref": "#/$defs/sha256" },
+        "checkpoint_content_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "gradient_computation_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "row_sha256": { "$ref": "#/$defs/sha256" },
+        "row_norm": { "$ref": "#/$defs/positiveNumber" }
+      }
+    },
+    "unionRank": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "global_rank",
+        "rank_evidence_receipt_digest",
+        "action_row_set_digest",
+        "preservation_row_set_digest"
+      ],
+      "properties": {
+        "global_rank": { "type": "integer", "minimum": 0, "maximum": 7 },
+        "rank_evidence_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "action_row_set_digest": { "$ref": "#/$defs/sha256" },
+        "preservation_row_set_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "unionArm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "arm_id",
+        "global_ranks",
+        "sp_size",
+        "sp_consensus",
+        "action_row_count",
+        "rank_evidence",
+        "canonical_action_rows",
+        "canonical_preservation_rows"
+      ],
+      "properties": {
+        "arm_id": { "enum": ["dog", "human"] },
+        "global_ranks": {
+          "type": "array",
+          "items": { "type": "integer", "minimum": 0, "maximum": 7 },
+          "minItems": 4,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "sp_size": { "const": 4 },
+        "sp_consensus": { "const": true },
+        "action_row_count": { "type": "integer", "minimum": 1 },
+        "rank_evidence": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/unionRank" },
+          "minItems": 4,
+          "maxItems": 4
+        },
+        "canonical_action_rows": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/unionActionRow" },
+          "minItems": 1
+        },
+        "canonical_preservation_rows": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/unionPreservationRow" },
+          "minItems": 6
+        }
+      }
+    },
+    "evidenceUnion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "method_name",
+        "topology",
+        "world_size",
+        "dp_size",
+        "sp_size",
+        "dp_arm_order",
+        "topology_receipt_digest",
+        "parameter_layout_digest",
+        "parameter_state_sha256",
+        "checkpoint_content_receipt_digest",
+        "union_mode",
+        "local_projection_before_dp_union",
+        "action_rows_averaged_before_constraints",
+        "arms",
+        "receipt_digest"
+      ],
+      "properties": {
+        "schema_version": { "const": "bernini-mosaic-starc-dp2-sp4-jacobian-union-v1" },
+        "method_name": { "const": "bernini-mosaic-starc-stateless-jacobian-qp" },
+        "topology": { "const": "WORLD8_DP2_SP4" },
+        "world_size": { "const": 8 },
+        "dp_size": { "const": 2 },
+        "sp_size": { "const": 4 },
+        "dp_arm_order": {
+          "type": "array",
+          "prefixItems": [{ "const": "dog" }, { "const": "human" }],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "topology_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_layout_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "checkpoint_content_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "union_mode": { "const": "raw_rows_after_per_arm_sp4_consensus_no_local_projection" },
+        "local_projection_before_dp_union": { "const": false },
+        "action_rows_averaged_before_constraints": { "const": false },
+        "arms": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/unionArm" },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "receipt_digest": { "$ref": "#/$defs/sha256" }
+      }
+    },
+    "dykstraCertificate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "guarded_primal_max_relative_violation",
+        "dykstra_dual_balance_relative_residual",
+        "dykstra_correction_state_relative_residual",
+        "guarded_complementarity_max_relative_residual",
+        "guarded_dual_cone_max_relative_residual",
+        "guarded_active_constraints",
+        "dual_correction_sum_sha256"
+      ],
+      "properties": {
+        "guarded_primal_max_relative_violation": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "dykstra_dual_balance_relative_residual": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "dykstra_correction_state_relative_residual": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "guarded_complementarity_max_relative_residual": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "guarded_dual_cone_max_relative_residual": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "guarded_active_constraints": { "$ref": "#/$defs/uniqueStrings" },
+        "dual_correction_sum_sha256": {
+          "oneOf": [
+            { "$ref": "#/$defs/sha256" },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quadratic_penalty",
+        "minimum_row_norm",
+        "maximum_linear_condition_number",
+        "spectrum_relative_tolerance",
+        "dykstra_max_cycles",
+        "dykstra_cycle_tolerance",
+        "dykstra_primal_relative_tolerance",
+        "dykstra_dual_relative_tolerance",
+        "dykstra_complementarity_relative_tolerance",
+        "fp32_interior_guard_fraction",
+        "active_constraint_tolerance",
+        "realized_minimum_candidate_cosine",
+        "realized_maximum_candidate_relative_error"
+      ],
+      "properties": {
+        "quadratic_penalty": { "$ref": "#/$defs/positiveNumber" },
+        "minimum_row_norm": { "$ref": "#/$defs/positiveNumber" },
+        "maximum_linear_condition_number": { "$ref": "#/$defs/positiveNumber" },
+        "spectrum_relative_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "dykstra_max_cycles": { "type": "integer", "minimum": 20000, "maximum": 100000 },
+        "dykstra_cycle_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "dykstra_primal_relative_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "dykstra_dual_relative_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "dykstra_complementarity_relative_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "fp32_interior_guard_fraction": { "$ref": "#/$defs/positiveNumber" },
+        "active_constraint_tolerance": { "$ref": "#/$defs/positiveNumber" },
+        "realized_minimum_candidate_cosine": { "$ref": "#/$defs/positiveNumber" },
+        "realized_maximum_candidate_relative_error": { "$ref": "#/$defs/positiveNumber" }
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "method_name",
+        "mathematical_candidate_authorized",
+        "failure_codes",
+        "algorithm",
+        "optimization_problem",
+        "parameter_layout",
+        "parameter_layout_digest",
+        "parameter_count",
+        "pre_step_parameter_state_sha256",
+        "lora_gauge",
+        "checkpoint_content_receipt_digest",
+        "dp2_sp4_evidence_union_receipt",
+        "dp2_sp4_evidence_union_receipt_digest",
+        "action_rows",
+        "preservation_rows",
+        "global_trust_radius",
+        "per_layer_trust_radii",
+        "linear_compact_gram_sha256",
+        "linear_compact_gram_eigenvalues",
+        "linear_effective_rank",
+        "linear_effective_condition_number",
+        "mean_action_row_sha256",
+        "mean_action_row_norm",
+        "objective_linear_term",
+        "objective_quadratic_term",
+        "objective_value",
+        "dykstra_cycles",
+        "dykstra_converged",
+        "dykstra_cycle_residual",
+        "active_constraints",
+        "dykstra_optimality_certificate",
+        "minimum_action_lower_bound_survival_ratio",
+        "actual_fp32_candidate_delta_sha256",
+        "actual_fp32_candidate_delta_norm",
+        "null_delta_sha256",
+        "infeasible_returns_byte_identical_fp32_null",
+        "constraint_audit_uses_original_unguarded_bounds",
+        "deterministic_solver",
+        "thresholds",
+        "application_contract",
+        "optimizer_step_allowed",
+        "adamw_momentum_weight_decay_gradscaler_or_preconditioner_allowed",
+        "local_direct_add_probe_authorized",
+        "runtime_apply_authorized",
+        "world8_apply_authorized",
+        "world8_two_phase_prepare_commit_required",
+        "external_scientific_gate_bundle_required",
+        "declared_input_receipt_contents_independently_authenticated_by_core",
+        "checkpoint_retention_authorized",
+        "fresh_exact81_endpoint_gate_required",
+        "training_executed",
+        "scientific_authority",
+        "receipt_digest"
+      ],
+      "properties": {
+        "schema_version": { "const": "bernini-mosaic-starc-stateless-jacobian-qp-candidate-v1" },
+        "method_name": { "const": "bernini-mosaic-starc-stateless-jacobian-qp" },
+        "mathematical_candidate_authorized": { "type": "boolean" },
+        "failure_codes": { "$ref": "#/$defs/uniqueStrings" },
+        "algorithm": { "const": "cpu-fp64-fixed-order-dykstra-projection-with-fp32-interior-guard-and-hard-reaudit" },
+        "optimization_problem": { "$ref": "#/$defs/optimizationProblem" },
+        "parameter_layout": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/parameterLayoutItem" },
+          "minItems": 32,
+          "maxItems": 32
+        },
+        "parameter_layout_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_count": { "const": 393216 },
+        "pre_step_parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "lora_gauge": { "$ref": "#/$defs/loraGauge" },
+        "checkpoint_content_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "dp2_sp4_evidence_union_receipt": { "$ref": "#/$defs/evidenceUnion" },
+        "dp2_sp4_evidence_union_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "action_rows": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/actionAudit" }
+        },
+        "preservation_rows": {
+          "type": "array",
+          "minItems": 12,
+          "items": { "$ref": "#/$defs/preservationAudit" }
+        },
+        "per_layer_trust_radii": {
+          "type": "array",
+          "minItems": 32,
+          "maxItems": 32,
+          "items": { "$ref": "#/$defs/layerAudit" }
+        },
+        "global_trust_radius": { "$ref": "#/$defs/globalAudit" },
+        "linear_compact_gram_sha256": { "$ref": "#/$defs/sha256" },
+        "linear_compact_gram_eigenvalues": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/nonnegativeNumber" }
+        },
+        "linear_effective_rank": { "type": "integer", "minimum": 0 },
+        "linear_effective_condition_number": {
+          "oneOf": [
+            { "type": "number", "minimum": 1 },
+            { "type": "null" }
+          ]
+        },
+        "mean_action_row_sha256": { "$ref": "#/$defs/sha256" },
+        "mean_action_row_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "objective_linear_term": { "type": "number" },
+        "objective_quadratic_term": { "$ref": "#/$defs/nonnegativeNumber" },
+        "objective_value": { "type": "number" },
+        "dykstra_cycles": { "type": "integer", "minimum": 0 },
+        "dykstra_converged": { "type": "boolean" },
+        "dykstra_cycle_residual": { "$ref": "#/$defs/nullableNonnegativeNumber" },
+        "active_constraints": { "$ref": "#/$defs/uniqueStrings" },
+        "dykstra_optimality_certificate": { "$ref": "#/$defs/dykstraCertificate" },
+        "minimum_action_lower_bound_survival_ratio": { "type": "number" },
+        "actual_fp32_candidate_delta_sha256": { "$ref": "#/$defs/sha256" },
+        "actual_fp32_candidate_delta_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "null_delta_sha256": { "$ref": "#/$defs/sha256" },
+        "infeasible_returns_byte_identical_fp32_null": { "const": true },
+        "constraint_audit_uses_original_unguarded_bounds": { "const": true },
+        "deterministic_solver": { "const": true },
+        "thresholds": { "$ref": "#/$defs/thresholds" },
+        "application_contract": { "const": "single_direct_parameter_add_only_then_realized_displacement_reaudit" },
+        "optimizer_step_allowed": { "const": false },
+        "adamw_momentum_weight_decay_gradscaler_or_preconditioner_allowed": { "const": false },
+        "local_direct_add_probe_authorized": { "type": "boolean" },
+        "runtime_apply_authorized": { "const": false },
+        "world8_apply_authorized": { "const": false },
+        "world8_two_phase_prepare_commit_required": { "const": true },
+        "external_scientific_gate_bundle_required": { "const": true },
+        "declared_input_receipt_contents_independently_authenticated_by_core": { "const": false },
+        "checkpoint_retention_authorized": { "const": false },
+        "fresh_exact81_endpoint_gate_required": { "const": true },
+        "training_executed": { "const": false },
+        "scientific_authority": { "const": false },
+        "receipt_digest": { "$ref": "#/$defs/sha256" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "linear_effective_rank": { "const": 0 } }, "required": ["linear_effective_rank"] },
+          "then": { "properties": { "linear_effective_condition_number": { "type": "null" } } },
+          "else": { "properties": { "linear_effective_condition_number": { "type": "number", "minimum": 1 } } }
+        },
+        {
+          "if": { "properties": { "dykstra_cycles": { "const": 0 } }, "required": ["dykstra_cycles"] },
+          "then": {
+            "properties": {
+              "dykstra_converged": { "const": false },
+              "dykstra_cycle_residual": { "type": "null" },
+              "dykstra_optimality_certificate": {
+                "allOf": [{ "$ref": "#/$defs/dykstraCertificate" }],
+                "properties": {
+                  "guarded_primal_max_relative_violation": { "type": "null" },
+                  "dykstra_dual_balance_relative_residual": { "type": "null" },
+                  "dykstra_correction_state_relative_residual": { "type": "null" },
+                  "guarded_complementarity_max_relative_residual": { "type": "null" },
+                  "guarded_dual_cone_max_relative_residual": { "type": "null" },
+                  "dual_correction_sum_sha256": { "type": "null" }
+                }
+              }
+            }
+          },
+          "else": { "properties": { "dykstra_cycle_residual": { "$ref": "#/$defs/nonnegativeNumber" } } }
+        },
+        {
+          "if": { "properties": { "mathematical_candidate_authorized": { "const": true } }, "required": ["mathematical_candidate_authorized"] },
+          "then": {
+            "properties": {
+              "failure_codes": { "maxItems": 0 },
+              "local_direct_add_probe_authorized": { "const": true },
+              "dykstra_converged": { "const": true },
+              "dykstra_cycles": { "minimum": 1 }
+            }
+          },
+          "else": {
+            "properties": {
+              "failure_codes": { "minItems": 1 },
+              "local_direct_add_probe_authorized": { "const": false }
+            }
+          }
+        }
+      ]
+    },
+    "realized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "method_name",
+        "candidate_receipt_digest",
+        "parameter_layout_digest",
+        "checkpoint_content_receipt_digest",
+        "pre_step_parameter_state_sha256",
+        "fixed_lora_a_state_before_sha256",
+        "fixed_lora_a_state_after_sha256",
+        "attempted_after_parameter_state_sha256",
+        "final_parameter_state_sha256",
+        "direct_parameter_add_attempted",
+        "direct_parameter_add_exception",
+        "actual_fp32_candidate_delta_sha256",
+        "realized_fp32_displacement_sha256",
+        "candidate_delta_norm",
+        "realized_displacement_norm",
+        "candidate_realized_difference_norm",
+        "candidate_realized_relative_error",
+        "candidate_realized_cosine",
+        "action_rows",
+        "preservation_rows",
+        "global_trust_radius",
+        "per_layer_trust_radii",
+        "failure_codes",
+        "realized_displacement_geometry_safe",
+        "rolled_back",
+        "rollback_byte_identical_to_pre_step",
+        "safe_local_probe_also_rolled_back_pending_world8_two_phase_commit",
+        "application_mechanism",
+        "optimizer_instantiated_or_called_by_this_module",
+        "adamw_momentum_weight_decay_gradscaler_or_preconditioner_used",
+        "local_probe_only",
+        "world8_apply_authorized",
+        "world8_two_phase_prepare_commit_required",
+        "parameter_update_applied",
+        "checkpoint_retention_authorized",
+        "fresh_exact81_endpoint_gate_required",
+        "training_executed",
+        "scientific_authority",
+        "receipt_digest"
+      ],
+      "properties": {
+        "schema_version": { "const": "bernini-mosaic-starc-realized-fp32-displacement-audit-v1" },
+        "method_name": { "const": "bernini-mosaic-starc-stateless-jacobian-qp" },
+        "candidate_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "parameter_layout_digest": { "$ref": "#/$defs/sha256" },
+        "checkpoint_content_receipt_digest": { "$ref": "#/$defs/sha256" },
+        "pre_step_parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "fixed_lora_a_state_before_sha256": { "$ref": "#/$defs/sha256" },
+        "fixed_lora_a_state_after_sha256": { "$ref": "#/$defs/sha256" },
+        "attempted_after_parameter_state_sha256": {
+          "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }]
+        },
+        "final_parameter_state_sha256": { "$ref": "#/$defs/sha256" },
+        "direct_parameter_add_attempted": { "const": true },
+        "direct_parameter_add_exception": {
+          "oneOf": [{ "type": "string", "minLength": 1 }, { "type": "null" }]
+        },
+        "actual_fp32_candidate_delta_sha256": { "$ref": "#/$defs/sha256" },
+        "realized_fp32_displacement_sha256": { "$ref": "#/$defs/sha256" },
+        "candidate_delta_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "realized_displacement_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_realized_difference_norm": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_realized_relative_error": { "$ref": "#/$defs/nonnegativeNumber" },
+        "candidate_realized_cosine": {
+          "oneOf": [{ "type": "number", "minimum": -1.0000001, "maximum": 1.0000001 }, { "type": "null" }]
+        },
+        "action_rows": {
+          "type": "array",
+          "minItems": 2,
+          "items": { "$ref": "#/$defs/actionAudit" }
+        },
+        "preservation_rows": {
+          "type": "array",
+          "minItems": 12,
+          "items": { "$ref": "#/$defs/preservationAudit" }
+        },
+        "global_trust_radius": { "$ref": "#/$defs/globalAudit" },
+        "per_layer_trust_radii": {
+          "type": "array",
+          "minItems": 32,
+          "maxItems": 32,
+          "items": { "$ref": "#/$defs/layerAudit" }
+        },
+        "failure_codes": { "$ref": "#/$defs/uniqueStrings" },
+        "realized_displacement_geometry_safe": { "type": "boolean" },
+        "rolled_back": { "const": true },
+        "rollback_byte_identical_to_pre_step": { "const": true },
+        "safe_local_probe_also_rolled_back_pending_world8_two_phase_commit": { "type": "boolean" },
+        "application_mechanism": { "const": "torch_no_grad_direct_parameter_add_once" },
+        "optimizer_instantiated_or_called_by_this_module": { "const": false },
+        "adamw_momentum_weight_decay_gradscaler_or_preconditioner_used": { "const": false },
+        "local_probe_only": { "const": true },
+        "world8_apply_authorized": { "const": false },
+        "world8_two_phase_prepare_commit_required": { "const": true },
+        "parameter_update_applied": { "const": false },
+        "checkpoint_retention_authorized": { "const": false },
+        "fresh_exact81_endpoint_gate_required": { "const": true },
+        "training_executed": { "const": false },
+        "scientific_authority": { "const": false },
+        "receipt_digest": { "$ref": "#/$defs/sha256" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "realized_displacement_geometry_safe": { "const": true } }, "required": ["realized_displacement_geometry_safe"] },
+          "then": {
+            "properties": {
+              "failure_codes": { "maxItems": 0 },
+              "direct_parameter_add_exception": { "type": "null" },
+              "safe_local_probe_also_rolled_back_pending_world8_two_phase_commit": { "const": true }
+            }
+          },
+          "else": {
+            "properties": {
+              "failure_codes": { "minItems": 1 },
+              "safe_local_probe_also_rolled_back_pending_world8_two_phase_commit": { "const": false }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,524 @@
+{
+  "schema_version": "actual-target-foundation-canary-authority-v3",
+  "experiment_id": "actual_target_foundation_canary_v3",
+  "created_at_utc": "2026-08-23T00:00:00Z",
+  "sealed_before_gpu_execution": true,
+  "scope": {
+    "development_only": true,
+    "previously_seen_in_r1b": true,
+    "locked_validation_claim_permitted": false,
+    "scientific_representation_claim_permitted": false,
+    "training_permitted": false,
+    "generator_permitted": false
+  },
+  "base_authority": {
+    "canary_module": "actual_target_foundation_canary_v1.py",
+    "canary_module_sha256": "57accf03d9efab88cfbcc6b821095d57a60665f77163c77f744156eeab7969a1",
+    "prereg_file": "assets/actual_target_foundation_canary_prereg_v1.json",
+    "prereg_file_sha256": "df3a6195784aec7b986456b312dce017c77a4e4d2ed3af302ab6b5f5a5b8ff27",
+    "prereg_self_sha256": "b9741c0e9d83bd2573ffa31fcf9d3ad53232ed247598d0dc5d7c600bf66e1941",
+    "availability_file": "assets/actual_target_foundation_canary_availability_v1.json",
+    "availability_file_sha256": "3cedba461c14688e469000fee1a5d879168be9789dc3ad73c9b03d39e525068a",
+    "availability_self_sha256": "55b08ca2b529703cd5671278ed4e9222b408cf78815d5168122393c0209e1fce",
+    "decode_receipt_file": "assets/actual_target_foundation_decode_receipt_v2.json",
+    "decode_receipt_file_sha256": "399de5a66bacab4819b7cbf8678eca96f362aade8e0541d4718f88a35229749c",
+    "decode_receipt_self_sha256": "210ac14e5d9ebf9043f931bad0630f394c7108118ea7dc93f0008b05e841cea1"
+  },
+  "sam_hydra_authority": {
+    "config_name": "configs/sam2.1/sam2.1_hiera_l.yaml",
+    "runtime_config_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/configs/sam2.1/sam2.1_hiera_l.yaml",
+    "runtime_config_sha256": "1dbd6cb6dfebeaf588c7006ee222c6efbfa9049a7ad472a3cdfb2f5d919e8107",
+    "apply_postprocessing": false,
+    "exact_overrides": [
+      "++model.sam_mask_decoder_extra_args.dynamic_multimask_via_stability=true",
+      "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_delta=0.05",
+      "++model.sam_mask_decoder_extra_args.dynamic_multimask_stability_thresh=0.98"
+    ],
+    "resolved_canonical_json_bytes": 2968,
+    "resolved_canonical_sha256": "c463f8ff90f3e41e01ed60d6acedb8f845ed367b1606ed712c174ef7ce86b05b",
+    "resolved_model_target": "sam2.modeling.sam2_base.SAM2Base"
+  },
+  "preprocessor_and_nontensor_config_authority": {
+    "sam_build_function": {
+      "module": "sam2.build_sam",
+      "name": "build_sam2",
+      "source_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/build_sam.py",
+      "source_sha256": "856d64d71e44407401297b551884fb4cd1aba8082de0ff5fc60fac3dd42f094d"
+    },
+    "dinov2_processor": {
+      "module": "transformers.models.bit.image_processing_bit",
+      "class": "BitImageProcessor",
+      "source_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/transformers/models/bit/image_processing_bit.py",
+      "source_sha256": "62ad10de9929cb0a5722d9a9c93d90e6a38f7e4c05b50811d8492fb1ed40f2eb",
+      "canonical_config_bytes": 326,
+      "canonical_config_sha256": "0f6addc5987e9ab323986e0e3ad4ef3aeea735e6839c6df97dc9397e8df50669"
+    },
+    "vjepa2_processor": {
+      "module": "transformers.models.vjepa2.video_processing_vjepa2",
+      "class": "VJEPA2VideoProcessor",
+      "source_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/transformers/models/vjepa2/video_processing_vjepa2.py",
+      "source_sha256": "1008567f52c0afc585e5cbbf40d1b7e166ba8039c33fffe3c8676b67e6d1a453",
+      "canonical_config_bytes": 652,
+      "canonical_config_sha256": "fbb7ce5ff011ed4f85b05534db2e64fe661e38e20d2225dfb681f15011ab0f2c"
+    },
+    "dinov2_model_config": {"canonical_config_bytes": 1116, "canonical_config_sha256": "1f47ad0a80f6f33c2d2428c2b34a63425fa05f2ad02a8b1d4b472ec3f189aa53"},
+    "vjepa2_model_config": {"canonical_config_bytes": 1108, "canonical_config_sha256": "77a3f8ee87fb422de211a3b5635aab8ff032b6d8e8a52aadc9cffcdf8a8bf4b8"},
+    "cotracker_runtime_config": {"offline": true, "v2": false, "window_len": 60, "support_grid_size": 6, "interp_shape": [384, 512], "grid_size": 12, "grid_query_frame": 0, "backward_tracking": true}
+  },
+  "foundation_source_tree_authority": [
+    {
+      "role": "sam2_python_tree",
+      "root": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2",
+      "suffix": ".py",
+      "file_count": 25,
+      "manifest_sha256": "a04a055dcfe5fe7aec4ecb060d8d4a12f2c16c41ab30cbf837e915cf9f04cdc3"
+    },
+    {
+      "role": "cotracker_python_tree",
+      "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit/methods/FiVE-Bench/code/co-tracker",
+      "suffix": ".py",
+      "file_count": 40,
+      "manifest_sha256": "74e05d140802c84542c92bf12929761585dc264107762c0dfe69515f2c172105"
+    },
+    {
+      "role": "transformers_python_tree",
+      "root": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/transformers",
+      "suffix": ".py",
+      "file_count": 2271,
+      "manifest_sha256": "4e930f116b6bf3023239f6587d63971a67fad847da1d731a571bdfae2d488bb4"
+    }
+  ],
+  "track_contract": {
+    "minimum_same_track_member_phases": 3,
+    "maximum_total_worldlines": 96,
+    "total_worldline_rule": "no smallest-ID truncation; retain every assigned worldline up to the mechanical 8x12 maximum and canonical-sort blocks by label-free descriptor/geometry digest",
+    "maximum_mask_absent_gap_phases": 2,
+    "dormant_track_gap_penalty_per_phase": 0.08,
+    "visibility_rule": "CoTracker visible AND coordinate inside the same UOT-linked automatic-mask track",
+    "ambiguous_overlap_or_track_vote_tie_rule": "abstain to dustbin; never choose a track id",
+    "out_of_frame_or_nonfinite_coordinate_rule": "non-member/abstain; never clamp to a mask boundary",
+    "velocity_rule": "defined only when the same point group is VISIBLE_MEMBER at both adjacent phases",
+    "states": ["ABSENT", "VISIBLE_MEMBER", "OCCLUDED", "VISIBLE_OUTSIDE_MASK"],
+    "lifecycle_events": ["entry", "occlusion", "membership_loss", "reentry", "death"],
+    "transition_rule": "all 16 ordered state transitions are explicit; first ABSENT-to-present is entry, later ABSENT-to-present on the same dormant worldline is reentry, MEMBER/OUTSIDE-to-OCCLUDED is occlusion, MEMBER/OCCLUDED-to-OUTSIDE is membership_loss, and any present-to-ABSENT is death",
+    "right_censor_rule": "tracks or edges present at the final sampled phase are not counted as deaths",
+    "dynamic_nonentry_event_required": true
+  },
+  "edge_contract": {
+    "interaction_activation_rule": "activate iff overlap_iou>=0.01 OR boundary_gap<=0.04 OR (valid adjacent relative motion AND boundary_gap<=0.08 AND converging_speed>=0.005)",
+    "overlap_iou_threshold": 0.01,
+    "boundary_gap_threshold": 0.04,
+    "predictive_gap_threshold": 0.08,
+    "converging_speed_threshold": 0.005,
+    "claim_boundary": "mechanical interaction-candidate graph only; not physical-contact truth",
+    "per_phase_channels": [
+      "mask_boundary_gap",
+      "mask_overlap_iou",
+      "valid_relative_velocity",
+      "birth_fraction",
+      "death_fraction"
+    ],
+    "lifecycle_counts": ["activate", "persist", "deactivate"],
+    "drop_edge_rule": "remove the first active pair under a label-free worldline key that binds per-phase mask geometry/descriptor digests plus motion/state; independently recompute activate/persist/deactivate and retain a nonzero no-edge gap sentinel",
+    "drop_control_must_be_nonzero": true,
+    "drop_margin_must_not_equal_positive_similarity": true
+  },
+  "raw_inventory_required_categories": [
+    "compressed_video_hash_buffer",
+    "decoded_bgr_frame",
+    "decoded_rgb_frame",
+    "sam_ann_mask_pre_filter",
+    "sam_mask_c_contiguous_copy",
+    "sam_mask_coordinate_indices",
+    "dino_processor_input",
+    "dino_tokens",
+    "dino_mask_input",
+    "dino_mask_resized",
+    "dino_mask_cropped",
+    "dino_patch_weights",
+    "dino_patch_support",
+    "dino_pooled_descriptor",
+    "dino_pooled_descriptor_cpu",
+    "node_signature",
+    "cotracker_video",
+    "cotracker_tracks",
+    "cotracker_visibility",
+    "cotracker_coordinates_cpu",
+    "cotracker_visibility_cpu",
+    "cotracker_group_coordinates",
+    "cotracker_group_visibility",
+    "track_signature",
+    "edge_signature",
+    "drop_edge_signature",
+    "vjepa_processor_input",
+    "vjepa_hidden",
+    "vjepa_phase_signature",
+    "model_hash_copy"
+  ],
+  "raw_ownership_contract": {
+    "included_storage_scope": "external foundation-returned raw storages and named retained representation leaves only",
+    "excluded_ephemeral_workspace_scope": "non-persisted deterministic pure-CPU reduction workspaces",
+    "excluded_workspace_must_not_be_persisted_or_enter_receipt": true,
+    "required_category_semantics": "every category key is mandatory, but a mechanically observed zero-production opportunity is valid; independent opportunity=produced=registered=zeroized counters are required without placeholder registration, and own increments registered only",
+    "observed_count_keys": ["compressed_video_hash_requests", "decoded_bgr_frames", "decoded_rgb_frames", "sam_ann_records_before_filter", "sam_mask_coordinate_calls", "dino_processor_tensor_items", "dino_model_output_unique_storages", "dino_filtered_ann_records", "dino_positive_support_records", "cotracker_membership_rows", "vjepa_processor_tensor_items", "vjepa_model_output_unique_storages", "model_tensor_hash_requests"],
+    "model_output_unique_storage_multipliers": {"dinov2": 1, "vjepa2": 4},
+    "model_output_unique_storage_evidence": {
+      "dinov2": {
+        "module": "transformers.models.dinov2.modeling_dinov2",
+        "class": "Dinov2Model",
+        "source_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/transformers/models/dinov2/modeling_dinov2.py",
+        "source_sha256": "c015ae9453503db2bedd91598370dba9773a6d60bfd64a23f3b9744f69ea21a5",
+        "forward_line_span": [475, 485],
+        "storage_rule": "pooler_output at line 478 is sequence_output[:,0,:], so two output fields share one storage",
+        "unique_storage_multiplier": 1
+      },
+      "vjepa2": {
+        "module": "transformers.models.vjepa2.modeling_vjepa2",
+        "class": "VJEPA2Model",
+        "source_path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/transformers/models/vjepa2/modeling_vjepa2.py",
+        "source_sha256": "08613fb28cf11f4c46f234d9681a954fd12bd93b2f8b67229e5721974e0632fc",
+        "forward_line_spans": [[948, 970], [470, 484]],
+        "storage_rule": "default skip_predictor=false returns outer hidden and masked plus nested predictor hidden and target; both apply_masks calls gather then cat into independent storage",
+        "unique_storage_multiplier": 4
+      }
+    },
+    "production_binding_rule": "the external controller independently rebuilds every category count from fixed logical calls, decoded-frame authority, model tensor_count, upstream SAM/DINO/CoTracker/V-JEPA observations, and preregistered fixed multipliers",
+    "immutable_leaf_zeroization_permitted": false,
+    "recursive_leaf_storage_alias_ownership_permitted": false,
+    "compressed_media_hash_rule": "one preregistered mutable readv buffer hashed through direct memoryview and zeroized after every decode",
+    "decoded_frame_rule": "every cv2 BGR frame is registered immediately, converted RGB storage is registered or scrubbed on registration failure, BGR is immediately zeroized, and RGB hashing uses its direct memoryview",
+    "mask_coordinate_rule": "the row/column index views derived from each owned SAM mask are aggregate-owned as exactly one unique mutable backing storage before centroid use and immediately zeroized afterward; alias views are never separately owned",
+    "model_tensor_hash_rule": "one owned contiguous CPU tensor copy hashed through a ctypes direct buffer view; immutable chunk construction is forbidden",
+    "inference_tensor_zeroization_rule": "CoTracker and V-JEPA external outputs are claimed, copied, and released inside their creating torch inference_mode context; case-level exception cleanup explicitly re-enters inference_mode before recursive scrub",
+    "sam_mask_layout_rule": "for each SAM annotation in order, the complete writable ndarray backing owner is registered, the returned logical bool mask is required to be C- or F-contiguous and span the owner's full byte storage, an unconditional separately registered C-contiguous copy is made and rebound, and the backing owner is zeroized before the next annotation is claimed; arbitrary strided or partial-base views and ascontiguousarray aliasing are forbidden",
+    "graph_mask_hash_rule": "input mask must be the separately owned C-contiguous bool ndarray copy and is hashed through direct memoryview; graph-side conversion/copy is forbidden",
+    "graph_track_input_rule": "CoTracker coordinates enter the graph as the already-owned C-contiguous float64 ndarray and visibility as the already-owned C-contiguous bool ndarray; graph entry conversion/copy is forbidden",
+    "success_and_exception_best_effort_scrub_required": true
+  },
+  "model_closure": {
+    "parameter_and_buffer_fields": ["model", "kind", "name", "shape", "dtype", "device", "data_ptr", "value_sha256", "requires_grad"],
+    "data_ptr_rule": "data_ptr must be nonnegative; every nonempty tensor requires data_ptr greater than zero, while a zero-numel tensor may have either zero or a positive data_ptr",
+    "before_after_exact_equality_required": true,
+    "actual_forward_hook_counts": {"sam2_image_encoder": 96, "dinov2": 96, "cotracker": 20, "vjepa2": 20},
+    "logical_call_counts": {"media_decode": 8, "sam2": 96, "dinov2": 96, "cotracker": 20, "vjepa2": 20}
+  },
+  "completion": {
+    "candidate_is_authority": false,
+    "external_controller_required": true,
+    "valid_outcomes": ["PASS", "REJECTED"],
+    "strict_duplicate_and_nonfinite_json": true,
+    "stable_candidate_stat": true,
+    "create_only_file_and_parent_fsync": true,
+    "authorized_launcher_captures": ["srun_PIPESTATUS", "slurm_job_id", "slurm_step_id", "formal_log_sha256", "srun_argv_nul_sha256", "rank_argv_nul_sha256", "controller_argv_nul_sha256", "controller_step_meta_sha256", "miopen_scratch_closure_sha256"]
+  },
+  "authorized_launch_mode": "existing_allocation_only",
+  "prior_failed_engineering_attempt": {
+    "immutable_preservation_required": true,
+    "relaunch_or_reuse_forbidden": true,
+    "run_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3",
+    "legacy_snapshot": {
+      "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/snapshot_preflip_7f3c21a9",
+      "canonical_tree_digest": "02d7a785dc121c22ae836c7352557482d0884938ba9ce724fa907e057f6aa853",
+      "manifest_relative_path": "snapshot_manifest_v3.json",
+      "manifest_file_sha256": "e5eb38d1b776222495b18e1f1ef258b8791d3be98d00807a881a9b14933d328f",
+      "manifest_self_sha256": "cafb110fd7790c650378b24d7995b86988f56e58b2e267eef81e1414ed1fe42d",
+      "manifest_schema_version": "actual-target-foundation-immutable-snapshot-v3",
+      "source_closure_digest": "98c03a820375fcdc4d498bfb0a56083c373e11644991618f1548d8ae92a8a393",
+      "snapshot_file_count": 16,
+      "rows": [
+        {"device": 48, "inode": 3907304420962207796, "kind": "directory", "mode": 365, "relative_path": "."},
+        {"byte_count": 24908, "device": 48, "inode": 14227642087000438277, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_canary_v1.py", "sha256": "57accf03d9efab88cfbcc6b821095d57a60665f77163c77f744156eeab7969a1"},
+        {"byte_count": 27849, "device": 48, "inode": 7361541586135009124, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_canary_v3.py", "sha256": "c878dbb60b10b79207ffc2eed46f528d94c509e72a1f9ce79335cdd01ca639ea"},
+        {"byte_count": 61882, "device": 48, "inode": 416452452568277293, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_controller_v3.py", "sha256": "5dfdec26e0bfb678fc5ed93ad66cfdbddc64440bf35a8d4fe0faf3bb52911d9d"},
+        {"byte_count": 31707, "device": 48, "inode": 2822106360459262280, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_graph_v3.py", "sha256": "e9ccb0714fba48028a856089050d15d4c9d614aae3b9a0ce3002606b8a1f1d39"},
+        {"byte_count": 91306, "device": 48, "inode": 9105190256981652978, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_runtime_v3.py", "sha256": "732ae2d3481612389f17f98eea895f05bc5d4abfb1254d5c7b5626615ddf872b"},
+        {"byte_count": 13642, "device": 48, "inode": 8312567933369670503, "kind": "file", "mode": 292, "relative_path": "actual_target_foundation_snapshot_v3.py", "sha256": "b787d50eb4b2e22dda8112cd8136c3fb811f51cbc7c25fd3c4176905254d904e"},
+        {"device": 48, "inode": 12063970403618606710, "kind": "directory", "mode": 365, "relative_path": "assets"},
+        {"byte_count": 17432, "device": 48, "inode": 9268299398964520945, "kind": "file", "mode": 292, "relative_path": "assets/actual_target_foundation_canary_authority_v3.json", "sha256": "47189e9fa19057da4ef144ac5882e64958b08addd4191e6681e9a39720191b0e"},
+        {"byte_count": 5701, "device": 48, "inode": 4540248606776560510, "kind": "file", "mode": 292, "relative_path": "assets/actual_target_foundation_canary_availability_v1.json", "sha256": "3cedba461c14688e469000fee1a5d879168be9789dc3ad73c9b03d39e525068a"},
+        {"byte_count": 12128, "device": 48, "inode": 12921030770661806362, "kind": "file", "mode": 292, "relative_path": "assets/actual_target_foundation_canary_prereg_v1.json", "sha256": "df3a6195784aec7b986456b312dce017c77a4e4d2ed3af302ab6b5f5a5b8ff27"},
+        {"byte_count": 2602, "device": 48, "inode": 16854476875685002360, "kind": "file", "mode": 292, "relative_path": "assets/actual_target_foundation_decode_receipt_v2.json", "sha256": "399de5a66bacab4819b7cbf8678eca96f362aade8e0541d4718f88a35229749c"},
+        {"device": 48, "inode": 14921030033609933748, "kind": "directory", "mode": 365, "relative_path": "scripts"},
+        {"byte_count": 4861, "device": 48, "inode": 6214533770095162558, "kind": "file", "mode": 365, "relative_path": "scripts/auh_actual_target_foundation_canary_existing_allocation_v3.sh", "sha256": "0ed78f27fdf6e913bb7ec2736403c52b2f76a9f0be2c72d1b55be4f943daab4f"},
+        {"byte_count": 5065, "device": 48, "inode": 2837578917195919040, "kind": "file", "mode": 365, "relative_path": "scripts/auh_actual_target_foundation_canary_formal_v3.sbatch", "sha256": "6533a2f4c9660d570ed1fca3ebc481916bede9998165a9c9110cefb8237e2e52"},
+        {"byte_count": 1828, "device": 48, "inode": 15553775268283573203, "kind": "file", "mode": 365, "relative_path": "scripts/auh_actual_target_foundation_canary_rank_wrapper_v3.sh", "sha256": "a2750b792a841d07b48b9ccedb3f29223d7e6d4a69f5801e52934740873e97c8"},
+        {"byte_count": 75764, "device": 48, "inode": 1429137753193005130, "kind": "file", "mode": 292, "relative_path": "snapshot_manifest_v3.json", "sha256": "e5eb38d1b776222495b18e1f1ef258b8791d3be98d00807a881a9b14933d328f"},
+        {"device": 48, "inode": 18194766131445890814, "kind": "directory", "mode": 365, "relative_path": "tests"},
+        {"byte_count": 19855, "device": 48, "inode": 18428155694257205065, "kind": "file", "mode": 292, "relative_path": "tests/test_actual_target_foundation_canary_v3.py", "sha256": "f1d0c5cdf7ec5af07152cf0c13b9fd8fb1e2afb070d3f81159e6b246ca8f8bac"},
+        {"byte_count": 52391, "device": 48, "inode": 5315175335129725287, "kind": "file", "mode": 292, "relative_path": "tests/test_actual_target_foundation_controller_v3.py", "sha256": "8bba9c5604544e118533c95322ab1e88b8cb56f1cbb4f2dc5f953e7d1e52b9a1"},
+        {"byte_count": 62761, "device": 48, "inode": 2058755199071273004, "kind": "file", "mode": 292, "relative_path": "tests/test_actual_target_foundation_runtime_v3.py", "sha256": "dce11a28bbfd10792c758e8c12e605d7a3f2042dffe80eea8a2cbf501af3b303"}
+      ]
+    },
+    "legacy_run_tree": {
+      "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3",
+      "canonical_tree_digest": "eb2167b674c94202f14b3d4684c6b791309d03884c52206bce1bcd9cef5d0181",
+      "rows": [
+        {"device": 48, "inode": 7017169167295482506, "kind": "directory", "mode": 365, "relative_path": "."},
+        {"byte_count": 983, "device": 48, "inode": 2919863745336298803, "kind": "file", "mode": 292, "relative_path": "attempt_ledger.json", "sha256": "05db949ca238195f951ecd3944eccf27ea889b4d5e987c9e76c9504a93d0bc59"},
+        {"device": 48, "inode": 5105615779940965508, "kind": "directory", "mode": 365, "relative_path": "cache"},
+        {"byte_count": 2590, "device": 48, "inode": 10728622449447896444, "kind": "file", "mode": 292, "relative_path": "controller_argv.nul", "sha256": "a28a63fcc4ee1b1f776cd423b93d9bb8f64f9706052df7e4ed296e90e8133a82"},
+        {"byte_count": 10198, "device": 48, "inode": 1773960699148376366, "kind": "file", "mode": 292, "relative_path": "formal.log", "sha256": "a4d10d94b465ce32955c976d6b86d519be788e2fd27e9403c9c27da6e53c293b"},
+        {"byte_count": 1033, "device": 48, "inode": 15503791418746530589, "kind": "file", "mode": 292, "relative_path": "rank_argv.nul", "sha256": "2f51bfec5f3afee5f64bc5ae519a49591e3e7dc124095ac596a85ab85994a94f"},
+        {"byte_count": 1196, "device": 48, "inode": 11570874898509066299, "kind": "file", "mode": 292, "relative_path": "srun_argv.nul", "sha256": "d0849d7495da4b1ba8bfe6702f3d33e477a11dfb8310ba5855c257507532d67b"},
+        {"byte_count": 1343, "device": 48, "inode": 6619531250528752105, "kind": "file", "mode": 292, "relative_path": "step_meta.json", "sha256": "7d180dfae9bfc7e6c6b9f812cce7b45fa038c8e92b0ed3c22dec36caf3445fa4"}
+      ],
+      "candidate_absent": true,
+      "completion_seal_absent": true
+    },
+    "formal_log": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3/formal.log",
+      "sha256": "a4d10d94b465ce32955c976d6b86d519be788e2fd27e9403c9c27da6e53c293b",
+      "mode": 292,
+      "failure_reason": "MIOpen SQLite database write failed with: attempt to write a readonly database"
+    },
+    "attempt_ledger": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3/attempt_ledger.json",
+      "sha256": "05db949ca238195f951ecd3944eccf27ea889b4d5e987c9e76c9504a93d0bc59",
+      "mode": 292,
+      "digest": "321c4bee77ea2033e5462348171417e696853b14959b5e4a68bdef8e19ff6134",
+      "failure_reasons": ["ControllerV3Error:controller metadata requires all CUDA/ROCR/HIP visibility masks empty"]
+    },
+    "candidate_present": false,
+    "completion_seal_present": false,
+    "scientific_evidence_claimed": false
+  },
+  "v3r2_failed_engineering_attempt": {
+    "immutable_preservation_required": true,
+    "relaunch_or_reuse_forbidden": true,
+    "run_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r2",
+    "run_canonical_tree_digest": "f6669aab2db278ac030e29c0b496cb3b5d1084627819868b167562e26abb9205",
+    "run_tree_row_count": 15,
+    "failure_closure_receipt": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r2.failure_closure_v3.json",
+      "sha256": "a15dfa5e57caa068254a9216a28d201930a0c83370df128f9134bc5748935b37",
+      "self_sha256": "dfed283e4a9f1716dac887070f9f704c47110a5d7cf6e364173f828c89cbd128",
+      "byte_count": 6620,
+      "device": 48,
+      "inode": 4072749549166214287,
+      "mode": 292
+    },
+    "legacy_snapshot": {
+      "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/snapshot_preflip_7f3c21a9_v3r2",
+      "canonical_tree_digest": "4d2348700693c110d3692aa9f94c4658841f85096fce357c51a7a92c2975f0c5",
+      "tree_row_count": 22,
+      "manifest_relative_path": "snapshot_manifest_v3.json",
+      "manifest_file_sha256": "b90c16320786b2c28245ffa99529759922fe7eed0ae7ff2d9143431e274b0c82",
+      "manifest_self_sha256": "71d8b5b3de26a22671b26570e2a878917cebfa5ba468330ef477176926b49995",
+      "manifest_schema_version": "actual-target-foundation-immutable-snapshot-v3",
+      "source_closure_digest": "1d3afbbf4687a21086ddab0e941554c23f6b05e04e5aeb2926cfcf31a0a3d0ec",
+      "snapshot_file_count": 17,
+      "native_verify_digest": "649f45fb4f8b1fcad56c8d859883d8b46da8a8f9e4eef65f42152bdbe33fa8d9"
+    },
+    "formal_log": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r2/formal.log",
+      "sha256": "6d623d029791bbc7acce4435365e29f02c6ae29a7af517560b2869e80ea13e48",
+      "mode": 292,
+      "failure_reason_boundary": "at least one member of the SAM ndarray/ndim/bool/C-contiguous compound predicate differed; the sealed log does not isolate the member"
+    },
+    "attempt_ledger": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r2/attempt_ledger.json",
+      "sha256": "905efaa78e2e0c0e75a1f6b10b0294910878d08629dcbbc07b566e7a7f3839fc",
+      "mode": 292,
+      "digest": "dc84c2c45a8c748d31202152d3df318c74989df12c2bb60d30257f4a704f96d2",
+      "failure_reasons": ["ControllerV3Error:real srun or tee PIPESTATUS was nonzero"]
+    },
+    "transitive_legacy_failure_receipt_digest": "72eda2e7701e0fe056510276c8e0023a6fb6bca067c05177f01e78f4b558be26",
+    "candidate_present": false,
+    "completion_seal_present": false,
+    "scientific_evidence_claimed": false
+  },
+  "v3r3_failed_engineering_attempt": {
+    "immutable_preservation_required": true,
+    "relaunch_or_reuse_forbidden": true,
+    "run_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r3",
+    "run_canonical_tree_digest": "aa916597a47a6ea28146c4ec600c4c16ed1a5974bb28db9168a8f111b5d71f5f",
+    "run_tree_row_count": 15,
+    "failure_closure_receipt": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r3.failure_closure_v3.json",
+      "sha256": "57740bc57523c99be751e68c16f5d2527e7ed17565506b607043d9661c05bc0f",
+      "self_sha256": "b9b8841ff85f9ff74588d6ba7b29f14362815269c776a9ff631ae49e2f21ec25",
+      "byte_count": 8554,
+      "device": 48,
+      "inode": 8183711713855381463,
+      "mode": 292
+    },
+    "legacy_snapshot": {
+      "root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/snapshot_preflip_7f3c21a9_v3r3",
+      "canonical_tree_digest": "870d6d5839a0db9fa3079aefab9420da9ff91ef9bc5eaa62d001e2bb05bc4ad0",
+      "tree_row_count": 22,
+      "manifest_relative_path": "snapshot_manifest_v3.json",
+      "manifest_file_sha256": "ab97d8510b0ebd7f96cea3752ce27aaac679cc81b45c242da19d139f3b3fb344",
+      "manifest_self_sha256": "63777cd2f65f2899ca67d559239e1929ba7af799a500aa304aa664809e9d2f33",
+      "manifest_schema_version": "actual-target-foundation-immutable-snapshot-v3",
+      "source_closure_digest": "7c205d1fee4e84d5122082508f1b8a2fcc5c4130eef9715f2c612228315e0f73",
+      "snapshot_file_count": 17,
+      "native_verify_digest": "6fcc7ad5688cedbfb848a9b8e5996518042f389bf322a01191a8253367b58022"
+    },
+    "formal_log": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r3/formal.log",
+      "sha256": "c00334861df242bbae38640a4680c52aa371576676fbdc0d7e8fc5e71af5a46d",
+      "mode": 292,
+      "failure_reason_boundary": "the first and only Python traceback is NumPy ambiguous truth in _cosine before any case aggregate, candidate, or scientific outcome was persisted"
+    },
+    "attempt_ledger": {
+      "path": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r3/attempt_ledger.json",
+      "sha256": "5dbc4952a01f8fd00eec72c9b6072de763ea6d655ae05aca1f9309f1bfdbafd7",
+      "mode": 292,
+      "digest": "ad3458d80ed8a9674f7d26894f3e9aef357f932a01bd57ba64ba11ab14949ffa",
+      "failure_reasons": ["ControllerV3Error:real srun or tee PIPESTATUS was nonzero"]
+    },
+    "transitive_prior_failed_attempt_receipt_digest": "934aaf657e005a861fc8887c8d98967023e4a13e232a1392c1e545beffd6212f",
+    "candidate_present": false,
+    "completion_seal_present": false,
+    "scientific_evidence_claimed": false
+  },
+  "v3r2_engineering_repair_contract": {
+    "old_snapshot_and_run_are_immutable_and_forbidden": true,
+    "fresh_run_root_create_only": true,
+    "miopen_scratch_location": "two dedicated top-level directories under the fresh run root, outside the exact four-case JSON cache",
+    "miopen_initial_mode": 448,
+    "miopen_initially_empty": true,
+    "miopen_environment": ["MIOPEN_USER_DB_PATH", "MIOPEN_CUSTOM_CACHE_DIR"],
+    "miopen_disable_cache_forbidden": true,
+    "post_compute_recursive_plain_tree_freeze_required": true,
+    "frozen_file_mode": 292,
+    "frozen_directory_mode": 365,
+    "stable_double_scan_and_no_symlink_required": true,
+    "rank_step_meta_and_candidate_device_receipt_both_bind_root_device_inode_and_exact_environment": true,
+    "zero_gpu_controller_task_internal_mask_reset_required": true,
+    "controller_wrapper_relative_path": "scripts/auh_actual_target_foundation_canary_controller_wrapper_v3.sh",
+    "controller_wrapper_sha256": "ef4e37590aa8de31619236398f22674c44c7d5c3c843e8c7821a4847b79b1d9c",
+    "controller_no_torch_or_foundation_imports_required": true
+  },
+  "v3r3_engineering_repair_contract": {
+    "v3r1_and_v3r2_snapshot_run_and_receipt_are_immutable_and_forbidden": true,
+    "fresh_run_root_create_only": true,
+    "sam_external_mask_schema_is_checked_per_field": true,
+    "sam_external_mask_returned_layout_is_owned_before_use": true,
+    "sam_external_mask_full_backing_storage_span_required": true,
+    "sam_per_mask_claim_copy_release_order_required": true,
+    "sam_arbitrary_strided_and_partial_base_views_rejected": true,
+    "sam_c_contiguous_copy_is_unconditional_and_separately_owned": true,
+    "sam_external_mask_is_immediately_zeroized_after_copy": true,
+    "sam_ascontiguousarray_alias_shortcut_forbidden": true,
+    "sam_pinned_binary_mask_source_evidence": {
+      "claim_boundary": "the full-storage transpose layout is derived from pinned SAM2 source bytes, not inferred from the V3R2 compound failure log",
+      "sources": [
+        {
+          "role": "uncompressed_rle_to_mask",
+          "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/utils/amg.py",
+          "sha256": "b7b33090e2af72e04dbb815c8f32aff41a4ed1abf9668f62b59f1bdd640ca5d8",
+          "line_start": 140,
+          "line_end": 151,
+          "line_span_sha256": "102d2a31445e607834f87b987041c766aaeaf8244ed7ac9aea2bc775fe7d7fbe"
+        },
+        {
+          "role": "automatic_binary_mask_return",
+          "path": "/vast/users/guangyi.chen/anaconda3/envs/vace/lib/python3.12/site-packages/sam2/automatic_mask_generator.py",
+          "sha256": "66df266dbe14412305ae3398f0ec1bb21b303a93216b102d767e6c4ee5d4c3d7",
+          "line_start": 198,
+          "line_end": 214,
+          "line_span_sha256": "41a9ca6053ffb9babe5f631890c774d1d99d0d5e96dbc35154c6f546edd9ab60"
+        }
+      ]
+    },
+    "sam_external_and_copy_counts_both_equal_annotation_count": true,
+    "fresh_miopen_scratch_and_zero_gpu_controller_contract_inherited": true,
+    "controller_wrapper_relative_path": "scripts/auh_actual_target_foundation_canary_controller_wrapper_v3.sh",
+    "controller_wrapper_sha256": "ef4e37590aa8de31619236398f22674c44c7d5c3c843e8c7821a4847b79b1d9c",
+    "new_immutable_snapshot_and_fresh_run_required": true
+  },
+  "v3r4_engineering_repair_contract": {
+    "v3r1_v3r2_v3r3_snapshots_runs_and_receipts_are_immutable_and_forbidden": true,
+    "fresh_run_root_create_only": true,
+    "failure_class": "numpy_sequence_truthiness_in_metric_reduction",
+    "failure_location": "actual_target_foundation_runtime_v3.py:_cosine",
+    "sequence_truthiness_forbidden": true,
+    "sequence_lengths_are_obtained_in_guarded_operations": true,
+    "empty_sequence_check_uses_explicit_length": true,
+    "numeric_conversion_and_reduction_fail_closed": true,
+    "numpy_nonempty_empty_zero_nonfinite_shape_mismatch_and_scalar_tests_required": true,
+    "full_numpy_node_track_edge_drop_edge_phase_case_path_test_required": true,
+    "sam_v3r3_ownership_repair_inherited_unchanged": true,
+    "fresh_miopen_scratch_and_zero_gpu_controller_contract_inherited": true,
+    "new_immutable_snapshot_and_fresh_run_required": true
+  },
+  "fixed_paths": {
+    "planned_preflip_snapshot_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/snapshot_preflip_7f3c21a9_v3r4",
+    "fresh_formal_run_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/actual_target_foundation_canary_v3_20260823/run_7f3c21a9_v3r4",
+    "cache_dirname": "cache",
+    "miopen_user_dirname": "miopen-user",
+    "miopen_custom_cache_dirname": "miopen-custom",
+    "miopen_scratch_closure_filename": "miopen_scratch_closure.json",
+    "candidate_filename": "candidate.json",
+    "seal_filename": "completion_seal.json",
+    "attempt_ledger_filename": "attempt_ledger.json",
+    "formal_log_filename": "formal.log",
+    "srun_argv_filename": "srun_argv.nul",
+    "rank_argv_filename": "rank_argv.nul",
+    "step_meta_filename": "step_meta.json",
+    "controller_argv_filename": "controller_argv.nul",
+    "controller_step_meta_filename": "controller_step_meta.json"
+  },
+  "existing_allocation_contract": {
+    "approved_job_ids": [147871, 147873, 147881],
+    "preferred_job_id": 147871,
+    "required_state": "RUNNING",
+    "nodes": 1,
+    "tasks": 1,
+    "cpus_per_task": 16,
+    "gpu_type_and_count": "mi210:1",
+    "memory": "56G",
+    "srun_flags": ["--exclusive", "--exact", "--immediate=60"],
+    "no_nested_outer_srun": true,
+    "active_step_blanket_rejection_permitted": false,
+    "slurm_must_allocate_current_idle_resources": true,
+    "external_controller_step": {
+      "cpus_per_task": 1,
+      "memory": "1G",
+      "gpu_count": 0,
+      "same_actual_slurm_job_required": true,
+      "exact_gpu_visibility_environment": {"CUDA_VISIBLE_DEVICES": "", "ROCR_VISIBLE_DEVICES": "", "HIP_VISIBLE_DEVICES": ""},
+      "task_internal_visibility_reset_required": true,
+      "immutable_controller_wrapper_required": true,
+      "controller_argv_create_only_nul_required": true,
+      "controller_step_meta_create_only_required": true,
+      "controller_step_meta_binds": ["slurm_job_id", "slurm_step_id", "hostname", "controller_argv_sha256", "snapshot_receipt_digest", "snapshot_manifest_file_sha256"],
+      "torch_imported_at_metadata_required": false,
+      "torch_imported_before_seal_required": false,
+      "foundation_or_tensor_framework_imports_permitted": false,
+      "static_source_tree_file_and_config_closure_only": true
+    }
+  },
+  "snapshot_payload_relative_paths": [
+    "actual_target_foundation_canary_v1.py",
+    "actual_target_foundation_canary_v3.py",
+    "actual_target_foundation_controller_v3.py",
+    "actual_target_foundation_graph_v3.py",
+    "actual_target_foundation_runtime_v3.py",
+    "actual_target_foundation_snapshot_v3.py",
+    "assets/actual_target_foundation_canary_authority_v3.json",
+    "assets/actual_target_foundation_canary_availability_v1.json",
+    "assets/actual_target_foundation_canary_prereg_v1.json",
+    "assets/actual_target_foundation_decode_receipt_v2.json",
+    "scripts/auh_actual_target_foundation_canary_formal_v3.sbatch",
+    "scripts/auh_actual_target_foundation_canary_existing_allocation_v3.sh",
+    "scripts/auh_actual_target_foundation_canary_rank_wrapper_v3.sh",
+    "scripts/auh_actual_target_foundation_canary_controller_wrapper_v3.sh",
+    "tests/test_actual_target_foundation_canary_v3.py",
+    "tests/test_actual_target_foundation_controller_v3.py",
+    "tests/test_actual_target_foundation_runtime_v3.py"
+  ],
+  "boundaries": {
+    "real_gpu_launch_authorized": true,
+    "independent_preflip_audit_required": true,
+    "training_performed": false,
+    "optimizer_created": false,
+    "parameter_updates": 0,
+    "generator_loaded": false,
+    "generator_forward_calls": 0,
+    "representation_admission_hard_false": true,
+    "scientific_evidence_claimed": false
+  },
+  "authority_self_sha256": "47b0eeb844271e65b6f2f6e6ed16edce1760246a4fb26d0f6e7730fa23e2e64e"
+}

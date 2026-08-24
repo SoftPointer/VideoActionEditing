@@ -1,0 +1,87 @@
+{
+  "schema_version": "bernini-generic-action-fit40-r14-gpu280-port-test-fixture-v1",
+  "source": {
+    "archive_sha256": "7de587a260cba28b18ce06a41c16350e040e105d39bf9083384dc325a8a8a180",
+    "manifest_sha256": "1e9dae7429e2ada55c27e3efdf00c8851141fedd37558c8c76df49063ffa4770",
+    "manifest_digest": "0257b4a988de6b0c802f0b4224bf42255ba5f49594c9e9b4dc60b3be4a92e6b8",
+    "content_closure_sha1": "f7f5adc4b93cf57380bbf532dcfdb87f998bd447",
+    "file_count": 18,
+    "old_holder_job_token_count": 24,
+    "old_holder_node_token_count": 2,
+    "old_launcher_basename_count": 5,
+    "old_gpu299_comment_count": 1
+  },
+  "port": {
+    "holder_job": 136309,
+    "holder_node": "auh7-1b-gpu-280",
+    "confirmation": "launch-approved-generic-action-fit40-generation-136309",
+    "plan_id": "generic-action-fit40-generation-136309-r14-gpu280-p1",
+    "launcher_member": "scripts/auh_generic_action_data_prep_136309_world4_v1.sh",
+    "archive_sha256": "f2178add95e63d05787605258d7276883fa4140b775469d1f05a57d82414e06b",
+    "manifest_sha256": "7ecb857a5cc8d5743b350d8270032a3e9da8c2f80defae9f7758cfefa042733e",
+    "manifest_digest": "5808e08077b7b4984854a779046582d5aed408c529d4606fcfa383162ddd8c1c",
+    "content_closure_sha1": "b491ebd86f4011d440e2efc24e7e34401fa52778",
+    "file_count": 18,
+    "transformed_member_count": 4,
+    "unchanged_member_count": 14,
+    "old_token_count": 0
+  },
+  "transformed_members": {
+    "generic_action_data_prep_controller_v1.py": {
+      "preimage_sha256": "764346494d4e949a125b2e9d4991d451aac03f5e4c5ccf7fdd364360d933ac23",
+      "postimage_sha256": "37b9fe18116d793f6814e2dd0ea3e7123b183a47c753c67d007173e920cb1ca1",
+      "old_job_occurrences": 7,
+      "old_node_occurrences": 1
+    },
+    "scripts/auh_generic_action_data_prep_136309_world4_v1.sh": {
+      "source_member": "scripts/auh_generic_action_data_prep_136141_world4_v1.sh",
+      "preimage_sha256": "1d4bc30ff20d18b1d44d2cbe1a91305ba15d63980c6070ad59871da3e17ac994",
+      "postimage_sha256": "8ed4d7bde14bbc4d00712509318a35b76bc007f94b8d831171af15fa6c1fc7c2",
+      "old_job_occurrences": 4,
+      "old_node_occurrences": 1,
+      "old_gpu299_comment_occurrences": 1
+    },
+    "tools/build_generic_action_data_prep_release_v1.py": {
+      "preimage_sha256": "2e17019fa63d7387c389350613a0e3c8d99e96dc44a8e4b9ce64dbe9967c7955",
+      "postimage_sha256": "0f0ea55601f6fc53cbbb8995907bc1ec6b76ff170a181691f832e5c8d993d61c",
+      "old_job_occurrences": 4
+    },
+    "tools/reserve4_fixed_generation_sp4_v1.py": {
+      "preimage_sha256": "4e27afcb154ba002feb2f8eaaf80203a28813582a214c27fd3674dba127505f7",
+      "postimage_sha256": "8d5251b70bb97454afe21b5419a76c15c95d5581e8d11eab8a45f16ab8cb9f58",
+      "exact_job_binding_ast_lines": [673, 1087, 1095, 1584, 1606, 1896, 2736, 3412],
+      "diagnostic_ast_line": 1897,
+      "old_job_occurrences": 9
+    }
+  },
+  "authority": {
+    "analysis_split": "fit",
+    "candidate_count": 40,
+    "seed_cell_count": 4,
+    "world4_shard_runner_count": 4,
+    "all_model_invocations_strictly_serial": true,
+    "generated_media_role": "pending-external-review-authoring-media-only",
+    "confirmation_generation_authorized": false,
+    "independent_full81_blind_review_present": false,
+    "phi_v1_extraction_authorized": false,
+    "p_or_o_manifest_materialization_authorized": false,
+    "optimizer_authorized": false,
+    "training_authorized": false
+  },
+  "runtime_suite": {
+    "source_path": "/private/tmp/action-r14-isolated.Fgh3sC/methods/bernini_action_editing/tests/test_generic_action_data_prep_release_v1.py",
+    "source_sha256": "1273ce6a83dc2aade967d22bf5530c582788a72d23bf52a8d75f86e43421db6a",
+    "port_sha256": "101e8e9987cacf1ac07efbbe26b8cb6f6fa44655d75bd444b69c3b3d466355fb",
+    "test_count": 42,
+    "source_holder_job_occurrences": 37,
+    "source_job_cgroup_occurrences": 18,
+    "source_gpu299_lower_occurrences": 1,
+    "source_gpu299_upper_occurrences": 4,
+    "port_old_holder_job_occurrences": 0,
+    "port_old_job_cgroup_occurrences": 0,
+    "port_old_gpu299_lower_occurrences": 0,
+    "port_old_gpu299_upper_occurrences": 0,
+    "membership_drift_fixture_job": 136310,
+    "negative_plan_generation": "v10"
+  }
+}

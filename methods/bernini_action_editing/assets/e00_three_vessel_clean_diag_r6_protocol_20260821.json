@@ -1,0 +1,143 @@
+{
+  "schema_version": "bernini-e00-clean-diagnostic-r6-protocol-v6",
+  "revision_tag": "E00_DFIX2_CLEAN_DIAG_R6_EXTERNAL_BOOTSTRAP_20260821",
+  "status": {
+    "draft_only": true,
+    "execution_authorized": false,
+    "gpu_run_started": false,
+    "training_performed": false,
+    "independent_package_audit_passed": false
+  },
+  "diagnostic_scope": {
+    "question": "Does the old pure-QK final route application amplify white-cup or opaque-vessel leakage?",
+    "old_qk_route_diagnostic_only": true,
+    "property_preservation_fix_claimed": false,
+    "method_promotion_allowed": false,
+    "a_b_bit_exact_or_stop_without_c": true,
+    "b_c_only_intended_difference": "final_pure_qk_route_application",
+    "b_c_pre_route_byte_exact_inputs": [
+      "per_rank_initial_cpu_cuda_rng",
+      "raw_keyed_noise_and_sampler_initial_latent",
+      "outer_schedule",
+      "effective_native_caption_hash_map",
+      "source_video_sha256",
+      "self_generated_anchor_video_sha256",
+      "anchor_observer_configuration_and_schedule"
+    ],
+    "final_audit_must_retain": [
+      "three_object_editing_instruction_utf8",
+      "three_object_editing_instruction_utf8_sha256",
+      "source_video_path_and_sha256",
+      "self_generated_anchor_video_path_and_sha256"
+    ]
+  },
+  "external_bootstrap": {
+    "root_schema": "bernini-e00-clean-diagnostic-r6-external-bootstrap-root-v6",
+    "root_package_relative_path": "methods/bernini_action_editing/assets/e00_three_vessel_clean_diag_r6_EXTERNAL_ROOT.json",
+    "verifier_package_relative_path": "methods/bernini_action_editing/tools/e00_three_vessel_clean_diag_r6_external_bootstrap.py",
+    "stdlib_only_no_local_imports": true,
+    "root_one_way_pins_all_runtime_consumers_and_dependencies": true,
+    "consumers_pin_root": false,
+    "reject_cache_bytecode_before_consumer": true,
+    "consumer_exec_from_verified_open_fd": true,
+    "final_launch_template_checks_verifier_sha256_before_execution": true
+  },
+  "base_diagnostic_spec": {
+    "package_relative_path": "methods/bernini_action_editing/assets/e00_three_vessel_fresh_keyed_legacy_diagnostic_v1.json",
+    "file_sha256": "3dfe1689470f46e4bb96c85169575adb70a15c8bb35c2eb5b08eaf13a8474c05",
+    "canonical_sha256": "fa87b6bae39fc00fcf11cdd72bd17aba867922dae36b5e7d14f14fadb60d7265"
+  },
+  "phase_a_placeholder_contract": {
+    "classification": "content_static_lossy_decode_reencode_placeholder",
+    "decoded_bit_exact_source_video_claimed": false,
+    "encoded_bytes_equal_source_video_claimed": false,
+    "purpose": "legacy parser placeholder only; no self-generated anchor pixels"
+  },
+  "fixed_initial_rng": {
+    "scheme": "explicit_rank_owned_cpu_cuda_manual_seed_r3",
+    "scope": "inside_fork_rng_immediately_before_entire_legacy_inference_entrypoint",
+    "same_rank_state_must_be_bit_exact_across_arms": true,
+    "caller_state_must_be_restored": true,
+    "per_rank": [
+      {"rank": 0, "cpu_seed": 83002700, "cuda_seed": 83003700},
+      {"rank": 1, "cpu_seed": 83002701, "cuda_seed": 83003701},
+      {"rank": 2, "cpu_seed": 83002702, "cuda_seed": 83003702},
+      {"rank": 3, "cpu_seed": 83002703, "cuda_seed": 83003703}
+    ]
+  },
+  "arm_order": [
+    "pure_noobserver_output_routeoff",
+    "observer_matched_output_routeoff",
+    "old_pureqk_temporal_routeon"
+  ],
+  "ab_gate_contract": {
+    "required_equalities": [
+      "predecode_latent_raw_storage_sha256",
+      "mp4_sha256",
+      "per_rank_fixed_cpu_initial_rng_sha256",
+      "per_rank_fixed_cuda_initial_rng_sha256",
+      "raw_keyed_noise_bank_sha256",
+      "outer_schedule_digest",
+      "frozen_certificate_sha256"
+    ],
+    "current_artifact_revalidation_required": [
+      "native_receipt_path_and_bytes",
+      "four_rank_rng_receipt_paths_and_bytes",
+      "video_path_and_bytes",
+      "arm_audit_path_and_bytes"
+    ],
+    "on_failure": "STOP_WITHOUT_C"
+  },
+  "bridge_capability_contract": {
+    "fixed_parent_job_id": "143808",
+    "fixed_compute_node": "auh7-1b-gpu-292",
+    "phase_a_only_token_required": true,
+    "phase_bc_token_required": true,
+    "phase_a_and_bc_tokens_must_be_distinct": true,
+    "phase_a_token_may_admit_only": ["pure_noobserver_output_routeoff"],
+    "phase_bc_token_may_admit_b_before_gate": ["observer_matched_output_routeoff"],
+    "phase_bc_token_may_admit_c_only_after_current_gate_revalidation": ["old_pureqk_temporal_routeon"],
+    "bridge_must_validate_authorization_bytes": true,
+    "bridge_must_validate_phase_a_marker_bytes_for_b_and_c": true,
+    "bridge_must_validate_current_ab_gate_bytes_for_c": true,
+    "direct_bridge_without_capability_forbidden": true
+  },
+  "package_integrity_contract": {
+    "root_and_all_pins_required_before_local_import": true,
+    "builder_legacy_helper_sha_before_lazy_import": true,
+    "package_pycache_directories_forbidden": true,
+    "package_pyc_files_forbidden": true,
+    "optimized_python_must_preserve_all_integrity_failures": true,
+    "terminal_markers_require_exclusive_temp_fsync_atomic_rename_reread": true
+  },
+  "two_phase_state_machine": [
+    "PACKAGE_REVIEW_REQUIRED",
+    "EXTERNAL_A_ONLY_AUTHORIZATION_AND_TOKEN",
+    "RUN_A",
+    "A_STOPPED_REVIEW_REQUIRED",
+    "EXTERNAL_BC_AUTHORIZATION_AND_TOKEN_BOUND_TO_A_BYTES",
+    "RUN_B",
+    "FRESH_AB_CURRENT_ARTIFACT_AND_BIT_EXACT_GATE",
+    "RUN_C_ONLY_AFTER_BRIDGE_REVALIDATES_CURRENT_GATE_MARKER_AUTH",
+    "FRESH_ABC_FINAL_CURRENT_ARTIFACT_CLOSURE"
+  ],
+  "slurm_contract": {
+    "parent_job_id": "143808",
+    "compute_node": "auh7-1b-gpu-292",
+    "gpu_count": 4,
+    "preserve_slurm_visible_device_namespace": true,
+    "submit_new_job": false,
+    "cancel_parent_job": false,
+    "serial_exclusive_steps_only": true
+  },
+  "authorization_templates": {
+    "phase_a": "methods/bernini_action_editing/assets/e00_three_vessel_clean_diag_r6_phase_a_authorization.template.json",
+    "phase_bc": "methods/bernini_action_editing/assets/e00_three_vessel_clean_diag_r6_phase_bc_authorization.template.json"
+  },
+  "claims": {
+    "diagnostic_only": true,
+    "zero_update_frozen_inference": true,
+    "training_authorized": false,
+    "promotion_forbidden": true
+  }
+}

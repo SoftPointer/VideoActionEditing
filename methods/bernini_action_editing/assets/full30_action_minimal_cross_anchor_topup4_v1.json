@@ -1,0 +1,77 @@
+{
+  "schema_version": "bernini-full30-action-minimal-cross-anchor-selection-v2",
+  "selection_id": "full30-minimal-cross-anchor-action-incomplete-topup4-v2",
+  "governing_contract": "ACTION-BOX-20260814-R2",
+  "governing_preregistration": "md/action_editing/20260814_box/03_full30_action_learning_preregistration.md",
+  "parent_registry": "methods/bernini_action_editing/assets/mosaic_event_population_compact6_topup20_v1.json",
+  "parent_registry_sha256": "71906510d162e6626338b5785fd1cf55b437de5ba77d9b9b122ad761694f8e62",
+  "geometry_source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+  "selection_frozen_before_generation": true,
+  "selection_rule": "one independently authored different-actor different-scene seed cell for each first8 event that lacks an existing cross-event-equivalent teacher-origin comparator; render only the action and incomplete anchors consumed by the numeric objective",
+  "selected_seed_cells": [
+    {
+      "family_id": "human-arms-raised-to-hands-on-hips",
+      "identity_scene_id": "man-gym-raised-arms",
+      "analysis_split": "fit",
+      "seed": 2026081205,
+      "required_branches": ["action", "incomplete"]
+    },
+    {
+      "family_id": "human-head-turn-forward-and-smile",
+      "identity_scene_id": "young-man-library-angled-head",
+      "analysis_split": "fit",
+      "seed": 2026081209,
+      "required_branches": ["action", "incomplete"]
+    },
+    {
+      "family_id": "human-peace-sign-to-open-palm-wave",
+      "identity_scene_id": "woman-art-studio-peace",
+      "analysis_split": "fit",
+      "seed": 2026081213,
+      "required_branches": ["action", "incomplete"]
+    },
+    {
+      "family_id": "human-left-fist-to-forward-palm-down",
+      "identity_scene_id": "woman-office-left-fist",
+      "analysis_split": "fit",
+      "seed": 2026081217,
+      "required_branches": ["action", "incomplete"]
+    }
+  ],
+  "existing_cross_anchor_reuse": [
+    {
+      "family_id": "dog-sit-facing-camera",
+      "fit_identity_scene_id": "french-bulldog-leaves",
+      "confirmation_identity_scene_id": "german-shepherd-field",
+      "reuse_policy": "each split may use the other split's sealed same-event branch video as a different-actor different-scene comparator"
+    },
+    {
+      "family_id": "human-rise-to-stand",
+      "fit_identity_scene_id": "kneeling-woman-yellow",
+      "confirmation_identity_scene_id": "crouching-woman-city",
+      "reuse_policy": "each split may use the other split's sealed same-event branch video as a different-actor different-scene comparator"
+    }
+  ],
+  "formal_seed_cell_count": 4,
+  "branches_per_seed_cell": 2,
+  "formal_mp4_count": 8,
+  "diagnostic_only_rendered_branches_not_required": [
+    "noop",
+    "reverse",
+    "shuffle",
+    "wrong_actor",
+    "wrong_object",
+    "camera_only",
+    "appearance_only",
+    "generic_wrong_motion"
+  ],
+  "same_state_noop_camera_appearance_and_wrong_control_forwards_still_required": true,
+  "optimizer_updates": 0,
+  "generated_media_may_train_editor": false,
+  "generated_media_may_be_editor_target": false,
+  "generated_media_may_be_editor_condition": false,
+  "representation_admission_still_requires_per_teacher_cell_same_state_six_sigma_sidecars": true,
+  "physical_anchor_video_reuse_only_with_exact_intrinsic_identity": true,
+  "sidecar_nuisance_evidence_and_receipt_reuse_forbidden": true,
+  "generalization_claim_authorized": false
+}

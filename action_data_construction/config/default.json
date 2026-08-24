@@ -1,0 +1,24 @@
+{
+  "schema_version": "mev-action-edit-config-v1",
+  "source_root": "/vast/users/guangyi.chen/dataset/MEV/MEV",
+  "project_root": "/vast/users/guangyi.chen/dataset/MEV/VideoEditing/action_data_construction",
+  "qwen_model": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VLM/MEV-Annotation/checkpoints/Qwen3-VL-32B-Instruct",
+  "split": {
+    "salt": "mev-action-edit-split-v1",
+    "train_percent": 90,
+    "validation_percent": 5,
+    "test_percent": 5,
+    "group_key": "uuid"
+  },
+  "qwen": {
+    "smoke_workers": 2,
+    "full_workers": 8,
+    "full_nodes": 4,
+    "gpus_per_worker": 4,
+    "nframes_per_video": 8,
+    "tile_width": 256,
+    "mosaic_columns": 4,
+    "max_new_tokens": 768,
+    "attempts": 2
+  }
+}

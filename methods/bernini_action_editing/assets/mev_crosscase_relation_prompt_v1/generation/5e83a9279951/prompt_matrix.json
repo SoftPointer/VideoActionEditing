@@ -1,0 +1,60 @@
+{
+  "schema": "native-rv2v-crosscase-prompt-matrix-v1",
+  "case_id": "5e83a9279951",
+  "experiment_role": "zero-update-native-candidate-bank-with-case-specific-action-language",
+  "common": {
+    "source_context_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, ",
+    "source_context_utf8_bytes": 124,
+    "source_context_utf8_sha256": "117b4d43cc023a62f357db72c23296d675ef6e1979cbfe992e0cdfd7d9ad7822",
+    "base_action_utf8": "The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet.",
+    "base_action_utf8_bytes": 105,
+    "base_action_utf8_sha256": "9f310f0db110bb6eb1cf00b343eba34fd372b013911060b9bee7f377cb165cc3",
+    "preservation_suffix_utf8": " The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+    "preservation_suffix_utf8_bytes": 90,
+    "preservation_suffix_utf8_sha256": "27c19f9620b7d128d6f2f7d0aa6ff4afdf3373d88c2ffa2dedcd7e32db674b1f"
+  },
+  "prompts": {
+    "P0": {
+      "supplement_kind": "none",
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 319,
+      "full_prompt_utf8_sha256": "04ac6d6201f7ed997bcbb748bd3278bfd455978c0bc1d9d321b64aeb284aba72",
+      "final_task_prompt_utf8_bytes": 572,
+      "final_task_prompt_utf8_sha256": "4a2e083326432a19dd64e04af2700ba3953dcbd49f814db9aa17f2866589b298",
+      "untruncated_token_count": 152,
+      "terminal_token_id": 1
+    },
+    "P1": {
+      "supplement_kind": "event_order",
+      "payload_basename": "p1_event_order.txt",
+      "payload_file_sha256_with_terminal_lf": "5a8942bed22573a11aed453f74892d28aa8a71801f9b60eea729d7c800717dac",
+      "payload_utf8_sha256_without_terminal_lf": "b4cdde573a9e30a05f5120ce4f0fd2bc1049b5fcc3dc38337fab0c000927bf0a",
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. Follow this event order: The elderly man first keeps the tablet stable while one hand reaches his glasses and adjusts them. That hand then leaves the glasses and moves to a separate smartphone. It establishes a grasp on the smartphone and lifts the phone away from its initial support. The tablet and smartphone remain distinct throughout. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 659,
+      "full_prompt_utf8_sha256": "63f1688e96ff6bc877dc7ef1e7c1590a47641ebf79c739272bcc47804d871202",
+      "final_task_prompt_utf8_bytes": 912,
+      "final_task_prompt_utf8_sha256": "199432aaa6560408bbacd303149ffdff6c46ea2377f0649a4d0ed1970c680991",
+      "untruncated_token_count": 223,
+      "terminal_token_id": 1
+    },
+    "P2": {
+      "supplement_kind": "relation_contact",
+      "payload_basename": "p2_relation_contact.txt",
+      "payload_file_sha256_with_terminal_lf": "9de16a383e55fbdf8032322d7776aff5a918a1a362c6aad733a0d209fdb8569e",
+      "payload_utf8_sha256_without_terminal_lf": "7119e46bde2c4fb89e3d4c9cf655270bba3e0e5e4d285ddc5ce19b4a4ff5de2a",
+      "full_prompt_utf8": "The elderly man with a long white beard and glasses sits on a yellow couch, using a silver tablet. In this continuous shot, The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet. Follow these contact relations: Treat the glasses, tablet, and smartphone as three distinct persistent entities. Establish and then end hand-to-glasses contact before establishing hand-to-smartphone contact. Keep the tablet separate and stable while smoothly decreasing the hand-to-phone distance. Establish a hand-to-phone grasp, then increase the phone-to-initial-support distance while maintaining that grasp. Use exactly one smartphone; do not transform the tablet into the phone, duplicate either device, or exchange their identities. The same man, glasses, tablet, couch, scene, lighting, framing, and camera remain stable.",
+      "full_prompt_utf8_bytes": 859,
+      "full_prompt_utf8_sha256": "d40195348931a539a6c56c6864efc821c49ead6ae583c1f15ff6d5ad8e0cb642",
+      "final_task_prompt_utf8_bytes": 1112,
+      "final_task_prompt_utf8_sha256": "f955367dccb8e70ec4c82b10d72e7dc3822494af399f3d5af475d38eb7acdd94",
+      "untruncated_token_count": 274,
+      "terminal_token_id": 1
+    }
+  },
+  "claim_limits": {
+    "P1_and_P2_are_incremental_language_supplements_not_hidden_controls": true,
+    "prompt_length_and_semantic_content_both_change": true,
+    "candidate_selection_is_separate_from_generation": true,
+    "cross_case_action_success_not_predeclared": true
+  }
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": "bernini-cage-t2v-motion-fisher-observation-registration-v1",
+  "purpose": "frozen_parameter_gradient_observation_only",
+  "required_action_families": [
+    "dog-sit-facing-camera",
+    "human-rise-to-stand"
+  ],
+  "minimum_identity_count_per_family": 2,
+  "minimum_generation_seeds_per_identity": 2,
+  "exact_selected_action_clip_count": 8,
+  "frame_contract": "exact81_latent21",
+  "candidate_block_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "projection_suffix": "attn2.to_out.0",
+  "probe_rank": 8,
+  "probe_scale": 0.35355339059327373,
+  "fixed_a_construction": "first_8_walsh_rows_repeated_across_3x512_columns_then_divide_sqrt_1536_v1",
+  "zero_b_required": true,
+  "native_schedule": {
+    "schedule_digest": "46f3dcb6e2d65cb7921e5217e2a20dfe008b366cfacafe455fee4d3c45f63ae2",
+    "schedule_index": 33,
+    "sigma": 0.5161304473876953,
+    "native_timestep": 516
+  },
+  "transform_registry": {
+    "action": {
+      "latent_index_map": "chronological_0_to_20",
+      "condition_branch": "action"
+    },
+    "reverse": {
+      "latent_index_map": "reverse_20_to_0",
+      "condition_branch": "action"
+    },
+    "freeze": {
+      "latent_index_map": "phase_0_repeated_21",
+      "condition_branch": "action"
+    },
+    "shuffle": {
+      "latent_index_map": "phase_index_equals_8i_mod_21",
+      "condition_branch": "action"
+    },
+    "camera": {
+      "latent_index_map": "chronological_0_to_20",
+      "condition_branch": "camera_only"
+    },
+    "appearance": {
+      "latent_index_map": "chronological_0_to_20",
+      "condition_branch": "appearance_only"
+    }
+  },
+  "built_in_scalar_backend": {
+    "backend_id": "frozen_flow_log_ratio_to_same_state_noop_negative_control_v1",
+    "formula": "log(E_condition+1e-8)-log(E_same_state_noop+1e-8)",
+    "energy": "global_mean_fp32_squared_velocity_residual",
+    "raw_parameter_gradient_no_manual_sign_flip": true,
+    "scientific_role": "negative_control_only",
+    "motion_fisher_fit_authorized": false,
+    "optimizer_update_authorized": false
+  },
+  "external_scalar_backend_contract": {
+    "backend_id": "frozen_text_conditioned_temporal_event_critic_raw_score_vjp_v1",
+    "same_clip_six_view_input_required": true,
+    "critic_checkpoint_content_receipt_required": true,
+    "critic_frozen_required": true,
+    "identity_and_camera_adversarial_nuisance_removal_required": true,
+    "generated_media_as_target_forbidden": true,
+    "raw_parameter_gradient_no_manual_sign_flip": true,
+    "optimizer_update_authorized_by_probe": false
+  },
+  "same_action_clip_and_official_gaussian_shared_across_six_views": true,
+  "official_gaussian_temporal_transform_applied": false,
+  "event_qualified_action_receipt_required_before_gpu_compute": true,
+  "sp4_gradient_reduction": "all_reduce_sum_fp32_then_divide_world4",
+  "output_payload": "detached_cpu_fp32_lora_b_gradients_only",
+  "training_performed": false,
+  "optimizer_created": false,
+  "optimizer_update_authorized": false
+}

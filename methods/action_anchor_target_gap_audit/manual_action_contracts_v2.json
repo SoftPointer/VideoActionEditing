@@ -1,0 +1,223 @@
+{
+  "schema_version": "mev-action-anchor-human-contracts-v2",
+  "created_at": "2026-08-19T00:00:00Z",
+  "label_source": "user_manual_full-video_review_2026-08-19",
+  "evaluation_role": "calibration_only_not_independent_test",
+  "label_policy": {
+    "anchor": "The self-generated T2V anchor performs the requested action more correctly than the frozen-base RV2V output.",
+    "tie": "Both candidates visibly complete the simple requested action; do not force a winner."
+  },
+  "samples": [
+    {
+      "pair_prefix": "0be6494dfac3",
+      "manual_winner": "tie",
+      "human_note": "Simple head-turn case: both candidates are considered able to perform the requested action.",
+      "target_action": "The cockatoo turns its head toward frame left and raises its curved yellow crest.",
+      "required_predicates": [
+        {"id": "head_turn_left", "description": "The head visibly changes orientation from forward toward frame left over time."},
+        {"id": "crest_raises", "description": "The yellow crest visibly changes from lower to raised rather than merely being present."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "static_pose_only", "description": "The bird stays in essentially one pose with no temporal head turn or crest change."}
+      ]
+    },
+    {
+      "pair_prefix": "0faecd13ef67",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor expresses the nontrivial restless tossing action more clearly.",
+      "target_action": "The sleeping woman tosses and turns restlessly while moving her arms around her head.",
+      "required_predicates": [
+        {"id": "body_tosses_and_turns", "description": "The torso or sleeping orientation visibly changes back and forth over time."},
+        {"id": "arms_move_around_head", "description": "The arms visibly move around or above the head during the restless motion."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "peaceful_static_sleep", "description": "The person remains peacefully asleep in one pose with only tiny incidental motion."}
+      ]
+    },
+    {
+      "pair_prefix": "10af6c651dbc",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor shows the bell contraction while the frozen-base result is motion-dead.",
+      "target_action": "The jellyfish pulsates and its bell contracts into a visible ring-like shape.",
+      "required_predicates": [
+        {"id": "bell_contracts", "description": "The jellyfish bell visibly changes from expanded to contracted over time."},
+        {"id": "ring_shape_appears", "description": "A ring-like contracted bell shape becomes visibly established during the action."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "drift_only", "description": "The jellyfish only drifts or stays still without a visible contraction cycle."}
+      ]
+    },
+    {
+      "pair_prefix": "3fadbe0c2961",
+      "manual_winner": "tie",
+      "human_note": "Simple head-turn case: both candidates are considered able to perform the requested action.",
+      "target_action": "The corgi visibly turns its head farther to its right; for a single-view animal, viewer/subject mirror ambiguity alone must not fail an otherwise clear head turn.",
+      "required_predicates": [
+        {"id": "head_turn_right", "description": "The dog's head visibly changes orientation farther in the requested rightward direction over time. Judge the temporal head turn, not source-pose preservation; do not mark a clear turn wrong solely because viewer-left and the animal's-right are mirror-ambiguous in this single view."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "static_head", "description": "The head orientation remains essentially unchanged throughout the video."}
+      ]
+    },
+    {
+      "pair_prefix": "40712e1341dc",
+      "manual_winner": "anchor",
+      "human_note": "The frozen-base output keeps the phone in the hand; its previous automatic win was a hallucinated phone placement.",
+      "target_action": "The person puts the smartphone onto the nightstand and then turns over to sleep.",
+      "required_predicates": [
+        {"id": "phone_leaves_hand_on_nightstand", "description": "The phone visibly leaves the hand and comes to rest on the nightstand or bedside surface."},
+        {"id": "body_turns_over_after_phone", "description": "After placing the phone, the person's torso visibly turns over into a sleeping orientation."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "phone_remains_in_hand", "description": "The phone remains visibly held throughout the video."},
+        {"id": "lies_still_without_turn", "description": "The person stays in the same body orientation instead of turning over."}
+      ]
+    },
+    {
+      "pair_prefix": "5e83a9279951",
+      "manual_winner": "anchor",
+      "human_note": "The frozen-base output does not actually pick up a smartphone; the old Qwen evidence invented one.",
+      "target_action": "The elderly man adjusts his glasses and then picks up a distinct smartphone while seated with the tablet.",
+      "required_predicates": [
+        {"id": "adjusts_glasses", "description": "A hand visibly reaches the glasses and adjusts them."},
+        {"id": "picks_up_smartphone_afterward", "description": "After adjusting the glasses, a distinct smartphone is visibly picked up rather than merely returning to the tablet."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "tablet_only", "description": "The person only continues using or holding the tablet and no distinct phone pickup occurs."}
+      ]
+    },
+    {
+      "pair_prefix": "7077cfb160cf",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor performs the target writing action more clearly.",
+      "target_action": "The woman writes thoughtfully in her notebook with a pen.",
+      "required_predicates": [
+        {"id": "pen_contacts_notebook", "description": "The pen visibly reaches and remains in contact with the notebook page."},
+        {"id": "repeated_writing_motion", "description": "The hand makes repeated small writing strokes over time rather than holding a pose."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "looks_away_without_writing", "description": "The person only holds the notebook or looks aside without visible writing strokes."}
+      ]
+    },
+    {
+      "pair_prefix": "7e488525099e",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor performs the turn-and-lean action more clearly.",
+      "target_action": "The woman turns and leans her back against the hood of the black car.",
+      "required_predicates": [
+        {"id": "body_turns", "description": "The woman's torso visibly changes orientation toward the car."},
+        {"id": "back_leans_on_hood", "description": "After turning, her back visibly makes and maintains support contact with the car hood."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "standing_pose_only", "description": "She remains standing in front of the car without a clear turn and supported lean."}
+      ]
+    },
+    {
+      "pair_prefix": "7fa338474c75",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor clearly performs the tongue-out and wink selfie while frozen-base is motion-dead.",
+      "target_action": "The woman takes a playful selfie, visibly sticking out her tongue and winking.",
+      "required_predicates": [
+        {"id": "selfie_pose_with_phone", "description": "The phone is visibly held in a selfie-taking pose."},
+        {"id": "tongue_out", "description": "The tongue visibly changes from not out to sticking out."},
+        {"id": "wink", "description": "One eye visibly closes in a wink while the other remains open."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "phone_use_without_expression", "description": "The person merely holds or uses the phone without the requested tongue-out wink expression."}
+      ]
+    },
+    {
+      "pair_prefix": "81533c9e56ec",
+      "manual_winner": "anchor",
+      "human_note": "The frozen-base output does not establish a spin; the old evaluator inferred rotation from source-like poses.",
+      "target_action": "The woman performs a full visible spin while holding the scarf.",
+      "required_predicates": [
+        {"id": "progressive_body_rotation", "description": "The torso follows a physically continuous ordered path through front, one side, back, the opposite side, and front; rapid front/back pose replacement without intermediate orientations is not rotation."},
+        {"id": "full_spin_cycle", "description": "The body completes approximately one coherent full rotation rather than a small sway, jump, partial turn, or discontinuous orientation flicker."},
+        {"id": "scarf_follows_rotation", "description": "The scarf trajectory visibly follows the rotational motion."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "source_pose_without_spin", "description": "The trace does not establish an ordered front -> one side profile -> back -> opposite side profile -> front path. Remaining near the source pose, waving/stepping/jumping, or changing directly front -> back -> front without both intermediate side orientations counts as this forbidden non-spin even if a generic continuity field says continuous."}
+      ]
+    },
+    {
+      "pair_prefix": "840b214afead",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor completes the two-part target action more clearly.",
+      "target_action": "The woman turns her head left and places the water bottle onto the treadmill.",
+      "required_predicates": [
+        {"id": "head_turns_left", "description": "The head visibly changes orientation toward frame left."},
+        {"id": "bottle_released_on_treadmill", "description": "The bottle visibly leaves the hand and remains supported by the treadmill surface."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "bottle_remains_held", "description": "The bottle remains in the hand throughout the video."}
+      ]
+    },
+    {
+      "pair_prefix": "8b05aaf463db",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor performs the lift-and-return cycle more clearly.",
+      "target_action": "The grill basket is lifted away from the hot coals and then placed back onto the grill.",
+      "required_predicates": [
+        {"id": "basket_lifts_from_coals", "description": "The basket visibly rises away from the coal/grill surface."},
+        {"id": "basket_returns_to_grill", "description": "After being lifted, the basket visibly descends and is placed back on the grill."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "basket_static", "description": "The basket stays at essentially one height for the full video."}
+      ]
+    },
+    {
+      "pair_prefix": "d5221a1b69d5",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor expresses the tasting action more clearly.",
+      "target_action": "The woman visibly performs a tasting response with her eyes closed; for action-only ranking, an explicit mouth/tasting motion can establish the action even if an anchor changes the exact utensil, but a static source pose with a ladle merely held near the mouth cannot.",
+      "required_predicates": [
+        {"id": "visible_tasting_motion", "description": "There is a visible temporal tasting event: the utensil/head closes distance to the mouth, or the mouth performs a clear tasting/savoring sequence. Static spatial proximity between a ladle and the mouth is not enough."},
+        {"id": "eyes_closed_with_taste_response", "description": "The eyes close during or immediately after the visible tasting motion, or remain closed while a visible mouth tasting/savoring response unfolds. Closed eyes in an otherwise unchanged pose are not enough."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "blowing_only", "description": "The person only blows on the food or utensil without a visible tasting response."},
+        {"id": "static_source_ladle_pose", "description": "The ladle or container is held at essentially one position and the face remains essentially unchanged, so no temporal tasting event is established."}
+      ]
+    },
+    {
+      "pair_prefix": "d908552fb691",
+      "manual_winner": "anchor",
+      "human_note": "The frozen-base output retains the source bow; bowing must not be rewarded as part of the target clap.",
+      "target_action": "The woman stands in profile and claps her hands together in front of her.",
+      "required_predicates": [
+        {"id": "hands_move_together", "description": "The two hands visibly travel toward each other from separated positions."},
+        {"id": "clap_contact", "description": "The hands visibly meet in a clap in front of the torso."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "source_bow_retained", "description": "Any clear forward bow inherited from the source remains visible at any point. The target action is a profile clap without a bow, so bow presence is forbidden even if the hands also move together."}
+      ]
+    },
+    {
+      "pair_prefix": "d977ce147d80",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor performs the two-hand eye-rubbing and face-cover action more clearly.",
+      "target_action": "The man rubs his tired eyes and covers his face with both hands.",
+      "required_predicates": [
+        {"id": "both_hands_rub_eyes", "description": "Both hands visibly reach and rub the eye area."},
+        {"id": "face_covered", "description": "The face becomes visibly covered by both hands after or during the rubbing action."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "single_arm_rest_only", "description": "Only one arm rests over the face without a visible two-hand rubbing sequence."}
+      ]
+    },
+    {
+      "pair_prefix": "fb7725c351ba",
+      "manual_winner": "anchor",
+      "human_note": "Manual review finds the anchor establishes the requested lift more clearly.",
+      "target_action": "The woman lifts the barbell from the floor until it reaches her waist.",
+      "required_predicates": [
+        {"id": "barbell_starts_near_floor", "description": "The barbell is visibly near the floor at the beginning of the lift."},
+        {"id": "barbell_rises_to_waist", "description": "The barbell visibly moves upward and reaches approximately waist height."}
+      ],
+      "forbidden_behaviors": [
+        {"id": "no_vertical_lift", "description": "The barbell remains at essentially one height or the requested floor-to-waist lift is not established."}
+      ]
+    }
+  ]
+}

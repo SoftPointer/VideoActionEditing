@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SemanticMoments · Action Reward 人工判别</title>
+  <style>
+    :root {
+      --ink: #17211e;
+      --muted: #68716d;
+      --paper: #f3f0e8;
+      --panel: #fffdf8;
+      --line: #d5cec0;
+      --accent: #0e6b55;
+      --accent-2: #c55b30;
+      --soft: #e7f1ec;
+      --warning: #fff0dc;
+      --warning-ink: #773b20;
+      --shadow: 0 18px 46px rgba(39, 50, 44, .09);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(63, 144, 114, .15), transparent 28rem),
+        linear-gradient(180deg, #e9eee8 0, var(--paper) 34rem);
+      font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    button, select, input, textarea { font: inherit; }
+    button { color: inherit; }
+    a { color: var(--accent); }
+    code { font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    main { width: min(1880px, calc(100% - 32px)); margin: 0 auto; padding: 26px 0 76px; }
+    .hero, .case, .section-intro {
+      background: rgba(255, 253, 248, .96);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 22px;
+    }
+    .hero { padding: clamp(24px, 4vw, 56px); overflow: hidden; position: relative; }
+    .hero::after {
+      content: "M₁ · M₂ · M₃";
+      position: absolute;
+      right: -22px;
+      top: -34px;
+      color: rgba(14, 107, 85, .07);
+      font: 800 clamp(72px, 10vw, 170px)/1 ui-monospace, monospace;
+      letter-spacing: -.1em;
+      pointer-events: none;
+    }
+    .eyebrow { color: var(--accent); font-size: 12px; font-weight: 850; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { max-width: 980px; margin: 10px 0 18px; font-size: clamp(36px, 6vw, 82px); line-height: .98; letter-spacing: -.055em; }
+    h2 { margin: 0 0 8px; font-size: clamp(25px, 3vw, 42px); line-height: 1.06; letter-spacing: -.025em; }
+    h3 { margin: 0; font-size: 19px; line-height: 1.2; }
+    p { margin: 0 0 12px; }
+    .lede { max-width: 980px; color: #3e4944; font-size: 18px; }
+    .warning { max-width: 1120px; margin: 20px 0; padding: 15px 17px; border: 1px solid #e0ac7d; border-radius: 13px; background: var(--warning); color: var(--warning-ink); }
+    .stats { display: grid; grid-template-columns: repeat(5, minmax(140px, 1fr)); gap: 10px; margin-top: 24px; }
+    .stat { min-height: 112px; padding: 15px; border: 1px solid var(--line); border-radius: 15px; background: #faf8f1; }
+    .stat strong { display: block; margin: 6px 0 2px; font-size: clamp(24px, 3vw, 39px); line-height: 1; letter-spacing: -.04em; }
+    .stat span { color: var(--muted); font-size: 12px; }
+    .toolbar {
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0 22px;
+      padding: 10px;
+      border: 1px solid rgba(169, 159, 140, .8);
+      border-radius: 15px;
+      background: rgba(255, 253, 248, .92);
+      box-shadow: 0 9px 30px rgba(35, 46, 41, .12);
+      backdrop-filter: blur(12px);
+    }
+    .toolbar .spacer { flex: 1; }
+    .button, button, select {
+      border: 1px solid #aaa393;
+      border-radius: 10px;
+      background: #f9f6ee;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-weight: 720;
+    }
+    button:hover, .button:hover { border-color: var(--accent); background: var(--soft); }
+    button.primary { border-color: var(--accent); background: var(--accent); color: white; }
+    button.secondary { border-color: #bd673f; background: var(--accent-2); color: white; }
+    button:disabled { cursor: wait; opacity: .55; }
+    .progress { color: var(--muted); font-size: 13px; white-space: nowrap; }
+    .section-intro { margin: 28px 0 14px; padding: 22px; }
+    .section-intro p { max-width: 1050px; color: var(--muted); }
+    .case { margin: 0 0 18px; padding: 18px; scroll-margin-top: 92px; }
+    .case-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+    .case-index { display: inline-grid; place-items: center; min-width: 36px; height: 28px; margin-right: 8px; border-radius: 999px; background: var(--accent); color: white; font-weight: 850; }
+    .case-meta { color: var(--muted); font-size: 13px; }
+    .badge { display: inline-flex; align-items: center; gap: 6px; border-radius: 999px; padding: 5px 9px; background: var(--soft); color: var(--accent); font-size: 12px; font-weight: 800; }
+    .sync-controls { display: grid; grid-template-columns: auto auto auto minmax(170px, 1fr) auto auto; align-items: center; gap: 8px; margin: 10px 0 15px; padding: 10px; border: 1px solid var(--line); border-radius: 13px; background: #f7f4ec; }
+    .sync-controls input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .sync-mode { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+    .sync-status { grid-column: 1 / -1; color: var(--muted); font-size: 12px; min-height: 18px; }
+    .video-grid { display: grid; grid-template-columns: repeat(var(--columns, 3), minmax(0, 1fr)); gap: 11px; }
+    .video-card { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #faf9f4; }
+    .video-card.master { border-color: #63a58d; box-shadow: inset 0 0 0 1px #63a58d; }
+    .video-copy { min-height: 74px; padding: 11px 12px; }
+    .video-copy p { color: var(--muted); font-size: 12px; margin: 5px 0 0; }
+    video { display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: contain; background: #090c0b; }
+    .judgment { display: grid; grid-template-columns: minmax(250px, 1fr) minmax(260px, 1.25fr); gap: 13px; margin-top: 14px; }
+    .question, .machine-panel { padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: #fbfaf6; }
+    .question strong { display: block; margin-bottom: 9px; }
+    .choices { display: flex; flex-wrap: wrap; gap: 7px; }
+    .choice.selected { border-color: var(--accent); background: var(--accent); color: white; }
+    textarea { width: 100%; min-height: 78px; margin-top: 10px; resize: vertical; border: 1px solid #b9b1a2; border-radius: 10px; background: white; padding: 9px; }
+    .machine-panel { background: #edf4f0; }
+    .machine-panel dl { display: grid; grid-template-columns: max-content 1fr; gap: 5px 10px; margin: 8px 0 0; }
+    .machine-panel dt { color: var(--muted); }
+    .machine-panel dd { margin: 0; font-variant-numeric: tabular-nums; }
+    .blind .reveal { display: none !important; }
+    .blind-label { display: none; }
+    .blind .blind-label { display: inline; }
+    .fine { color: var(--muted); font-size: 12px; }
+    footer { max-width: 1000px; margin: 30px 0 0; color: var(--muted); font-size: 12px; }
+    @media (max-width: 1280px) {
+      .stats { grid-template-columns: repeat(3, 1fr); }
+      .video-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      main { width: min(100% - 16px, 1880px); padding-top: 8px; }
+      .hero, .case, .section-intro { border-radius: 15px; }
+      .hero { padding: 20px 16px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .toolbar { top: 4px; }
+      .toolbar a { display: none; }
+      .case-head, .judgment { display: block; }
+      .case-head .badge { margin-top: 8px; }
+      .sync-controls { grid-template-columns: repeat(3, 1fr); }
+      .sync-controls input[type="range"], .sync-mode, .sync-status { grid-column: 1 / -1; }
+      .video-grid { grid-template-columns: 1fr; }
+      .question { margin-bottom: 10px; }
+    }
+  </style>
+</head>
+<body class="blind">
+  <main>
+    <header class="hero">
+      <div class="eyebrow">Dual-anchor action editing · blind-first human review</div>
+      <h1>SemanticMoments 到底看见了动作，还是只看见了帧的集合？</h1>
+      <p class="lede">先在盲审模式下同步播放并做选择，再显示分支与机器分数。页面只帮助人工判断 metric 是否可用，不会自动产生训练 pair 或 reward 权限。</p>
+      <p class="warning"><strong>建议顺序：</strong>每组先点击“从头同步”，在不知道 candidate 真值和分数的情况下选择更相似的动作；完成一组后再点顶部“显示机器信息”。不同长度视频默认按归一化相位同步。</p>
+      <div class="stats" id="population-stats"></div>
+    </header>
+
+    <nav class="toolbar" aria-label="页面控制">
+      <a class="button" href="#simmotion">公开 triplet</a>
+      <a class="button" href="#project">项目 bank</a>
+      <a class="button" href="#canary">倒放 canary</a>
+      <button id="blind-toggle" class="primary" type="button">显示机器信息</button>
+      <span class="progress" id="review-progress">尚未判别</span>
+      <span class="spacer"></span>
+      <button id="export-review" class="secondary" type="button">导出人工判别 JSON</button>
+      <button id="clear-review" type="button">清空本页判别</button>
+    </nav>
+
+    <section id="simmotion" class="section-intro">
+      <div class="eyebrow">Layer 1 · human-curated public benchmark</div>
+      <h2>SimMotion-Real：4 个强成功 + 4 个强失败</h2>
+      <p>每组左侧是 reference，A/B 的正负身份默认隐藏。选择“运动/动作更相似”的候选；显示机器信息后可查看官方 positive 与 M1/M2/M3/M23/M123 cosine。</p>
+    </section>
+    <div id="simmotion-cases"></div>
+
+    <section id="project" class="section-intro">
+      <div class="eyebrow">Layer 2 · self-generated project bank</div>
+      <h2>8 个 IID：forward anchor 对另一个 seed 的三分支</h2>
+      <p>每组包含 query forward anchor 和同 IID、同 candidate seed 的 forward/reverse/noop。分支名默认隐藏；请判断哪一路最像 query 的动作，再检查生成 contract 是否真的在视频中成立。</p>
+    </section>
+    <div id="project-cases"></div>
+
+    <section id="canary" class="section-intro">
+      <div class="eyebrow">Layer 3 · exact temporal counterfactual</div>
+      <h2>Owner anchor 原视频 vs 精确倒放</h2>
+      <p>两路像素序列完全相同，只是帧顺序相反。若肉眼认为方向不同而 SemanticMoments 仍给出 cosine≈1，它就不能单独担任有方向 action reward。</p>
+    </section>
+    <div id="canary-cases"></div>
+
+    <footer>
+      <p>所有媒体是 640×640 box 内等比例缩放的 H.264 review proxy，无音频；输入视频 SHA、feature shard receipt 与 population 结果由 review manifest 绑定。浏览器判别仅保存在本机 localStorage，点击导出后才形成 JSON 文件。</p>
+      <p>Review digest: <code id="review-digest"></code></p>
+    </footer>
+  </main>
+
+  <script id="review-data" type="application/json">__REVIEW_DATA__</script>
+  <script>
+  (() => {
+    "use strict";
+    const data = JSON.parse(document.getElementById("review-data").textContent);
+    const storageKey = `semantic-moments-review:${data.review_digest}`;
+    const state = JSON.parse(localStorage.getItem(storageKey) || "{}");
+    let activeController = null;
+
+    const escapeText = (value) => String(value ?? "");
+    const fixed = (value, digits = 4) => Number(value).toFixed(digits);
+    const save = () => {
+      localStorage.setItem(storageKey, JSON.stringify(state));
+      updateProgress();
+    };
+    const allCases = [
+      ...data.simmotion_cases,
+      ...data.project_cases,
+      ...data.canary_cases,
+    ];
+    const updateProgress = () => {
+      const completed = allCases.filter((row) => state[row.case_id]?.choice).length;
+      document.getElementById("review-progress").textContent = `${completed} / ${allCases.length} 已判别`;
+    };
+
+    const videoCard = ({ title, subtitle, media, master = false, reveal = "" }) => {
+      const card = document.createElement("article");
+      card.className = `video-card${master ? " master" : ""}`;
+      const copy = document.createElement("div");
+      copy.className = "video-copy";
+      const heading = document.createElement("h3");
+      heading.textContent = title;
+      const note = document.createElement("p");
+      note.textContent = subtitle;
+      copy.append(heading, note);
+      if (reveal) {
+        const detail = document.createElement("p");
+        detail.className = "reveal";
+        detail.textContent = reveal;
+        copy.append(detail);
+      }
+      const video = document.createElement("video");
+      video.controls = true;
+      video.muted = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.src = media;
+      video.setAttribute("aria-label", `${title} ${subtitle}`);
+      card.append(copy, video);
+      return card;
+    };
+
+    const addSyncControls = (root) => {
+      const controls = document.createElement("div");
+      controls.className = "sync-controls";
+      controls.innerHTML = `
+        <button type="button" data-action="restart" class="primary">从头同步</button>
+        <button type="button" data-action="play">同步播放</button>
+        <button type="button" data-action="pause">全部暂停</button>
+        <input data-phase type="range" min="0" max="1000" value="0" aria-label="同步播放进度">
+        <select data-rate aria-label="播放速度"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+        <label class="sync-mode"><input data-normalized type="checkbox" checked>按归一化相位同步</label>
+        <span class="sync-status" role="status">就绪；也可单独操作任意视频。</span>`;
+      root.querySelector(".case-head").after(controls);
+      const videos = [...root.querySelectorAll("video")];
+      const master = videos[0];
+      const phaseInput = controls.querySelector("[data-phase]");
+      const rateInput = controls.querySelector("[data-rate]");
+      const normalizedInput = controls.querySelector("[data-normalized]");
+      const status = controls.querySelector(".sync-status");
+      let active = false;
+      let animation = null;
+
+      const ready = (video) => video.readyState >= 1
+        ? Promise.resolve()
+        : new Promise((resolve) => {
+            const done = () => resolve();
+            video.addEventListener("loadedmetadata", done, { once: true });
+            video.addEventListener("error", done, { once: true });
+            video.load();
+          });
+      const safeDuration = (video) => Number.isFinite(video.duration) && video.duration > 0 ? video.duration : 1;
+      const targetFor = (video, progress) => normalizedInput.checked
+        ? progress * safeDuration(video)
+        : Math.min(progress * safeDuration(master), Math.max(0, safeDuration(video) - .002));
+      const seekAll = async (progress) => {
+        await Promise.all(videos.map(ready));
+        videos.forEach((video) => {
+          const target = Math.min(targetFor(video, progress), Math.max(0, safeDuration(video) - .002));
+          if (Math.abs(video.currentTime - target) > .004) video.currentTime = target;
+        });
+      };
+      const baseRate = () => Number(rateInput.value);
+      const setRates = () => videos.forEach((video, index) => {
+        const ratio = normalizedInput.checked && index > 0
+          ? safeDuration(video) / safeDuration(master)
+          : 1;
+        video.playbackRate = Math.max(.25, Math.min(4, baseRate() * ratio));
+      });
+      const progressOfMaster = () => Math.max(0, Math.min(1, master.currentTime / safeDuration(master)));
+      const cancelLoop = () => {
+        if (animation !== null) cancelAnimationFrame(animation);
+        animation = null;
+      };
+      const pause = (message = "已同时暂停。") => {
+        active = false;
+        cancelLoop();
+        videos.forEach((video) => video.pause());
+        if (activeController === controller) activeController = null;
+        status.textContent = message;
+      };
+      const syncLoop = () => {
+        if (!active) return;
+        const progress = progressOfMaster();
+        phaseInput.value = String(Math.round(progress * 1000));
+        videos.slice(1).forEach((video) => {
+          const target = targetFor(video, progress);
+          if (!video.seeking && Math.abs(video.currentTime - target) > .055) video.currentTime = target;
+        });
+        status.textContent = `同步播放 ${(progress * 100).toFixed(1)}% · master ${master.currentTime.toFixed(2)}s`;
+        animation = requestAnimationFrame(syncLoop);
+      };
+      const play = async (restart = false) => {
+        if (activeController && activeController !== controller) activeController.pause("已暂停：另一组开始播放。");
+        activeController = controller;
+        controls.querySelectorAll("button").forEach((button) => button.disabled = true);
+        status.textContent = "正在载入并对齐媒体…";
+        try {
+          const progress = restart ? 0 : Number(phaseInput.value) / 1000;
+          videos.forEach((video) => video.pause());
+          await seekAll(progress);
+          setRates();
+          const results = await Promise.allSettled(videos.map((video) => video.play()));
+          const rejected = results.filter((result) => result.status === "rejected").length;
+          if (rejected) throw new Error(`${rejected} 路被浏览器阻止自动播放`);
+          active = true;
+          cancelLoop();
+          syncLoop();
+        } catch (error) {
+          pause(`同步失败：${error.message}`);
+        } finally {
+          controls.querySelectorAll("button").forEach((button) => button.disabled = false);
+        }
+      };
+      const controller = { pause };
+      controls.querySelector('[data-action="restart"]').onclick = () => void play(true);
+      controls.querySelector('[data-action="play"]').onclick = () => void play(false);
+      controls.querySelector('[data-action="pause"]').onclick = () => pause();
+      phaseInput.oninput = () => {
+        pause("已定位；点击同步播放继续。");
+        void seekAll(Number(phaseInput.value) / 1000);
+      };
+      rateInput.onchange = setRates;
+      normalizedInput.onchange = () => {
+        setRates();
+        void seekAll(Number(phaseInput.value) / 1000);
+      };
+      master.addEventListener("ended", () => pause("该组已播放结束。"));
+    };
+
+    const judgmentPanel = (row, choices, prompt) => {
+      const wrap = document.createElement("div");
+      wrap.className = "judgment";
+      const question = document.createElement("div");
+      question.className = "question";
+      const title = document.createElement("strong");
+      title.textContent = prompt;
+      const choiceBox = document.createElement("div");
+      choiceBox.className = "choices";
+      choices.forEach(({ value, label }) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "choice";
+        button.dataset.value = value;
+        button.textContent = label;
+        if (state[row.case_id]?.choice === value) button.classList.add("selected");
+        button.onclick = () => {
+          state[row.case_id] ||= {};
+          state[row.case_id].choice = value;
+          choiceBox.querySelectorAll("button").forEach((other) => other.classList.toggle("selected", other === button));
+          save();
+        };
+        choiceBox.append(button);
+      });
+      const notes = document.createElement("textarea");
+      notes.placeholder = "可选备注：动作方向、完成度、外观干扰、为什么无法判断…";
+      notes.value = state[row.case_id]?.notes || "";
+      notes.oninput = () => {
+        state[row.case_id] ||= {};
+        state[row.case_id].notes = notes.value;
+        save();
+      };
+      question.append(title, choiceBox, notes);
+      wrap.append(question);
+      return wrap;
+    };
+
+    const machinePanel = (content) => {
+      const panel = document.createElement("div");
+      panel.className = "machine-panel reveal";
+      panel.innerHTML = content;
+      return panel;
+    };
+
+    const caseShell = (index, title, meta, badge) => {
+      const section = document.createElement("section");
+      section.className = "case";
+      const head = document.createElement("div");
+      head.className = "case-head";
+      const heading = document.createElement("div");
+      const h3 = document.createElement("h3");
+      h3.innerHTML = `<span class="case-index">${String(index).padStart(2, "0")}</span>${escapeText(title)}`;
+      const p = document.createElement("p");
+      p.className = "case-meta";
+      p.textContent = meta;
+      heading.append(h3, p);
+      const badgeElement = document.createElement("span");
+      badgeElement.className = "badge reveal";
+      badgeElement.textContent = badge;
+      head.append(heading, badgeElement);
+      section.append(head);
+      return section;
+    };
+
+    const renderSimmotion = () => {
+      const root = document.getElementById("simmotion-cases");
+      data.simmotion_cases.forEach((row, index) => {
+        const machineRow = row.m3_within_dataset;
+        const section = caseShell(
+          index + 1,
+          row.example_id,
+          "reference + 两个盲候选 · normalized phase sync",
+          `M3 ${machineRow.correct ? "R@1 PASS" : "R@1 FAIL"} · ${row.selection_stratum}`,
+        );
+        section.id = row.case_id;
+        const grid = document.createElement("div");
+        grid.className = "video-grid";
+        grid.style.setProperty("--columns", "3");
+        grid.append(videoCard({ title: "Reference", subtitle: row.example_id, media: row.reference.media, master: true }));
+        row.candidates.forEach((candidate) => grid.append(videoCard({
+          title: `Candidate ${candidate.blind_label}`,
+          subtitle: "盲审候选",
+          media: candidate.media,
+          reveal: `官方角色：${candidate.role}`,
+        })));
+        section.append(grid);
+        const choices = row.candidates.map((candidate) => ({ value: candidate.blind_label, label: `Candidate ${candidate.blind_label}` }));
+        choices.push({ value: "tie", label: "近似相同" }, { value: "unclear", label: "无法判断" });
+        const judgment = judgmentPanel(row, choices, "哪一个 candidate 的运动/动作更接近 reference？");
+        const scoreRows = row.candidates.map((candidate) => `<dt>${candidate.blind_label} · ${candidate.role}</dt><dd>M3 ${fixed(candidate.scores.m3)} · M23 ${fixed(candidate.scores.m23)} · M123 ${fixed(candidate.scores.m123)}</dd>`).join("");
+        judgment.append(machinePanel(`<strong>官方 positive：Candidate ${row.official_positive_blind_label}</strong><dl>${scoreRows}<dt>严格 R@1 margin</dt><dd>${fixed(machineRow.margin)}</dd><dt>最强其他视频</dt><dd>${escapeText(machineRow.max_other_item_id)} · ${fixed(machineRow.max_other_cosine)}</dd></dl>`));
+        section.append(judgment);
+        root.append(section);
+        addSyncControls(section);
+      });
+    };
+
+    const renderProject = () => {
+      const root = document.getElementById("project-cases");
+      data.project_cases.forEach((row, index) => {
+        const m3Best = [...row.candidates].sort((a, b) => b.scores.m3 - a.scores.m3)[0];
+        const section = caseShell(
+          index + 1,
+          `${row.actor_family.toUpperCase()} · ${row.iid}`,
+          `${row.action_family_id} · query seed ${row.query.seed} · candidate seed ${row.candidate_seed}`,
+          `M3 top-1 = Candidate ${m3Best.blind_label} / ${m3Best.branch}`,
+        );
+        section.id = row.case_id;
+        const grid = document.createElement("div");
+        grid.className = "video-grid";
+        grid.style.setProperty("--columns", "4");
+        grid.append(videoCard({ title: "Query anchor", subtitle: "intended forward", media: row.query.media, master: true, reveal: row.query.candidate_id }));
+        row.candidates.forEach((candidate) => grid.append(videoCard({
+          title: `Candidate ${candidate.blind_label}`,
+          subtitle: "同 IID / 同 candidate seed",
+          media: candidate.media,
+          reveal: `${candidate.branch} · ${candidate.candidate_id}`,
+        })));
+        section.append(grid);
+        const choices = row.candidates.map((candidate) => ({ value: candidate.blind_label, label: `Candidate ${candidate.blind_label}` }));
+        choices.push({ value: "tie", label: "都差不多" }, { value: "unclear", label: "均不可判" });
+        const judgment = judgmentPanel(row, choices, "哪一路最像 query anchor 的动作方向与完成过程？");
+        const scoreRows = row.candidates.map((candidate) => `<dt>${candidate.blind_label} · ${candidate.branch}</dt><dd>M3 ${fixed(candidate.scores.m3)} · order ${fixed(candidate.scores.dtw_order_margin)} · endpoint ${fixed(candidate.scores.endpoint_score)}</dd>`).join("");
+        judgment.append(machinePanel(`<strong>Generation contract forward：Candidate ${row.forward_blind_label}</strong><dl>${scoreRows}</dl><p class="fine">分支是 prompt contract，不是人工真值；请以视频为准。</p>`));
+        section.append(judgment);
+        root.append(section);
+        addSyncControls(section);
+      });
+    };
+
+    const renderCanary = () => {
+      const root = document.getElementById("canary-cases");
+      data.canary_cases.forEach((row, index) => {
+        const diagnostics = row.reverse_diagnostics;
+        const section = caseShell(
+          index + 1,
+          row.name,
+          "相同像素帧集合 · 相反时间顺序",
+          `SM cosine ${fixed(diagnostics.semantic_moments_cosine, 8)}`,
+        );
+        section.id = row.case_id;
+        const grid = document.createElement("div");
+        grid.className = "video-grid";
+        grid.style.setProperty("--columns", "2");
+        grid.append(videoCard({ title: "Natural order", subtitle: "原始 owner action anchor", media: row.natural_media, master: true }));
+        grid.append(videoCard({ title: "Candidate A", subtitle: "盲审时不显示变换", media: row.reverse_media, reveal: "Exact frame reversal" }));
+        section.append(grid);
+        const judgment = judgmentPanel(row, [
+          { value: "same", label: "同一有方向动作" },
+          { value: "opposite", label: "方向相反" },
+          { value: "unclear", label: "无法判断" },
+        ], "Candidate A 与原视频是否表达同一个有方向动作？");
+        judgment.append(machinePanel(`<strong>Candidate A 是精确倒放</strong><dl><dt>SemanticMoments cosine</dt><dd>${fixed(diagnostics.semantic_moments_cosine, 9)}</dd><dt>embedding max abs diff</dt><dd>${Number(diagnostics.semantic_moments_max_abs).toExponential(3)}</dd><dt>DTW order margin</dt><dd>${fixed(diagnostics.dtw_order_margin, 6)}</dd><dt>endpoint score</dt><dd>${fixed(diagnostics.endpoint_score, 6)}</dd></dl>`));
+        section.append(judgment);
+        root.append(section);
+        addSyncControls(section);
+      });
+    };
+
+    const stats = data.population_summary;
+    document.getElementById("population-stats").innerHTML = [
+      ["M3 pairwise", `${(100 * stats.simmotion_m3_pairwise_accuracy).toFixed(1)}%`, "SimMotion-Real"],
+      ["M3 strict R@1", `${(100 * stats.simmotion_m3_within_dataset_r1).toFixed(1)}%`, "119 candidates"],
+      ["Forward > reverse", `${(100 * stats.project_m3_forward_over_reverse).toFixed(1)}%`, "project contract"],
+      ["Top-1 same IID", `${(100 * stats.project_m3_other_seed_same_iid_top1).toFixed(1)}%`, "appearance leakage"],
+      ["Exact reverse", fixed(stats.exact_reverse_semantic_moments_cosine_mean, 8), "SM cosine mean"],
+    ].map(([label, value, note]) => `<div class="stat"><span>${label}</span><strong>${value}</strong><span>${note}</span></div>`).join("");
+    document.getElementById("review-digest").textContent = data.review_digest;
+    renderSimmotion();
+    renderProject();
+    renderCanary();
+    updateProgress();
+
+    document.getElementById("blind-toggle").onclick = (event) => {
+      document.body.classList.toggle("blind");
+      const blind = document.body.classList.contains("blind");
+      event.currentTarget.textContent = blind ? "显示机器信息" : "返回盲审模式";
+      event.currentTarget.classList.toggle("primary", blind);
+    };
+    document.getElementById("export-review").onclick = () => {
+      const payload = {
+        schema_version: "semantic-moments-human-judgments-v1",
+        review_digest: data.review_digest,
+        exported_at: new Date().toISOString(),
+        judgments: state,
+      };
+      const blob = new Blob([JSON.stringify(payload, null, 2) + "\n"], { type: "application/json" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = `semantic-moments-human-review-${data.review_digest.slice(0, 12)}.json`;
+      link.click();
+      setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+    };
+    document.getElementById("clear-review").onclick = () => {
+      if (!confirm("确认清空本页所有已保存选择和备注？")) return;
+      localStorage.removeItem(storageKey);
+      location.reload();
+    };
+  })();
+  </script>
+</body>
+</html>

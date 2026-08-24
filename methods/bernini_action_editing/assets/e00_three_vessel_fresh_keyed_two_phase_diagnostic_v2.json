@@ -1,0 +1,109 @@
+{
+  "schema_version": "bernini-e00-three-vessel-fresh-keyed-two-phase-protocol-v2",
+  "revision_tag": "E00_DFIX2_CLEAN_DIAG_R2_FIXED_RNG_TWO_PHASE_20260821",
+  "status": {
+    "draft_only": true,
+    "execution_authorized": false,
+    "gpu_run_started": false,
+    "training_performed": false,
+    "independent_package_audit_passed": false
+  },
+  "base_diagnostic_spec": {
+    "package_relative_path": "methods/bernini_action_editing/assets/e00_three_vessel_fresh_keyed_legacy_diagnostic_v1.json",
+    "file_sha256": "3dfe1689470f46e4bb96c85169575adb70a15c8bb35c2eb5b08eaf13a8474c05",
+    "canonical_sha256": "fa87b6bae39fc00fcf11cdd72bd17aba867922dae36b5e7d14f14fadb60d7265"
+  },
+  "sealed_runtime_dependencies": {
+    "methods/bernini_action_editing/e00_legacy_infer_fork_rng_wrapper_v1.py": "42cb90d2e05ce7f14d7b44e1b930e2133564343d5ef8492367a8af87b882d5c7",
+    "methods/bernini_action_editing/validate_e00_three_vessel_fresh_keyed_legacy_diagnostic_v1.py": "ba239934af300f7e67d8a47c2187bba25cab8cd42e294dcbf5e263b4bebebf80",
+    "methods/bernini_action_editing/assets/e00_source_frame0_static81_25fps_704x1056_v1.mp4": "0e717ee11f21660156baa704fed13c0702bcdf9047bd8f15f540cd16cce3328c"
+  },
+  "fixed_initial_rng": {
+    "scheme": "explicit_rank_owned_cpu_cuda_manual_seed_v2",
+    "scope": "inside_fork_rng_immediately_before_entire_legacy_inference_entrypoint",
+    "same_rank_state_must_be_bit_exact_across_arms": true,
+    "caller_state_must_be_restored": true,
+    "per_rank": [
+      {"rank": 0, "cpu_seed": 82002700, "cuda_seed": 82003700},
+      {"rank": 1, "cpu_seed": 82002701, "cuda_seed": 82003701},
+      {"rank": 2, "cpu_seed": 82002702, "cuda_seed": 82003702},
+      {"rank": 3, "cpu_seed": 82002703, "cuda_seed": 82003703}
+    ]
+  },
+  "arm_order": [
+    "pure_noobserver_output_routeoff",
+    "observer_matched_output_routeoff",
+    "old_pureqk_temporal_routeon"
+  ],
+  "two_phase_state_machine": [
+    {
+      "state": "PACKAGE_REVIEW_REQUIRED",
+      "next": "EXTERNAL_A_ONLY_AUTHORIZATION"
+    },
+    {
+      "state": "EXTERNAL_A_ONLY_AUTHORIZATION",
+      "launcher": "methods/bernini_action_editing/scripts/auh_launch_e00_three_vessel_clean_diag_r2_phase_a_only_node292.sh",
+      "may_run": ["pure_noobserver_output_routeoff"],
+      "must_stop_after": "pure_noobserver_output_routeoff",
+      "next_phase_authorized": false
+    },
+    {
+      "state": "A_STOPPED_REVIEW_REQUIRED",
+      "next": "EXTERNAL_BC_AUTHORIZATION_BOUND_TO_A_BYTES"
+    },
+    {
+      "state": "EXTERNAL_BC_AUTHORIZATION_BOUND_TO_A_BYTES",
+      "launcher": "methods/bernini_action_editing/scripts/auh_launch_e00_three_vessel_clean_diag_r2_phase_bc_node292.sh",
+      "may_run_first": ["observer_matched_output_routeoff"],
+      "next": "A_B_BIT_EXACT_GATE"
+    },
+    {
+      "state": "A_B_BIT_EXACT_GATE",
+      "required_equalities": [
+        "predecode_latent_raw_storage_sha256",
+        "mp4_sha256",
+        "per_rank_fixed_cpu_initial_rng_sha256",
+        "per_rank_fixed_cuda_initial_rng_sha256",
+        "raw_keyed_noise_bank_sha256",
+        "outer_schedule_digest",
+        "frozen_certificate_sha256"
+      ],
+      "on_failure": "STOP_WITHOUT_C",
+      "on_success": "C_MAY_RUN_UNDER_EXISTING_BC_AUTHORIZATION"
+    },
+    {
+      "state": "C_MAY_RUN_UNDER_EXISTING_BC_AUTHORIZATION",
+      "may_run": ["old_pureqk_temporal_routeon"],
+      "next": "ABC_DIAGNOSTIC_COMPLETE"
+    }
+  ],
+  "review_marker_contract": {
+    "schema_version": "bernini-e00-clean-diagnostic-r2-execution-review-required-v2",
+    "must_name_full_arm_order": true,
+    "must_name_both_authorized_launchers": true,
+    "must_require_separate_a_and_bc_authorizations": true,
+    "must_require_a_stop": true,
+    "must_require_ab_bit_exact_before_c": true
+  },
+  "slurm_contract": {
+    "parent_job_id": "143808",
+    "compute_node": "auh7-1b-gpu-292",
+    "gpu_count": 4,
+    "preserve_slurm_visible_device_namespace": true,
+    "submit_new_job": false,
+    "cancel_parent_job": false,
+    "serial_exclusive_steps_only": true
+  },
+  "authorization_templates": {
+    "phase_a": "methods/bernini_action_editing/assets/e00_three_vessel_clean_diag_r2_phase_a_authorization.template.json",
+    "phase_bc": "methods/bernini_action_editing/assets/e00_three_vessel_clean_diag_r2_phase_bc_authorization.template.json"
+  },
+  "claims": {
+    "diagnostic_only": true,
+    "zero_update_frozen_inference": true,
+    "not_v15b": true,
+    "not_anchor_free_for_observer_arms": true,
+    "training_authorized": false,
+    "promotion_forbidden": true
+  }
+}

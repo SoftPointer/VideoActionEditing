@@ -1,0 +1,927 @@
+{
+  "schema_version": "bernini-target-factorized-soft-ot-graph-manifest-v5-r1b",
+  "experiment_id": "target_factorized_soft_ot_graph_teacher_pilot_v5_r1b",
+  "manifest_sha256": "231da71f38bdd982a9276b02fb3351200b372563cfdded39fb7f7f6f7de93446",
+  "catalog_source": {
+    "path": "/vast/users/guangyi.chen/dataset/MEV/VideoEditing/action_data_construction/runs/full_v5_20260817T193449Z/final_metadata_annotation_v2/paired_training_candidates.jsonl",
+    "sha256": "0c96e808114154e2d069da6ca698debfb6c9f824e0e780f6f39ec70612207ca8",
+    "row_count": 3749
+  },
+  "authority": {
+    "formal_sft_authorized": false,
+    "exploratory_representation_only": true,
+    "generator_training_authorized": false,
+    "generator_connection_authorized": false,
+    "dataset_materialization_authorized": false,
+    "target_pixels_or_hidden_export_authorized": false,
+    "development_parameter_fitting_authorized": false,
+    "locked_validation_parameter_fitting_authorized": false,
+    "post_feature_algorithm_or_holdout_change_invalidates_all16": true
+  },
+  "selection": {
+    "selected_before_any_hidden_or_metric": true,
+    "catalog_only_fields_used": [
+      "schema_version",
+      "split",
+      "formal_sft_authorized",
+      "target.qualification_status",
+      "automatic_visual_audit",
+      "source_event_annotation",
+      "target_event_annotation",
+      "uuid",
+      "source_annotation_provenance.uuid",
+      "target_annotation_provenance.uuid",
+      "source_action_caption",
+      "target_action_caption",
+      "pair_id"
+    ],
+    "eligibility": {
+      "catalog_split": "train",
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "verdict": "accept",
+      "confidence": "high",
+      "dependency_level": "none",
+      "initial_state_compatibility": "aligned",
+      "preservation": "same_identity_scene_camera",
+      "source_enables_target": "no",
+      "source_state_change_class": "none",
+      "target_action_quality": "clear_action",
+      "source_camera_motion": false,
+      "target_camera_motion": false,
+      "source_appearance_change": false,
+      "target_appearance_change": false,
+      "minimum_source_duration_seconds": 2,
+      "minimum_target_duration_seconds": 2,
+      "nonempty_source_and_target_focus_object": true,
+      "word_token_jaccard_max": 0.3
+    },
+    "ranking": "ascending_sha256('target-r1b-holdout-v1|' + pair_id), then pair_id",
+    "ordering": "ascending_sha256('target-r1b-order-v1|' + pair_id), then pair_id",
+    "split": "within each family, minimum sha256('target-r1b-split-v1|' + pair_id) is locked_validation; remaining three are development_report",
+    "family_priority": [
+      "lifecycle_entry_exit",
+      "contact_transfer",
+      "multi_entity_interaction",
+      "articulated_ordered_motion"
+    ],
+    "family_definition": {
+      "lifecycle_entry_exit": "target caption fixed lifecycle regex",
+      "contact_transfer": "target caption fixed contact/transfer regex",
+      "multi_entity_interaction": "is_multi_person and fixed multi-entity target-caption regex",
+      "articulated_ordered_motion": "remaining eligible rows"
+    },
+    "family_regex": {
+      "lifecycle_entry_exit": "\\b(enter(?:s|ed|ing)?|exit(?:s|ed|ing)?|leaves? (?:the frame|the scene|the room|the area|view)|flies away|walks? into|walks? past|walks? away|walks? out of|disappear(?:s|ed|ing)?|moves? out)\\b",
+      "contact_transfer": "\\b(picks? up|places? (?:the|a|an|his|her|its)|puts? (?:the|a|an|his|her|its)|pours?|sprinkles?|adds?|removes?|pulls? out|dips?|touches?|makes? (?:gentle )?contact|inserts?|hands? (?:the|a|an)|gives?|takes? .* from)\\b",
+      "multi_entity_interaction": "\\b(two|couple|team|engineers?|scientists?|other|baby|dog|woman and|man and|girl and|boy and)\\b"
+    },
+    "family_quota": {
+      "contact_transfer": 4,
+      "lifecycle_entry_exit": 4,
+      "multi_entity_interaction": 4,
+      "articulated_ordered_motion": 4
+    },
+    "excluded_prior_uuid": [
+      "07691649-78a4-494c-8d58-2f9449237225",
+      "081e2761-c4e1-47ed-8a82-808bec50a59d",
+      "11ea4341-888a-41c7-9482-49046d1e113b",
+      "1bb09296-29be-4359-b1d4-03409ed1e30f",
+      "317a8639-705d-42b8-b51a-7226e7a3c7a6",
+      "35b95db3-d905-4cef-91c7-bad88806dc2a",
+      "367a89ba-bd2a-4e5c-a400-c3f7cfe0b321",
+      "3744caaf-57b9-4f0f-b1de-89f82505b216",
+      "39bd5139-ce85-4aca-a16a-440b5e0028d6",
+      "47d49b51-fde1-4c04-a895-4a483df1bfb4",
+      "4867ced3-df82-498c-876b-4452fe7ffec1",
+      "4e09ddb8-7878-439c-9aa4-c20f5c3a2eb0",
+      "4fd015eb-922b-4b00-9066-e9d082de9e01",
+      "6a7753fa-f254-4570-8369-918954606350",
+      "6efd28ad-769d-448a-90d2-72c65c30861b",
+      "72a5019c-b649-4ee0-b058-4afaa57bacb9",
+      "7ad78aaa-5544-45be-8e64-34f04ba3841e",
+      "7f77acdb-6772-4e14-9c14-98f2cb2fa9b5",
+      "853e5739-1635-4de1-8da0-3288460ccb98",
+      "88a17729-f1d4-489d-8e73-248bbc088141",
+      "89d28b75-01ef-467a-a569-9ff389f5343e",
+      "94499794-8ef0-43ee-af6b-3c780492fb00",
+      "a22aa389-eba0-4b78-815f-2e0f7956e226",
+      "a7db0b2f-c13c-4b69-8eb4-5c050badd764",
+      "c7c253ab-146f-4cde-a850-4670ae6b5b1b",
+      "dfb904c5-19d6-4c61-afc3-57b3c782d957",
+      "f05e637f-992c-4762-a8e9-f1e5b154f1e2",
+      "f810246b-7b74-4eb7-9777-a8f8db92f951"
+    ],
+    "exclusion_authorities": {
+      "r0_control_manifest_sha256": "bb7d8214a7338bd60a3c9023ad4fb501a8682a241c98e77eba56ce245c1d93d9",
+      "r0_source_manifest_sha256": "d4ca564af7730754e4838222b11ad8c1452d8b08fe49bc605069b9e7969b0f78",
+      "r1_manifest_file_sha256": "b333fc210501a4b5df23a9aa944c3b6da76a5a86d6fc4285587d873cad8c85c7"
+    },
+    "prior_uuid_overlap_count": 0,
+    "fresh16_uuid_unique": true,
+    "development_and_validation_uuid_disjoint": true,
+    "media_preflight_before_feature_extraction": true
+  },
+  "pairs": [
+    {
+      "ordinal": 0,
+      "pair_id": "3d808f3fcd6ec4f1fb8f519fa51d79f3c1f5b6658d1d07d54001baadb5955a54",
+      "uuid": "383ad770-b3ac-44a8-bf59-ad5f1bcb1bcc",
+      "interaction_family": "multi_entity_interaction",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the bearded man in the plaid shirt gestures while talking to the white humanoid robot as the other engineers watch.",
+      "source_action_caption": "The team of engineers and scientists tests the humanoid robot, with the man in the VR headset operating the controller.",
+      "target_action_caption": "The bearded man in the plaid shirt gestures while talking to the white humanoid robot as the other engineers watch.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/383ad770-b3ac-44a8-bf59-ad5f1bcb1bcc-00.00.00.000-00.00.02.327-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/383ad770-b3ac-44a8-bf59-ad5f1bcb1bcc-00.00.02.327-00.00.05.718-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 70,
+        "decoded_rgb_sha256": "05aa1eb79d4beae78b93daa61f09a3c9af2b03322dd1832503c6093803b07839",
+        "height": 1080,
+        "sha256": "a010f12330d57d50daba86cb9785d3cc8f1ebe5103e4a870c5e2e73720d093af",
+        "size_bytes": 1990542,
+        "width": 1920
+      },
+      "target_media": {
+        "decoded_frames": 102,
+        "decoded_rgb_sha256": "91aa51edf228c1aa8224e0a079200849d0092dd0e0a2ce43f8e4086ef0a84dbf",
+        "height": 1080,
+        "sha256": "ead37ad1c6b8a5605df6cf42f3557787b03151a9f1be39b929af8eae2dbbd611",
+        "size_bytes": 3472763,
+        "width": 1920
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "e04df8c020b8aaeddfab0a0a10efacd00099c63d54fe5587f8f6fed32702376f",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "f9c58d9e2c13c75f3c9a369aa78aa419d8d37d3de23180681eb4b7eb3fb61283",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "d29e77938d3ebe8b6e63afd7b87094fab1116dc5f9eadd221c261ff2d6207da6",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "b7d0c220bf1da86b0a12d20c8d0bb3ea4a08ed804df8e45657f39e971a5c98a9",
+      "selection_rank_sha256": "16ddf498b1b666a439dca4348df6356a7b9043823c3c8311a0e6379d798727dc",
+      "word_token_jaccard": 0.2222222222222222,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 1,
+      "pair_id": "a1d559bc02d98fc7953336abe056e4e34705bfe3e3046b03132d45dc53eba2fe",
+      "uuid": "feb01281-0940-462b-a142-342558574d14",
+      "interaction_family": "lifecycle_entry_exit",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the bee on the blossom completes its foraging activity and flies away from the flower, exiting the frame toward the left, leaving the white blossoms undisturbed.",
+      "source_action_caption": "The bee on the blossom continues foraging, shifting slightly within the flower's center and adjusting its position among the stamens, while remaining engaged with the bloom.",
+      "target_action_caption": "The bee on the blossom completes its foraging activity and flies away from the flower, exiting the frame toward the left, leaving the white blossoms undisturbed.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/feb01281-0940-462b-a142-342558574d14-00.00.15.676-00.00.24.599-seg4.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/feb01281-0940-462b-a142-342558574d14-00.00.24.599-00.00.29.997-seg5.mp4",
+      "source_media": {
+        "decoded_frames": 267,
+        "decoded_rgb_sha256": "0b8239b6c3c81b91ae5f264e06ac5b51e1a7ed445f45f8638a84c29133c4689a",
+        "height": 720,
+        "sha256": "72db6bd1c6c620701d9b1c8c1592db592ff1633e6cd0bece0acda1623f7422ef",
+        "size_bytes": 3224841,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 162,
+        "decoded_rgb_sha256": "26116ba67e264991804bacb9758263429239e7b0ae43dfea7ca0136fed8b79e2",
+        "height": 720,
+        "sha256": "d6d1861e21084e4fea871736ddacdabfdf24be3823c1e63bc8461e6b7702bf90",
+        "size_bytes": 2097184,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "6f3bdc4a4ce34a7d50d4b35e231316e842190eb998dc4f30e54adb2341ca5b4e",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "e946e022e46ad42d74f1bbe0c5f2264f1d4076bf08c900e604dde586f8e2dd03",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "20480bb6b2e379dd3f16d507933d3d2e4dd12aac4e52fc92a85de25ce32e0ac0",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "4851a7bec02b94173e4fa8cb6fd37f65d17ff654b71f0165b04e05c0f342f02e",
+      "selection_rank_sha256": "07f794fe063edd4af5b2ff8fca580e3b34c295c08aff54d1de02661cb8eec985",
+      "word_token_jaccard": 0.2222222222222222,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 2,
+      "pair_id": "fe4ec9413d3d37e5e14845229889a1ee0629d02838bae2fdb45f80ef0650e4dc",
+      "uuid": "4940bfd0-71b1-42e6-888d-e4292fc08864",
+      "interaction_family": "articulated_ordered_motion",
+      "report_split": "locked_validation",
+      "instruction": "Edit the action so that the cockatoo opens its beak slightly and then turns its head away from the camera to look toward the background.",
+      "source_action_caption": "A close-up shot shows a cockatoo looking toward the frame's left against a blurry forest background.",
+      "target_action_caption": "The cockatoo opens its beak slightly and then turns its head away from the camera to look toward the background.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/4940bfd0-71b1-42e6-888d-e4292fc08864-00.00.00.000-00.00.06.769-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/4940bfd0-71b1-42e6-888d-e4292fc08864-00.00.06.769-00.00.09.955-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 169,
+        "decoded_rgb_sha256": "03ca6ddc05d35687e3547da7374ab31e83a6d94303db8f92f732a9f3902b0243",
+        "height": 720,
+        "sha256": "b754a44156ec03d74205eaa7282c88ba35a826710a017d469117ccd05c2e5c5b",
+        "size_bytes": 2793753,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 80,
+        "decoded_rgb_sha256": "e772e48f39a1bc71c89144924c643ba78d3af29ca03d2e458ecfcc3af9984b39",
+        "height": 720,
+        "sha256": "cfef77924004ca14ef30fe2000b79a4b976d736b55933e0060869eedd93fa405",
+        "size_bytes": 1377697,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "96b64240178edba54ff920c60834d9c6ef60e026e63cb4a9871c0c570f1c55fb",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "e495e85101563a1da7ff4a0d1118d8a7705df70bca4d959a3c21efd47deac1bb",
+        "target_eval_unique_indices": 62,
+        "target_reference_indices_sha256": "1afa966c74ca65a1b4c363889f7fec61066b1e99446e0f9b7f3be757ffe4b023",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "53f51df758cd24e03aff32eb17639016978f200cda3d36dd47704bbc6c35ecf3",
+      "selection_rank_sha256": "0823089298f1f3fb6849837255878a1acb3091956256f3f0bb4c9bad9e21ffc4",
+      "word_token_jaccard": 0.13793103448275862,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 3,
+      "pair_id": "3c5085d6f90fe532d74d76c6fcb7072d37e0c01c5217f2b4bd77d10fe4addaee",
+      "uuid": "c23cfec4-4f62-4f59-b86a-1c3492d489a7",
+      "interaction_family": "contact_transfer",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the young girl drops the pencil she was using and then picks up a new blue colored pencil from the table.",
+      "source_action_caption": "The young girl with blonde hair concentrates deeply as she draws on a piece of paper with colored pencils.",
+      "target_action_caption": "The young girl drops the pencil she was using and then picks up a new blue colored pencil from the table.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/c23cfec4-4f62-4f59-b86a-1c3492d489a7-00.00.00.000-00.00.11.433-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/c23cfec4-4f62-4f59-b86a-1c3492d489a7-00.00.11.433-00.00.26.860-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 343,
+        "decoded_rgb_sha256": "444b18bdea95b4294af123a99bf5d626da11fb870b961c737b0350840bcf188d",
+        "height": 720,
+        "sha256": "cbc40d8df00a6b19a64a99fab68618feab4159f41ba0147b88346f2188df2e68",
+        "size_bytes": 5462295,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 462,
+        "decoded_rgb_sha256": "b9f4cec022494d032972fc0ccc05dc5052dae8e1dc6430858a7bb9f3c7295cf8",
+        "height": 720,
+        "sha256": "85baf9ee520a0e0855679663f99ebcd596d0509c4bd77c59c007bfdc898cb453",
+        "size_bytes": 7333552,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "f582c5fa94cfac9be243cd5b79942fb62a1a7a7a0a09831f4b0dd2e05d299e58",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "47c0d0b1fefe38cbf98c794106608d1205f7ce8e171005725ccbf64dc011cda7",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "26ce095bc20116d5781526c9d3dd2a289ce95130d601f8edea91766b04858857",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "a4c6407b4eba47b9513721da68c979c2b60f852815bc9cd805b27fb5f27a8a87",
+      "selection_rank_sha256": "11796b19a42f598a2691fa9de86cbebf2a3178d0d989f3bfcbf4030644f1f49f",
+      "word_token_jaccard": 0.2,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 4,
+      "pair_id": "3b2494c276faacf8b632eb5a9d3a3e1aac4e5dd6a9ed9ecfc7f105a5800adb7c",
+      "uuid": "625fbb07-7e89-42bd-8d88-a0b5d154d136",
+      "interaction_family": "contact_transfer",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that while looking at her phone, the woman picks up a water bottle with her right hand and begins to drink from it.",
+      "source_action_caption": "The woman in workout gear holds a red phone and talks into it with earbuds in, eventually breaking into a smile.",
+      "target_action_caption": "While looking at her phone, the woman picks up a water bottle with her right hand and begins to drink from it.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/625fbb07-7e89-42bd-8d88-a0b5d154d136-00.00.00.000-00.00.14.220-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/625fbb07-7e89-42bd-8d88-a0b5d154d136-00.00.14.220-00.00.19.825-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 356,
+        "decoded_rgb_sha256": "702aa3b889dcda2c167f6b3557dceab2fce605b32b058734b676d07339b87017",
+        "height": 720,
+        "sha256": "f0e6ffc560cad315f05cae3255569a9efa0ba8ea3d3976614a8171450ce5bff3",
+        "size_bytes": 4297020,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 140,
+        "decoded_rgb_sha256": "938bfde40083b02b99c830428c0d8ec435c3b5e8e8fb4a5c6493979b70027bad",
+        "height": 720,
+        "sha256": "3007f1f29d990fc8a888559098bab6293a3123bbaf4060cc8a3a88de07f522bb",
+        "size_bytes": 1715958,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "a9c7357893789ad0403f9a9ee1dc88c3bdf4c27142900b39dd3344fee8889f90",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "95f4ec655dbf1fb5365ca8088048bbdd432d59e15e5dc90e3595e75dccabfbea",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "f7982c9c74c5e6c1297742da8c7eaff9095fd5ba6e0495624aff67a360b22409",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "75d042d82e693bb6787d4dbeef17a7438ed37a3c28aaa3c5f0c3deee375ac9ea",
+      "selection_rank_sha256": "1009fe461df6b7eff57347ea42afddeac5e364a7a4e6bf584101fe5b91d39901",
+      "word_token_jaccard": 0.21875,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 5,
+      "pair_id": "7c790138dc115b62726617b739288c17e489c8b3299713d87a494de91278a5bb",
+      "uuid": "bb35e75d-5e68-447a-8f2a-082a417d0b92",
+      "interaction_family": "contact_transfer",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the businessman picks up a white coffee cup from a saucer and takes a drink while holding a tablet.",
+      "source_action_caption": "The businessman in a suit uses a tablet at a desk, with a coffee cup in the foreground.",
+      "target_action_caption": "The businessman picks up a white coffee cup from a saucer and takes a drink while holding a tablet.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/bb35e75d-5e68-447a-8f2a-082a417d0b92-00.00.19.406-00.00.31.250-seg6.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/bb35e75d-5e68-447a-8f2a-082a417d0b92-00.00.31.250-00.00.35.124-seg7.mp4",
+      "source_media": {
+        "decoded_frames": 296,
+        "decoded_rgb_sha256": "439c9adc230ab84e2bb89db80a1a2c10df7a990bdc72709683a13b7856ac13b4",
+        "height": 720,
+        "sha256": "14b573cf15f0e9b0a71abf8ae2f622757cec5fbf3617eb9c17236438803c2c74",
+        "size_bytes": 3476681,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 96,
+        "decoded_rgb_sha256": "dbc1299ed8b067b1c7a3f1b590ecb38cd9fa0579ab5f2b403c31cd80b27e2588",
+        "height": 720,
+        "sha256": "2f1ec1891aa6724a6a1e9022eb3b7cd1d9b2ff0740137ab596fb8470313225fb",
+        "size_bytes": 1205842,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "a7e130ce975dd7b50e3ad810c713fb5f47835b3e4e2253fb2437d6492aeb0e24",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "e26875868a210f66df847e7416e004c069ecf85d50cc6ff056b2b7b106d76905",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "9e85a2e874d23fa574057f2fc5588a889e127287683a61bc537b1c3963c73d96",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "e340df7c909285f40cbed9b57d7a027f3a1969cd9cc82751b435bedf7196fd24",
+      "selection_rank_sha256": "554cadcdc2b0b617bb0f9870db3142271c4021850cfef6557ac9abb4f727d329",
+      "word_token_jaccard": 0.2608695652173913,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 6,
+      "pair_id": "c4184f51d9e8a31d05e301f6ff559865b77b1559d6580fad1f6a8dd8b615f146",
+      "uuid": "fe93cb66-2a74-4167-97bc-adbe7ec85e5d",
+      "interaction_family": "multi_entity_interaction",
+      "report_split": "locked_validation",
+      "instruction": "Edit the action so that the man and the woman react with shock while looking at a laptop, their mouths and eyes wide open.",
+      "source_action_caption": "The man and the woman sit closely together on a couch, both focused on a laptop in front of them.",
+      "target_action_caption": "The man and the woman react with shock while looking at a laptop, their mouths and eyes wide open.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/fe93cb66-2a74-4167-97bc-adbe7ec85e5d-00.00.00.000-00.00.02.537-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/fe93cb66-2a74-4167-97bc-adbe7ec85e5d-00.00.02.537-00.00.05.569-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 76,
+        "decoded_rgb_sha256": "9260e79c1e93c57175b2810c52c89beee43b1956079d3fba283cad8d1b996790",
+        "height": 720,
+        "sha256": "ffe82347c3bf00977c2f1249e954164c9667905d2ab2e17d77d2565d275978e0",
+        "size_bytes": 868176,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 91,
+        "decoded_rgb_sha256": "af1a1a713fa7159cd77605a8683777b5b5071578f6ed5f34df3ac42c720568f8",
+        "height": 720,
+        "sha256": "74c736b016e9efd80ba6f7a0940b3262a37ea25e20f415564a1d466604476be4",
+        "size_bytes": 1463890,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "4510b4c711dffabb6eb217b0640ba143fca19b6c846022e1b2f3507d2252497d",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "e9299594b22d5ab380e77694ef821d87d78060786ca5e571f9978fc82d7dcfb6",
+        "target_eval_unique_indices": 63,
+        "target_reference_indices_sha256": "04d70d9923edc18c38b05f7ea09e88b054194ef2160feab1dc1dc28d6cc3e95b",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "f22f3aeecca4433491fad06937d2e0820184cf944153add18eb2836bb6af9f4e",
+      "selection_rank_sha256": "2c6b00b797907e545e8b395eda71859b99cea32367d43d8305e2445052b2f649",
+      "word_token_jaccard": 0.21428571428571427,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 7,
+      "pair_id": "b6c120d4c3332dd63d94c6ddc29c22911ae5e1bf10732177213886915628c52c",
+      "uuid": "07fac509-c337-4e7f-8312-c889b643c82b",
+      "interaction_family": "lifecycle_entry_exit",
+      "report_split": "locked_validation",
+      "instruction": "Edit the action so that the man in a silver vest puts his backpack in a security tray, picks up his phone, and walks away.",
+      "source_action_caption": "A security officer inspects the passenger's backpack at a checkpoint while another officer watches.",
+      "target_action_caption": "The man in a silver vest puts his backpack in a security tray, picks up his phone, and walks away.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/07fac509-c337-4e7f-8312-c889b643c82b-00.00.25.668-00.00.31.191-seg09.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/07fac509-c337-4e7f-8312-c889b643c82b-00.00.31.191-00.00.39.360-seg10.mp4",
+      "source_media": {
+        "decoded_frames": 138,
+        "decoded_rgb_sha256": "a8ceb78f8365fa25c1259eacde9e2aeaa3feb97864552a889d35f99026a280e9",
+        "height": 720,
+        "sha256": "3d968c7a8bf83587b93c0c65f8ef91ae4e67c3518f446df9aacb5f32eaf878a8",
+        "size_bytes": 2428294,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 204,
+        "decoded_rgb_sha256": "babad065cbf2b10d7ab168a1c147ab70191fb2fcd538c1339dce24185bc1b2e1",
+        "height": 720,
+        "sha256": "df16f7eac64bdfa0ed0e9809a02f97b717a302649fd06a1265aec21af409e428",
+        "size_bytes": 3993525,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "7dcc2be3f0bd72b39e5ee547d0db24b8aba90019097848b0ee8b574d2aaa2391",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "0baf93d42353e7123d5a870cce0c7102a9f075fda146c012623fa0e474d8fede",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "24f94b3ab6583346eddc33dc6aaa15360ad456b290dee8fcdb147992173401f3",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "b7f47966c3ad5cd168e9386aad816cc684d014e556e00193fb0366080bd03aa5",
+      "selection_rank_sha256": "4d536bfb5035b8406654328c460cb7494a42c551206371c7353d27956e719c57",
+      "word_token_jaccard": 0.15384615384615385,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 8,
+      "pair_id": "2cc12b36518091286b8d305ff727c4097db20adfa483cb96d639c391159a8f85",
+      "uuid": "09c19944-6ba5-4c79-8689-537633156158",
+      "interaction_family": "multi_entity_interaction",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the man and the woman both blow on the dandelion along with the girl, sending the remaining seeds flying through the air.",
+      "source_action_caption": "The man and the woman continue to hold the dandelion as the girl blows on it again, and more seeds fly off.",
+      "target_action_caption": "The man and the woman both blow on the dandelion along with the girl, sending the remaining seeds flying through the air.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/09c19944-6ba5-4c79-8689-537633156158-00.00.06.875-00.00.11.054-seg2.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/09c19944-6ba5-4c79-8689-537633156158-00.00.11.054-00.00.19.586-seg3.mp4",
+      "source_media": {
+        "decoded_frames": 125,
+        "decoded_rgb_sha256": "03c699763288d1377248250fe58b1198fcf6cf75335e2cf59d5b00b71e3d7d0c",
+        "height": 720,
+        "sha256": "ed23a456423a5fa42b020f6b03b6386ef883f23a9d799ccb3f2eafb57e116daf",
+        "size_bytes": 2585649,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 256,
+        "decoded_rgb_sha256": "a8226e9d1f1b1de4822da2ac85ceefa5062875c32cd44274c073716bf6765884",
+        "height": 720,
+        "sha256": "9dfb53cf040f3a251ee7387856ed414e63e60b9ccd1c4f4715d78f6e633aa6d6",
+        "size_bytes": 5400238,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "7897e58cb04a5cc908bb93419bac69ff0758d3fc0ac54187a6df40bd22c397e6",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "d13ceeb945483ed7eed4cdda1882431dc9234297ca3a8674165eb3dae0d4f65c",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "58538687d247e98b71f33e6590e16733fcc8225df6245e85631d139170f8f9f3",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "fdb28e21db5f671595855d057d9a861be4244ae5f1e1253ca497f5035b1ca0f7",
+      "selection_rank_sha256": "5dc8ac8095cadd836297002e2aec856ec7e2d2803d0fea21c9d3224b8444a69d",
+      "word_token_jaccard": 0.2962962962962963,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 9,
+      "pair_id": "71be4d30afca7449b0eb80cb575c4c0abc3f0fb54ed6325d57ac47efaf6dc8c4",
+      "uuid": "ab68d4e1-1327-429d-bf94-216a8eedde1b",
+      "interaction_family": "lifecycle_entry_exit",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the man completes an exercise on a step platform, stands up, and walks out of the frame.",
+      "source_action_caption": "The muscular man performs several incline push-ups with his hands placed on a black step platform in the gym.",
+      "target_action_caption": "The man completes an exercise on a step platform, stands up, and walks out of the frame.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/ab68d4e1-1327-429d-bf94-216a8eedde1b-00.00.03.895-00.00.17.548-seg3.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/ab68d4e1-1327-429d-bf94-216a8eedde1b-00.00.17.548-00.00.21.400-seg4.mp4",
+      "source_media": {
+        "decoded_frames": 342,
+        "decoded_rgb_sha256": "e9a90454e674f7e31b18eb7848823a0e0f623691653f633cbf56e78ff9075aa3",
+        "height": 720,
+        "sha256": "6a3901454e377b00c2d860cd194f83e62e20dd0229f662b4a0a8ef25ad2b4af5",
+        "size_bytes": 4388954,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 96,
+        "decoded_rgb_sha256": "33a4c97f5ab5f9ce5dd027d229c483a05cdc7a6a56b8aa9fa72eb84fe6cd6183",
+        "height": 720,
+        "sha256": "637fb4092d5af2da2ff33cc34f2fe9ace11baa5d69a9a2236793bfacbe0c35f0",
+        "size_bytes": 1230321,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "abc88e9ea6a7b78066075c84bd74dc60c7e902c0e48d46a3c74f9cf6f0202b9f",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "e26875868a210f66df847e7416e004c069ecf85d50cc6ff056b2b7b106d76905",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "9e85a2e874d23fa574057f2fc5588a889e127287683a61bc537b1c3963c73d96",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "6828887f023fff84e3ac70fff5c695c5242dd2d4e6664cf5eaf788314f5ba14e",
+      "selection_rank_sha256": "4fb90fee536ac0ac77c5696288278a24bc519338703fc4f80dd63690fd613fd1",
+      "word_token_jaccard": 0.20689655172413793,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 10,
+      "pair_id": "89dc5aa6dedae68480cd6ca6a01931f9e928c62990fe7fb8c0835cec660f4b49",
+      "uuid": "587093a2-f535-44c6-bbd2-56cde3f062e6",
+      "interaction_family": "articulated_ordered_motion",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the young man looks down and adjusts his camera.",
+      "source_action_caption": "The young man in the forest aims his camera upwards to take a picture.",
+      "target_action_caption": "The young man looks down and adjusts his camera.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/587093a2-f535-44c6-bbd2-56cde3f062e6-00.00.00.000-00.00.03.256-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/587093a2-f535-44c6-bbd2-56cde3f062e6-00.00.03.256-00.00.06.048-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 78,
+        "decoded_rgb_sha256": "1cd6d1182b64f391b8b376e82125ae1e0524b1072706935e891fca3a9fa5f5e9",
+        "height": 720,
+        "sha256": "46226588793e0bfb971cce91ef3e44f6cd87f14b1991dbf054c983a190d86cef",
+        "size_bytes": 1187157,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 67,
+        "decoded_rgb_sha256": "dbaa2414dd532d4bea6b5614363603361d022f7c0bdd3179280b3b15d2e0eb02",
+        "height": 720,
+        "sha256": "f34befb8d930da994dbf0f789da3772f4b1c66c11d3032627a8814c2894038c3",
+        "size_bytes": 2196385,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "dda5a5630335579297232793e60d71d1a73013efea88017516d333d91efe58bd",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "0ee1eacf15496eb9cc0f83e75ee43d777edbc1aa5d80845de4db3ff55a486dd5",
+        "target_eval_unique_indices": 59,
+        "target_reference_indices_sha256": "d989ee65033ebefd922836816d26e31f5d088b9fe6779b2facda6c6f03478dff",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "a4d818c9cfb38287e7a4ec76c9bcf08add02ab3e3008e5b90bcf6899bfe724d8",
+      "selection_rank_sha256": "0c9456c5daba626c575b682fc938addd41686f99dda96c588f7761226fa94906",
+      "word_token_jaccard": 0.29411764705882354,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 11,
+      "pair_id": "981fb7f98968c62e2446cbdbe743e8ac0f0dc0980ce76710567d4dfe7bd93fd0",
+      "uuid": "cf874922-b3d8-42d6-a09d-96af7731ac7d",
+      "interaction_family": "contact_transfer",
+      "report_split": "locked_validation",
+      "instruction": "Edit the action so that the man proposes to the woman, who touches the ring before he closes the box in disappointment.",
+      "source_action_caption": "The man in a grey blazer holds an open gift box while speaking to the unsmiling woman.",
+      "target_action_caption": "The man proposes to the woman, who touches the ring before he closes the box in disappointment.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/cf874922-b3d8-42d6-a09d-96af7731ac7d-00.00.06.419-00.00.12.035-seg02.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/cf874922-b3d8-42d6-a09d-96af7731ac7d-00.00.12.035-00.00.17.086-seg03.mp4",
+      "source_media": {
+        "decoded_frames": 141,
+        "decoded_rgb_sha256": "fa3fda4cdf2fda8645e450c2a9f959fb911b2f8a576fd6b8f5ee0a963c0c6828",
+        "height": 720,
+        "sha256": "693805f14ec90559a48ef97523190819af72e83f842aa708b70c3a41cee5a4df",
+        "size_bytes": 3527887,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 126,
+        "decoded_rgb_sha256": "dfcec2ed77b260c25d5667f706c115623014981c53dde1d2a28d8d4948933fa4",
+        "height": 720,
+        "sha256": "3a847c7b837d550fa60058df54686986a924e9dd0e92834818277acc56c2d607",
+        "size_bytes": 3386964,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "9585dd272b08194ad8eef9f3e4077472e4a352430a2eb6c4a9b6a37462a63357",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "a42d0dd047f18a1d7088f971a2bbdc1a3dec1215a79955156987cef4ada4aad6",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "9bda8b52526607c5ea912f818faab691320c4c2945386b1e1ca4e20d2fa325c0",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "fe8059a230f356c8bc8a0469fc4d1cf3ef22c36628fd477a0e0d60c2af1230f8",
+      "selection_rank_sha256": "179c18cfc0740ce7ef3b3f814d54499c39ae2ee67535ad86be69f90fea409b79",
+      "word_token_jaccard": 0.25,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 12,
+      "pair_id": "459d35d03f7209e185fbd7cef38713d85b7a25043279b9ab2614e897bec9dcae",
+      "uuid": "21120e42-4f23-445c-8862-bdecc94dee9d",
+      "interaction_family": "lifecycle_entry_exit",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the cashier finishes serving the two women and then walks out of the frame.",
+      "source_action_caption": "The woman in the pink blazer hands her wallet to the cashier at the checkout counter while her blonde friend watches.",
+      "target_action_caption": "The cashier finishes serving the two women and then walks out of the frame.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/21120e42-4f23-445c-8862-bdecc94dee9d-00.00.27.579-00.00.31.051-seg6.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/21120e42-4f23-445c-8862-bdecc94dee9d-00.00.31.051-00.00.34.715-seg7.mp4",
+      "source_media": {
+        "decoded_frames": 83,
+        "decoded_rgb_sha256": "16a76170e975c6c9df53f4bbe18bf979f8cf6a34dd39f8217f92f27832d80a51",
+        "height": 720,
+        "sha256": "bdca1f96697b81d962b108b8661b1b5081a96ad3dc2858e6ec8b646574b2a42d",
+        "size_bytes": 1654104,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 88,
+        "decoded_rgb_sha256": "3c6238e46005e07979cf58b39bf4eefcfcb229399e0305d14ee5f72b9c36be20",
+        "height": 720,
+        "sha256": "8e818da6e670c21a8859e0676558afaa812ed3e051c27f6612a9e2bfd9940db8",
+        "size_bytes": 1848061,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "170a8ed820870bc5a55a7924dfb323e368c622cf57169f07f69077c92eef1d4b",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "42841c838b351cd6bb6cd435b49507aacde3ec33759e403cbf24caa9af403db1",
+        "target_eval_unique_indices": 63,
+        "target_reference_indices_sha256": "5d69c4eaef762957835ea377d68e85b77e338885aa6535371f88201b14150b1c",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "4e1e5ca56d98825c1acdb741c9f4000084a1292c419f4bbf9b00f70867c83b39",
+      "selection_rank_sha256": "36e313090042b54f713dbdf4f6d413ea528b989afe55d05dbcc59e45065bd159",
+      "word_token_jaccard": 0.07407407407407407,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 13,
+      "pair_id": "1ea210054afedba0005cf222f428357d0551c56d5139d577073eef914c898105",
+      "uuid": "3ddb123a-0ca4-4b82-9eb4-43f64931f6a3",
+      "interaction_family": "multi_entity_interaction",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the woman wearing pink slippers holds the baby and gently bounces in the modern kitchen.",
+      "source_action_caption": "The woman holds the baby on her hip while looking inside an open upper kitchen cabinet.",
+      "target_action_caption": "The woman wearing pink slippers holds the baby and gently bounces in the modern kitchen.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/3ddb123a-0ca4-4b82-9eb4-43f64931f6a3-00.00.16.295-00.00.18.594-seg4.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/3ddb123a-0ca4-4b82-9eb4-43f64931f6a3-00.00.18.594-00.00.22.549-seg5.mp4",
+      "source_media": {
+        "decoded_frames": 69,
+        "decoded_rgb_sha256": "77c1de5f8ef366f42b7249acfc455deb98161377ffcda003280df71cdee9bd8a",
+        "height": 720,
+        "sha256": "28ca067b916d2995a45f4107d27f7c02ba7080d3a974338e597c3f5514f78a08",
+        "size_bytes": 911298,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 119,
+        "decoded_rgb_sha256": "cfbb533dec768bdf3bffc1638768a08814c41f5ab2fe893faa96c9ebca88e232",
+        "height": 720,
+        "sha256": "6a0407df93c27333dfe4d237ceec1da404be9b010c78b0213ff72df52e9e4ea9",
+        "size_bytes": 1776847,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "56bccbdc588c48557bee6e7b022a33464f5b47cbe14d5b86db69b14c21415372",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "674e2a7d479e22875efc08dcd55143f78bbf43e1d8b458d0970ffbab8ade20b7",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "43402b58ec850716dacd771970a679de65178700c2b29a38ea71b229d31ce901",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "69b25607b8efbfc37bd80b783a57fcbad35f179739cd0d0755cadcab5571bd89",
+      "selection_rank_sha256": "350227ea71bbb77cd589e6ff76d1cabc46e39ca90dd82ad9d67ed2bd968fe0d0",
+      "word_token_jaccard": 0.21739130434782608,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 14,
+      "pair_id": "2754e5b32a96c5dbf913d124142d36418827936a521b8628f1b5b89006f4460c",
+      "uuid": "f7af6d28-f57d-483c-a9aa-03c32e2b2a00",
+      "interaction_family": "articulated_ordered_motion",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the man raises his arms and then rests his hands behind his head.",
+      "source_action_caption": "The man in the gray beanie sits alone on the bench, looking out at the water under a cloudy sky.",
+      "target_action_caption": "The man raises his arms and then rests his hands behind his head.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/f7af6d28-f57d-483c-a9aa-03c32e2b2a00-00.00.00.000-00.00.04.662-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/f7af6d28-f57d-483c-a9aa-03c32e2b2a00-00.00.04.662-00.00.16.483-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 140,
+        "decoded_rgb_sha256": "dcd99921489b2347dd55d591246a870e54b989ab20fbf7b6926839d711cae0f6",
+        "height": 720,
+        "sha256": "68f8f6163dc89c79b50ba092277e2bb8d2e7c6a472bb02be35705d300bbed8f4",
+        "size_bytes": 2322148,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 354,
+        "decoded_rgb_sha256": "94ac50d7cc6d0adf107ac4c214e4fbb06c1f154289ffb5176066cf30c811e48b",
+        "height": 720,
+        "sha256": "547f7cd3487279e881f4d7ddc85ddd5681997bcc4ec5fde53cf64d1a0fbfa3b6",
+        "size_bytes": 5822203,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "f7982c9c74c5e6c1297742da8c7eaff9095fd5ba6e0495624aff67a360b22409",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "361e190bfcb3e9728fe5885acaf566b21fff6cfdc308c0cf8762eaf4712284c5",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "ea01c48cfab844f246a6c8aeefd5e01d5d1d2ec48fe7450741214fb5cfa1045e",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "82a1875471d8fe3bd6b5a2e88b2faade08a3873f3220ab4b1201ff7cc222e605",
+      "selection_rank_sha256": "0bf206ff98b5ab9eeef0d038e37f3a8b2720fff4609604ed579f3dc4e4ed08d5",
+      "word_token_jaccard": 0.07692307692307693,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    },
+    {
+      "ordinal": 15,
+      "pair_id": "3916eede64dd1dfc5f54c85de9324b32dd44cb779c0d4dde973a4837880c7c38",
+      "uuid": "97940925-cd8c-47b1-a6e2-d6ae70945137",
+      "interaction_family": "articulated_ordered_motion",
+      "report_split": "development_report",
+      "instruction": "Edit the action so that the man finishes his phone call, holds his phone, and looks at the camera with a smile.",
+      "source_action_caption": "The man in the suit and glasses talks on his cell phone in front of the green screen.",
+      "target_action_caption": "The man finishes his phone call, holds his phone, and looks at the camera with a smile.",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/97940925-cd8c-47b1-a6e2-d6ae70945137-00.00.00.000-00.00.14.622-seg1.mp4",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/97940925-cd8c-47b1-a6e2-d6ae70945137-00.00.14.622-00.00.23.000-seg2.mp4",
+      "source_media": {
+        "decoded_frames": 366,
+        "decoded_rgb_sha256": "a4d0e28407f72af266c76e5c7573e56aed56dbd76c696476111c9da4cf621548",
+        "height": 720,
+        "sha256": "0361ea057d6cc4bef22c4edf0419813c21867d3013980816f3b4131e44d98759",
+        "size_bytes": 6051071,
+        "width": 1280
+      },
+      "target_media": {
+        "decoded_frames": 209,
+        "decoded_rgb_sha256": "bd8e1f2d7fa8573ff648e7218dff4d3ba937059e1cc7792225b435bf78ce62e0",
+        "height": 720,
+        "sha256": "b7ec49e80598798a5370d137a58efcf012f1d8acdc71f632d995c3073f004247",
+        "size_bytes": 3377061,
+        "width": 1280
+      },
+      "sampling_geometry": {
+        "source_indices_sha256": "61690efcbf35f1004684e76cc303d917d00abd2807746d14979c40ca66bb90db",
+        "source_unique_indices": 64,
+        "target_eval_indices_sha256": "7d03f48ddc3d75e8c568068543b89cc26693aa158bc7e7bb25ce389b77d68538",
+        "target_eval_unique_indices": 64,
+        "target_reference_indices_sha256": "c8c3b5d3b18b58009bf863562d9187931833fd3412e903f9f7c45ea4d2357aa6",
+        "target_reference_unique_indices": 64
+      },
+      "catalog_row_sha256": "1a4961e493ccb6a0dcefe63780e7d0a8cb64dfef7a880853d994683bd291ce04",
+      "selection_rank_sha256": "000e3de34e43be20cb3ea9cb029928da61eaeaa495935e19b23a9c96d75380f6",
+      "word_token_jaccard": 0.20833333333333334,
+      "formal_sft_authorized": false,
+      "qualification_status": "qwen-visual-accepted-annotation-instruction-pending-human",
+      "catalog_gates": {
+        "appearance_change": false,
+        "source_camera_motion": false,
+        "target_camera_motion": false,
+        "verdict": "accept",
+        "confidence": "high",
+        "source_enables_target": "no",
+        "target_action_quality": "clear_action"
+      }
+    }
+  ]
+}

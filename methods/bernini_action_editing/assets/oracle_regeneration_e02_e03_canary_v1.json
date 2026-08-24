@@ -1,0 +1,209 @@
+{
+  "schema_version": "bernini-oracle-regeneration-e02-e03-canary-spec-v2",
+  "experiment_id": "ROUND37_ORACLE_REGENERATION_E02_E03_DIAGNOSTIC",
+  "status": "BLOCKED_COMPILED_TRUST_ANCHORS_AND_EXECUTION_BINDINGS_INTENTIONALLY_EMPTY",
+  "scientific_role": "diagnostic_oracle_intervention_not_training",
+  "training_authorized": false,
+  "optimizer_authorized": false,
+  "gpu_launch_authorized": false,
+  "activation_implemented_in_this_version": false,
+  "runner_entrypoint": null,
+  "runner_entrypoint_sha256": null,
+  "automatic_model_replacement_authorized": false,
+  "component_pins": {
+    "oracle_core": {
+      "path": "methods/bernini_action_editing/oracle_regeneration_canary_v1.py",
+      "sha256": "0148b137c200e426ff18571f71d373a9e6ef595c620664925dae0ab9d1d91081"
+    },
+    "native_five_forward_runtime": {
+      "path": "methods/bernini_action_editing/native_branch_homotopy_runtime_v1.py",
+      "sha256": "b81ee152e358e4d5a6638dfccf1232c4e221311ffb38937e61be3c6a799b84d5"
+    },
+    "native_homotopy_schedule": {
+      "path": "methods/bernini_action_editing/native_branch_homotopy_v1.py",
+      "sha256": "2585416e61935db62cc7534daf19b4bb851f9fdcdeb92f78e6152f55e034f3d0"
+    },
+    "legacy_flowedit_controller": {
+      "path": "methods/bernini_action_editing/source_aligned_controller.py",
+      "sha256": "e8601c82d1fcf7e4df11daa658b9f237e01eabc489f77a88610fcab6ad3cf4a8"
+    },
+    "external_authority_contract": {
+      "path": "methods/bernini_action_editing/assets/oracle_regeneration_external_authority_contract_v1.json",
+      "sha256": "6e8558191a0a6fe4d03bb4c7e7930cde3ee2cfb72d0919f583817cd57edb155f"
+    },
+    "preflight_core": {
+      "path": "methods/bernini_action_editing/tools/preflight_oracle_regeneration_e02_e03_canary_v1.py",
+      "sha256": "d6ea97c7b32f2a697dcf3ffc6c629780e10e704c1ba75a4749c5a7fc103bb6fb"
+    },
+    "preflight_launcher": {
+      "path": "methods/bernini_action_editing/scripts/auh_preflight_oracle_regeneration_e02_e03_canary_v1.sh",
+      "sha256": "14ba4100ac467f488aa01797d5a9b7437be20feaf1798517e6d11656df336b75"
+    },
+    "learned_regeneration_router_used": false,
+    "learned_action_state_reconstruction_used": false
+  },
+  "gate_authority": {
+    "required_schema": "bernini-manual-hard-delete-create-gate-v2",
+    "required_dtype": "bool",
+    "required_geometry": "[1,1,21,H,W] source-latent coordinates",
+    "required_flattening": "per_phase_row_major_yx",
+    "phase_zero_empty": true,
+    "required_source": "manual per-phase delete/create annotation plus distinct reviewer receipt",
+    "failed_active_video_or_latent_may_author_gate": false,
+    "raw_anchor_source_pixel_or_latent_difference_may_author_gate": false,
+    "predicted_soft_gate_may_author_oracle": false,
+    "review_receipt_hash_binding_required": true,
+    "source_anchor_caption_program_digest_binding_required": true,
+    "compiled_per_case_external_annotation_ledger_root_required": true,
+    "caller_cli_or_spec_hash_may_authorize_root": false,
+    "compiled_roots_present_in_this_version": false,
+    "runtime_accepts_public_raw_gate": false,
+    "runtime_owned_snapshot_rehashed_each_step_and_finalize": true,
+    "native_source_reference_action_rehashed_each_step_and_finalize": true,
+    "independent_review_forbidden_input_evidence_required": [
+      "failed_active_used_to_author_mask=false",
+      "anchor_difference_used_to_author_mask=false",
+      "predicted_soft_gate_used_to_author_mask=false"
+    ],
+    "realized_variant_tensor_digest_required": true
+  },
+  "execution_choices": {
+    "native_local_r2v4": {
+      "implemented_core": true,
+      "public_execution_capability_mintable_in_this_version": false,
+      "required_binding_receipt": "compiled exact source latent, four source-reference latents/indices, R2V action prompt, gate manifest/root, sample id",
+      "outer_sampler": "official native V2V APG",
+      "forwards_per_step": 5,
+      "inside_G": "existing R2V-4 homotopy schedule: high 0-14, smooth 15-30, official 31-39",
+      "outside_G": "exact official V2V model_output bytes",
+      "G_zero": "original official model_output object",
+      "source_references": "four independently VAE-encoded source frames",
+      "all40_raw_high_enabled": false
+    },
+    "flowedit_step0_noise": {
+      "implemented_core": true,
+      "execution_surface": "private tested primitive only; no public runner",
+      "public_execution_capability_mintable_in_this_version": false,
+      "required_binding_receipt": "compiled exact case/source/edit/noises/sigma/step0/constructor/gate/root",
+      "outer_sampler": "existing FlowEdit source/target state constructor",
+      "inside_G_step0": "domain-separated independent keyed target Gaussian",
+      "outside_G": "original correlated target-noise bytes",
+      "source_state": "always original correlated source noise",
+      "phase_zero": "exact matched FlowEdit target"
+    },
+    "connected_native_r2v4_plus_flowedit_runner": {
+      "implemented": false,
+      "reason": "the official native sample hook and custom anchor_sga_anc FlowEdit loop are different outer-sampler ABIs; no audited same-step bridge exists"
+    }
+  },
+  "cases": [
+    {
+      "case_id": "e02",
+      "event_index": 2,
+      "event_slug": "twist-pull-mushroom",
+      "source_iid": "10ed90644f81461d",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/10ed90644f81461d/source.mp4",
+      "source_sha256": "63dd620627e18d0f6836058bf725ffba7ab1f9b0b455e784c6a71dc68a8de46c",
+      "anchor_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/interaction_complex8_multianchor_v2_r1/e02_twist-pull-mushroom/v0/t2v.mp4",
+      "anchor_sha256": "a1076cbe83c9dae4a4fddc25f73077288f6a3240324fd2d5e1854aa842b07b63",
+      "action_caption": "A child twists and pulls one mushroom from the soil, lifts it, and holds the same intact mushroom.",
+      "action_caption_sha256": "0a4a808501bbcdd83e1f5152033c9facc660d0f1eadc50f49fef2780bd9049c8",
+      "structured_action_program": {
+        "schema_version": "bernini-oracle-action-program-v1",
+        "entities": ["one_hand", "one_mushroom", "soil_origin"],
+        "states": ["attached", "detached", "held"],
+        "transitions": ["twist", "pull_detach", "lift", "hold"],
+        "terminal_constraints": ["soil_origin_empty", "one_hand", "one_intact_mushroom_held"]
+      },
+      "structured_action_program_sha256": "f1feb21b65408c19565e3bcf5729679c1d87191057b7ed969826671ccfd7da25",
+      "latent_geometry": [1, 1, 21, 74, 50],
+      "source_reference_rgb_indices": [0, 27, 53, 80],
+      "manual_gate_manifest": null,
+      "manual_gate_manifest_sha256": null,
+      "manual_review_receipt": null,
+      "manual_review_receipt_sha256": null,
+      "strict_action_gate": [
+        "exactly one hand and one mushroom",
+        "original mushroom occupancy is deleted after detach",
+        "the same intact mushroom is created along one upward path and held",
+        "the original soil position remains visibly empty"
+      ],
+      "base_status": "failed_duplicate_or_fusion",
+      "candidate_policy": "review base and regeneration side by side; no automatic selection"
+    },
+    {
+      "case_id": "e03",
+      "event_index": 3,
+      "event_slug": "release-harvest-into-basket",
+      "source_iid": "7a33b36459c84289",
+      "source_video": "/vast/users/guangyi.chen/dataset/goku/subject_movement/extracted/videos/7a33b36459c84289/source.mp4",
+      "source_sha256": "c1455b9b89d1f352da69e7bb07e955ee4495df94f5ef6f3f09fe7fd9eac035bb",
+      "anchor_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/action_flow_noise_stage0_job140846_v1/stage1/interaction_complex8_multianchor_v2_r1/e03_release-harvest-into-basket/v0/t2v.mp4",
+      "anchor_sha256": "1d0a0e8895ec976d3cb1f9ee3070ac36c75ca29247bb52f81677135f7786f12f",
+      "action_caption": "A hand releases the held mushroom cluster into the basket, then withdraws empty after the cluster settles.",
+      "action_caption_sha256": "f0f4021e86ed3804a05e68d1aeeb7df6fa1294477f28bbcb3e76ecfe03480dd3",
+      "structured_action_program": {
+        "schema_version": "bernini-oracle-action-program-v1",
+        "entities": ["one_hand", "same_mushroom_cluster", "basket"],
+        "states": ["held", "released", "falling", "settled"],
+        "transitions": ["fingers_open", "cross_basket_rim", "fall", "settle", "empty_hand_withdraw"],
+        "terminal_constraints": ["cluster_inside_basket", "empty_hand", "hand_withdrawn"]
+      },
+      "structured_action_program_sha256": "19379aa38163b150b530c6c27235797cf00194aab5970026821f3ed4b61dd977",
+      "latent_geometry": [1, 1, 21, 70, 52],
+      "source_reference_rgb_indices": [0, 27, 53, 80],
+      "manual_gate_manifest": null,
+      "manual_gate_manifest_sha256": null,
+      "manual_review_receipt": null,
+      "manual_review_receipt_sha256": null,
+      "strict_action_gate": [
+        "the same held cluster crosses the same basket rim",
+        "the fingers visibly open and ownership changes held to released",
+        "the cluster falls and settles inside the basket",
+        "the terminal hand is empty and withdraws"
+      ],
+      "base_status": "frozen_base_already_succeeds_approximately_frames_52_to_57",
+      "candidate_policy": "abstain and keep base unless regeneration is strict non-regression and materially improves the endpoint"
+    }
+  ],
+  "diagnostic_arms": [
+    {"arm": "A", "gate": "legacy_source_motion", "fresh_step0": false, "route": "round36", "purpose": "historical reproduction only"},
+    {"arm": "B", "gate": "union", "fresh_step0": false, "route": "off", "purpose": "hard permission alone"},
+    {"arm": "C", "gate": "union", "fresh_step0": true, "route": "off", "purpose": "target noise reset necessity"},
+    {"arm": "D", "gate": "union", "fresh_step0": false, "route": "scheduled_local_r2v4", "purpose": "local expert without noise reset"},
+    {"arm": "E", "gate": "union", "fresh_step0": true, "route": "scheduled_local_r2v4", "purpose": "full proposed mechanism; connected runner pending"},
+    {"arm": "F", "gate": "time_shift_5", "fresh_step0": true, "route": "scheduled_local_r2v4", "purpose": "temporal causal control"},
+    {"arm": "G", "gate": "spatial_shift", "fresh_step0": true, "route": "scheduled_local_r2v4", "purpose": "spatial causal control"},
+    {"arm": "H", "gate": "create_only", "fresh_step0": true, "route": "scheduled_local_r2v4", "purpose": "create ablation"},
+    {"arm": "I", "gate": "delete_only", "fresh_step0": true, "route": "scheduled_local_r2v4", "purpose": "delete ablation"},
+    {"arm": "J", "gate": "null", "fresh_step0": false, "route": "off", "purpose": "exact official/base object control"},
+    {"arm": "K", "gate": "union", "fresh_step0": true, "route": "learned_action_code_swap", "purpose": "blocked: no qualified causal q_pred exists"}
+  ],
+  "selection_contract": {
+    "selection_authority": null,
+    "pre_run_review_policy_authority_source": "future compiled signed release authority only",
+    "post_run_outcome_selection_authority": null,
+    "background_cosine_may_choose_final_candidate": false,
+    "base_and_regeneration_outputs_required_side_by_side": true,
+    "successful_base_may_be_replaced_automatically": false,
+    "e03_requires_explicit_abstain_or_non_regression_decision": true
+  },
+  "blocking_conditions": [
+    "activation is hard-disabled in this code version and requires a new signed-authority implementation plus audit",
+    "compiled independent release-authority trust anchor is unset; CLI hashes cannot unlock",
+    "compiled per-case annotation roots are empty",
+    "compiled exact native and FlowEdit execution-binding receipt maps are empty",
+    "post-run output-bound human outcome decisions do not exist before generation and automatic selection remains forbidden",
+    "e02 and e03 manual exact-bool D/C manifests are absent",
+    "independent reviewer receipts binding each exact mask are absent",
+    "native local R2V-4 and FlowEdit step0-noise seams are not one audited outer sampler",
+    "learned action-code arm K is unavailable"
+  ],
+  "future_activation_blockers": [
+    "native source references need independently VAE-encoded provenance, encoder and source-frame digests, pairwise storage disjointness, and distinct content digests",
+    "FlowEdit independent keyed Gaussian needs a pinned domain, master seed, case/candidate derivation, CPU generator receipt, and content inequality from correlated source noise",
+    "preflight must verify the selected case key and physical native or FlowEdit execution-binding receipt file against its compiled digest",
+    "release authorization must move to a compiled-public-key signature scheme; exact authority SHA pinning is forbidden because authority binds spec and component hashes",
+    "future FlowEdit runner ABI must pin callable code and closure identity"
+  ]
+}

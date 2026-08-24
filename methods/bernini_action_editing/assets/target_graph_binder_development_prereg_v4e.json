@@ -1,0 +1,210 @@
+{
+  "schema_version": "bernini-target-graph-binder-development-prereg-v4e",
+  "experiment_id": "target_graph_binder_development_v4e",
+  "stage": "development_only_representation_pretraining",
+  "scientific_role": "observer_only_target_graph_teacher_to_self_generated_middle_alignment_pilot",
+  "catalog_source_pin": {
+    "path": "/vast/users/guangyi.chen/dataset/MEV/VideoEditing/action_data_construction/runs/full_v5_20260817T193449Z/final_metadata_annotation_v2/paired_training_candidates.jsonl",
+    "sha256": "0c96e808114154e2d069da6ca698debfb6c9f824e0e780f6f39ec70612207ca8",
+    "row_count": 3749
+  },
+  "frozen_base": {
+    "required_in_every_future_decoded_review": true,
+    "loaded_in_this_observer_only_pilot": false,
+    "absence_reason": "no decoding or generator intervention is permitted in representation pretraining",
+    "generator_forward_calls": 0,
+    "generator_optimizer_created": false,
+    "generator_parameter_updates": 0,
+    "future_matched_control": "same source instruction seed schedule checkpoint resolution and sampler as every active arm"
+  },
+  "leakage_boundary": {
+    "target_video_offline_frozen_teacher_only": true,
+    "target_video_is_binder_input": false,
+    "target_is_generator_input": false,
+    "target_gradient_allowed": false,
+    "target_rgb_regression_allowed": false,
+    "target_latent_regression_allowed": false,
+    "target_flow_regression_allowed": false,
+    "target_hidden_or_value_copy_allowed": false,
+    "raw_teacher_embedding_export_allowed": false,
+    "canonical_graph_metadata_only": true,
+    "self_generated_anchor_middle_is_target_free": true,
+    "final_anchor_video_feature_used": false,
+    "generator_connection_authorized": false
+  },
+  "frozen_teacher": {
+    "required_observers": [
+      "SAM2_instance_visibility_masks",
+      "CoTracker_joint_points_visibility",
+      "DINOv2_patch_identity_mutual_neighbors"
+    ],
+    "fusion": "evidence_quorum_with_explicit_unknown_not_forced_consensus",
+    "published_fields": [
+      "object_node_presence",
+      "object_identity_lifecycle",
+      "relative_kinematics",
+      "typed_edge_lifecycle",
+      "phase_change_points",
+      "visibility",
+      "uncertainty"
+    ],
+    "forbidden_claims": [
+      "physical_contact_from_mask_proximity_alone",
+      "support_or_release_from_disappearance",
+      "identity_from_one_global_embedding",
+      "unobserved_edge_imputed_as_true"
+    ],
+    "teacher_parameters_frozen": true,
+    "teacher_outputs_stop_gradient": true
+  },
+  "binder": {
+    "trainable_scope": "object_edge_binder_only_then_freeze",
+    "layers": 4,
+    "width": 256,
+    "object_slots": "competitive_variable_cardinality_with_null_abstain",
+    "max_slots": 8,
+    "role_assignment": "confidence_weighted_bipartite_matching_without_forced_equal_mass",
+    "edge_topology": "sparse_typed_phase_lifecycle_not_cartesian",
+    "max_neighbors_per_node": 3,
+    "anchor_middle_blocks": [
+      6,
+      12,
+      18,
+      24
+    ],
+    "anchor_middle_sigma_bands": [
+      "high",
+      "middle",
+      "low"
+    ],
+    "phase_bins": 21,
+    "support_frame": "estimated_only_from_source_noop_static_stability_not_action_success",
+    "after_pretraining": "all_binder_parameters_require_grad_false_and_checkpoint_hash_sealed"
+  },
+  "object_centric_ablation": [
+    {
+      "id": "OBS_PERSIST",
+      "role": "zero_train_teacher_observation_and_identity_registry"
+    },
+    {
+      "id": "SAVI_COND",
+      "role": "sequential_slots_initialized_from_qualified_observations"
+    },
+    {
+      "id": "SLOTFORMER_DYN",
+      "role": "future_node_edge_state_prediction_on_qualified_slots"
+    },
+    {
+      "id": "STEVE_FREE",
+      "role": "unprompted_slot_baseline_without_contact_or_identity_authority"
+    }
+  ],
+  "losses": {
+    "node": "confidence_weighted_node_presence_identity_and_visibility",
+    "identity": "cycle_consistency_and_occlusion_reentry_without_slot_switch",
+    "dynamics": "next_phase_relative_kinematics_in_support_relative_frame",
+    "edge": "typed_edge_semi_markov_lifecycle_with_unknown_state",
+    "phase": "ordered_phase_and_change_point_prediction",
+    "invariance": "same_action_three_appearance_canonical_graph_consensus",
+    "controls": "forward_above_reverse_noop_static_shuffle_role_swap_and_drop_edge",
+    "uncertainty": "visibility_identity_and_edge_calibration_with_abstention",
+    "forbidden": [
+      "RGB_reconstruction",
+      "target_latent_or_velocity_regression",
+      "target_flow_regression",
+      "teacher_hidden_or_value_matching",
+      "one_unconstrained_scalar_reward"
+    ]
+  },
+  "reward_contract": {
+    "form": "vector_of_hard_semantic_and_uncertainty_gates_then_optional_calibrated_margin",
+    "direct_differentiable_reward_into_generator": false,
+    "graph_score_can_override_failed_required_edge": false,
+    "uncertainty_collapse_is_success": false,
+    "future_quality_guard": "matched_frozen_base_distribution_is_a_hard_constraint_before_any_generator_update"
+  },
+  "required_controls": [
+    "forward",
+    "reverse",
+    "noop",
+    "static",
+    "phase_shuffle",
+    "role_swap",
+    "drop_edge",
+    "cross_appearance_three_way"
+  ],
+  "split_contract": {
+    "exclude_all_registered_evaluation_video_uuids_from_training": true,
+    "exclude_all_adjacent_pairs_from_registered_evaluation_uuids": true,
+    "require_complete_actor_scene_action_groups": true,
+    "require_complete_media_hashes": true,
+    "require_complete_perceptual_clusters": true,
+    "require_group_disjoint_train_validation": true,
+    "free_text_group_inference_allowed": false,
+    "minimum_train_rows": 128,
+    "minimum_validation_rows": 32,
+    "development_cases_are_evaluation_only": true,
+    "locked_confirmation_cases_are_never_used_for_threshold_selection": true
+  },
+  "representation_admission": {
+    "cross_appearance_cosine_min": 0.95,
+    "cross_appearance_distance_max": 0.15,
+    "forward_reverse_auroc_min": 0.9,
+    "noop_static_false_positive_max": 0.05,
+    "identity_idf1_min": 0.85,
+    "contact_macro_f1_min": 0.85,
+    "terminal_hold_macro_f1_min": 0.9,
+    "uncertainty_expected_calibration_error_max": 0.1,
+    "locked_forward_above_reverse_shuffle_noop_min_cases": "9/12_after_threshold_seal_only",
+    "generator_connection_on_failure": "forbidden"
+  },
+  "development_evidence_snapshot": {
+    "catalog_receipt_file_sha256": "8dfc555c89e48ab0dc6f0f3a2ec5a5d9734aa90e594a00c13e9c82d6a9b0027d",
+    "catalog_receipt_self_hash": "dc5b767cec36907f3844711df7bd74b6d0e260d0956425fe547cece00ffc102e",
+    "catalog_status": "CATALOG_AUDITED_TRAIN_BLOCKED",
+    "remaining_rows_after_uuid_exclusion": 3728,
+    "remaining_unique_video_uuids": 3017,
+    "r3_teacher_receipts": [
+      {
+        "case_id": "8b05aaf463db",
+        "file_sha256": "d0ffb03d74d9c8332a733306ecaf4163168f08343bb68b4be4a6645ab251061d",
+        "verdict": "partial_relative_trajectory",
+        "boundary": "review_only_scaffold_not_training_input"
+      },
+      {
+        "case_id": "40712e1341dc",
+        "file_sha256": "bcdaf6208638f4a87008fa68be3629a4a5501d2715ba152650bc70deb0156bdc",
+        "verdict": "no_go_terminal_support",
+        "boundary": "review_only_scaffold_not_training_input"
+      },
+      {
+        "case_id": "5e83a9279951",
+        "file_sha256": "662fa43b8c89db882570333bc848bdb181838c1d04fb44ebd263e92734505177",
+        "verdict": "no_go_cross_phase_effector",
+        "boundary": "review_only_scaffold_not_training_input"
+      }
+    ],
+    "current_blockers": [
+      "all_rows_pending_human_qualification",
+      "formal_sft_authorized_false",
+      "actor_scene_action_group_coverage_zero",
+      "source_target_media_hash_coverage_zero",
+      "perceptual_cluster_coverage_zero",
+      "no_trainer_readable_authorized_split",
+      "current_r3_teacher_is_sam2_only_review_scaffold_not_oceg"
+    ]
+  },
+  "execution_order": [
+    "qualify_and_group_deduplicate_real_target_candidates",
+    "seal_evaluation_uuid_wide_exclusions_and_trainer_split",
+    "extract_frozen_multiobserver_graphs_with_uncertainty",
+    "extract_target_free_self_generated_anchor_middle_statistics",
+    "train_only_object_edge_binder",
+    "freeze_and_hash_binder",
+    "run_development_representation_controls",
+    "seal_thresholds",
+    "run_locked_observer_only_confirmation",
+    "connect_nothing_to_generator_until_all_representation_gates_pass"
+  ],
+  "preregistration_sha256": "b6740d74dabeb53b8ee3eae8afa9d83b2c93a1019126b41005901afed75e47a7"
+}

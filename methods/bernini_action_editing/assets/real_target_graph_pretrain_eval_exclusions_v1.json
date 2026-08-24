@@ -1,0 +1,204 @@
+{
+  "schema_version": "bernini-real-target-graph-eval-exclusion-registry-v1",
+  "candidate_manifest": {
+    "path": "/vast/users/guangyi.chen/dataset/MEV/VideoEditing/action_data_construction/runs/full_v5_20260817T193449Z/final_metadata_annotation_v2/paired_training_candidates.jsonl",
+    "sha256": "0c96e808114154e2d069da6ca698debfb6c9f824e0e780f6f39ec70612207ca8",
+    "row_count": 3749
+  },
+  "manual_contracts": {
+    "path": "methods/action_anchor_target_gap_audit/manual_action_contracts_v2.json",
+    "sha256": "6fcba9ea0cf003691fa3a3ec9ccc70077ed1bfdea0b7c70527caa3be2f9a57e8",
+    "sample_count": 16
+  },
+  "policy": {
+    "development_count": 4,
+    "locked_confirmation_count": 12,
+    "total_case_count": 16,
+    "exclude_entire_video_uuid": true,
+    "exclude_all_temporally_adjacent_pairs": true,
+    "development_pair_prefixes": [
+      "40712e1341dc",
+      "5e83a9279951",
+      "840b214afead",
+      "8b05aaf463db"
+    ]
+  },
+  "cases": [
+    {
+      "pair_prefix": "0be6494dfac3",
+      "pair_id": "0be6494dfac3de48017c790f29e2b0861334bb2749b2efb05651ec3f25f3e92b",
+      "uuid": "6efd28ad-769d-448a-90d2-72c65c30861b",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 2,
+      "target_event_id": 3,
+      "source_filename": "6efd28ad-769d-448a-90d2-72c65c30861b-00.00.01.267-00.00.05.306-seg2.mp4",
+      "target_filename": "6efd28ad-769d-448a-90d2-72c65c30861b-00.00.05.306-00.00.09.480-seg3.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "0faecd13ef67",
+      "pair_id": "0faecd13ef6767a8f617a2a7eab4a5d58e2dd68ca22e684078f7691c872277b8",
+      "uuid": "f05e637f-992c-4762-a8e9-f1e5b154f1e2",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "f05e637f-992c-4762-a8e9-f1e5b154f1e2-00.00.00.000-00.00.01.798-seg1.mp4",
+      "target_filename": "f05e637f-992c-4762-a8e9-f1e5b154f1e2-00.00.01.798-00.00.06.950-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "10af6c651dbc",
+      "pair_id": "10af6c651dbcb4222314ba794c468c6d1c93d4495caa6b028506eb9829027cf7",
+      "uuid": "853e5739-1635-4de1-8da0-3288460ccb98",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "853e5739-1635-4de1-8da0-3288460ccb98-00.00.00.000-00.00.01.720-seg1.mp4",
+      "target_filename": "853e5739-1635-4de1-8da0-3288460ccb98-00.00.01.720-00.00.07.000-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "3fadbe0c2961",
+      "pair_id": "3fadbe0c29619f7b8696a3d72f32c4b33ac3d5458cb9039bdc6cca5bb33c87c2",
+      "uuid": "1bb09296-29be-4359-b1d4-03409ed1e30f",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "1bb09296-29be-4359-b1d4-03409ed1e30f-00.00.00.000-00.00.06.110-seg1.mp4",
+      "target_filename": "1bb09296-29be-4359-b1d4-03409ed1e30f-00.00.06.110-00.00.09.625-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "40712e1341dc",
+      "pair_id": "40712e1341dc57684161a9472e1f7aa605fac99031a8e2bf0cbf07789b509a6d",
+      "uuid": "88a17729-f1d4-489d-8e73-248bbc088141",
+      "evaluation_role": "development",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "88a17729-f1d4-489d-8e73-248bbc088141-00.00.00.000-00.00.03.347-seg1.mp4",
+      "target_filename": "88a17729-f1d4-489d-8e73-248bbc088141-00.00.03.347-00.00.06.668-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "5e83a9279951",
+      "pair_id": "5e83a927995158e40e842610315dce39633abdea936c5604a80152b80bb3c5a2",
+      "uuid": "7f77acdb-6772-4e14-9c14-98f2cb2fa9b5",
+      "evaluation_role": "development",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "7f77acdb-6772-4e14-9c14-98f2cb2fa9b5-00.00.00.000-00.00.03.699-seg1.mp4",
+      "target_filename": "7f77acdb-6772-4e14-9c14-98f2cb2fa9b5-00.00.03.699-00.00.09.464-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "7077cfb160cf",
+      "pair_id": "7077cfb160cf897a2fe4250b7247634b78d0d0818dfb876ab5a2e5bb0c2c5137",
+      "uuid": "47d49b51-fde1-4c04-a895-4a483df1bfb4",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 3,
+      "target_event_id": 4,
+      "source_filename": "47d49b51-fde1-4c04-a895-4a483df1bfb4-00.00.13.872-00.00.18.600-seg3.mp4",
+      "target_filename": "47d49b51-fde1-4c04-a895-4a483df1bfb4-00.00.18.600-00.00.20.229-seg4.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "7e488525099e",
+      "pair_id": "7e488525099ece7cc76db73dbae40bac5db3fa2e56a1489eafeb81d8f5307b13",
+      "uuid": "4fd015eb-922b-4b00-9066-e9d082de9e01",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 4,
+      "target_event_id": 5,
+      "source_filename": "4fd015eb-922b-4b00-9066-e9d082de9e01-00.00.06.117-00.00.08.206-seg4.mp4",
+      "target_filename": "4fd015eb-922b-4b00-9066-e9d082de9e01-00.00.08.206-00.00.11.256-seg5.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "7fa338474c75",
+      "pair_id": "7fa338474c753151a261f8946bb70bc718d8233049c160fd248b17d5f2bfc720",
+      "uuid": "081e2761-c4e1-47ed-8a82-808bec50a59d",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "081e2761-c4e1-47ed-8a82-808bec50a59d-00.00.00.000-00.00.03.040-seg1.mp4",
+      "target_filename": "081e2761-c4e1-47ed-8a82-808bec50a59d-00.00.03.040-00.00.08.810-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "81533c9e56ec",
+      "pair_id": "81533c9e56ecc15356bd5ca4b33a250bde5e0bef851b23f94a534c6c4291c270",
+      "uuid": "f810246b-7b74-4eb7-9777-a8f8db92f951",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "f810246b-7b74-4eb7-9777-a8f8db92f951-00.00.00.000-00.00.07.981-seg1.mp4",
+      "target_filename": "f810246b-7b74-4eb7-9777-a8f8db92f951-00.00.07.981-00.00.12.766-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "840b214afead",
+      "pair_id": "840b214afead0811a2b27c91aa9081bd06f921ec35ed2a9cc1e49d65e6c291bf",
+      "uuid": "a22aa389-eba0-4b78-815f-2e0f7956e226",
+      "evaluation_role": "development",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "a22aa389-eba0-4b78-815f-2e0f7956e226-00.00.00.000-00.00.02.420-seg1.mp4",
+      "target_filename": "a22aa389-eba0-4b78-815f-2e0f7956e226-00.00.02.420-00.00.04.312-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "8b05aaf463db",
+      "pair_id": "8b05aaf463db34049904cfb5a96fc41c5d2b6111522c221a2b7f5ef1a1b1db90",
+      "uuid": "94499794-8ef0-43ee-af6b-3c780492fb00",
+      "evaluation_role": "development",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "94499794-8ef0-43ee-af6b-3c780492fb00-00.00.00.000-00.00.02.804-seg1.mp4",
+      "target_filename": "94499794-8ef0-43ee-af6b-3c780492fb00-00.00.02.804-00.00.08.436-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "d5221a1b69d5",
+      "pair_id": "d5221a1b69d5416cc48bbbd2a24ccd70478c626e8a341dae2c3eefa96819192d",
+      "uuid": "6a7753fa-f254-4570-8369-918954606350",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "6a7753fa-f254-4570-8369-918954606350-00.00.00.000-00.00.03.841-seg1.mp4",
+      "target_filename": "6a7753fa-f254-4570-8369-918954606350-00.00.03.841-00.00.07.536-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "d908552fb691",
+      "pair_id": "d908552fb691344e720415c0f50ef6934168eb4b7f14ec9067a7268c38c42205",
+      "uuid": "317a8639-705d-42b8-b51a-7226e7a3c7a6",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "317a8639-705d-42b8-b51a-7226e7a3c7a6-00.00.00.000-00.00.06.631-seg1.mp4",
+      "target_filename": "317a8639-705d-42b8-b51a-7226e7a3c7a6-00.00.06.631-00.00.10.787-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "d977ce147d80",
+      "pair_id": "d977ce147d80558b9ad4067c74585fa5f392b5d24b5201117b68d14e6908447a",
+      "uuid": "4867ced3-df82-498c-876b-4452fe7ffec1",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 2,
+      "target_event_id": 3,
+      "source_filename": "4867ced3-df82-498c-876b-4452fe7ffec1-00.00.03.335-00.00.08.489-seg2.mp4",
+      "target_filename": "4867ced3-df82-498c-876b-4452fe7ffec1-00.00.08.489-00.00.12.425-seg3.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    },
+    {
+      "pair_prefix": "fb7725c351ba",
+      "pair_id": "fb7725c351ba605f6a7153ccb9a7e9876fc7649aaf17d37f7bbe3dc86756d864",
+      "uuid": "11ea4341-888a-41c7-9482-49046d1e113b",
+      "evaluation_role": "locked_confirmation",
+      "source_event_id": 1,
+      "target_event_id": 2,
+      "source_filename": "11ea4341-888a-41c7-9482-49046d1e113b-00.00.00.000-00.00.01.984-seg1.mp4",
+      "target_filename": "11ea4341-888a-41c7-9482-49046d1e113b-00.00.01.984-00.00.04.353-seg2.mp4",
+      "adjacent_exclusion_scope": "entire_video_uuid"
+    }
+  ]
+}

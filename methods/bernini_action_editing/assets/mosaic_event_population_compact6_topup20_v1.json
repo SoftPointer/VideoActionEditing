@@ -1,0 +1,393 @@
+{
+  "schema_version": "bernini-mosaic-event-population-registry-v1",
+  "registry_id": "mosaic-compact6-topup20-v1",
+  "geometry_source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+  "geometry_contract": "decode_exact81_for_bucket_shape_only_never_encode_or_condition",
+  "authoring_contract": {
+    "frame_count": 81,
+    "latent_phase_count": 21,
+    "inference_step_count": 40,
+    "semantic_branches": ["action", "noop", "incomplete", "reverse", "shuffle", "wrong_actor", "wrong_object", "camera_only", "appearance_only", "generic_wrong_motion"],
+    "derived_same_video_negatives": ["same_video_reverse_chronology", "same_video_phase_shuffle", "same_video_freeze_first", "same_video_terminal_only", "same_video_transition_loop", "same_video_truncate_hold"],
+    "generated_media_role": "text_conditioned_event_critic_evidence_only",
+    "generated_media_may_train_editor": false,
+    "generated_media_may_be_editor_target": false,
+    "generated_media_may_be_editor_condition": false,
+    "generated_media_may_be_editor_donor": false,
+    "generated_media_may_be_editor_initial_noise": false,
+    "geometry_source_role": "exact81_bucket_shape_probe_only",
+    "geometry_source_pixels_enter_transformer": false,
+    "geometry_source_vae_latent_created": false,
+    "prompt_semantic_branch_is_critic_label": false,
+    "detached_event_audit_required_before_candidate_eligibility": true,
+    "complete_ten_branch_cell_required_before_feature_extraction": true,
+    "generated_cell_count_never_implies_eligible_cell_count": true
+  },
+  "stage_policy": {
+    "atomic_action_family_count": 6,
+    "target_identity_scene_groups_per_family": 3,
+    "official_gaussian_seeds_per_identity_scene": 2,
+    "inherited_seed_cells": 16,
+    "new_topup_seed_cells": 20,
+    "composed_seed_cells": 36,
+    "inherited_generated_clips": 160,
+    "new_generated_clips": 200,
+    "composed_generated_clips": 360,
+    "pilot_topup_seed_cells": 12,
+    "locked_holdout_topup_seed_cells": 8,
+    "all_nine_semantic_negative_types_rendered_per_episode": true,
+    "family_metrics_must_not_pool_distinct_action_events": true,
+    "fit_confirmation_actor_scene_action_seed_disjoint": true,
+    "locked_family_roles_excluded_from_critic_fit": true,
+    "compact_three_identity_population_is_scientific_claim_authority": false,
+    "compact_three_identity_population_is_editor_optimizer_authority": false
+  },
+  "audit_policy": {
+    "requested_branch_is_render_intervention_only": true,
+    "requested_branch_is_label": false,
+    "auditor_receives_render_and_sealed_family_rubric_only": true,
+    "auditor_blinded_to_generation_prompt_and_requested_branch": true,
+    "entire_exact81_video_must_be_viewed": true,
+    "audit_sealed_before_hidden_feature_extraction": true,
+    "one_detached_sidecar_per_candidate_required": true,
+    "ambiguous_or_low_quality_render_is_rejection_not_negative": true,
+    "negative_may_not_be_labeled_from_prompt_intent": true,
+    "positive_requires_start_transition_terminal_hold_conjunction": true,
+    "negative_requires_full_target_event_false_confirmation": true,
+    "complete_ten_branch_cell_required": true,
+    "allowed_auditor_methods": ["human_blind_video_review_v1", "fixed_vlm_blind_video_review_v1", "dual_consensus_blind_video_review_v1"]
+  },
+  "reference_cost": {
+    "hardware": "one_AUH_node_8xMI210_dual_concurrent_SP4",
+    "reference_generated_clips": 40,
+    "reference_wall_minutes": 49.0,
+    "estimate_kind": "planning_only_from_observed_current_serial_reload_launcher",
+    "persistent_worker_speedup_assumed": false
+  },
+  "inherited_bank_profiles": [
+    {
+      "profile_id": "core4-v2",
+      "seed1_root_spec_raw_sha256": "a18387b383fb11f19279c67694089754ff84b51e939e7a92b51a7e35a0743a95",
+      "seed2_root_spec_raw_sha256": "900c0dece65ee2f075765571b39d62e45ceb1b3c8b5c883443ea09d1876e18f3",
+      "seed1_candidate_prefix": "pair5-t2v-core4-v2-",
+      "seed2_candidate_prefix": "pair5-t2v-core4-seed2-",
+      "seed_map": {"2026080825": 2026080925, "2026080826": 2026080926, "2026080827": 2026080927, "2026080828": 2026080928},
+      "identity_scene_count": 4,
+      "seed_cell_count": 8,
+      "generated_clip_count": 80
+    },
+    {
+      "profile_id": "reserve4-v1",
+      "seed1_root_spec_raw_sha256": "2861b1021531896d387b0dccb945b9fc2516bf01472982c0fe2f7c1377ca7bab",
+      "seed2_root_spec_raw_sha256": "0578cd6c39cdb625e69cf04164ffce29487b81e852974619f0ee43325e49398e",
+      "seed1_candidate_prefix": "pair5-t2v-reserve4-v1-",
+      "seed2_candidate_prefix": "pair5-t2v-reserve4-seed2-",
+      "seed_map": {"2026080821": 2026080921, "2026080822": 2026080922, "2026080823": 2026080923, "2026080824": 2026080924},
+      "identity_scene_count": 4,
+      "seed_cell_count": 8,
+      "generated_clip_count": 80
+    }
+  ],
+  "action_families": [
+    {
+      "family_id": "dog-sit-facing-camera",
+      "family_code": "dogsit",
+      "population_role": "pilot_development",
+      "event_definition": {
+        "subject_kind": "dog",
+        "start_state": "The primary dog is visibly standing on all four weight-bearing legs facing the camera.",
+        "ordered_transition": "The primary dog bends both hind legs and continuously lowers its hips until the rear contacts the ground.",
+        "terminal_state": "The primary dog is stably seated while still facing the camera.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "Only the designated primary dog may complete the sitting transition.",
+        "object_binding_required": false,
+        "object_binding_rule": "No moved prop or secondary dog can substitute for the body transition.",
+        "camera_background_rule": "Camera and background remain stable enough to distinguish real hip lowering from viewpoint motion."
+      },
+      "branch_descriptions": {
+        "action": "The primary dog bends both hind legs, lowers its hips to the ground, settles into a stable sit facing the camera, and holds the seated pose.",
+        "noop": "The primary dog remains standing on all four legs with only breathing and tiny natural movements, never lowering its hips into a seated position.",
+        "incomplete": "The primary dog bends its hind legs and lowers partway but rises before its hips contact the ground, ending in a standing crouch.",
+        "reverse": "The primary dog begins seated facing the camera, pushes upward through all four legs, reaches a stable stand, and holds the reversed terminal pose.",
+        "shuffle": "The primary dog lowers briefly, rises, turns sideways, and crouches in a scrambled order without completing and holding the camera-facing seated state.",
+        "wrong_actor": "The secondary background dog lowers into a stable sit while the primary dog remains standing on all four legs in the foreground throughout.",
+        "wrong_object": "The primary dog remains standing and pushes the nearby toy with one paw, moving the distractor instead of lowering its own body to sit.",
+        "camera_only": "The primary dog remains frozen standing while only the camera lowers and moves forward, creating apparent vertical displacement without a real sitting action.",
+        "appearance_only": "The primary dog's coat color changes gradually while its four-legged standing pose remains fixed, with no hind-leg bend or seated terminal state.",
+        "generic_wrong_motion": "The primary dog walks in a small circle, shakes its head, and returns to standing without lowering its hips into a seated pose."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "french-bulldog-leaves", "analysis_split": "fit", "actor_group_id": "french-bulldog-fit", "scene_group_id": "dog-scene-fit", "action_group_id": "standing-to-sit-dog-fit", "source_iid": "7b88a1ca1f804f41", "source_bank_profile": "core4-v2", "seeds": [2026080825, 2026080925]},
+        {"identity_scene_id": "german-shepherd-field", "analysis_split": "confirmation", "actor_group_id": "german-shepherd-confirm", "scene_group_id": "dog-scene-confirm", "action_group_id": "standing-to-sit-dog-confirm", "source_iid": "841b5e0080a1441d", "source_bank_profile": "core4-v2", "seeds": [2026080826, 2026080926]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "golden-retriever-studio",
+          "analysis_split": "fit",
+          "actor_group_id": "golden-retriever-dogsit-fit2",
+          "scene_group_id": "white-studio-dogsit-fit2",
+          "action_group_id": "standing-to-sit-golden-fit2",
+          "scene_caption": "A locked wide camera shows a primary adult golden retriever standing squarely on all four legs in a bright white training studio, with a smaller secondary dog beside a distant bench and a blue rubber toy near the foreground.",
+          "camera_caption": "The full body remains visible continuously under stable lighting, with no cuts or viewpoint changes.",
+          "seeds": [2026081201, 2026081202]
+        }
+      ]
+    },
+    {
+      "family_id": "human-rise-to-stand",
+      "family_code": "rise",
+      "population_role": "pilot_development",
+      "event_definition": {
+        "subject_kind": "human",
+        "start_state": "The primary person is visibly kneeling or deeply crouched with hips low.",
+        "ordered_transition": "The primary person transfers weight onto both feet, raises the hips, and straightens the legs and torso in order.",
+        "terminal_state": "The primary person reaches a stable fully upright standing pose.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "Only the designated primary person may complete the full rise to standing.",
+        "object_binding_required": false,
+        "object_binding_rule": "Moving a nearby prop cannot substitute for raising the primary body.",
+        "camera_background_rule": "Camera height and background remain stable enough to verify genuine body elevation."
+      },
+      "branch_descriptions": {
+        "action": "The primary person transfers weight onto both feet, rises smoothly from the low pose, straightens both legs and the torso, and holds a stable upright stand.",
+        "noop": "The primary person remains in the original low kneeling or crouched pose with only natural breathing, never raising the hips into a stand.",
+        "incomplete": "The primary person raises the torso and hips only into a deep half-squat with bent knees, never reaching a fully straight upright stand.",
+        "reverse": "The primary person begins standing upright, bends both knees, lowers the hips carefully into the registered low pose, and holds that reversed state.",
+        "shuffle": "The primary person rises halfway, lowers again, briefly straightens one leg, and ends crouched without the ordered transition to a stable upright stand.",
+        "wrong_actor": "The secondary background person rises fully to standing while the primary person remains low and unchanged in the foreground for the entire shot.",
+        "wrong_object": "The primary person stays low and moves the nearby crate along the floor, manipulating the distractor without raising the body into a stand.",
+        "camera_only": "The primary person remains frozen low while only the camera rises and tilts downward, creating apparent upward motion without a real body transition.",
+        "appearance_only": "The primary person's clothing changes color while the low body pose remains fixed, with no weight transfer, hip rise, or upright terminal state.",
+        "generic_wrong_motion": "The primary person leans sideways, rotates while low, and reaches forward before returning to the initial pose without standing upright."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "kneeling-woman-yellow", "analysis_split": "fit", "actor_group_id": "kneeling-human-fit", "scene_group_id": "kneeling-scene-fit", "action_group_id": "kneel-to-stand-fit", "source_iid": "a35b590961d24694", "source_bank_profile": "core4-v2", "seeds": [2026080827, 2026080927]},
+        {"identity_scene_id": "crouching-woman-city", "analysis_split": "confirmation", "actor_group_id": "crouching-human-confirm", "scene_group_id": "crouching-scene-confirm", "action_group_id": "crouch-to-stand-confirm", "source_iid": "a66e6818e4144928", "source_bank_profile": "core4-v2", "seeds": [2026080828, 2026080928]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "kneeling-older-man-workshop",
+          "analysis_split": "fit",
+          "actor_group_id": "older-man-rise-fit2",
+          "scene_group_id": "wood-workshop-rise-fit2",
+          "action_group_id": "kneel-to-stand-older-man-fit2",
+          "scene_caption": "A locked full-body camera shows a primary older man kneeling on his right knee in a tidy wood workshop, with a secondary mechanic kneeling far behind him and a small red crate resting beside the primary man's left hand.",
+          "camera_caption": "Both feet and the entire torso stay visible under constant light in one continuous uncut shot.",
+          "seeds": [2026081203, 2026081204]
+        }
+      ]
+    },
+    {
+      "family_id": "human-arms-raised-to-hands-on-hips",
+      "family_code": "armships",
+      "population_role": "pilot_development",
+      "event_definition": {
+        "subject_kind": "human",
+        "start_state": "The primary person visibly holds both arms raised above shoulder level.",
+        "ordered_transition": "The primary person lowers both arms and places the left and right hands onto the corresponding hips.",
+        "terminal_state": "Both hands rest firmly on the primary person's hips in a stable pose.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "Both moving arms and both terminal hands must belong to the primary person.",
+        "object_binding_required": false,
+        "object_binding_rule": "Moving a bag or another object cannot substitute for lowering both arms.",
+        "camera_background_rule": "The camera and background remain locked so arm lowering is directly observable."
+      },
+      "branch_descriptions": {
+        "action": "The primary person slowly lowers both raised arms, places both hands firmly on the hips, and holds the completed hands-on-hips pose with a locked camera.",
+        "noop": "The primary person keeps both arms raised for the entire shot with only natural breathing, never placing either hand onto either hip.",
+        "incomplete": "The primary person lowers both arms only halfway and pauses with both hands suspended away from the hips, never completing the terminal pose.",
+        "reverse": "The primary person begins with both hands on the hips, lifts both arms upward, and ends with both arms raised in the reversed state.",
+        "shuffle": "The primary person touches one hip, raises both arms again, lowers only one arm, and ends before both hands reach the registered terminal pose.",
+        "wrong_actor": "The secondary background person lowers both arms and places both hands on their hips while the primary person keeps both arms raised throughout.",
+        "wrong_object": "The primary person keeps both arms raised and instead lifts and repositions the nearby handbag, leaving both hands away from the hips.",
+        "camera_only": "The primary person remains frozen with raised arms while only the camera cranes downward and sideways, producing screen motion without any arm action.",
+        "appearance_only": "The primary person's clothing changes color while the raised-arm pose remains fixed, and neither hand moves toward either hip at any time.",
+        "generic_wrong_motion": "The primary person turns in place, takes two side steps, and returns to center without lowering both arms into the hands-on-hips pose."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "woman-interior-raised-arms", "analysis_split": "fit", "actor_group_id": "woman-raised-arms-fit", "scene_group_id": "portrait-interior-arms-fit", "action_group_id": "arms-down-hands-hips-fit", "source_iid": "00435ad621c44fac", "source_bank_profile": "reserve4-v1", "seeds": [2026080821, 2026080921]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "man-gym-raised-arms",
+          "analysis_split": "fit",
+          "actor_group_id": "athletic-man-armships-fit2",
+          "scene_group_id": "quiet-gym-armships-fit2",
+          "action_group_id": "arms-to-hips-man-fit2",
+          "scene_caption": "A locked medium full-body view shows a primary athletic man standing with both empty arms raised overhead in a quiet gym, while a secondary trainer stands near the rear wall and a black sports bag rests beside the primary subject.",
+          "camera_caption": "The framing includes both arms and hips continuously with stable illumination and no cuts.",
+          "seeds": [2026081205, 2026081206]
+        },
+        {
+          "identity_scene_id": "older-woman-garden-raised-arms",
+          "analysis_split": "confirmation",
+          "actor_group_id": "older-woman-armships-confirm",
+          "scene_group_id": "garden-patio-armships-confirm",
+          "action_group_id": "arms-to-hips-older-woman-confirm",
+          "scene_caption": "A locked medium full-body view shows a primary older woman standing on a garden patio with both arms raised above her shoulders, while a secondary gardener waits near a distant table and a woven basket sits beside the primary subject.",
+          "camera_caption": "Her hands and hips remain inside the continuous frame under steady daylight without camera movement.",
+          "seeds": [2026081207, 2026081208]
+        }
+      ]
+    },
+    {
+      "family_id": "human-head-turn-forward-and-smile",
+      "family_code": "headsmile",
+      "population_role": "pilot_development",
+      "event_definition": {
+        "subject_kind": "human",
+        "start_state": "The primary person's head is visibly angled away with a neutral closed mouth.",
+        "ordered_transition": "The primary person rotates the head into a frontal orientation and then forms a relaxed closed-mouth smile.",
+        "terminal_state": "The primary person faces forward with the relaxed smile clearly held.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "The turning head and smiling face must both belong to the primary person.",
+        "object_binding_required": false,
+        "object_binding_rule": "Movement of a scarf or nearby prop cannot substitute for the facial event.",
+        "camera_background_rule": "A locked camera must distinguish physical head rotation from viewpoint orbit."
+      },
+      "branch_descriptions": {
+        "action": "The primary person smoothly turns the angled head to face forward, forms a relaxed closed-mouth smile, and holds the frontal smiling expression with a locked camera.",
+        "noop": "The primary person keeps the head angled away with a neutral closed mouth, only blinking and breathing, never facing forward or forming the requested smile.",
+        "incomplete": "The primary person turns only partway toward the viewer but stops before a frontal pose and never completes the relaxed closed-mouth smile.",
+        "reverse": "The primary person begins facing forward with a relaxed smile, loses the smile, turns the head away, and holds the reversed averted neutral pose.",
+        "shuffle": "The primary person smiles before turning, looks away again, briefly approaches a frontal angle, and ends without the ordered frontal smiling terminal state.",
+        "wrong_actor": "The secondary background person turns forward and smiles while the primary person remains angled away with a neutral expression throughout the shot.",
+        "wrong_object": "The primary person keeps the head and mouth unchanged while adjusting the nearby scarf, never completing the requested head and facial transition.",
+        "camera_only": "The primary person remains frozen while only the camera orbits toward a frontal viewpoint, creating an apparent angle change without a real head turn or smile.",
+        "appearance_only": "The primary person's hair color changes gradually while the head angle and neutral mouth remain fixed, with no forward turn and no new smile.",
+        "generic_wrong_motion": "The primary person nods twice, looks downward, and raises both shoulders, never turning fully forward or settling into the relaxed smiling expression."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "portrait-performer-angled-head", "analysis_split": "confirmation", "actor_group_id": "face-performer-confirm", "scene_group_id": "portrait-face-confirm", "action_group_id": "head-forward-smile-confirm", "source_iid": "0c6915018a5f4d9b", "source_bank_profile": "reserve4-v1", "seeds": [2026080822, 2026080922]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "young-man-library-angled-head",
+          "analysis_split": "fit",
+          "actor_group_id": "young-man-headsmile-fit",
+          "scene_group_id": "library-headsmile-fit",
+          "action_group_id": "head-forward-smile-man-fit",
+          "scene_caption": "A locked close portrait shows a primary young man beside a library desk with his head angled away and mouth neutral, while a secondary reader sits softly focused in the background and a folded green scarf lies near the primary subject.",
+          "camera_caption": "Both facial orientation and mouth shape remain clearly visible in continuous stable light without cuts.",
+          "seeds": [2026081209, 2026081210]
+        },
+        {
+          "identity_scene_id": "older-woman-cafe-angled-head",
+          "analysis_split": "fit",
+          "actor_group_id": "older-woman-headsmile-fit2",
+          "scene_group_id": "cafe-headsmile-fit2",
+          "action_group_id": "head-forward-smile-woman-fit2",
+          "scene_caption": "A locked close portrait shows a primary older woman at a quiet cafe table with her head angled away and lips neutral, while a secondary customer remains distant and a blue scarf rests beside the primary subject's elbow.",
+          "camera_caption": "The face stays unobstructed under steady warm illumination throughout one continuous stationary-camera shot.",
+          "seeds": [2026081211, 2026081212]
+        }
+      ]
+    },
+    {
+      "family_id": "human-peace-sign-to-open-palm-wave",
+      "family_code": "peacewave",
+      "population_role": "locked_action_family_validation",
+      "event_definition": {
+        "subject_kind": "human",
+        "start_state": "The primary person visibly holds a two-finger peace sign near shoulder height.",
+        "ordered_transition": "The primary person closes the peace sign, opens the full palm, and moves that palm side to side in a wave.",
+        "terminal_state": "The primary person holds the open palm after completing the visible wave.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "The transforming and waving hand must belong to the designated primary person.",
+        "object_binding_required": false,
+        "object_binding_rule": "A waving cloth or other prop cannot substitute for the hand gesture.",
+        "camera_background_rule": "The camera remains locked so hand articulation is separable from screen motion."
+      },
+      "branch_descriptions": {
+        "action": "The primary person closes the peace sign, opens the full palm toward the viewer, performs a clear side-to-side wave, and holds the open palm.",
+        "noop": "The primary person keeps the original two-finger peace sign unchanged with only natural breathing, never opening the whole palm or performing a wave.",
+        "incomplete": "The primary person relaxes the peace sign and opens the palm but stops before any side-to-side wave, ending with an unmoving open hand.",
+        "reverse": "The primary person begins with an open waving palm, stops the wave, folds the fingers into a peace sign, and holds the reversed terminal gesture.",
+        "shuffle": "The primary person waves while retaining the peace sign, briefly opens the palm, closes it again, and ends without the ordered open-palm hold.",
+        "wrong_actor": "The secondary background person changes a peace sign into an open-palm wave while the primary person keeps the original peace sign unchanged.",
+        "wrong_object": "The primary person keeps the peace sign fixed and instead waves the nearby small cloth, never producing the requested open-palm hand gesture.",
+        "camera_only": "The primary person keeps both hands frozen while only the camera pans side to side, producing screen motion without any finger transition or hand wave.",
+        "appearance_only": "The primary person's sleeve changes color while the two-finger peace sign remains fixed, with no open palm and no side-to-side hand movement.",
+        "generic_wrong_motion": "The primary person lowers the hand, claps twice, and folds both arms, never transforming the peace sign into the requested open-palm wave."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "portrait-peace-performer", "analysis_split": "confirmation", "actor_group_id": "hand-gesture-performer-confirm", "scene_group_id": "portrait-hand-wave-confirm", "action_group_id": "peace-to-wave-confirm", "source_iid": "33322eb8ec1e4703", "source_bank_profile": "reserve4-v1", "seeds": [2026080823, 2026080923]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "woman-art-studio-peace",
+          "analysis_split": "fit",
+          "actor_group_id": "artist-woman-peacewave-fit",
+          "scene_group_id": "art-studio-peacewave-fit",
+          "action_group_id": "peace-to-wave-artist-fit",
+          "scene_caption": "A locked medium portrait shows a primary young woman in an art studio holding a right-hand peace sign near her shoulder, while a secondary painter stands by the rear wall and a small red cloth lies on the foreground table.",
+          "camera_caption": "Her fingers and open palm stay fully visible under constant illumination in one continuous shot.",
+          "seeds": [2026081213, 2026081214]
+        },
+        {
+          "identity_scene_id": "older-man-kitchen-peace",
+          "analysis_split": "confirmation",
+          "actor_group_id": "older-man-peacewave-confirm2",
+          "scene_group_id": "kitchen-peacewave-confirm2",
+          "action_group_id": "peace-to-wave-older-man-confirm2",
+          "scene_caption": "A locked medium portrait shows a primary older man in a bright kitchen holding a left-hand peace sign near his shoulder, while a secondary cook waits in the distant background and a small white towel rests beside the primary subject.",
+          "camera_caption": "The raised hand remains unobstructed and sharply framed throughout the continuous stationary-camera sequence.",
+          "seeds": [2026081215, 2026081216]
+        }
+      ]
+    },
+    {
+      "family_id": "human-left-fist-to-forward-palm-down",
+      "family_code": "leftreach",
+      "population_role": "locked_action_family_test",
+      "event_definition": {
+        "subject_kind": "human",
+        "start_state": "The primary person visibly holds the left hand as a fist near the torso.",
+        "ordered_transition": "The primary person opens the left fist, extends the left arm forward, and rotates the open palm downward.",
+        "terminal_state": "The left arm is fully forward with an open palm-down hand held steadily.",
+        "minimum_terminal_hold_frames": 8,
+        "actor_binding_rule": "The extending left arm must belong to the designated primary person.",
+        "object_binding_required": false,
+        "object_binding_rule": "The right arm or a moved prop cannot substitute for the left-arm event.",
+        "camera_background_rule": "The camera remains locked so real arm extension is separable from perspective change."
+      },
+      "branch_descriptions": {
+        "action": "The primary person relaxes the left fist, extends the left arm forward, rotates the open hand palm-down, and holds the completed forward-reaching pose.",
+        "noop": "The primary person keeps the left fist and original arm position unchanged with only natural breathing, never extending an open palm forward.",
+        "incomplete": "The primary person opens the left fist and begins extending the arm but stops near the torso before reaching forward or rotating palm-down.",
+        "reverse": "The primary person begins with the left arm extended palm-down, retracts the arm toward the torso, closes the hand into a fist, and holds it.",
+        "shuffle": "The primary person extends a clenched fist, retracts it, briefly opens the hand, and ends near the torso without the ordered palm-down forward hold.",
+        "wrong_actor": "The secondary background person opens a left fist and extends an open palm-down hand while the primary person keeps the original fist pose unchanged.",
+        "wrong_object": "The primary person leaves the left fist unchanged and instead extends the right arm palm-down, moving the wrong limb for the target event.",
+        "camera_only": "The primary person remains frozen while only the camera pushes forward and slides left, creating apparent arm displacement without real fist opening or extension.",
+        "appearance_only": "The primary person's left sleeve changes texture while the clenched fist and arm position stay fixed, with no forward open-palm movement.",
+        "generic_wrong_motion": "The primary person raises both shoulders, turns the torso, and steps backward without opening the left fist or extending the requested arm."
+      },
+      "inherited_identity_scenes": [
+        {"identity_scene_id": "portrait-left-fist-performer", "analysis_split": "fit", "actor_group_id": "left-arm-performer-fit", "scene_group_id": "portrait-left-arm-fit", "action_group_id": "fist-to-palm-down-fit", "source_iid": "71ba57892bd043df", "source_bank_profile": "reserve4-v1", "seeds": [2026080824, 2026080924]}
+      ],
+      "topup_identity_scenes": [
+        {
+          "identity_scene_id": "woman-office-left-fist",
+          "analysis_split": "fit",
+          "actor_group_id": "office-woman-leftreach-fit2",
+          "scene_group_id": "modern-office-leftreach-fit2",
+          "action_group_id": "left-fist-reach-woman-fit2",
+          "scene_caption": "A locked waist-up view shows a primary adult woman in a modern office holding her left fist near her torso, while a secondary colleague stands at the far doorway and a small notebook rests on the desk beside her right hand.",
+          "camera_caption": "The complete left arm and both hands remain visible continuously under stable neutral lighting.",
+          "seeds": [2026081217, 2026081218]
+        },
+        {
+          "identity_scene_id": "older-man-gallery-left-fist",
+          "analysis_split": "confirmation",
+          "actor_group_id": "gallery-man-leftreach-confirm",
+          "scene_group_id": "art-gallery-leftreach-confirm",
+          "action_group_id": "left-fist-reach-man-confirm",
+          "scene_caption": "A locked waist-up view shows a primary older man in an art gallery holding his left fist close to his chest, while a secondary visitor stands far behind him and a slim catalog rests beside his right hand.",
+          "camera_caption": "His left shoulder, elbow, wrist, and palm stay inside one continuous evenly lit frame.",
+          "seeds": [2026081219, 2026081220]
+        }
+      ]
+    }
+  ]
+}

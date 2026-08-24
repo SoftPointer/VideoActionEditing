@@ -1,0 +1,187 @@
+{
+  "schema_version": "actual-target-foundation-canary-prereg-v1",
+  "experiment_id": "actual_target_foundation_canary_v1",
+  "sealed_before_gpu_execution": true,
+  "scope": {
+    "development_only": true,
+    "previously_seen_in_r1b": true,
+    "locked_validation_claim_permitted": false,
+    "scientific_representation_claim_permitted": false,
+    "purpose": "mechanical canary for an actual-target offline object-motion-interaction teacher"
+  },
+  "source_authority": {
+    "r1b_manifest_file_sha256": "d43ff7f7c14b2c25bf949798fb71839f6f0e6325d8829784f2d9eef5a1516929",
+    "selection_rule": "the four formerly locked R1b rows, one per family; now explicitly reclassified as seen development-only canary rows",
+    "pair_count": 4,
+    "families": [
+      "articulated_ordered_motion",
+      "contact_transfer",
+      "lifecycle_entry_exit",
+      "multi_entity_interaction"
+    ]
+  },
+  "pairs": [
+    {
+      "family": "articulated_ordered_motion",
+      "r1b_ordinal": 2,
+      "pair_id": "fe4ec9413d3d37e5e14845229889a1ee0629d02838bae2fdb45f80ef0650e4dc",
+      "uuid": "4940bfd0-71b1-42e6-888d-e4292fc08864",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/4940bfd0-71b1-42e6-888d-e4292fc08864-00.00.00.000-00.00.06.769-seg1.mp4",
+      "source_video_sha256": "b754a44156ec03d74205eaa7282c88ba35a826710a017d469117ccd05c2e5c5b",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/4940bfd0-71b1-42e6-888d-e4292fc08864-00.00.06.769-00.00.09.955-seg2.mp4",
+      "target_video_sha256": "cfef77924004ca14ef30fe2000b79a4b976d736b55933e0060869eedd93fa405"
+    },
+    {
+      "family": "multi_entity_interaction",
+      "r1b_ordinal": 6,
+      "pair_id": "c4184f51d9e8a31d05e301f6ff559865b77b1559d6580fad1f6a8dd8b615f146",
+      "uuid": "fe93cb66-2a74-4167-97bc-adbe7ec85e5d",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/fe93cb66-2a74-4167-97bc-adbe7ec85e5d-00.00.00.000-00.00.02.537-seg1.mp4",
+      "source_video_sha256": "ffe82347c3bf00977c2f1249e954164c9667905d2ab2e17d77d2565d275978e0",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/fe93cb66-2a74-4167-97bc-adbe7ec85e5d-00.00.02.537-00.00.05.569-seg2.mp4",
+      "target_video_sha256": "74c736b016e9efd80ba6f7a0940b3262a37ea25e20f415564a1d466604476be4"
+    },
+    {
+      "family": "lifecycle_entry_exit",
+      "r1b_ordinal": 7,
+      "pair_id": "b6c120d4c3332dd63d94c6ddc29c22911ae5e1bf10732177213886915628c52c",
+      "uuid": "07fac509-c337-4e7f-8312-c889b643c82b",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/07fac509-c337-4e7f-8312-c889b643c82b-00.00.25.668-00.00.31.191-seg09.mp4",
+      "source_video_sha256": "3d968c7a8bf83587b93c0c65f8ef91ae4e67c3518f446df9aacb5f32eaf878a8",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/07fac509-c337-4e7f-8312-c889b643c82b-00.00.31.191-00.00.39.360-seg10.mp4",
+      "target_video_sha256": "df16f7eac64bdfa0ed0e9809a02f97b717a302649fd06a1265aec21af409e428"
+    },
+    {
+      "family": "contact_transfer",
+      "r1b_ordinal": 11,
+      "pair_id": "981fb7f98968c62e2446cbdbe743e8ac0f0dc0980ce76710567d4dfe7bd93fd0",
+      "uuid": "cf874922-b3d8-42d6-a09d-96af7731ac7d",
+      "source_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/cf874922-b3d8-42d6-a09d-96af7731ac7d-00.00.06.419-00.00.12.035-seg02.mp4",
+      "source_video_sha256": "693805f14ec90559a48ef97523190819af72e83f842aa708b70c3a41cee5a4df",
+      "target_video_path": "/vast/users/guangyi.chen/dataset/MEV/MEV/videos/cf874922-b3d8-42d6-a09d-96af7731ac7d-00.00.12.035-00.00.17.086-seg03.mp4",
+      "target_video_sha256": "3a847c7b837d550fa60058df54686986a924e9dd0e92834818277acc56c2d607"
+    }
+  ],
+  "proposal_and_representation": {
+    "manual_boxes_permitted": false,
+    "semantic_role_names_permitted": false,
+    "sam2_keyframe_mode": "automatic mask generation on 8 fixed phase keyframes for target-reference, target-eval, and source-noop base sequences",
+    "reverse_and_shuffle_masks": "exact temporal permutations of the interleaved target-evaluation proposals",
+    "variable_cardinality_range": [0, 12],
+    "forced_nonempty_slot_permitted": false,
+    "dustbin_required": true,
+    "node_identity": "DINOv2 mask-pooled descriptor with unbalanced matching and dustbin",
+    "track_state": "CoTracker visibility, trajectory and occlusion state pooled within anonymous masks",
+    "edge_state": "mask boundary gap/overlap plus relative tracked velocity and lifecycle",
+    "ordered_phase_branch": "independent frozen V-JEPA2 ordered residual; no pooling into object branches"
+  },
+  "views_and_controls": {
+    "input_views": [
+      "target_forward_reference",
+      "target_forward_eval",
+      "target_reverse",
+      "target_deterministic_shuffle",
+      "source_noop"
+    ],
+    "counterfactual_controls": [
+      "mask_descriptor_binding_break",
+      "cross_phase_track_identity_break",
+      "drop_edge"
+    ],
+    "phase_keyframe_count": 8,
+    "deterministic_phase_shuffle": [0, 2, 4, 6, 7, 5, 3, 1],
+    "media_decode": "canonical absolute non-symlink path; verify compressed SHA; R1b canonical full decoded RGB array digest; target object reference/eval are disjoint even/odd members of 16 uniform samples; V-JEPA reference/eval are disjoint even/odd members of 32 uniform samples, each yielding 16 frames / 8 tubelet2 blocks",
+    "logical_calls_per_case": {
+      "sam2_automatic_keyframe_calls": 24,
+      "dinov2_keyframe_calls": 24,
+      "cotracker_video_calls": 5,
+      "vjepa2_video_calls": 5
+    },
+    "logical_calls_total_four_cases": {
+      "media_decode_calls": 8,
+      "sam2_automatic_keyframe_calls": 96,
+      "dinov2_keyframe_calls": 96,
+      "cotracker_video_calls": 20,
+      "vjepa2_video_calls": 20
+    }
+  },
+  "execution_contract": {
+    "implementation": "actual_target_foundation_runtime_v1.py",
+    "device_count": 1,
+    "sam2": "SAM2AutomaticMaskGenerator only; 32x32 automatic point grid, no external prompt, predicted_iou>=0.88, stability>=0.90, area filter then deterministic top-12",
+    "dinov2": "frozen local-only Dinov2Model; transformed mask fractional patch-area weighted pooling; zero/nonfinite support abstains",
+    "cotracker": "frozen offline CoTrackerPredictor; automatic 12x12 grid, query frame 0, backward tracking; visibility counted only for tracks assigned to anonymous masks",
+    "vjepa2": "frozen local-only VJEPA2Model; exactly 16 decoded frames with tubelet_size=2 produce exactly 8 real temporal blocks; independent branch",
+    "model_state_rule": "eval, requires_grad false, inference_mode, parameter version closure unchanged; actual class/module/source/config/device binding revalidated",
+    "persistent_cache": "optional create-only per-case JSON containing scalar evaluation digest only; no masks, trajectories, embeddings, or teacher payload",
+    "result": "absolute absent create-only candidate JSON containing scalar margins plus source/asset/model/device/forward/ownership closures only; external create-only completion seal is mandatory",
+    "launch_default": "false pending a new independent audit"
+  },
+  "v2_closure": {
+    "unbalanced_matching": {"algorithm": "KL-relaxed Sinkhorn with explicit final row/column dustbin", "epsilon": 0.08, "rho": 0.35, "dustbin_cost": 0.42, "iterations": 80},
+    "anonymous_relabel_rule": "arbitrary within-phase list/slot relabel must leave canonical node and graph signatures exactly invariant",
+    "mask_negative": "cyclically derange DINO descriptors across distinct automatic masks while holding mask geometry fixed; fewer than 2 masks in any evaluated phase abstains",
+    "track_negative": "cyclically derange descriptor identity across distinct canonical track blocks while holding trajectory/visibility geometry fixed",
+    "track_gate": "assigned_track_count>=1 and visibility denominator contains only CoTracker points assigned to an automatic-mask anonymous track",
+    "edge_channels": ["mask_boundary_gap", "mask_overlap_iou", "relative_velocity", "pairwise_birth_death_lifecycle"],
+    "drop_edge_rule": "remove all pairwise edge channels; must reduce edge similarity by fixed margin and cannot reuse node/track score",
+    "raw_ownership": "all raw masks, DINO-support temporaries and CoTracker coordinate/visibility tensors have single case ownership and are verified zero on success and exception",
+    "completion": "candidate presence is never completion authority; external CPU postflight after Slurm/rank-wrapper zero exit verifies candidate/contract/source/asset/model/device/forward/ownership digests and writes absent create-only seal"
+  },
+  "decoded_media_authority": {
+    "receipt_file": "assets/actual_target_foundation_decode_receipt_v2.json",
+    "receipt_file_sha256": "399de5a66bacab4819b7cbf8678eca96f362aade8e0541d4718f88a35229749c",
+    "receipt_self_sha256": "210ac14e5d9ebf9043f931bad0630f394c7108118ea7dc93f0008b05e841cea1",
+    "canonical_digest": "sha256(canonical_json({dtype:uint8,shape:[T,720,1280,3]}) || contiguous RGB bytes)",
+    "rows": [
+      [2,"source","b754a44156ec03d74205eaa7282c88ba35a826710a017d469117ccd05c2e5c5b",169,[720,1280,3],"03ca6ddc05d35687e3547da7374ab31e83a6d94303db8f92f732a9f3902b0243"],
+      [2,"target","cfef77924004ca14ef30fe2000b79a4b976d736b55933e0060869eedd93fa405",80,[720,1280,3],"e772e48f39a1bc71c89144924c643ba78d3af29ca03d2e458ecfcc3af9984b39"],
+      [6,"source","ffe82347c3bf00977c2f1249e954164c9667905d2ab2e17d77d2565d275978e0",76,[720,1280,3],"9260e79c1e93c57175b2810c52c89beee43b1956079d3fba283cad8d1b996790"],
+      [6,"target","74c736b016e9efd80ba6f7a0940b3262a37ea25e20f415564a1d466604476be4",91,[720,1280,3],"af1a1a713fa7159cd77605a8683777b5b5071578f6ed5f34df3ac42c720568f8"],
+      [7,"source","3d968c7a8bf83587b93c0c65f8ef91ae4e67c3518f446df9aacb5f32eaf878a8",138,[720,1280,3],"a8ceb78f8365fa25c1259eacde9e2aeaa3feb97864552a889d35f99026a280e9"],
+      [7,"target","df16f7eac64bdfa0ed0e9809a02f97b717a302649fd06a1265aec21af409e428",204,[720,1280,3],"babad065cbf2b10d7ab168a1c147ab70191fb2fcd538c1339dce24185bc1b2e1"],
+      [11,"source","693805f14ec90559a48ef97523190819af72e83f842aa708b70c3a41cee5a4df",141,[720,1280,3],"fa3fda4cdf2fda8645e450c2a9f959fb911b2f8a576fd6b8f5ee0a963c0c6828"],
+      [11,"target","3a847c7b837d550fa60058df54686986a924e9dd0e92834818277acc56c2d607",126,[720,1280,3],"dfcec2ed77b260c25d5667f706c115623014981c53dde1d2a28d8d4948933fa4"]
+    ]
+  },
+  "fixed_gates": {
+    "sam2_predicted_iou_min": 0.88,
+    "sam2_stability_score_min": 0.90,
+    "mask_area_fraction_min": 0.001,
+    "mask_area_fraction_max": 0.45,
+    "node_positive_similarity_min": 0.55,
+    "node_margin_each_input_control_min": 0.03,
+    "track_visible_fraction_min": 0.60,
+    "track_positive_similarity_min": 0.50,
+    "track_margin_each_input_control_min": 0.03,
+    "edge_positive_similarity_min": 0.35,
+    "edge_margin_each_input_control_min": 0.03,
+    "mask_descriptor_binding_break_node_margin_min": 0.02,
+    "cross_phase_track_identity_break_margin_min": 0.02,
+    "drop_edge_margin_min": 0.02,
+    "vjepa_phase_margin_each_input_control_min": 0.005,
+    "minimum_mechanically_valid_phases": 4
+  },
+  "admission": {
+    "case_formula": "frozen_base AND node AND track AND edge AND ordered_phase",
+    "branch_compensation_permitted": false,
+    "control_compensation_permitted": false,
+    "canary_formula": "all 4/4 seen development cases pass every branch and every control",
+    "missing_or_nonfinite_branch_fails": true,
+    "representation_admission_hard_false": true
+  },
+  "boundaries": {
+    "training_performed": false,
+    "optimizer_created": false,
+    "parameter_updates": 0,
+    "generator_loaded": false,
+    "generator_forward_calls": 0,
+    "target_raw_masks_or_embeddings_exported": false,
+    "target_graph_authorized_for_generator": false,
+    "target_graph_authorized_for_training": false,
+    "gpu_smoke_authorized": false,
+    "formal_gpu_execution_authorized": false,
+    "independent_audit_required_before_gpu": true
+  },
+  "prereg_self_sha256": "b9741c0e9d83bd2573ffa31fcf9d3ad53232ed247598d0dc5d7c600bf66e1941"
+}

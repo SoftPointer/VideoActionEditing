@@ -1,0 +1,183 @@
+{
+  "schema_version": "bernini-target-factorized-soft-ot-graph-prereg-v5-r1b",
+  "experiment_id": "target_factorized_soft_ot_graph_teacher_pilot_v5_r1b",
+  "prereg_sha256": "6ba384346befae4cac5eaceef7e22ebec4eb53f99419a2a1f2cf07ffc56f5525",
+  "sealed_timing": {
+    "fresh16_hidden_features_or_scores_seen": false,
+    "manifest_selected_and_media_preflight_complete": true,
+    "thresholds_selected_from_fresh16": false,
+    "any_post_feature_algorithm_threshold_or_holdout_change_invalidates_all16": true
+  },
+  "negative_result_boundary": {
+    "r1_pair_pass": "0/12",
+    "r1_all5_graph_valid": "8/12",
+    "r1_forward_above_source": "4/12",
+    "r1_forward_above_reverse": "5/12",
+    "r1_forward_above_shuffle": "1/12",
+    "used_to_lower_any_r1b_threshold": false,
+    "interpretation": "R1 hard-slot graph rejected; it cannot be rescued by threshold relaxation"
+  },
+  "runtime_contract": {
+    "fixed_thresholds": {
+      "phase_margin_each_negative_min": 0.005,
+      "object_node_similarity_min": 0.46,
+      "object_edge_similarity_min": 0.38,
+      "object_tracking_similarity_min": 0.42,
+      "object_margin_each_input_negative_min": 0.02,
+      "slot_permutation_tracking_margin_min": 0.015,
+      "slot_permutation_edge_margin_min": 0.015,
+      "drop_edge_edge_margin_min": 0.02,
+      "mechanical_effective_components_min": 1.2,
+      "mechanical_valid_phases_min": 4,
+      "development_branch_pass_min": 9,
+      "locked_validation_branch_pass_min": 3,
+      "all16_forward_above_each_control_min": 12,
+      "family_development_pass_min": 2,
+      "family_validation_pass_min": 1
+    },
+    "soft_object_constants": {
+      "motion_background_center": "coordinatewise_spatial_median_per_token_time",
+      "phase_partition": [4, 4, 4, 4, 4, 4, 4, 3],
+      "saliency_mad_multiplier": 1.4826,
+      "saliency_epsilon": 1e-06,
+      "component_participation_divisor": 40.0,
+      "component_abstain_dynamic_mass_max": 1e-06,
+      "component_single_dynamic_mass_max": 0.01,
+      "component_single_participation_max": 8.0,
+      "component_iterations": 12,
+      "component_temperature": 0.18,
+      "component_spatial_cost": 0.15,
+      "component_motion_cost": 0.85,
+      "tracking_spatial_hypotheses": [0.0, 0.15, 0.3],
+      "tracking_motion_cost": 0.7,
+      "tracking_mass_cost": 0.1,
+      "tracking_sinkhorn_epsilon": 0.12,
+      "tracking_sinkhorn_tau": 0.75,
+      "tracking_sinkhorn_iterations": 48,
+      "tracking_hypothesis_temperature": 0.08,
+      "drop_edge_fraction": 0.5
+    },
+    "view_order": [
+      "target_forward_reference",
+      "target_forward_eval",
+      "target_reverse",
+      "target_deterministic_shuffle",
+      "source_noop"
+    ],
+    "phase_trunk": {
+      "implementation_sha256": "fb001d6865f93d4e4f19fb03574f5eb089c21d9b393f632d7c26d85519018aca",
+      "definition": "exact_R0_time_centered_spatial_means_plus_directed_residuals_strides_1_2_4",
+      "target_margin": "cos(candidate,target_reference)-cos(candidate,source_noop)",
+      "branchwise_gate": true
+    },
+    "object_trunk": {
+      "text_used": false,
+      "absolute_appearance_in_final_representation": false,
+      "absolute_layout_in_final_representation": false,
+      "hard_nms_used": false,
+      "variable_cardinality_soft_components": true,
+      "unbalanced_ot_hypothesis_tracking": true,
+      "similarity_components": ["node", "edge", "tracking"]
+    },
+    "admission": {
+      "aggregation": "branchwise_AND_then_family_AND",
+      "phase_may_compensate_object": false,
+      "development_or_validation_tuning": false,
+      "all_five_input_graphs_and_two_counterfactuals_must_be_valid": true
+    },
+    "counterfactual_controls": {
+      "spatial_slot_permutation": "phasewise_cyclic_center_permutation_breaks_motion_spatial_binding",
+      "drop_edge": "remove_top_half_interaction_mass_globally_keep_at_least_one"
+    }
+  },
+  "phase_trunk_exactness": {
+    "r0_source_path": "methods/action_anchor_target_gap_audit/representation_eval.py",
+    "r0_source_sha256": "fb001d6865f93d4e4f19fb03574f5eb089c21d9b393f632d7c26d85519018aca",
+    "input": "late layer 24 patch tokens spatially mean-pooled to [32,1024] only inside phase trunk",
+    "descriptor": "time-center; concatenate centered sequence and directed residual sequences at stride 1,2,4; L2 normalize",
+    "candidate_score": "cos(candidate,target-reference)-cos(candidate,source-reference)",
+    "controls": ["target_reverse", "target_deterministic_shuffle", "source_noop"],
+    "claim_boundary": "R0 global spatial pooling is confined to the independent phase trunk and never enters object components or graph"
+  },
+  "object_trunk_exactness": {
+    "input": "layers 6,12,24 patch tokens [3,32,256,1024] projected by pinned R1 channel map to [32,256,144]",
+    "motion_only": "first temporal differences; coordinatewise spatial median background removal; fixed SHA-sign 144x16 projection",
+    "motion_projection_sha256": "2c17141db4ed1c250a6ffe6b2e3b3a78036e7a6c3e7da1653e2f38ea34d35be1",
+    "components": {
+      "cardinality": "0 if dynamic mass<=1e-6; 1 if mass<=0.01 or participation<=8; else clip(ceil(participation/40),2,6)",
+      "soft_assignment": "12 fixed-temperature EM iterations over 85% motion cosine cost + 15% normalized internal spatial cost",
+      "hard_nms": false,
+      "dustbin_or_abstention": "0-component phases are explicit abstentions; no phantom slot is created"
+    },
+    "tracking": {
+      "hypotheses": "three position weights 0,0.15,0.30; posterior marginalization temperature 0.08",
+      "solver": "48-iteration unbalanced entropic Sinkhorn epsilon=0.12 tau=0.75",
+      "empty_transitions": "0->K full birth; K->0 full death; 0->0 abstain; transport matrix has exact empty geometry",
+      "no_hard_assignment_or_hypothesis_selection": true
+    },
+    "soft_graph": {
+      "node_final_features": "relative phase, mass, motion energy, shape eigen statistics, birth/death, support entropy, 16D motion residual direction",
+      "edge_final_features": "relative phase, pair distance/overlap, relative motion/convergence, canonical endpoint mass-energy-degree summaries",
+      "absolute_centroid_exported_or_compared": false,
+      "edge_creation": "all unordered pairs only in phases with >=2 components; no top-k/NMS",
+      "validity": "at least 4/8 phases have effective cardinality>=1.2 and >=2 components; nonexisting nodes/edges are masked; finite positive observed masses"
+    },
+    "comparison": "independent unbalanced-OT similarities for node, edge, tracking sets; object score is lexicographic minimum and every component has its own floor"
+  },
+  "input_controls": {
+    "reference_index_formula": "index[i]=floor(i*(N-1)/63), i=0..63",
+    "evaluation_index_formula": "index[i]=floor(i*(126+i)*(N-1)/(63*189)), i=0..63",
+    "minimum_source_unique_indices": 16,
+    "minimum_target_reference_and_eval_unique_indices": 48,
+    "reference_and_eval_index_and_RGB_digests_must_differ": true,
+    "shuffle": "8 contiguous 8-frame blocks sorted by SHA256('r1b-target-shuffle:20260823:'+pair_id+':'+block); rotate by3 if identity/reverse",
+    "all_five_RGB_and_processor_digests_must_be_distinct": true,
+    "exact_model_and_processor_calls": 80
+  },
+  "counterfactual_controls": {
+    "spatial_slot_permutation": "within every noninitial phase cyclically permute component centers relative to motion/mass, rebuild OT and graph; preserves the motion-component feature multiset but breaks motion-spatial binding",
+    "drop_edge": "remove the globally highest half of soft edge mass, retaining at least one edge",
+    "both_controls_must_be_mechanically_valid": true,
+    "slot_control_required_margins": {"tracking": 0.015, "edge": 0.015},
+    "drop_edge_required_edge_margin": 0.02
+  },
+  "independent_null_calibration_bank": {
+    "kind": "pure_hash_generated_feature_sets_fixed_point_q1e9",
+    "count": 64,
+    "seed": 20260823,
+    "real_fresh16_features_used": false,
+    "real_video_pixels_used": false,
+    "model_used": false,
+    "positive_noise_half_range": 0.0175,
+    "fixed_point_scale": 1000000000,
+    "quantile_rule": "n64_linear_p05_ranks3_4_weights85_15_p95_ranks59_60_weights15_85",
+    "positive_similarity_p05_q1e9": {"edge": 956059546, "node": 925788580, "tracking": 917459808},
+    "null_similarity_p95_q1e9": {"edge": 623036524, "node": 819429348, "tracking": 875152126},
+    "positive_minus_null_margin_p05_q1e9": {"edge": 355921132, "node": 112985826, "tracking": 51911667},
+    "drop_edge_margin_p05_q1e9": 164468313,
+    "slot_edge_margin_p05_q1e9": 64920802,
+    "slot_tracking_margin_p05_q1e9": 13866941,
+    "summary_sha256": "4efdbb5b038a6970239dc76e86beee8f7d522ac35eea002ac6469639b8fa0d9d",
+    "valid_phase_policy": "minimum 4/8 is a pre-feature 50-percent support feasibility rule; 0/1 phases abstain and do not fabricate slots"
+  },
+  "admission_formula": {
+    "pair_phase_pass": "target_forward_eval exceeds each reverse/shuffle/source phase score by >=0.005",
+    "pair_object_pass": "all7 graphs valid AND node/edge/tracking floors AND lexicographic-min eval exceeds each input negative by>=0.02 AND both counterfactual margins pass",
+    "pair_pass": "pair_phase_pass AND pair_object_pass",
+    "all16_control_gate": "for both phase and object branches separately, eval exceeds each of reverse/shuffle/source in >=12/16",
+    "family_gate": "each family requires >=2/3 development and 1/1 locked validation pair passes",
+    "global_gate": ">=9/12 development and nominal >=3/4 locked validation; family gate makes effective locked requirement 4/4",
+    "final": "all global, per-control, and every-family gates must pass",
+    "weighted_sum_or_cross_branch_compensation": false
+  },
+  "reporting_and_claim_boundary": {
+    "development_and_locked_validation_are_read_only_reports": true,
+    "parameter_fitting": false,
+    "threshold_tuning": false,
+    "text_enters_representation": false,
+    "generator_loaded_or_trained": false,
+    "dataset_written": false,
+    "positive_result_would_only_admit_offline_target_teacher_diagnostic": true,
+    "self_generated_representation_or_generator_quality_claim_authorized": false
+  }
+}

@@ -1,0 +1,438 @@
+{
+  "schema_version": "bernini-target-middle-object-graph-teacher-pilot-prereg-v5",
+  "experiment_id": "target_middle_object_graph_teacher_pilot_v5_r1",
+  "stage": "exploratory_representation_only_zero_training",
+  "manifest_pin": {
+    "relative_path": "methods/bernini_action_editing/assets/target_middle_object_graph_teacher_pilot_manifest_v5.json",
+    "file_sha256": "b333fc210501a4b5df23a9aa944c3b6da76a5a86d6fc4285587d873cad8c85c7",
+    "manifest_sha256": "caa533be2fc7f8cea2782bd7b8ca8f657440a8d036e9061ae02dfe9c33852ba2",
+    "pair_count": 12,
+    "train_count": 8,
+    "validation_count": 4
+  },
+  "frozen_backbone": {
+    "repo": "facebook/vjepa2-vitl-fpc64-256",
+    "revision": "b3c1679b7c34d3255ef3547f27c7b226aefab26f",
+    "default_model_root": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/mev_action_anchor_target_gap16_20260819_v3/vendor/vjepa2-vitl-fpc64-256-b3c1679",
+    "model_files": {
+      "config.json": {
+        "sha256": "3dec96fe962e94e569182d3a7b9ef0dd74b6b8c89c337a428e43e10d593e70c9",
+        "size_bytes": 785
+      },
+      "model.safetensors": {
+        "sha256": "25466aef85727d16546c6cf8c99f12fcfad9cbca8225d45f23685e2e025b786b",
+        "size_bytes": 1303947864
+      },
+      "video_preprocessor_config.json": {
+        "sha256": "d2fab4418fc0390b62c4cd72ade56908a7929f80c62288adbe10dd8d23421227",
+        "size_bytes": 1298
+      }
+    },
+    "parameters_frozen": true,
+    "inference_mode": true,
+    "skip_predictor": true,
+    "output_hidden_states": true,
+    "num_hidden_layers": 24,
+    "selected_hidden_state_indices": [
+      6,
+      12,
+      24
+    ],
+    "selected_layer_roles": [
+      "early",
+      "middle",
+      "late"
+    ],
+    "expected_each_hidden_shape": [
+      1,
+      8192,
+      1024
+    ],
+    "patch_geometry": [
+      32,
+      16,
+      16
+    ],
+    "reused_extractor_relative_path": "methods/bernini_action_editing/extract_vjepa2_ordered_contextual_features_v4c.py",
+    "reused_extractor_file_sha256": "720033ac069dd1ee33463d2c439199cfdce3a1c595d4252b7f395e68c56e1cfc",
+    "reuse_contract": "model file pins, transformers source closure, tensor digest, and processor loading pattern are imported from extract_vjepa2_ordered_contextual_features_v4c; final pooling is replaced by patch-slot-graph construction"
+  },
+  "view_contract": {
+    "model_forwards_per_pair": 5,
+    "total_model_forwards": 60,
+    "view_order": [
+      "target_forward_reference",
+      "target_forward_eval",
+      "target_reverse",
+      "target_deterministic_shuffle",
+      "source_noop"
+    ],
+    "each_view_is_a_separate_frozen_backbone_forward": true,
+    "post_backbone_temporal_token_permutation": false,
+    "target_forward_reference_sampling": "for decoded count N and i=0..63: floor(i*(N-1)/63)",
+    "target_forward_eval_sampling": "for decoded count N and i=0..63: floor(i*(126+i)*(N-1)/(63*189))",
+    "target_reverse": "reverse reference RGB frame order before processor/model",
+    "target_deterministic_shuffle": "eight contiguous eight-frame blocks permuted by pair-id SHA256 before processor/model",
+    "source_noop": "source clip reference sampling through a separate processor/model forward"
+  },
+  "object_centric_representation": {
+    "hidden_channel_projection": "fixed SHA256-ranked signed channel subset; 48 channels per selected layer; no fitting",
+    "projected_token_dimension": 144,
+    "max_slots": 6,
+    "slot_initialization": "robust temporal patch-change candidates with spatial non-maximum suppression",
+    "slot_tracking": "bidirectional deterministic partial assignment by token cosine plus bounded patch displacement",
+    "slot_patch_support": "confidence-gated local patches only",
+    "dustbin_required": true,
+    "forced_equal_mass_assignment": false,
+    "forced_slot_presence": false,
+    "occlusion_and_reentry": "explicit absent state with bounded gap-dependent search radius",
+    "node_trajectory": "presence speed acceleration extent-change path-efficiency and ordered phase events",
+    "support_normalization": "translation-free and scale-normalized using pairwise active-slot geometry",
+    "edge_topology": "dynamic sparse undirected graph; closest/most-changing candidate edges with degree cap two",
+    "edge_descriptor": "canonical actor endpoint, canonical patient endpoint, visibility, normalized-distance, approach, recede, contact-proxy lifecycle and terminal-hold",
+    "event_order_descriptor": "phase-ordered node-motion edge-approach contact release and terminal events",
+    "canonicalization": "nodes are sorted by dynamic/lifecycle signature; edges are sorted by lifecycle signature then canonical endpoints; normalized canonical endpoint IDs encode adjacency; spatial coordinate is not serialized",
+    "max_serialized_nodes": 6,
+    "max_serialized_edges": 6,
+    "max_serialized_events": 16
+  },
+  "sealed_algorithm": {
+    "integer_index_dtype": "numpy.int64",
+    "target_decoded_frame_count_min": 48,
+    "target_reference_unique_index_count_min": 48,
+    "target_eval_unique_index_count_min": 48,
+    "target_reference_eval_each_monotone_nondecreasing": true,
+    "target_reference_eval_each_cover_first_and_last_decoded_frame": true,
+    "target_reference_eval_index_arrays_must_differ": true,
+    "target_reference_eval_rgb_sha256_must_differ": true,
+    "source_decoded_frame_count_min": 16,
+    "source_unique_index_count_min": 16,
+    "all_five_model_rgb_input_sha256_must_differ": true,
+    "index_array_sha256_in_receipt": true,
+    "sampling_geometry_registry": [
+      {
+        "pair_id": "6ae4b656b36ae36950140af78ff96c6038de540b5a72cbf0d68ca1c995f321fc",
+        "source_decoded_frames": 39,
+        "target_decoded_frames": 100,
+        "source_unique_indices": 39,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "eceac7508962e92ad9c3480c0624f67a6bec8809d4cfd60178aa403bfa56f03c",
+        "target_reference_indices_sha256": "a9c0686807d6c7afb3a5f2302d5aa7938e9eea8ba73f8afaa8eb5e8808a7aed7",
+        "target_eval_indices_sha256": "88cb43b951b756684bc5449ea03881f0e869247ec3d0118c86985b7605023f82"
+      },
+      {
+        "pair_id": "9951e48b614307f9a91ac4d48b617dbd6801fcba99e3936e87b9de875e5bd7ac",
+        "source_decoded_frames": 44,
+        "target_decoded_frames": 63,
+        "source_unique_indices": 44,
+        "target_reference_unique_indices": 63,
+        "target_eval_unique_indices": 58,
+        "source_indices_sha256": "9e735e7f2a2b370abaa51b2baaf429a1c37f72766a8a3be9cc3ee214960d4cb5",
+        "target_reference_indices_sha256": "94c236eb60865474a1142b218b5597d08067f7a65d41ff0c385ce619c7ffea74",
+        "target_eval_indices_sha256": "540ebfe77482db9c7857f1630c00252518b0bec51badda63290430516d2412e3"
+      },
+      {
+        "pair_id": "750534151b0221f867cb48d9fd8a9e7bdad001729cf0d50b39e03fafeff5df01",
+        "source_decoded_frames": 175,
+        "target_decoded_frames": 322,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "b1d5b26582e9c6ed8e105307db385301f3157765ede49ee14c79ef178edfa149",
+        "target_reference_indices_sha256": "769d7e3011d92f16aaa2cefcb89096b46b0812b24aa321e381417fc1afbb1606",
+        "target_eval_indices_sha256": "ef4ecfad2d5b82cdce7dddbe987aaa2a25658df06a85d938b80c16dd06682b13"
+      },
+      {
+        "pair_id": "41d5ab043ecfdf5ce32cc6ad58c2c210db8938f4948096477acaceeaaf015e6e",
+        "source_decoded_frames": 126,
+        "target_decoded_frames": 259,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "9bda8b52526607c5ea912f818faab691320c4c2945386b1e1ca4e20d2fa325c0",
+        "target_reference_indices_sha256": "4f08f3168349ed9db6dd6bf8d3abd6af03a8481655b4cf53950648dacd0b6c79",
+        "target_eval_indices_sha256": "36ef2d6872303f20d1881ddb198c3af693bbb048f9ebc8a0fd173c611a9f66a9"
+      },
+      {
+        "pair_id": "c5efe4f7dcd084395891550185a73ecf67c9340cbc14d748b45592f0980828f0",
+        "source_decoded_frames": 39,
+        "target_decoded_frames": 324,
+        "source_unique_indices": 39,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "eceac7508962e92ad9c3480c0624f67a6bec8809d4cfd60178aa403bfa56f03c",
+        "target_reference_indices_sha256": "69a8160f3a996988b1e847705a0ebf28171f9bad2b9039cca503102d2edb7ff2",
+        "target_eval_indices_sha256": "f2b8d19a20664943fdbb18d319e7c8298e94a02139bbb07e0381c2bf6181c0f1"
+      },
+      {
+        "pair_id": "7b3db60f5d9b181f3c2fdca881eca180c96d45064c60370b90e628111e3daf4e",
+        "source_decoded_frames": 101,
+        "target_decoded_frames": 316,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "9771fc77dce54b4f68ac5564d0822a2b78e24c68f3ce422df880bcdd2f6151f3",
+        "target_reference_indices_sha256": "0d99e1bbbc049e85874cfc910661b47f9b9e49bb965004e2800ab72e6a3c175b",
+        "target_eval_indices_sha256": "d0d31b5eaa982298dd4a0adad3e1c8694c7745e051dc63dde01e37152e9ccdf3"
+      },
+      {
+        "pair_id": "ef46896149a4386d74f8c66caadfc459eded00f4dda5115452d46702d98907cc",
+        "source_decoded_frames": 79,
+        "target_decoded_frames": 91,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 63,
+        "source_indices_sha256": "04091f12a6f388257d47ac5f493212e5988949a7f248570dd1357e15af7f0d7e",
+        "target_reference_indices_sha256": "04d70d9923edc18c38b05f7ea09e88b054194ef2160feab1dc1dc28d6cc3e95b",
+        "target_eval_indices_sha256": "e9299594b22d5ab380e77694ef821d87d78060786ca5e571f9978fc82d7dcfb6"
+      },
+      {
+        "pair_id": "b6217e1595627ee516247a71fe47a44bf610473c3a66afa2bae7ed704a3623f8",
+        "source_decoded_frames": 161,
+        "target_decoded_frames": 199,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "060eb037950e03df9235b00b02499d8625a332cacd24259f7affcfadb593301c",
+        "target_reference_indices_sha256": "feffdffdd02b56a230538f666fdf14f2cdb67c507434ebf750ace475defffd8b",
+        "target_eval_indices_sha256": "28c62a996f0e24df55bf5a99f0513bc35ab11c99e80bbf761f6f25a63b3ed2d8"
+      },
+      {
+        "pair_id": "ab48476cbf04260695a0188fe6c3faa75983636aa95d5e6a51fcc53e8696c235",
+        "source_decoded_frames": 25,
+        "target_decoded_frames": 91,
+        "source_unique_indices": 25,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 63,
+        "source_indices_sha256": "d7dc6071451219345325fd50ae600c48c89f4f49a0bf5d59ea33a141602a5377",
+        "target_reference_indices_sha256": "04d70d9923edc18c38b05f7ea09e88b054194ef2160feab1dc1dc28d6cc3e95b",
+        "target_eval_indices_sha256": "e9299594b22d5ab380e77694ef821d87d78060786ca5e571f9978fc82d7dcfb6"
+      },
+      {
+        "pair_id": "a40e955ecb46888c19f77d1e11cea76ce0d225f440e753a1665d628986150d30",
+        "source_decoded_frames": 75,
+        "target_decoded_frames": 138,
+        "source_unique_indices": 64,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "76770baf45fd567155cc79d6f230a4119ed6bf7e820a6de1558a244f40c6a952",
+        "target_reference_indices_sha256": "7dcc2be3f0bd72b39e5ee547d0db24b8aba90019097848b0ee8b574d2aaa2391",
+        "target_eval_indices_sha256": "fb53052a2fac1fbcb2ac7e9a6b907f6858a078e7ab8ce6e7d0bd869344c4547d"
+      },
+      {
+        "pair_id": "867c2b1dbc09238dfca5c4b5a22a608ca0b831b6568e3b118bba73bc4294fb67",
+        "source_decoded_frames": 46,
+        "target_decoded_frames": 240,
+        "source_unique_indices": 46,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 64,
+        "source_indices_sha256": "fca11c8724cb19e8629df698378dea6687a43a654b02fe3e48b6916928152ca9",
+        "target_reference_indices_sha256": "93344b067eb14d3153a001081e14e086de19d42a23f3a1f90d768ec260a3b730",
+        "target_eval_indices_sha256": "dbdf2a28da96fb330e3ebfbafedf093243e1c9f9d138d15b9d6dfd8c77684756"
+      },
+      {
+        "pair_id": "efdd171c5b8b6a256c10fe80ac011c9784f68b8f6bef27dcfb9aef1f1a354fd0",
+        "source_decoded_frames": 45,
+        "target_decoded_frames": 87,
+        "source_unique_indices": 45,
+        "target_reference_unique_indices": 64,
+        "target_eval_unique_indices": 63,
+        "source_indices_sha256": "1c30fe9b465a5451b59058460284c0a8d60a4ac359e4f01c86ff487d02e75de2",
+        "target_reference_indices_sha256": "c24202bb2b28d08fc66b912a0dec5686aa4bd39571eb93a966b309d1a846d662",
+        "target_eval_indices_sha256": "c703a138dd07bf564693d8d004adff70643c790d7abc7b1183a2a85c6878b0f3"
+      }
+    ],
+    "shuffle_seed_template": "v5-target-shuffle:20260823:{pair_id}:{block}",
+    "shuffle_order": "ascending raw SHA256 digest then ascending block id over blocks 0..7",
+    "shuffle_forbidden": [
+      "identity",
+      "full_reverse"
+    ],
+    "shuffle_forbidden_fallback": "left rotate the sorted block list by exactly three; fail if still forbidden",
+    "shuffle_permutations": [
+      {
+        "pair_id": "6ae4b656b36ae36950140af78ff96c6038de540b5a72cbf0d68ca1c995f321fc",
+        "permutation": [2, 0, 5, 1, 7, 3, 4, 6],
+        "permutation_sha256": "8f38cde8e66246ae7aa2c9aa5462cd9c52a655b8257b2444705cc26fbba6820d"
+      },
+      {
+        "pair_id": "9951e48b614307f9a91ac4d48b617dbd6801fcba99e3936e87b9de875e5bd7ac",
+        "permutation": [4, 1, 0, 2, 6, 3, 7, 5],
+        "permutation_sha256": "45cf00ea49ebd54bef2bbc855e4b64d4ba8f9a57fe225a25763825b492c1e467"
+      },
+      {
+        "pair_id": "750534151b0221f867cb48d9fd8a9e7bdad001729cf0d50b39e03fafeff5df01",
+        "permutation": [4, 3, 0, 1, 7, 6, 2, 5],
+        "permutation_sha256": "1b9f4242ee55e5338b495e65128f879ee637b810bff4d99ce939af16868d3460"
+      },
+      {
+        "pair_id": "41d5ab043ecfdf5ce32cc6ad58c2c210db8938f4948096477acaceeaaf015e6e",
+        "permutation": [1, 3, 5, 4, 2, 7, 0, 6],
+        "permutation_sha256": "df7ce0254bd9188a67410013d48eee135d6103d4115c7c04e8b458771864db93"
+      },
+      {
+        "pair_id": "c5efe4f7dcd084395891550185a73ecf67c9340cbc14d748b45592f0980828f0",
+        "permutation": [5, 6, 3, 2, 0, 1, 7, 4],
+        "permutation_sha256": "0ed2263b3d5faa84c3b1f9b88fd8f810ca35a978b935afbb236a127ca1418a2f"
+      },
+      {
+        "pair_id": "7b3db60f5d9b181f3c2fdca881eca180c96d45064c60370b90e628111e3daf4e",
+        "permutation": [3, 1, 0, 6, 2, 7, 5, 4],
+        "permutation_sha256": "b3d689ff2d254fdec5a5c94981de47c37ddd9f7c8d4f56903891d3b41600beb6"
+      },
+      {
+        "pair_id": "ef46896149a4386d74f8c66caadfc459eded00f4dda5115452d46702d98907cc",
+        "permutation": [1, 5, 0, 6, 3, 2, 4, 7],
+        "permutation_sha256": "0c48a85a6cafab86bd2907b6794fc822ba87cbb122c055b24dda4a77f899c99d"
+      },
+      {
+        "pair_id": "b6217e1595627ee516247a71fe47a44bf610473c3a66afa2bae7ed704a3623f8",
+        "permutation": [4, 5, 0, 3, 7, 1, 6, 2],
+        "permutation_sha256": "87295a9b2af4f7d016377e8d08881fedb55c76c7fddf41b984c01c822c38fc9a"
+      },
+      {
+        "pair_id": "ab48476cbf04260695a0188fe6c3faa75983636aa95d5e6a51fcc53e8696c235",
+        "permutation": [1, 3, 6, 4, 2, 7, 0, 5],
+        "permutation_sha256": "d42887530423d934dae463061ca47f480d71199253cb834581241d546de2b9ad"
+      },
+      {
+        "pair_id": "a40e955ecb46888c19f77d1e11cea76ce0d225f440e753a1665d628986150d30",
+        "permutation": [0, 7, 2, 3, 4, 6, 1, 5],
+        "permutation_sha256": "98b84801c1f6eb2c49230969f619b484d9fbbaf3a288000de68c6492cfa82e72"
+      },
+      {
+        "pair_id": "867c2b1dbc09238dfca5c4b5a22a608ca0b831b6568e3b118bba73bc4294fb67",
+        "permutation": [4, 7, 5, 3, 1, 0, 2, 6],
+        "permutation_sha256": "e158152889ca9ed9a5b7fed960ba1b7e02b851c4038a11ad5b079894dd5a9d27"
+      },
+      {
+        "pair_id": "efdd171c5b8b6a256c10fe80ac011c9784f68b8f6bef27dcfb9aef1f1a354fd0",
+        "permutation": [5, 4, 1, 0, 2, 6, 7, 3],
+        "permutation_sha256": "b5b7999c435e64581a395c11f76142989c1c468d5b825192acd42e8216f7ee73"
+      }
+    ],
+    "channel_rank_seed_template": "v5-channel:20260823:{layer}:{channel}",
+    "channel_sign_seed_template": "v5-sign:20260823:{layer}:{channel}",
+    "channel_order": "ascending raw SHA256 rank digest then ascending channel id; take first 48 of 1024 independently in layers 6,12,24",
+    "channel_sign": "plus one iff first sign-digest byte has low bit one, otherwise minus one",
+    "channel_plan_layer_sha256": {
+      "6": "9ea06cadb09db15625c342b2a97182f623fb15322105765b0987a2510d394aa3",
+      "12": "526ee190eebf7cbfc3e0250b8b3e91f803bfb4a475e77560ac88005e8d3a3cdf",
+      "24": "dd265f40b486d5f518d89d5024e7b1c67be6ad4b6dce2a71ad864cd5dbe45e2d"
+    },
+    "channel_plan_sha256": "7b0a36c522e0df4fd4825448845c636d17491cce6864ca8ac0094d77ee58fc78",
+    "token_projection_normalization": "selected 48 signed channels L2-normalized within each layer, concatenate 144, then tokenwise L2; epsilon 1e-8; no centering or mean",
+    "patch_motion": "max(0,1-cosine) at identical 16x16 patch index for each of 31 adjacent tubelet times",
+    "patch_motion_score": "max(0.90 quantile over 31 changes,0.25*maximum over 31 changes)",
+    "seed_cutoff": "max(0.02, median(patch scores)+2.0*median_absolute_deviation(patch scores))",
+    "seed_order": "descending score then ascending patch id",
+    "seed_spatial_nms_min_distance": 0.32,
+    "seed_coordinate_grid": "16x16 x/y linspace(-1,1), row-major",
+    "seed_peak_time": "argmax adjacent change plus one; earliest argmax tie",
+    "slot_max": 6,
+    "track_directions": ["backward", "forward"],
+    "track_search_radius": "min(1.50,0.30+0.12*consecutive_gap)",
+    "track_cosine_min": 0.35,
+    "track_cost": "0.80*(1-cosine)+0.20*(spatial_distance/search_radius)",
+    "track_cost_max": 0.72,
+    "track_choice_tie_break": "lowest cost then lowest patch id",
+    "track_prototype_ema": "unit(0.85*old+0.15*accepted_patch)",
+    "track_consecutive_gap_max": 4,
+    "local_support_radius": 0.32,
+    "local_support_cosine_min": 0.55,
+    "local_support_weight": "max(cosine-0.55,1e-4)",
+    "collision_resolution": "same center patch keeps higher confidence-margin then lower slot index; all losers go absent/dustbin",
+    "slot_min_present_tubelets": 8,
+    "slot_min_median_confidence_margin": 0.01,
+    "no_seed_fallback": true,
+    "support_scale": "max(median positive pairwise active-slot distances over time,2/15)",
+    "node_motion_onset_speed": 0.08,
+    "node_phase_bins": 8,
+    "node_phase_frames": 4,
+    "node_phase_reduction": "presence count/4 and 0.75 quantile of speed,acceleration,extent-change; positive values squash x/(1+x)",
+    "node_tail": "motion onset, peak-speed phase, motion offset, squashed path length/31, net/path efficiency",
+    "node_canonical_order": "onset ascending,path descending,peak ascending,offset ascending,node descriptor SHA256",
+    "edge_joint_presence_min": 8,
+    "edge_priority": "distance q20 - 0.5*absolute-distance-delta q75; ascending then node ids",
+    "edge_max": 6,
+    "edge_degree_cap": 2,
+    "contact_threshold": "normalized distance <= max(0.12,1.5*(left_extent+right_extent)/support_scale)",
+    "edge_approach_or_recede_delta_min": 0.06,
+    "edge_phase_reduction": "visibility count/4, reciprocal median distance, q75 approach, q75 recede, contact count/4",
+    "edge_tail": "closest phase,approach onset,contact onset,contact release,terminal four-tubelet hold",
+    "edge_canonical_endpoint_encoding": "prepend ((canonical_left+1)/6,(canonical_right+1)/6) to each 45-value lifecycle descriptor; require 0<=left<right<6",
+    "edge_canonical_order": "contact onset ascending,terminal hold descending,closest phase ascending,edge lifecycle descriptor SHA256,canonical left,canonical right",
+    "event_order": "phase, event type, canonical actor, canonical patient ascending; retain first 16",
+    "descriptor_layout": "2 counts + 6*37 padded node values + 6*47 padded edge-topology/lifecycle values + 16*4 padded ordered events = 570",
+    "descriptor_dimension": 570,
+    "descriptor_group_weights": {
+      "counts": 1.0,
+      "nodes": 1.0,
+      "edges": 1.25,
+      "events": 0.75
+    },
+    "descriptor_normalization": "one final L2 normalization epsilon 1e-8, no centering and no global mean",
+    "empty_or_one_slot_or_zero_edge_policy": "mechanically invalid; similarity is exactly 0.0 and pair hard-fails regardless of another invalid graph"
+  },
+  "final_action_descriptor_boundary": {
+    "structured_node_edge_event_values_only": true,
+    "absolute_appearance_in_final_descriptor": false,
+    "absolute_patch_coordinates_in_final_descriptor": false,
+    "target_pixels_in_final_descriptor": false,
+    "raw_hidden_tokens_in_final_descriptor": false,
+    "global_spatial_or_temporal_mean_feature_in_final_descriptor": false,
+    "rgb_or_latent_reconstruction": false,
+    "appearance_may_only_support_internal_slot_correspondence": true,
+    "receipt_exports_raw_pixels_or_hidden_states": false,
+    "receipt_exports_descriptor_values": false,
+    "receipt_exports_descriptor_hashes_and_control_metrics_only": true
+  },
+  "optimization_boundary": {
+    "optimizer_created": false,
+    "loss_backward_calls": 0,
+    "parameter_updates": 0,
+    "train_split_parameter_fitting": false,
+    "train_split_role": "development report only; it cannot fit thresholds, projections, slots, weights, or topology",
+    "validation_parameter_fitting": false,
+    "validation_threshold_selection": false,
+    "generator_loaded": false,
+    "generator_forward_calls": 0,
+    "generator_updates": 0,
+    "dataset_written": false
+  },
+  "runtime_source_closure": {
+    "launch_wrapper_relative_path": "methods/bernini_action_editing/scripts/auh_target_middle_object_graph_teacher_pilot_rank_wrapper_v5.sh",
+    "launch_wrapper_file_sha256": "26642a6d745671852c849587453b64a5a61523fec3092b3b54256b6d0d9cdc66",
+    "reused_v4c_extractor_relative_path": "methods/bernini_action_editing/extract_vjepa2_ordered_contextual_features_v4c.py",
+    "reused_v4c_extractor_file_sha256": "720033ac069dd1ee33463d2c439199cfdce3a1c595d4252b7f395e68c56e1cfc",
+    "runner_is_recorded_dynamically_in_contract_and_receipt": true
+  },
+  "fixed_admission_thresholds": {
+    "target_forward_reference_eval_cosine_min": 0.9,
+    "target_forward_reference_eval_distance_max": 0.1,
+    "reference_above_each_negative_control": true,
+    "minimum_margin_above_hardest_negative": 0.08,
+    "target_reverse_cosine_max": 0.92,
+    "target_shuffle_cosine_max": 0.9,
+    "source_noop_cosine_max": 0.85,
+    "minimum_non_dustbin_slots_per_target_forward": 2,
+    "minimum_dynamic_sparse_edges_per_target_forward": 1,
+    "train_pair_pass_min": 6,
+    "train_pair_total": 8,
+    "validation_pair_pass_min": 3,
+    "validation_pair_total": 4,
+    "all_twelve_forward_above_each_control_min": 9,
+    "descriptor_finite_required": true,
+    "exact_pair_and_forward_count_required": true
+  },
+  "claim_boundary": {
+    "success_claim": "target-middle object/interaction-graph teacher component is mechanically and control admitted on this exploratory 8/4 pilot",
+    "stable_transferable_action_representation_established_even_on_success": false,
+    "self_generated_anchor_alignment_established_even_on_success": false,
+    "generator_quality_preserved_established_even_on_success": false,
+    "generator_connection_authorized_even_on_success": false,
+    "next_required_gate": "sealed larger appearance-disjoint evaluation then target-free self-generated middle-layer graph alignment"
+  },
+  "preregistration_sha256": "c2d1b8405b4ce8eced3d377ab4a07f0c9e562288010ebf3afc77a28819d73ade"
+}

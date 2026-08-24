@@ -1,0 +1,118 @@
+{
+  "schema_version": "bernini-caper-native-counterfactual-sibling-population-sit-v1",
+  "method": "frozen-bernini-caper-native-same-seed-counterfactual-siblings-v1",
+  "arm_order": [
+    "target",
+    "noop",
+    "incomplete",
+    "phase-order-violation"
+  ],
+  "population_design": {
+    "split": "fit",
+    "source_ids": [
+      "7b88a1ca1f804f41"
+    ],
+    "seeds": [
+      2026081801,
+      2026081802,
+      2026081803,
+      2026081804
+    ],
+    "cell_order": [
+      "fit-7b88a1ca1f804f41-s2026081801",
+      "fit-7b88a1ca1f804f41-s2026081802",
+      "fit-7b88a1ca1f804f41-s2026081803",
+      "fit-7b88a1ca1f804f41-s2026081804"
+    ],
+    "k": 4,
+    "expected_cell_count": 4,
+    "arms_per_cell": 4,
+    "expected_rollout_count": 16,
+    "cartesian_population_required": true,
+    "all_registered_cells_and_arms_must_materialize": true,
+    "seed_filtering_or_best_of_k_authorized": false,
+    "replacement_seed_authorized": false,
+    "partial_population_scientific_claim_authorized": false,
+    "lockbox_source_or_media_access_authorized": false
+  },
+  "native_v2v_contract": {
+    "endpoint": "native-source-video-only-v2v-endpoint",
+    "guidance_mode": "v2v_apg",
+    "positive_task": "mv2v",
+    "full_source_video_count": 1,
+    "source_reference_count": 0,
+    "first_frame_anchor_count": 0,
+    "target_video_count": 0,
+    "mask_count": 0,
+    "track_count": 0,
+    "pose_count": 0,
+    "flow_count": 0,
+    "trajectory_count": 0,
+    "custom_initial_noise": false,
+    "official_gaussian_shared_by_equal_value_not_external_injection": true,
+    "official_gaussian_captured_by_read_only_observer": true,
+    "observer_injects_or_replaces_noise": false,
+    "shared_high_sigma_prefix": false,
+    "independent_complete_stock_trajectory_per_arm": true,
+    "frame_count": 81,
+    "fps": 25,
+    "latent_phases": 21,
+    "num_inference_steps": 40,
+    "flow_shift_from_renderer_config": 5.0,
+    "omega_text": 4.0,
+    "eta": 0.5,
+    "norm_threshold": 50.0,
+    "momentum": 0.0,
+    "exact40_shift5_schedule_sha256": "46f3dcb6e2d65cb7921e5217e2a20dfe008b366cfacafe455fee4d3c45f63ae2",
+    "frozen_model": true,
+    "training": false,
+    "optimizer": false,
+    "parameter_update": false
+  },
+  "counterfactual_semantics": {
+    "target": "complete_sit_then_right_head_turn_then_stable_seated_hold",
+    "noop": "preserve_source_nonseated_motion_without_requested_event",
+    "incomplete": "begin_lowering_but_never_complete_sit_or_terminal_hold",
+    "phase-order-violation": "same_initial_standing_precondition_but_head_turn_precedes_brief_sit_and_terminal_hold_is_violated",
+    "literal_time_reversal_used": false,
+    "all_arms_share_source_initial_precondition": true,
+    "phase_order_violation_is_not_labeled_literal_reverse": true
+  },
+  "source": {
+    "split": "fit",
+    "source_id": "7b88a1ca1f804f41",
+    "actor_kind": "dog",
+    "identity_id": "grey-french-bulldog-black-harness",
+    "scene_id": "yellow-autumn-leaves-sunlit-park",
+    "registered_turn_target": "frame_right_toward_background",
+    "source_video": "/vast/users/guangyi.chen/causal_group/peiyuan.zhu/work/VideoEditing/VideoEdit_experiments/goku_action_wan22_20260730T043022Z/fullmotion_next1000_v17_20260803T133300Z/wan_next1000_v17/samples/7b88a1ca1f804f41/samples/7b88a1ca1f804f41/source_video.mp4",
+    "source_video_sha256": "4d0c5cdfa9e0aae394af34a5bdda7de82ac770cd62cddbf3173ad2378458f3ed",
+    "source_hw": [
+      704,
+      736
+    ],
+    "bucket_hw": [
+      480,
+      496
+    ],
+    "latent_shape": [
+      1,
+      16,
+      21,
+      60,
+      62
+    ],
+    "captions": {
+      "target": "A locked-off camera shows the same single grey French bulldog in a black harness among vibrant yellow autumn leaves in a sunlit park. From frames 0 through 20, the dog bends its hind legs, lowers its hips onto the leaves, and completes a seated pose while keeping its front legs planted. From frames 20 through 40, the seated dog turns its head toward frame-right and the background. From frames 40 through 80, it holds the same seated pose and rightward head orientation stably. Preserve the source dog's identity, harness, leaves, lighting, background, and camera unless the requested motion physically requires a change.",
+      "noop": "A locked-off camera shows the same single grey French bulldog in a black harness among vibrant yellow autumn leaves in a sunlit park. From frames 0 through 20, the dog preserves its source standing pose and source-consistent natural motion without lowering its hips into a seat. From frames 20 through 40, it continues the source-consistent head motion without performing a new seated rightward head turn. From frames 40 through 80, it remains non-seated and continues the source-consistent action without a new seated hold. Preserve the source dog's identity, harness, leaves, lighting, background, camera, and all source motion not explicitly negated.",
+      "incomplete": "A locked-off camera shows the same single grey French bulldog in a black harness among vibrant yellow autumn leaves in a sunlit park. From frames 0 through 20, the dog bends its hind legs and lowers its hips only partway, stopping before it completes a seated pose. From frames 20 through 40, it pauses in a shallow crouch and returns to the source standing pose without performing the seated rightward head turn. From frames 40 through 80, it remains standing with source-consistent natural motion and never reaches a terminal seated hold. Preserve the source dog's identity, harness, leaves, lighting, background, camera, and all motion outside this incomplete attempt.",
+      "phase-order-violation": "A locked-off camera shows the same single grey French bulldog in a black harness among vibrant yellow autumn leaves in a sunlit park. From frames 0 through 20, the dog remains in its source standing pose and first turns its head toward frame-right and the background without lowering its hips. From frames 20 through 40, after the early head turn, it briefly lowers its hips into a seated pose. From frames 40 through 80, it rises back to a source-consistent standing pose instead of holding the requested terminal seated pose. Preserve the source dog's initial standing precondition, identity, harness, leaves, lighting, background, camera, and all unrelated source motion."
+    },
+    "caption_sha256": {
+      "target": "0094122dd7591aee7f8b4c5c644c7591ff691cd423f1353088eb5893c735f3e5",
+      "noop": "824717a436db6245afa0b61d2cf95815caf7ef654bf3d8d8621aa0ca1620719c",
+      "incomplete": "ec8e391b8b16ab8eb18298f2f2d1ed1270340441ab954b7400978f11122b676e",
+      "phase-order-violation": "f7c6b3ece68f2e312ec451b84f3bba2ca01a7d640f68c85786f33ce34ee12705"
+    }
+  }
+}

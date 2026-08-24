@@ -1,0 +1,236 @@
+{
+  "schema_version": "bernini-case01-g0-sparse-human-annotation-spec-v1",
+  "case_id": "case01",
+  "iid": "288545b9c031491a",
+  "source_sha256": "5ed911f66fea3ed2000f507412da75adecb8099b26b71089d0fd2c0ac2982b18",
+  "image_size_wh": [
+    704,
+    736
+  ],
+  "frame_indices": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80
+  ],
+  "coordinate_convention": "integer pixel [x_min,y_min,x_max_exclusive,y_max_exclusive]",
+  "stage0_authority": {
+    "root": "artifacts/object_grounded_case01_0821_sam2_masklets_r2",
+    "receipt": "artifacts/object_grounded_case01_0821_sam2_masklets_r2/receipt.json",
+    "receipt_sha256": "c9dc8567d4f147f943171d2d7abb55e52aadc685fbfc2f75fff4e837e2ab0b50",
+    "manual_review": "artifacts/object_grounded_case01_0821_sam2_masklets_r2/manual_review_v1.json",
+    "manual_review_sha256": "3f4e407925e4077827acad7499ac33536a7b855bdeeabb027af156b3a6961a4b",
+    "dog_and_bone_mask_policy": "Reference the reviewed SAM2 r2 binary masks byte-for-byte; do not redraw or replace them."
+  },
+  "label_contract": {
+    "dog#1": "Full visible dog mask from the Stage-0 SAM2 r2 authority.",
+    "dog#1.head": "Conservative box around the visible craniofacial region, including ears, muzzle, and open jaw; not a pixel-perfect part mask.",
+    "dog#1.mouth": "Box around the visible oral opening and immediate lip/teeth/tongue boundary; this is the effector region, not target RGB.",
+    "bone#1": "Original right-side bone mask from the Stage-0 SAM2 r2 authority.",
+    "bone#1.support": "supported_by(bone#1,ground#1), represented by an 8-pixel mask-bbox expansion as a ground-context proxy.",
+    "safe-background#1": "A fixed lower-right concrete patch outside dog, bone, vehicle edge, and the planned bone-to-mouth corridor."
+  },
+  "support_context_expansion_pixels": 8,
+  "safe_background_policy": {
+    "same_box_all_frames": true,
+    "bbox_xyxy": [
+      560,
+      560,
+      660,
+      660
+    ],
+    "selection_reason": "Lower-right concrete remains visually unobstructed and is separated from dog, bone, vehicle edge, and the weak source-to-mouth trajectory.",
+    "confidence": "high"
+  },
+  "sparse_annotations": [
+    {
+      "frame_index": 0,
+      "head_bbox_xyxy": [
+        155,
+        250,
+        370,
+        530
+      ],
+      "mouth_bbox_xyxy": [
+        242,
+        423,
+        351,
+        530
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "The left lip curls upward; the mouth box deliberately includes the visible lip and tongue boundary."
+    },
+    {
+      "frame_index": 10,
+      "head_bbox_xyxy": [
+        170,
+        215,
+        425,
+        480
+      ],
+      "mouth_bbox_xyxy": [
+        220,
+        325,
+        423,
+        475
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "Right cheek and lip are foreshortened; the box includes the complete visible aperture without asserting a hidden boundary."
+    },
+    {
+      "frame_index": 20,
+      "head_bbox_xyxy": [
+        155,
+        140,
+        410,
+        400
+      ],
+      "mouth_bbox_xyxy": [
+        177,
+        230,
+        395,
+        397
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "Strong upward perspective exposes palate, tongue, and teeth; the annotation is a routing region rather than an anatomical segmentation."
+    },
+    {
+      "frame_index": 30,
+      "head_bbox_xyxy": [
+        170,
+        110,
+        390,
+        385
+      ],
+      "mouth_bbox_xyxy": [
+        180,
+        215,
+        380,
+        380
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "The open jaw dominates the projected head; lip and tooth boundaries are retained inside one conservative effector box."
+    },
+    {
+      "frame_index": 40,
+      "head_bbox_xyxy": [
+        150,
+        135,
+        370,
+        390
+      ],
+      "mouth_bbox_xyxy": [
+        165,
+        230,
+        360,
+        380
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "Tongue, teeth, and dark oral cavity are all visible; no sub-part ordering inside the mouth is claimed."
+    },
+    {
+      "frame_index": 50,
+      "head_bbox_xyxy": [
+        125,
+        145,
+        370,
+        390
+      ],
+      "mouth_bbox_xyxy": [
+        140,
+        235,
+        360,
+        385
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "The left oral corner is shadowed; the box covers only the visible mouth region and makes no hidden-surface claim."
+    },
+    {
+      "frame_index": 60,
+      "head_bbox_xyxy": [
+        125,
+        140,
+        365,
+        395
+      ],
+      "mouth_bbox_xyxy": [
+        137,
+        235,
+        355,
+        390
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "Muzzle and upper lip partly overhang the oral cavity; the region is intentionally box-level."
+    },
+    {
+      "frame_index": 70,
+      "head_bbox_xyxy": [
+        125,
+        140,
+        365,
+        395
+      ],
+      "mouth_bbox_xyxy": [
+        137,
+        237,
+        355,
+        390
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "Right teeth occlude part of the inner lip; the box does not hallucinate the occluded contour."
+    },
+    {
+      "frame_index": 80,
+      "head_bbox_xyxy": [
+        125,
+        145,
+        375,
+        400
+      ],
+      "mouth_bbox_xyxy": [
+        143,
+        242,
+        365,
+        395
+      ],
+      "head_confidence": "high",
+      "mouth_confidence": "medium",
+      "ambiguity": "The right oral corner is partly occluded by teeth and perspective; only the visible effector envelope is annotated."
+    }
+  ],
+  "primary_review": {
+    "reviewed_on_utc_date": "2026-08-21",
+    "reviewer_role": "primary-sparse-annotation-reviewer",
+    "all_nine_source_frames_viewed_at_native_resolution": true,
+    "dog_identity_matches_stage0_authority": "PASS",
+    "bone_identity_matches_instruction_patient": "PASS",
+    "head_region_completeness": "PASS",
+    "mouth_region_completeness": "PASS_WITH_BOX_LEVEL_AMBIGUITY",
+    "safe_background_separation": "PASS",
+    "annotation_half_status": "PASS_PRIMARY_REVIEW",
+    "independent_second_review_completed": false
+  },
+  "claim_limits": {
+    "heldout_canary_annotation_only": true,
+    "may_enter_training": false,
+    "target_rgb_or_target_path_used": false,
+    "renderer_inference_performed": false,
+    "training_performed": false,
+    "optimizer_updates": 0,
+    "full_g0_authorized": false,
+    "reason_full_g0_not_authorized": "The sparse annotation half has one primary review only; the separately required independent second review remains pending."
+  }
+}

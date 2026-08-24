@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bernini-postvideo-quality-router-v4_1.schema.json",
+  "title": "Bernini post-video quality router v4.1",
+  "oneOf": [
+    {"$ref": "#/$defs/record"},
+    {"$ref": "#/$defs/summary"},
+    {"$ref": "#/$defs/receipt"}
+  ],
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "axis": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["PASS", "FAIL", "UNRESOLVED"]}
+      }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "iid",
+        "checkpoint_step",
+        "case_index",
+        "evidence_binding",
+        "axes",
+        "decision",
+        "policy_sha256",
+        "record_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4.1-record-v1"
+        },
+        "iid": {"type": "string", "pattern": "^s[0-9]{8}-case[0-9]{2}$"},
+        "checkpoint_step": {"type": "integer", "minimum": 0},
+        "case_index": {"type": "integer", "minimum": 0},
+        "evidence_binding": {"type": "object"},
+        "axes": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "artifact_quality",
+            "identity_content_preservation",
+            "action_alignment",
+            "camera_flicker"
+          ],
+          "properties": {
+            "artifact_quality": {"$ref": "#/$defs/axis"},
+            "identity_content_preservation": {"$ref": "#/$defs/axis"},
+            "action_alignment": {"$ref": "#/$defs/axis"},
+            "camera_flicker": {"$ref": "#/$defs/axis"}
+          }
+        },
+        "decision": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "route",
+            "overall_status",
+            "training_eligible",
+            "execution_action",
+            "manual_review_required",
+            "human_review_dependency",
+            "fail_closed",
+            "reason_codes"
+          ],
+          "properties": {
+            "route": {"enum": ["PROMOTE", "REVIEW", "REJECT"]},
+            "overall_status": {"enum": ["PASS", "FAIL", "UNRESOLVED"]},
+            "training_eligible": {"type": "boolean"},
+            "execution_action": {
+              "enum": [
+                "ACCEPT_FOR_TRAINING",
+                "AUTO_ADJUDICATE",
+                "AUTO_RETRY"
+              ]
+            },
+            "manual_review_required": {"const": false},
+            "human_review_dependency": {"const": false},
+            "fail_closed": {"const": true},
+            "reason_codes": {
+              "type": "array",
+              "items": {"type": "string"},
+              "uniqueItems": true
+            }
+          }
+        },
+        "policy_sha256": {"$ref": "#/$defs/sha256"},
+        "record_digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "status",
+        "rows",
+        "route_counts",
+        "execution_action_counts",
+        "axis_counts",
+        "checkpoint_route_counts",
+        "training_eligible_count",
+        "fail_closed",
+        "policy",
+        "policy_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4.1-summary-v1"
+        },
+        "status": {"const": "complete"},
+        "rows": {"const": 16},
+        "training_eligible_count": {"type": "integer", "minimum": 0},
+        "fail_closed": {"const": true}
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "complete",
+        "fail_closed",
+        "rows",
+        "route_counts",
+        "execution_action_counts",
+        "axis_counts",
+        "training_eligible_count",
+        "gate_audit",
+        "qwen_r6",
+        "policy_sha256",
+        "implementation",
+        "files",
+        "old_v4_evidence_overwritten",
+        "training_or_inference_started",
+        "receipt_digest"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "bernini-postvideo-quality-router-v4.1-receipt-v1"
+        },
+        "complete": {"const": true},
+        "fail_closed": {"const": true},
+        "rows": {"const": 16},
+        "old_v4_evidence_overwritten": {"const": false},
+        "training_or_inference_started": {"const": false},
+        "receipt_digest": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}
